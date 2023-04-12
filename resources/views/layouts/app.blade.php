@@ -73,12 +73,16 @@
     
     <!-- Small Ionicons Fixes for AdminLTE -->
     <style>
+
         html {
             background-color: #f4f6f9;
         }
 
         .nav-icon.icon:before {
             width: 25px;
+        }
+        .select2 {
+            width: 100% !important;
         }
     </style>
 
@@ -157,4 +161,14 @@
     </script>
 </body>
 
+<script>
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2({
+            // dropdownAutoWidth: true
+            theme: "classic"
+
+        })
+    });
+</script>
 </html>
