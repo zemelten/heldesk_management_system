@@ -23,7 +23,7 @@ class AssignedOfficeFactory extends Factory
     public function definition()
     {
         return [
-            'office_number' => $this->faker->text(10),
+            'office_no' => $this->faker->text(10),
             'building_id' => \App\Models\Building::factory(),
         ];
     }

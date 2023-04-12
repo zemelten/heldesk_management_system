@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('building_id')->nullable();
             $table->unsignedBigInteger('service_unit_id');
             $table->unsignedBigInteger('unit_id');
+            $table->unsignedBigInteger('leader_id');
 
             $table->timestamps();
         });

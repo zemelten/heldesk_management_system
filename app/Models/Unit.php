@@ -17,8 +17,6 @@ class Unit extends Model
         'email',
         'campuse_id',
         'director_id',
-        'building_id',
-        'leader_id',
     ];
 
     protected $searchableFields = ['*'];
@@ -36,16 +34,6 @@ class Unit extends Model
     public function serviceUnits()
     {
         return $this->hasMany(ServiceUnit::class);
-    }
-
-    public function building()
-    {
-        return $this->belongsTo(Building::class);
-    }
-
-    public function leader()
-    {
-        return $this->belongsTo(Leader::class);
     }
 
     public function userSupports()

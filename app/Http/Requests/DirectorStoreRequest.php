@@ -25,7 +25,6 @@ class DirectorStoreRequest extends FormRequest
     {
         return [
             'full_name' => ['nullable', 'max:255', 'string'],
-            'user_id' => ['nullable', 'exists:users,id'],
             'sex' => ['nullable', 'in:male,female,other'],
             'email' => ['nullable', 'email'],
             'phone' => ['nullable', 'max:255', 'string'],

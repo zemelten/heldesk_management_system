@@ -55,38 +55,12 @@
 
                     <x-inputs.group class="col-sm-12">
                         <x-inputs.select
-                            name="ticket.customer_id"
-                            label="User"
-                            wire:model="ticket.customer_id"
-                        >
-                            <option value="null" disabled>Please select the User</option>
-                            @foreach($usersForSelect as $value => $label)
-                            <option value="{{ $value }}"  >{{ $label }}</option>
-                            @endforeach
-                        </x-inputs.select>
-                    </x-inputs.group>
-
-                    <x-inputs.group class="col-sm-12">
-                        <x-inputs.select
                             name="ticket.campuse_id"
                             label="Campuse"
                             wire:model="ticket.campuse_id"
                         >
                             <option value="null" disabled>Please select the Campus</option>
                             @foreach($campusesForSelect as $value => $label)
-                            <option value="{{ $value }}"  >{{ $label }}</option>
-                            @endforeach
-                        </x-inputs.select>
-                    </x-inputs.group>
-
-                    <x-inputs.group class="col-sm-12">
-                        <x-inputs.select
-                            name="ticket.building_id"
-                            label="Building"
-                            wire:model="ticket.building_id"
-                        >
-                            <option value="null" disabled>Please select the Building</option>
-                            @foreach($buildingsForSelect as $value => $label)
                             <option value="{{ $value }}"  >{{ $label }}</option>
                             @endforeach
                         </x-inputs.select>
@@ -172,13 +146,7 @@
                         @lang('crud.user_support_tickets.inputs.description')
                     </th>
                     <th class="text-left">
-                        @lang('crud.user_support_tickets.inputs.customer_id')
-                    </th>
-                    <th class="text-left">
                         @lang('crud.user_support_tickets.inputs.campuse_id')
-                    </th>
-                    <th class="text-left">
-                        @lang('crud.user_support_tickets.inputs.building_id')
                     </th>
                     <th class="text-left">
                         @lang('crud.user_support_tickets.inputs.problem_id')
@@ -205,13 +173,7 @@
                     <td class="text-left">{{ $ticket->status ?? '-' }}</td>
                     <td class="text-left">{{ $ticket->description ?? '-' }}</td>
                     <td class="text-left">
-                        {{ optional($ticket->user)->full_name ?? '-' }}
-                    </td>
-                    <td class="text-left">
                         {{ optional($ticket->campuse)->name ?? '-' }}
-                    </td>
-                    <td class="text-left">
-                        {{ optional($ticket->building)->name ?? '-' }}
                     </td>
                     <td class="text-left">
                         {{ optional($ticket->problem)->name ?? '-' }}
@@ -244,7 +206,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="9">{{ $tickets->render() }}</td>
+                    <td colspan="7">{{ $tickets->render() }}</td>
                 </tr>
             </tfoot>
         </table>

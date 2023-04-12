@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Ticket;
 use App\Models\Campus;
 use App\Models\Problem;
-use App\Models\Building;
+use App\Models\Customer;
 use App\Models\Prioritie;
 use App\Models\UserSupport;
 use Illuminate\Http\Request;
@@ -42,9 +41,8 @@ class TicketController extends Controller
     {
         $this->authorize('create', Ticket::class);
 
-        $users = User::pluck('full_name', 'id');
         $campuses = Campus::pluck('name', 'id');
-        $buildings = Building::pluck('name', 'id');
+        $customers = Customer::pluck('full_name', 'id');
         $problems = Problem::pluck('name', 'id');
         $organizationalUnits = OrganizationalUnit::pluck('name', 'id');
         $userSupports = UserSupport::pluck('id', 'id');
@@ -53,9 +51,8 @@ class TicketController extends Controller
         return view(
             'app.tickets.create',
             compact(
-                'users',
                 'campuses',
-                'buildings',
+                'customers',
                 'problems',
                 'organizationalUnits',
                 'userSupports',
@@ -102,9 +99,8 @@ class TicketController extends Controller
     {
         $this->authorize('update', $ticket);
 
-        $users = User::pluck('full_name', 'id');
         $campuses = Campus::pluck('name', 'id');
-        $buildings = Building::pluck('name', 'id');
+        $customers = Customer::pluck('full_name', 'id');
         $problems = Problem::pluck('name', 'id');
         $organizationalUnits = OrganizationalUnit::pluck('name', 'id');
         $userSupports = UserSupport::pluck('id', 'id');
@@ -114,9 +110,8 @@ class TicketController extends Controller
             'app.tickets.edit',
             compact(
                 'ticket',
-                'users',
                 'campuses',
-                'buildings',
+                'customers',
                 'problems',
                 'organizationalUnits',
                 'userSupports',

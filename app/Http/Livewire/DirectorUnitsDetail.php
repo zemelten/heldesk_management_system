@@ -4,10 +4,8 @@ namespace App\Http\Livewire;
 
 use App\Models\Unit;
 use App\Models\Campus;
-use App\Models\Leader;
 use Livewire\Component;
 use App\Models\Director;
-use App\Models\Building;
 use Livewire\WithPagination;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
@@ -19,8 +17,6 @@ class DirectorUnitsDetail extends Component
     public Director $director;
     public Unit $unit;
     public $campusesForSelect = [];
-    public $buildingsForSelect = [];
-    public $leadersForSelect = [];
 
     public $selected = [];
     public $editing = false;
@@ -34,16 +30,12 @@ class DirectorUnitsDetail extends Component
         'unit.fax' => ['required', 'max:255', 'string'],
         'unit.email' => ['required', 'email'],
         'unit.campuse_id' => ['required', 'exists:campuses,id'],
-        'unit.building_id' => ['required', 'exists:buildings,id'],
-        'unit.leader_id' => ['required', 'exists:leaders,id'],
     ];
 
     public function mount(Director $director)
     {
         $this->director = $director;
         $this->campusesForSelect = Campus::pluck('name', 'id');
-        $this->buildingsForSelect = Building::pluck('name', 'id');
-        $this->leadersForSelect = Leader::pluck('full_name', 'id');
         $this->resetUnitData();
     }
 
@@ -52,8 +44,6 @@ class DirectorUnitsDetail extends Component
         $this->unit = new Unit();
 
         $this->unit->campuse_id = null;
-        $this->unit->building_id = null;
-        $this->unit->leader_id = null;
 
         $this->dispatchBrowserEvent('refresh');
     }

@@ -18,6 +18,7 @@ class UserSupport extends Model
         'building_id',
         'service_unit_id',
         'unit_id',
+        'leader_id',
     ];
 
     protected $searchableFields = ['*'];
@@ -52,5 +53,20 @@ class UserSupport extends Model
     public function unit()
     {
         return $this->belongsTo(Unit::class);
+    }
+
+    public function leader()
+    {
+        return $this->belongsTo(Leader::class);
+    }
+
+    public function allReports()
+    {
+        return $this->hasMany(Reports::class);
+    }
+
+    public function escalatedTickets()
+    {
+        return $this->hasMany(EscalatedTicket::class);
     }
 }

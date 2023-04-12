@@ -50,7 +50,7 @@
                     <thead>
                         <tr>
                             <th class="text-left">
-                                @lang('crud.assigned_offices.inputs.office_number')
+                                @lang('crud.assigned_offices.inputs.office_no')
                             </th>
                             <th class="text-left">
                                 @lang('crud.assigned_offices.inputs.building_id')
@@ -63,7 +63,7 @@
                     <tbody>
                         @forelse($assignedOffices as $assignedOffice)
                         <tr>
-                            <td>{{ $assignedOffice->office_number ?? '-' }}</td>
+                            <td>{{ $assignedOffice->office_no ?? '-' }}</td>
                             <td>
                                 {{ optional($assignedOffice->building)->name ??
                                 '-' }}

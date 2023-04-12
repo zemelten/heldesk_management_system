@@ -152,11 +152,35 @@
                                 </a>
                             </li>
                             @endcan
+                            @can('view-any', App\Models\ProblemCatagory::class)
+                            <li class="nav-item">
+                                <a href="{{ route('problem-catagories.index') }}" class="nav-link">
+                                    <i class="nav-icon icon ion-md-radio-button-off"></i>
+                                    <p>Problem Catagories</p>
+                                </a>
+                            </li>
+                            @endcan
                             @can('view-any', App\Models\Ticket::class)
                             <li class="nav-item">
                                 <a href="{{ route('tickets.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
                                     <p>Tickets</p>
+                                </a>
+                            </li>
+                            @endcan
+                            @can('view-any', App\Models\EscalatedTicket::class)
+                            <li class="nav-item">
+                                <a href="{{ route('escalated-tickets.index') }}" class="nav-link">
+                                    <i class="nav-icon icon ion-md-radio-button-off"></i>
+                                    <p>Escalated Tickets</p>
+                                </a>
+                            </li>
+                            @endcan
+                            @can('view-any', App\Models\Reports::class)
+                            <li class="nav-item">
+                                <a href="{{ route('all-reports.index') }}" class="nav-link">
+                                    <i class="nav-icon icon ion-md-radio-button-off"></i>
+                                    <p>All Reports</p>
                                 </a>
                             </li>
                             @endcan

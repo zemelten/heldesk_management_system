@@ -51,13 +51,10 @@
                                 @lang('crud.tickets.inputs.description')
                             </th>
                             <th class="text-left">
-                                @lang('crud.tickets.inputs.customer_id')
-                            </th>
-                            <th class="text-left">
                                 @lang('crud.tickets.inputs.campuse_id')
                             </th>
                             <th class="text-left">
-                                @lang('crud.tickets.inputs.building_id')
+                                @lang('crud.tickets.inputs.customer_id')
                             </th>
                             <th class="text-left">
                                 @lang('crud.tickets.inputs.problem_id')
@@ -82,13 +79,11 @@
                             <td>{{ $ticket->status ?? '-' }}</td>
                             <td>{{ $ticket->description ?? '-' }}</td>
                             <td>
-                                {{ optional($ticket->user)->full_name ?? '-' }}
-                            </td>
-                            <td>
                                 {{ optional($ticket->campuse)->name ?? '-' }}
                             </td>
                             <td>
-                                {{ optional($ticket->building)->name ?? '-' }}
+                                {{ optional($ticket->customer)->full_name ?? '-'
+                                }}
                             </td>
                             <td>
                                 {{ optional($ticket->problem)->name ?? '-' }}
@@ -151,7 +146,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="10">
+                            <td colspan="9">
                                 @lang('crud.common.no_items_found')
                             </td>
                         </tr>
@@ -159,7 +154,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="10">{!! $tickets->render() !!}</td>
+                            <td colspan="9">{!! $tickets->render() !!}</td>
                         </tr>
                     </tfoot>
                 </table>

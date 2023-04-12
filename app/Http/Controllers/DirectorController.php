@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Director;
 use Illuminate\Http\Request;
 use App\Http\Requests\DirectorStoreRequest;
@@ -36,9 +35,7 @@ class DirectorController extends Controller
     {
         $this->authorize('create', Director::class);
 
-        $users = User::pluck('full_name', 'id');
-
-        return view('app.directors.create', compact('users'));
+        return view('app.directors.create');
     }
 
     /**
@@ -79,9 +76,7 @@ class DirectorController extends Controller
     {
         $this->authorize('update', $director);
 
-        $users = User::pluck('full_name', 'id');
-
-        return view('app.directors.edit', compact('director', 'users'));
+        return view('app.directors.edit', compact('director'));
     }
 
     /**

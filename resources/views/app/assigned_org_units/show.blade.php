@@ -18,8 +18,8 @@
                     </h5>
                     <span
                         >{{
-                        optional($assignedOrgUnit->assignedOffice)->office_number
-                        ?? '-' }}</span
+                        optional($assignedOrgUnit->assignedOffice)->office_no ??
+                        '-' }}</span
                     >
                 </div>
                 <div class="mb-4">

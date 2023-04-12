@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Leader;
-use App\Models\Director;
 use Illuminate\Http\Request;
 use App\Http\Requests\LeaderStoreRequest;
 use App\Http\Requests\LeaderUpdateRequest;
@@ -37,10 +35,7 @@ class LeaderController extends Controller
     {
         $this->authorize('create', Leader::class);
 
-        $users = User::pluck('full_name', 'id');
-        $directors = Director::pluck('full_name', 'id');
-
-        return view('app.leaders.create', compact('users', 'directors'));
+        return view('app.leaders.create');
     }
 
     /**
@@ -81,13 +76,7 @@ class LeaderController extends Controller
     {
         $this->authorize('update', $leader);
 
-        $users = User::pluck('full_name', 'id');
-        $directors = Director::pluck('full_name', 'id');
-
-        return view(
-            'app.leaders.edit',
-            compact('leader', 'users', 'directors')
-        );
+        return view('app.leaders.edit', compact('leader'));
     }
 
     /**

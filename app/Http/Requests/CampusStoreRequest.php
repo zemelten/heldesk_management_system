@@ -25,7 +25,7 @@ class CampusStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'unique:campuses,name', 'max:25', 'string'],
+            'name' => ['nullable', 'unique:campuses,name', 'max:255', 'string'],
         ];
     }
 }

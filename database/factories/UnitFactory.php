@@ -28,8 +28,6 @@ class UnitFactory extends Factory
             'email' => $this->faker->email,
             'campuse_id' => \App\Models\Campus::factory(),
             'director_id' => \App\Models\Director::factory(),
-            'building_id' => \App\Models\Building::factory(),
-            'leader_id' => \App\Models\Leader::factory(),
         ];
     }
 }

@@ -15,10 +15,10 @@ return new class extends Migration {
         Schema::create('directors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('full_name')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->enum('sex', ['male', 'female', 'other'])->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
+            $table->unsignedBigInteger('user_id');
 
             $table->timestamps();
         });

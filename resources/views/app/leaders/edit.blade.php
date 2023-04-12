@@ -44,12 +44,12 @@
         </div>
     </div>
 
-    @can('view-any', App\Models\ServiceUnit::class)
+    @can('view-any', App\Models\UserSupport::class)
     <div class="card mt-4">
         <div class="card-body">
-            <h4 class="card-title w-100 mb-2">Service Units</h4>
+            <h4 class="card-title w-100 mb-2">User Supports</h4>
 
-            <livewire:leader-service-units-detail :leader="$leader" />
+            <livewire:leader-user-supports-detail :leader="$leader" />
         </div>
     </div>
     @endcan

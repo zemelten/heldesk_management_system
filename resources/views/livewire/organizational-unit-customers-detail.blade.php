@@ -56,11 +56,11 @@
 
                     <x-inputs.group class="col-sm-12">
                         <x-inputs.text
-                            name="customer.phone_number"
-                            label="Phone Number"
-                            wire:model="customer.phone_number"
+                            name="customer.phone_no"
+                            label="Phone No"
+                            wire:model="customer.phone_no"
                             maxlength="255"
-                            placeholder="Phone Number"
+                            placeholder="Phone No"
                         ></x-inputs.text>
                     </x-inputs.group>
 
@@ -177,7 +177,7 @@
                         @lang('crud.organizational_unit_customers.inputs.email')
                     </th>
                     <th class="text-left">
-                        @lang('crud.organizational_unit_customers.inputs.phone_number')
+                        @lang('crud.organizational_unit_customers.inputs.phone_no')
                     </th>
                     <th class="text-left">
                         @lang('crud.organizational_unit_customers.inputs.building_id')
@@ -212,9 +212,7 @@
                     </td>
                     <td class="text-left">{{ $customer->full_name ?? '-' }}</td>
                     <td class="text-left">{{ $customer->email ?? '-' }}</td>
-                    <td class="text-left">
-                        {{ $customer->phone_number ?? '-' }}
-                    </td>
+                    <td class="text-left">{{ $customer->phone_no ?? '-' }}</td>
                     <td class="text-left">
                         {{ optional($customer->building)->name ?? '-' }}
                     </td>

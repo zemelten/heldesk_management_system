@@ -21,8 +21,8 @@
                     <span>{{ $customer->email ?? '-' }}</span>
                 </div>
                 <div class="mb-4">
-                    <h5>@lang('crud.customers.inputs.phone_number')</h5>
-                    <span>{{ $customer->phone_number ?? '-' }}</span>
+                    <h5>@lang('crud.customers.inputs.phone_no')</h5>
+                    <span>{{ $customer->phone_no ?? '-' }}</span>
                 </div>
                 <div class="mb-4">
                     <h5>@lang('crud.customers.inputs.building_id')</h5>
@@ -54,12 +54,12 @@
                     >
                 </div>
                 <div class="mb-4">
-                    <h5>@lang('crud.customers.inputs.is_edited')</h5>
-                    <span>{{ $customer->is_edited ?? '-' }}</span>
-                </div>
-                <div class="mb-4">
                     <h5>@lang('crud.customers.inputs.office_num')</h5>
                     <span>{{ $customer->office_num ?? '-' }}</span>
+                </div>
+                <div class="mb-4">
+                    <h5>@lang('crud.customers.inputs.is_edited')</h5>
+                    <span>{{ $customer->is_edited ?? '-' }}</span>
                 </div>
             </div>
 
@@ -77,5 +77,15 @@
             </div>
         </div>
     </div>
+
+    @can('view-any', App\Models\Ticket::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">Tickets</h4>
+
+            <livewire:customer-tickets-detail :customer="$customer" />
+        </div>
+    </div>
+    @endcan
 </div>
 @endsection

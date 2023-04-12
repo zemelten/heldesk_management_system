@@ -33,13 +33,6 @@
                     <span>{{ $serviceUnit->discription ?? '-' }}</span>
                 </div>
                 <div class="mb-4">
-                    <h5>@lang('crud.service_units.inputs.unit_id')</h5>
-                    <span
-                        >{{ optional($serviceUnit->unit)->telephone ?? '-'
-                        }}</span
-                    >
-                </div>
-                <div class="mb-4">
                     <h5>@lang('crud.service_units.inputs.leader_id')</h5>
                     <span
                         >{{ optional($serviceUnit->leader)->full_name ?? '-'
@@ -68,5 +61,17 @@
             </div>
         </div>
     </div>
+
+    @can('view-any', App\Models\UserSupport::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">User Supports</h4>
+
+            <livewire:service-unit-user-supports-detail
+                :serviceUnit="$serviceUnit"
+            />
+        </div>
+    </div>
+    @endcan
 </div>
 @endsection

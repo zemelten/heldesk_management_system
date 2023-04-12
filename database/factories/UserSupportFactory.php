@@ -29,6 +29,7 @@ class UserSupportFactory extends Factory
             'building_id' => \App\Models\Building::factory(),
             'service_unit_id' => \App\Models\ServiceUnit::factory(),
             'unit_id' => \App\Models\Unit::factory(),
+            'leader_id' => \App\Models\Leader::factory(),
         ];
     }
 }

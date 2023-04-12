@@ -53,24 +53,4 @@
             @endforeach
         </x-inputs.select>
     </x-inputs.group>
-
-    <x-inputs.group class="col-sm-12">
-        <x-inputs.select name="building_id" label="Building" required>
-            @php $selected = old('building_id', ($editing ? $unit->building_id : '')) @endphp
-            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Building</option>
-            @foreach($buildings as $value => $label)
-            <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
-            @endforeach
-        </x-inputs.select>
-    </x-inputs.group>
-
-    <x-inputs.group class="col-sm-12">
-        <x-inputs.select name="leader_id" label="Leader" required>
-            @php $selected = old('leader_id', ($editing ? $unit->leader_id : '')) @endphp
-            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Leader</option>
-            @foreach($leaders as $value => $label)
-            <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
-            @endforeach
-        </x-inputs.select>
-    </x-inputs.group>
 </div>

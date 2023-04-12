@@ -20,7 +20,4 @@
             @endforeach
         </x-inputs.select>
     </x-inputs.group>
-
-    @livewire('selects.id-name-dependent-select', ['building' => $editing ?
-    $building->id : null])
 </div>

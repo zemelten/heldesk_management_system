@@ -65,7 +65,7 @@
                         <tr>
                             <td>
                                 {{
-                                optional($assignedOrgUnit->assignedOffice)->office_number
+                                optional($assignedOrgUnit->assignedOffice)->office_no
                                 ?? '-' }}
                             </td>
                             <td>

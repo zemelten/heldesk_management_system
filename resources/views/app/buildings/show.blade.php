@@ -20,14 +20,6 @@
                     <h5>@lang('crud.buildings.inputs.campuse_id')</h5>
                     <span>{{ optional($building->campuse)->name ?? '-' }}</span>
                 </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.buildings.inputs.id')</h5>
-                    <span>{{ $building->id ?? '-' }}</span>
-                </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.buildings.inputs.name')</h5>
-                    <span>{{ $building->name ?? '-' }}</span>
-                </div>
             </div>
 
             <div class="mt-4">
@@ -44,5 +36,33 @@
             </div>
         </div>
     </div>
+
+    @can('view-any', App\Models\UserSupport::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">User Supports</h4>
+
+            <livewire:building-user-supports-detail :building="$building" />
+        </div>
+    </div>
+    @endcan @can('view-any', App\Models\Customer::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">Customers</h4>
+
+            <livewire:building-customers-detail :building="$building" />
+        </div>
+    </div>
+    @endcan @can('view-any', App\Models\OrganizationalUnit::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">Organizational Units</h4>
+
+            <livewire:building-organizational-units-detail
+                :building="$building"
+            />
+        </div>
+    </div>
+    @endcan
 </div>
 @endsection

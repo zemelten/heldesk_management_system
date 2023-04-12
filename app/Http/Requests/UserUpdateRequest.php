@@ -25,13 +25,13 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'full_name' => ['required', 'max:255', 'string'],
             'username' => [
                 'required',
                 Rule::unique('users', 'username')->ignore($this->user),
                 'max:255',
                 'string',
             ],
+            'full_name' => ['nullable', 'max:255', 'string'],
             'email' => [
                 'nullable',
                 Rule::unique('users', 'email')->ignore($this->user),

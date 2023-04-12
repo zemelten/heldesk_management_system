@@ -28,17 +28,6 @@
                     <h5>@lang('crud.leaders.inputs.email')</h5>
                     <span>{{ $leader->email ?? '-' }}</span>
                 </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.leaders.inputs.user_id')</h5>
-                    <span>{{ optional($leader->user)->full_name ?? '-' }}</span>
-                </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.leaders.inputs.director_id')</h5>
-                    <span
-                        >{{ optional($leader->director)->full_name ?? '-'
-                        }}</span
-                    >
-                </div>
             </div>
 
             <div class="mt-4">
@@ -55,5 +44,15 @@
             </div>
         </div>
     </div>
+
+    @can('view-any', App\Models\UserSupport::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">User Supports</h4>
+
+            <livewire:leader-user-supports-detail :leader="$leader" />
+        </div>
+    </div>
+    @endcan
 </div>
 @endsection

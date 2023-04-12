@@ -115,7 +115,7 @@ class AssignedOfficeControllerTest extends TestCase
         $building = Building::factory()->create();
 
         $data = [
-            'office_number' => $this->faker->text(10),
+            'office_no' => $this->faker->text(10),
             'building_id' => $building->id,
         ];
 

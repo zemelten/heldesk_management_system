@@ -10,6 +10,7 @@ use App\Http\Controllers\CampusController;
 use App\Http\Controllers\LeaderController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ProblemController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\BuildingController;
 use App\Http\Controllers\DirectorController;
 use App\Http\Controllers\CustomerController;
@@ -19,6 +20,8 @@ use App\Http\Controllers\ServiceUnitController;
 use App\Http\Controllers\UserSupportController;
 use App\Http\Controllers\AssignedOfficeController;
 use App\Http\Controllers\AssignedOrgUnitController;
+use App\Http\Controllers\ProblemCatagoryController;
+use App\Http\Controllers\EscalatedTicketController;
 use App\Http\Controllers\OrganizationalUnitController;
 
 /*
@@ -64,5 +67,33 @@ Route::prefix('/')
         Route::resource('assigned-org-units', AssignedOrgUnitController::class);
         Route::resource('floors', FloorController::class);
         Route::resource('customers', CustomerController::class);
+        Route::resource('problem-catagories', ProblemCatagoryController::class);
         Route::resource('tickets', TicketController::class);
+        Route::resource('escalated-tickets', EscalatedTicketController::class);
+        Route::get('all-reports', [ReportsController::class, 'index'])->name(
+            'all-reports.index'
+        );
+        Route::post('all-reports', [ReportsController::class, 'store'])->name(
+            'all-reports.store'
+        );
+        Route::get('all-reports/create', [
+            ReportsController::class,
+            'create',
+        ])->name('all-reports.create');
+        Route::get('all-reports/{reports}', [
+            ReportsController::class,
+            'show',
+        ])->name('all-reports.show');
+        Route::get('all-reports/{reports}/edit', [
+            ReportsController::class,
+            'edit',
+        ])->name('all-reports.edit');
+        Route::put('all-reports/{reports}', [
+            ReportsController::class,
+            'update',
+        ])->name('all-reports.update');
+        Route::delete('all-reports/{reports}', [
+            ReportsController::class,
+            'destroy',
+        ])->name('all-reports.destroy');
     });

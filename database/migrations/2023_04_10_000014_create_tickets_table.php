@@ -16,11 +16,11 @@ return new class extends Migration {
             $table->bigIncrements('id');
             $table->tinyInteger('status')->nullable();
             $table->text('description')->nullable();
-            $table->unsignedBigInteger('customer_id')->nullable();
             $table->unsignedBigInteger('campuse_id')->nullable();
-            $table->unsignedBigInteger('building_id')->nullable();
+            $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('problem_id')->nullable();
             $table->unsignedBigInteger('organizational_unit_id')->nullable();
+            $table->unsignedBigInteger('reports_id');
             $table->unsignedBigInteger('user_support_id')->nullable();
             $table->unsignedBigInteger('prioritie_id')->nullable();
 

@@ -23,11 +23,11 @@
 
     <x-inputs.group class="col-sm-12">
         <x-inputs.text
-            name="phone_number"
-            label="Phone Number"
-            :value="old('phone_number', ($editing ? $customer->phone_number : ''))"
+            name="phone_no"
+            label="Phone No"
+            :value="old('phone_no', ($editing ? $customer->phone_no : ''))"
             maxlength="255"
-            placeholder="Phone Number"
+            placeholder="Phone No"
         ></x-inputs.text>
     </x-inputs.group>
 
@@ -86,16 +86,6 @@
 
     <x-inputs.group class="col-sm-12">
         <x-inputs.text
-            name="is_edited"
-            label="Is Edited"
-            :value="old('is_edited', ($editing ? $customer->is_edited : '0'))"
-            maxlength="255"
-            placeholder="Is Edited"
-        ></x-inputs.text>
-    </x-inputs.group>
-
-    <x-inputs.group class="col-sm-12">
-        <x-inputs.text
             name="office_num"
             label="Office Num"
             :value="old('office_num', ($editing ? $customer->office_num : ''))"
@@ -103,4 +93,9 @@
             placeholder="Office Num"
         ></x-inputs.text>
     </x-inputs.group>
+
+    <x-inputs.hidden
+        name="is_edited"
+        :value="old('is_edited', ($editing ? $customer->is_edited : '0'))"
+    ></x-inputs.hidden>
 </div>

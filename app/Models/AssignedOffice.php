@@ -11,7 +11,7 @@ class AssignedOffice extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['office_number', 'building_id'];
+    protected $fillable = ['office_no', 'building_id'];
 
     protected $searchableFields = ['*'];
 

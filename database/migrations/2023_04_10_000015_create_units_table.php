@@ -19,8 +19,6 @@ return new class extends Migration {
             $table->string('email');
             $table->unsignedBigInteger('campuse_id');
             $table->unsignedBigInteger('director_id');
-            $table->unsignedBigInteger('building_id');
-            $table->unsignedBigInteger('leader_id');
 
             $table->timestamps();
         });

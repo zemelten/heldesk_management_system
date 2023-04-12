@@ -3,11 +3,11 @@
 <div class="row">
     <x-inputs.group class="col-sm-12">
         <x-inputs.text
-            name="office_number"
-            label="Office Number"
-            :value="old('office_number', ($editing ? $assignedOffice->office_number : ''))"
+            name="office_no"
+            label="Office No"
+            :value="old('office_no', ($editing ? $assignedOffice->office_no : ''))"
             maxlength="255"
-            placeholder="Office Number"
+            placeholder="Office No"
         ></x-inputs.text>
     </x-inputs.group>
 

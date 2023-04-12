@@ -43,5 +43,33 @@
             </x-form>
         </div>
     </div>
+
+    @can('view-any', App\Models\UserSupport::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">User Supports</h4>
+
+            <livewire:building-user-supports-detail :building="$building" />
+        </div>
+    </div>
+    @endcan @can('view-any', App\Models\Customer::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">Customers</h4>
+
+            <livewire:building-customers-detail :building="$building" />
+        </div>
+    </div>
+    @endcan @can('view-any', App\Models\OrganizationalUnit::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">Organizational Units</h4>
+
+            <livewire:building-organizational-units-detail
+                :building="$building"
+            />
+        </div>
+    </div>
+    @endcan
 </div>
 @endsection

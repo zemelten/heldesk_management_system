@@ -26,7 +26,7 @@ class CustomerStoreRequest extends FormRequest
         return [
             'full_name' => ['nullable', 'max:255', 'string'],
             'email' => ['nullable', 'email'],
-            'phone_number' => ['nullable', 'max:255', 'string'],
+            'phone_no' => ['nullable', 'max:255', 'string'],
             'building_id' => ['nullable', 'exists:buildings,id'],
             'campus_id' => ['nullable', 'exists:campuses,id'],
             'organizational_unit_id' => [
@@ -35,8 +35,8 @@ class CustomerStoreRequest extends FormRequest
             ],
             'floor_id' => ['nullable', 'exists:floors,id'],
             'user_id' => ['nullable', 'exists:users,id'],
-            'is_edited' => ['nullable', 'max:255'],
             'office_num' => ['nullable', 'max:255', 'string'],
+            'is_edited' => ['nullable', 'max:255'],
         ];
     }
 }

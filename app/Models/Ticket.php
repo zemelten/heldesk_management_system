@@ -14,31 +14,20 @@ class Ticket extends Model
     protected $fillable = [
         'status',
         'description',
-        'customer_id',
         'campuse_id',
-        'building_id',
+        'customer_id',
         'problem_id',
         'organizational_unit_id',
+        'reports_id',
         'user_support_id',
         'prioritie_id',
-        'customer_id',
     ];
 
     protected $searchableFields = ['*'];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'customer_id');
-    }
-
     public function campuse()
     {
         return $this->belongsTo(Campus::class, 'campuse_id');
-    }
-
-    public function building()
-    {
-        return $this->belongsTo(Building::class);
     }
 
     public function organizationalUnit()
@@ -64,5 +53,15 @@ class Ticket extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function reports()
+    {
+        return $this->belongsTo(Reports::class);
+    }
+
+    public function escalatedTickets()
+    {
+        return $this->hasMany(EscalatedTicket::class);
     }
 }

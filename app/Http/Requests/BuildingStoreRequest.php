@@ -26,8 +26,6 @@ class BuildingStoreRequest extends FormRequest
         return [
             'name' => ['nullable', 'max:255', 'string'],
             'campuse_id' => ['nullable', 'exists:campuses,id'],
-            'id' => ['required', 'max:255'],
-            'name' => ['nullable', 'max:255', 'string'],
         ];
     }
 }

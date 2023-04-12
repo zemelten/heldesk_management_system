@@ -51,9 +51,6 @@
                                 @lang('crud.directors.inputs.full_name')
                             </th>
                             <th class="text-left">
-                                @lang('crud.directors.inputs.user_id')
-                            </th>
-                            <th class="text-left">
                                 @lang('crud.directors.inputs.sex')
                             </th>
                             <th class="text-left">
@@ -71,10 +68,6 @@
                         @forelse($directors as $director)
                         <tr>
                             <td>{{ $director->full_name ?? '-' }}</td>
-                            <td>
-                                {{ optional($director->user)->full_name ?? '-'
-                                }}
-                            </td>
                             <td>{{ $director->sex ?? '-' }}</td>
                             <td>{{ $director->email ?? '-' }}</td>
                             <td>{{ $director->phone ?? '-' }}</td>
@@ -126,7 +119,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="6">
+                            <td colspan="5">
                                 @lang('crud.common.no_items_found')
                             </td>
                         </tr>
@@ -134,7 +127,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="6">{!! $directors->render() !!}</td>
+                            <td colspan="5">{!! $directors->render() !!}</td>
                         </tr>
                     </tfoot>
                 </table>

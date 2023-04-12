@@ -21,16 +21,15 @@
                     <span>{{ $ticket->description ?? '-' }}</span>
                 </div>
                 <div class="mb-4">
-                    <h5>@lang('crud.tickets.inputs.customer_id')</h5>
-                    <span>{{ optional($ticket->user)->full_name ?? '-' }}</span>
-                </div>
-                <div class="mb-4">
                     <h5>@lang('crud.tickets.inputs.campuse_id')</h5>
                     <span>{{ optional($ticket->campuse)->name ?? '-' }}</span>
                 </div>
                 <div class="mb-4">
-                    <h5>@lang('crud.tickets.inputs.building_id')</h5>
-                    <span>{{ optional($ticket->building)->name ?? '-' }}</span>
+                    <h5>@lang('crud.tickets.inputs.customer_id')</h5>
+                    <span
+                        >{{ optional($ticket->customer)->full_name ?? '-'
+                        }}</span
+                    >
                 </div>
                 <div class="mb-4">
                     <h5>@lang('crud.tickets.inputs.problem_id')</h5>

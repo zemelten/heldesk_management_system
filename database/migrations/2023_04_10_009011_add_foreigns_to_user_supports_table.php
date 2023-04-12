@@ -47,6 +47,13 @@ return new class extends Migration {
                 ->on('units')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
+
+            $table
+                ->foreign('leader_id')
+                ->references('id')
+                ->on('leaders')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
         });
     }
 
@@ -63,6 +70,7 @@ return new class extends Migration {
             $table->dropForeign(['building_id']);
             $table->dropForeign(['service_unit_id']);
             $table->dropForeign(['unit_id']);
+            $table->dropForeign(['leader_id']);
         });
     }
 };

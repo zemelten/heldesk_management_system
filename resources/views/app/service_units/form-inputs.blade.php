@@ -52,16 +52,6 @@
     </x-inputs.group>
 
     <x-inputs.group class="col-sm-12">
-        <x-inputs.select name="unit_id" label="Unit">
-            @php $selected = old('unit_id', ($editing ? $serviceUnit->unit_id : '')) @endphp
-            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Unit</option>
-            @foreach($units as $value => $label)
-            <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
-            @endforeach
-        </x-inputs.select>
-    </x-inputs.group>
-
-    <x-inputs.group class="col-sm-12">
         <x-inputs.select name="leader_id" label="Leader">
             @php $selected = old('leader_id', ($editing ? $serviceUnit->leader_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Leader</option>

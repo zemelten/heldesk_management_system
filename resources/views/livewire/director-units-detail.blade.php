@@ -76,32 +76,6 @@
                             @endforeach
                         </x-inputs.select>
                     </x-inputs.group>
-
-                    <x-inputs.group class="col-sm-12">
-                        <x-inputs.select
-                            name="unit.building_id"
-                            label="Building"
-                            wire:model="unit.building_id"
-                        >
-                            <option value="null" disabled>Please select the Building</option>
-                            @foreach($buildingsForSelect as $value => $label)
-                            <option value="{{ $value }}"  >{{ $label }}</option>
-                            @endforeach
-                        </x-inputs.select>
-                    </x-inputs.group>
-
-                    <x-inputs.group class="col-sm-12">
-                        <x-inputs.select
-                            name="unit.leader_id"
-                            label="Leader"
-                            wire:model="unit.leader_id"
-                        >
-                            <option value="null" disabled>Please select the Leader</option>
-                            @foreach($leadersForSelect as $value => $label)
-                            <option value="{{ $value }}"  >{{ $label }}</option>
-                            @endforeach
-                        </x-inputs.select>
-                    </x-inputs.group>
                 </div>
             </div>
 
@@ -149,12 +123,6 @@
                     <th class="text-left">
                         @lang('crud.director_units.inputs.campuse_id')
                     </th>
-                    <th class="text-left">
-                        @lang('crud.director_units.inputs.building_id')
-                    </th>
-                    <th class="text-left">
-                        @lang('crud.director_units.inputs.leader_id')
-                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -173,12 +141,6 @@
                     <td class="text-left">{{ $unit->email ?? '-' }}</td>
                     <td class="text-left">
                         {{ optional($unit->campuse)->name ?? '-' }}
-                    </td>
-                    <td class="text-left">
-                        {{ optional($unit->building)->name ?? '-' }}
-                    </td>
-                    <td class="text-left">
-                        {{ optional($unit->leader)->full_name ?? '-' }}
                     </td>
                     <td class="text-right" style="width: 134px;">
                         <div
@@ -202,7 +164,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="7">{{ $units->render() }}</td>
+                    <td colspan="5">{{ $units->render() }}</td>
                 </tr>
             </tfoot>
         </table>

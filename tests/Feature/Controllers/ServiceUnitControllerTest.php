@@ -67,6 +67,8 @@ class ServiceUnitControllerTest extends TestCase
 
         $response = $this->post(route('service-units.store'), $data);
 
+        unset($data['unit_id']);
+
         $this->assertDatabaseHas('service_units', $data);
 
         $serviceUnit = ServiceUnit::latest('id')->first();
@@ -128,6 +130,8 @@ class ServiceUnitControllerTest extends TestCase
             route('service-units.update', $serviceUnit),
             $data
         );
+
+        unset($data['unit_id']);
 
         $data['id'] = $serviceUnit->id;
 

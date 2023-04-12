@@ -43,5 +43,15 @@
             </div>
         </div>
     </div>
+
+    @can('view-any', App\Models\Ticket::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">Tickets</h4>
+
+            <livewire:prioritie-tickets-detail :prioritie="$prioritie" />
+        </div>
+    </div>
+    @endcan
 </div>
 @endsection

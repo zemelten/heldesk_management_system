@@ -25,11 +25,6 @@ class Building extends Model
         return $this->hasMany(OrganizationalUnit::class);
     }
 
-    public function tickets()
-    {
-        return $this->hasMany(Ticket::class);
-    }
-
     public function assignedOffices()
     {
         return $this->hasMany(AssignedOffice::class);
@@ -43,10 +38,5 @@ class Building extends Model
     public function userSupports()
     {
         return $this->hasMany(UserSupport::class);
-    }
-
-    public function units()
-    {
-        return $this->hasMany(Unit::class);
     }
 }

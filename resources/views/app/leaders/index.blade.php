@@ -56,12 +56,6 @@
                             <th class="text-left">
                                 @lang('crud.leaders.inputs.email')
                             </th>
-                            <th class="text-left">
-                                @lang('crud.leaders.inputs.user_id')
-                            </th>
-                            <th class="text-left">
-                                @lang('crud.leaders.inputs.director_id')
-                            </th>
                             <th class="text-center">
                                 @lang('crud.common.actions')
                             </th>
@@ -74,13 +68,6 @@
                             <td>{{ $leader->sex ?? '-' }}</td>
                             <td>{{ $leader->phone ?? '-' }}</td>
                             <td>{{ $leader->email ?? '-' }}</td>
-                            <td>
-                                {{ optional($leader->user)->full_name ?? '-' }}
-                            </td>
-                            <td>
-                                {{ optional($leader->director)->full_name ?? '-'
-                                }}
-                            </td>
                             <td class="text-center" style="width: 134px;">
                                 <div
                                     role="group"
@@ -129,7 +116,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="7">
+                            <td colspan="5">
                                 @lang('crud.common.no_items_found')
                             </td>
                         </tr>
@@ -137,7 +124,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="7">{!! $leaders->render() !!}</td>
+                            <td colspan="5">{!! $leaders->render() !!}</td>
                         </tr>
                     </tfoot>
                 </table>

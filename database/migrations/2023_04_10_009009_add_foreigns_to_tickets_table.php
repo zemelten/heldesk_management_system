@@ -14,13 +14,6 @@ return new class extends Migration {
     {
         Schema::table('tickets', function (Blueprint $table) {
             $table
-                ->foreign('customer_id')
-                ->references('id')
-                ->on('users')
-                ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
-
-            $table
                 ->foreign('campuse_id')
                 ->references('id')
                 ->on('campuses')
@@ -28,9 +21,9 @@ return new class extends Migration {
                 ->onDelete('CASCADE');
 
             $table
-                ->foreign('building_id')
+                ->foreign('customer_id')
                 ->references('id')
-                ->on('buildings')
+                ->on('customers')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
 
@@ -49,6 +42,13 @@ return new class extends Migration {
                 ->onDelete('CASCADE');
 
             $table
+                ->foreign('reports_id')
+                ->references('id')
+                ->on('reports')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
+
+            $table
                 ->foreign('user_support_id')
                 ->references('id')
                 ->on('user_supports')
@@ -61,7 +61,6 @@ return new class extends Migration {
                 ->on('priorities')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
-
         });
     }
 
@@ -73,14 +72,13 @@ return new class extends Migration {
     public function down()
     {
         Schema::table('tickets', function (Blueprint $table) {
-            $table->dropForeign(['customer_id']);
             $table->dropForeign(['campuse_id']);
-            $table->dropForeign(['building_id']);
+            $table->dropForeign(['customer_id']);
             $table->dropForeign(['problem_id']);
             $table->dropForeign(['organizational_unit_id']);
+            $table->dropForeign(['reports_id']);
             $table->dropForeign(['user_support_id']);
             $table->dropForeign(['prioritie_id']);
-            $table->dropForeign(['customer_id']);
         });
     }
 };

@@ -6,10 +6,8 @@
             name="name"
             label="Name"
             :value="old('name', ($editing ? $campus->name : ''))"
-            minlength="3"
             maxlength="255"
             placeholder="Name"
-            required
         ></x-inputs.text>
     </x-inputs.group>
 </div>

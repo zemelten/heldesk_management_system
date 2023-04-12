@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Unit;
 use App\Models\Leader;
 use App\Models\ServiceUnit;
 use Illuminate\Http\Request;
@@ -40,10 +39,9 @@ class ServiceUnitController extends Controller
     {
         $this->authorize('create', ServiceUnit::class);
 
-        $units = Unit::pluck('telephone', 'id');
         $leaders = Leader::pluck('full_name', 'id');
 
-        return view('app.service_units.create', compact('units', 'leaders'));
+        return view('app.service_units.create', compact('leaders'));
     }
 
     /**
@@ -84,12 +82,11 @@ class ServiceUnitController extends Controller
     {
         $this->authorize('update', $serviceUnit);
 
-        $units = Unit::pluck('telephone', 'id');
         $leaders = Leader::pluck('full_name', 'id');
 
         return view(
             'app.service_units.edit',
-            compact('serviceUnit', 'units', 'leaders')
+            compact('serviceUnit', 'leaders')
         );
     }
 

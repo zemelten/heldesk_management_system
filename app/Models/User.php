@@ -22,16 +22,6 @@ class User extends Authenticatable
 
     protected $hidden = ['password', 'remember_token'];
 
-    public function tickets()
-    {
-        return $this->hasMany(Ticket::class, 'customer_id');
-    }
-
-    public function leaders()
-    {
-        return $this->hasMany(Leader::class);
-    }
-
     public function userSupports()
     {
         return $this->hasMany(UserSupport::class);
@@ -45,6 +35,11 @@ class User extends Authenticatable
     public function directors()
     {
         return $this->hasMany(Director::class);
+    }
+
+    public function leaders()
+    {
+        return $this->hasMany(Leader::class);
     }
 
     public function isSuperAdmin()

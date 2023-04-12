@@ -3,23 +3,22 @@
 <div class="row">
     <x-inputs.group class="col-sm-12">
         <x-inputs.text
-            name="full_name"
-            label="Full Name"
-            :value="old('full_name', ($editing ? $user->full_name : ''))"
-            maxlength="255"
-            placeholder="Full Name"
-            required
-        ></x-inputs.text>
-    </x-inputs.group>
-
-    <x-inputs.group class="col-sm-12">
-        <x-inputs.text
             name="username"
             label="Username"
             :value="old('username', ($editing ? $user->username : ''))"
             maxlength="255"
             placeholder="Username"
             required
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="col-sm-12">
+        <x-inputs.text
+            name="full_name"
+            label="Full Name"
+            :value="old('full_name', ($editing ? $user->full_name : ''))"
+            maxlength="255"
+            placeholder="Full Name"
         ></x-inputs.text>
     </x-inputs.group>
 

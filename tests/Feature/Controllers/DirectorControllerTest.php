@@ -64,6 +64,8 @@ class DirectorControllerTest extends TestCase
 
         $response = $this->post(route('directors.store'), $data);
 
+        unset($data['user_id']);
+
         $this->assertDatabaseHas('directors', $data);
 
         $director = Director::latest('id')->first();
@@ -119,6 +121,8 @@ class DirectorControllerTest extends TestCase
         ];
 
         $response = $this->put(route('directors.update', $director), $data);
+
+        unset($data['user_id']);
 
         $data['id'] = $director->id;
 
