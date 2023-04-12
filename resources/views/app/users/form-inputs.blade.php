@@ -1,7 +1,7 @@
 @php $editing = isset($user) @endphp
 
 <div class="row">
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="username"
             label="Username"
@@ -12,7 +12,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="full_name"
             label="Full Name"
@@ -22,7 +22,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.email
             name="email"
             label="Email"
@@ -32,7 +32,7 @@
         ></x-inputs.email>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.password
             name="password"
             label="Password"
@@ -42,7 +42,7 @@
         ></x-inputs.password>
     </x-inputs.group>
 
-    <div class="form-group col-sm-12 mt-4">
+    <div class="form-group col-md-12 mt-4">
         <h4>Assign @lang('crud.roles.name')</h4>
 
         @foreach ($roles as $role)

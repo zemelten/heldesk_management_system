@@ -34,7 +34,7 @@
 
             <div class="modal-body">
                 <div>
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.text
                             name="serviceUnit.name"
                             label="Name"
@@ -44,7 +44,7 @@
                         ></x-inputs.text>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.text
                             name="serviceUnit.telephone"
                             label="Telephone"
@@ -54,7 +54,7 @@
                         ></x-inputs.text>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.text
                             name="serviceUnit.fax"
                             label="Fax"
@@ -64,7 +64,7 @@
                         ></x-inputs.text>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.email
                             name="serviceUnit.email"
                             label="Email"
@@ -74,7 +74,7 @@
                         ></x-inputs.email>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.textarea
                             name="serviceUnit.discription"
                             label="Discription"
@@ -83,7 +83,7 @@
                         ></x-inputs.textarea>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.select
                             name="serviceUnit.unit_id"
                             label="Unit"
@@ -119,7 +119,7 @@
     </x-modal>
 
     <div class="table-responsive">
-        <table class="table table-borderless table-hover">
+        <table class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th>

@@ -34,7 +34,7 @@
 
             <div class="modal-body">
                 <div>
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.select
                             name="userSupport.user_id"
                             label="User"
@@ -47,7 +47,7 @@
                         </x-inputs.select>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.text
                             name="userSupport.user_type"
                             label="User Type"
@@ -57,7 +57,7 @@
                         ></x-inputs.text>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.select
                             name="userSupport.problem_catagory_id"
                             label="Problem Catagory"
@@ -70,7 +70,7 @@
                         </x-inputs.select>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.select
                             name="userSupport.building_id"
                             label="Building"
@@ -83,7 +83,7 @@
                         </x-inputs.select>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.select
                             name="userSupport.unit_id"
                             label="Unit"
@@ -119,7 +119,7 @@
     </x-modal>
 
     <div class="table-responsive">
-        <table class="table table-borderless table-hover">
+        <table class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th>

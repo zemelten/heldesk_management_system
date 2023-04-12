@@ -1,7 +1,7 @@
 @php $editing = isset($permission) @endphp
 
 <div class="row">
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="name"
             label="Name"
@@ -9,7 +9,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <div class="form-group col-sm-12 mt-4">
+    <div class="form-group col-md-12 mt-4">
         <h4>Assign @lang('crud.roles.name')</h4>
 
         @foreach ($roles as $role)

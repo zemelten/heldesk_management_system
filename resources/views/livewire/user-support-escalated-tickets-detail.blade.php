@@ -37,7 +37,7 @@
 
             <div class="modal-body">
                 <div>
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.select
                             name="escalatedTicket.ticket_id"
                             label="Ticket"
@@ -50,7 +50,7 @@
                         </x-inputs.select>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.select
                             name="escalatedTicket.queue_type_id"
                             label="Queue Type"
@@ -86,7 +86,7 @@
     </x-modal>
 
     <div class="table-responsive">
-        <table class="table table-borderless table-hover">
+        <table class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th>

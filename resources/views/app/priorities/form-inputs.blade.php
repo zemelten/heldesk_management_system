@@ -1,7 +1,7 @@
 @php $editing = isset($prioritie) @endphp
 
 <div class="row">
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="name"
             label="Name"
@@ -11,7 +11,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="response"
             label="Response"
@@ -21,7 +21,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.textarea
             name="description"
             label="Description"

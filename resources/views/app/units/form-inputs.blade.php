@@ -1,7 +1,7 @@
 @php $editing = isset($unit) @endphp
 
 <div class="row">
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="telephone"
             label="Telephone"
@@ -12,7 +12,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="fax"
             label="Fax"
@@ -23,7 +23,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.email
             name="email"
             label="Email"
@@ -34,7 +34,7 @@
         ></x-inputs.email>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="campuse_id" label="Campuse" required>
             @php $selected = old('campuse_id', ($editing ? $unit->campuse_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Campus</option>
@@ -44,7 +44,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="director_id" label="Director" required>
             @php $selected = old('director_id', ($editing ? $unit->director_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Director</option>

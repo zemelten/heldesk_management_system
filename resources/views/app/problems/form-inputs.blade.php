@@ -1,7 +1,7 @@
 @php $editing = isset($problem) @endphp
 
 <div class="row">
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="name"
             label="Name"
@@ -11,7 +11,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.textarea
             name="description"
             label="Description"
@@ -21,7 +21,7 @@
         >
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="problem_catagory_id" label="Problem Catagory">
             @php $selected = old('problem_catagory_id', ($editing ? $problem->problem_catagory_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Problem Catagory</option>

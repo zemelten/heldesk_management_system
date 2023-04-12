@@ -1,7 +1,7 @@
 @php $editing = isset($campus) @endphp
 
 <div class="row">
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="name"
             label="Name"

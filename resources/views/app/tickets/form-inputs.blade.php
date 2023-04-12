@@ -1,7 +1,7 @@
 @php $editing = isset($ticket) @endphp
 
 <div class="row">
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="status"
             label="Status"
@@ -11,7 +11,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.textarea
             name="description"
             label="Description"
@@ -21,7 +21,7 @@
         >
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="campuse_id" label="Campuse">
             @php $selected = old('campuse_id', ($editing ? $ticket->campuse_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Campus</option>
@@ -31,7 +31,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="customer_id" label="Customer" required>
             @php $selected = old('customer_id', ($editing ? $ticket->customer_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Customer</option>
@@ -41,7 +41,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="problem_id" label="Problem">
             @php $selected = old('problem_id', ($editing ? $ticket->problem_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Problem</option>
@@ -51,7 +51,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select
             name="organizational_unit_id"
             label="Organizational Unit"
@@ -64,7 +64,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="user_support_id" label="User Support">
             @php $selected = old('user_support_id', ($editing ? $ticket->user_support_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the User Support</option>
@@ -74,7 +74,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="prioritie_id" label="Prioritie">
             @php $selected = old('prioritie_id', ($editing ? $ticket->prioritie_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Prioritie</option>

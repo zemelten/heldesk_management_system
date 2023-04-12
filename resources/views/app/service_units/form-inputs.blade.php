@@ -1,7 +1,7 @@
 @php $editing = isset($serviceUnit) @endphp
 
 <div class="row">
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="name"
             label="Name"
@@ -11,7 +11,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="telephone"
             label="Telephone"
@@ -21,7 +21,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="fax"
             label="Fax"
@@ -31,7 +31,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.email
             name="email"
             label="Email"
@@ -41,7 +41,7 @@
         ></x-inputs.email>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.textarea
             name="discription"
             label="Discription"
@@ -51,7 +51,7 @@
         >
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="leader_id" label="Leader">
             @php $selected = old('leader_id', ($editing ? $serviceUnit->leader_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Leader</option>

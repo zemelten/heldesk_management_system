@@ -1,7 +1,7 @@
 @php $editing = isset($building) @endphp
 
 <div class="row">
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="name"
             label="Name"
@@ -11,7 +11,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="campuse_id" label="Campuse">
             @php $selected = old('campuse_id', ($editing ? $building->campuse_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Campus</option>
