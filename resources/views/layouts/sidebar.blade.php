@@ -5,7 +5,7 @@
         <!-- Brand Logo -->
         <a href="{{ url('/') }}" class="brand-link">
             <img src="https://vemto.app/favicon.png" alt="Vemto Logo" class="brand-image bg-white img-circle">
-            <span class="brand-text font-weight-light">HMS</span>
+            <span class="brand-text font-weight-light">JU HelpDesk</span>
         </a>
 
         <!-- Sidebar -->
@@ -18,15 +18,14 @@
                     @auth
                         <li class="nav-item">
                             <a href="{{ route('home') }}" class="nav-link">
-                                <i class="nav-icon icon ion-md-pulse"></i>
-                                <p>
+                                <i class="nav-icon fa-solid fa-gauge fa-lg"></i>  <p>
                                     Dashboard
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('home') }}" class="nav-link">
-                                <i class="nav-icon icon ion-md-pulse"></i>
+                                <i class="nav-icon fa-solid fa-ticket fa-lg""></i>
                                 <p>
                                     Tickets
                                 </p>
@@ -34,10 +33,10 @@
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon icon ion-md-key"></i>
+                                <i class="nav-icon fa-solid fa-key fa-lg"></i>
                                 <p>
                                     My Tickets
-                                    <i class="nav-icon right icon ion-md-arrow-round-back"></i>
+                                    <i class="nav-icon fa-solid fa-arrow-left fa-lg"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -70,7 +69,7 @@
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon icon ion-md-key"></i>
+                                <i class=" nav-icon fa-solid fa-users fa-lg"></i>
                                 <p>
                                     User Management
                                     <i class="nav-icon right icon ion-md-arrow-round-back"></i>
@@ -110,7 +109,7 @@
                                 Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon icon ion-md-key"></i>
+                                    <i class="nav-icon fa-solid fa-network-wired fa-lg"></i>
                                     <p>
                                         Personnels
                                         <i class="nav-icon right icon ion-md-arrow-round-back"></i>

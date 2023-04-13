@@ -106,11 +106,11 @@
                         </tr>
                         @endforelse
                     </tbody>
-                    <tfoot>
+                    {{-- <tfoot>
                         <tr>
                             <td colspan="2">{!! $roles->render() !!}</td>
                         </tr>
-                    </tfoot>
+                    </tfoot> --}}
                 </table>
             </div>
         </div>
