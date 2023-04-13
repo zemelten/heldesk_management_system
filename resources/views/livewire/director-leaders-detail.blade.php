@@ -34,7 +34,7 @@
 
             <div class="modal-body">
                 <div>
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.text
                             name="leader.full_name"
                             label="Full Name"
@@ -44,7 +44,7 @@
                         ></x-inputs.text>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.select
                             name="leader.sex"
                             label="Sex"
@@ -56,7 +56,7 @@
                         </x-inputs.select>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.text
                             name="leader.phone"
                             label="Phone"
@@ -66,7 +66,7 @@
                         ></x-inputs.text>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.email
                             name="leader.email"
                             label="Email"
@@ -76,7 +76,7 @@
                         ></x-inputs.email>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.select
                             name="leader.user_id"
                             label="User"
@@ -112,7 +112,7 @@
     </x-modal>
 
     <div class="table-responsive">
-        <table class="table table-borderless table-hover">
+        <table class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th>

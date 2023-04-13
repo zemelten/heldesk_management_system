@@ -13,8 +13,8 @@
 
             <div class="mt-4">
                 <div class="mb-4">
-                    <h5>@lang('crud.assigned_offices.inputs.office_number')</h5>
-                    <span>{{ $assignedOffice->office_number ?? '-' }}</span>
+                    <h5>@lang('crud.assigned_offices.inputs.office_no')</h5>
+                    <span>{{ $assignedOffice->office_no ?? '-' }}</span>
                 </div>
                 <div class="mb-4">
                     <h5>@lang('crud.assigned_offices.inputs.building_id')</h5>

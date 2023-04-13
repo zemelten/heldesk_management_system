@@ -41,7 +41,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-borderless table-hover">
+                <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th class="text-left">
@@ -59,12 +59,6 @@
                             <th class="text-left">
                                 @lang('crud.units.inputs.director_id')
                             </th>
-                            <th class="text-left">
-                                @lang('crud.units.inputs.building_id')
-                            </th>
-                            <th class="text-left">
-                                @lang('crud.units.inputs.leader_id')
-                            </th>
                             <th class="text-center">
                                 @lang('crud.common.actions')
                             </th>
@@ -80,12 +74,6 @@
                             <td>
                                 {{ optional($unit->director)->full_name ?? '-'
                                 }}
-                            </td>
-                            <td>
-                                {{ optional($unit->building)->name ?? '-' }}
-                            </td>
-                            <td>
-                                {{ optional($unit->leader)->full_name ?? '-' }}
                             </td>
                             <td class="text-center" style="width: 134px;">
                                 <div
@@ -131,7 +119,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="8">
+                            <td colspan="6">
                                 @lang('crud.common.no_items_found')
                             </td>
                         </tr>
@@ -139,7 +127,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="8">{!! $units->render() !!}</td>
+                            <td colspan="6">{!! $units->render() !!}</td>
                         </tr>
                     </tfoot>
                 </table>

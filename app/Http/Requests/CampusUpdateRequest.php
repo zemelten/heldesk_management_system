@@ -26,9 +26,9 @@ class CampusUpdateRequest extends FormRequest
     {
         return [
             'name' => [
-                'required',
+                'nullable',
                 Rule::unique('campuses', 'name')->ignore($this->campus),
-                'max:25',
+                'max:255',
                 'string',
             ],
         ];

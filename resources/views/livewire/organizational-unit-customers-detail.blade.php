@@ -34,7 +34,7 @@
 
             <div class="modal-body">
                 <div>
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.text
                             name="customer.full_name"
                             label="Full Name"
@@ -44,7 +44,7 @@
                         ></x-inputs.text>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.email
                             name="customer.email"
                             label="Email"
@@ -54,17 +54,17 @@
                         ></x-inputs.email>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.text
-                            name="customer.phone_number"
-                            label="Phone Number"
-                            wire:model="customer.phone_number"
+                            name="customer.phone_no"
+                            label="Phone No"
+                            wire:model="customer.phone_no"
                             maxlength="255"
-                            placeholder="Phone Number"
+                            placeholder="Phone No"
                         ></x-inputs.text>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.select
                             name="customer.building_id"
                             label="Building"
@@ -77,7 +77,7 @@
                         </x-inputs.select>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.select
                             name="customer.campus_id"
                             label="Campus"
@@ -90,7 +90,7 @@
                         </x-inputs.select>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.select
                             name="customer.floor_id"
                             label="Floor"
@@ -103,7 +103,7 @@
                         </x-inputs.select>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.select
                             name="customer.user_id"
                             label="User"
@@ -116,7 +116,7 @@
                         </x-inputs.select>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.text
                             name="customer.is_edited"
                             label="Is Edited"
@@ -126,7 +126,7 @@
                         ></x-inputs.text>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="col-md-12">
                         <x-inputs.text
                             name="customer.office_num"
                             label="Office Num"
@@ -159,7 +159,7 @@
     </x-modal>
 
     <div class="table-responsive">
-        <table class="table table-borderless table-hover">
+        <table class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th>
@@ -177,7 +177,7 @@
                         @lang('crud.organizational_unit_customers.inputs.email')
                     </th>
                     <th class="text-left">
-                        @lang('crud.organizational_unit_customers.inputs.phone_number')
+                        @lang('crud.organizational_unit_customers.inputs.phone_no')
                     </th>
                     <th class="text-left">
                         @lang('crud.organizational_unit_customers.inputs.building_id')
@@ -212,9 +212,7 @@
                     </td>
                     <td class="text-left">{{ $customer->full_name ?? '-' }}</td>
                     <td class="text-left">{{ $customer->email ?? '-' }}</td>
-                    <td class="text-left">
-                        {{ $customer->phone_number ?? '-' }}
-                    </td>
+                    <td class="text-left">{{ $customer->phone_no ?? '-' }}</td>
                     <td class="text-left">
                         {{ optional($customer->building)->name ?? '-' }}
                     </td>

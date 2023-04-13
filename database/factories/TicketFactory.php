@@ -25,14 +25,13 @@ class TicketFactory extends Factory
         return [
             'status' => $this->faker->numberBetween(0, 127),
             'description' => $this->faker->sentence(15),
-            'customer_id' => \App\Models\User::factory(),
             'campuse_id' => \App\Models\Campus::factory(),
-            'building_id' => \App\Models\Building::factory(),
             'organizational_unit_id' => \App\Models\OrganizationalUnit::factory(),
             'problem_id' => \App\Models\Problem::factory(),
             'user_support_id' => \App\Models\UserSupport::factory(),
             'prioritie_id' => \App\Models\Prioritie::factory(),
             'customer_id' => \App\Models\Customer::factory(),
+            'reports_id' => \App\Models\Reports::factory(),
         ];
     }
 }

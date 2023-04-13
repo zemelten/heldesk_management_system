@@ -21,7 +21,7 @@ class CampusController extends Controller
 
         $campuses = Campus::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(15)
             ->withQueryString();
 
         return view('app.campuses.index', compact('campuses', 'search'));

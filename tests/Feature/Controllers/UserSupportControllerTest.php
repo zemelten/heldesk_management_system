@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\UserSupport;
 
 use App\Models\Unit;
+use App\Models\Leader;
 use App\Models\Building;
 use App\Models\ServiceUnit;
 use App\Models\ProblemCatagory;
@@ -69,6 +70,8 @@ class UserSupportControllerTest extends TestCase
 
         $response = $this->post(route('user-supports.store'), $data);
 
+        unset($data['leader_id']);
+
         $this->assertDatabaseHas('user_supports', $data);
 
         $userSupport = UserSupport::latest('id')->first();
@@ -118,6 +121,7 @@ class UserSupportControllerTest extends TestCase
         $building = Building::factory()->create();
         $serviceUnit = ServiceUnit::factory()->create();
         $unit = Unit::factory()->create();
+        $leader = Leader::factory()->create();
 
         $data = [
             'user_type' => $this->faker->numberBetween(0, 127),
@@ -126,12 +130,15 @@ class UserSupportControllerTest extends TestCase
             'building_id' => $building->id,
             'service_unit_id' => $serviceUnit->id,
             'unit_id' => $unit->id,
+            'leader_id' => $leader->id,
         ];
 
         $response = $this->put(
             route('user-supports.update', $userSupport),
             $data
         );
+
+        unset($data['leader_id']);
 
         $data['id'] = $userSupport->id;
 

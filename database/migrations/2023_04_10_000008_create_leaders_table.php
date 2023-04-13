@@ -17,8 +17,8 @@ return new class extends Migration {
             $table->string('full_name')->nullable();
             $table->enum('sex', ['male', 'female', 'other'])->nullable();
             $table->string('phone')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->string('email')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('director_id')->nullable();
 
             $table->timestamps();

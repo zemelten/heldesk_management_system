@@ -1,7 +1,7 @@
 @php $editing = isset($customer) @endphp
 
 <div class="row">
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="full_name"
             label="Full Name"
@@ -11,7 +11,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.email
             name="email"
             label="Email"
@@ -21,17 +21,17 @@
         ></x-inputs.email>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
-            name="phone_number"
-            label="Phone Number"
-            :value="old('phone_number', ($editing ? $customer->phone_number : ''))"
+            name="phone_no"
+            label="Phone No"
+            :value="old('phone_no', ($editing ? $customer->phone_no : ''))"
             maxlength="255"
-            placeholder="Phone Number"
+            placeholder="Phone No"
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="building_id" label="Building">
             @php $selected = old('building_id', ($editing ? $customer->building_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Building</option>
@@ -41,7 +41,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="campus_id" label="Campus">
             @php $selected = old('campus_id', ($editing ? $customer->campus_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Campus</option>
@@ -51,7 +51,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select
             name="organizational_unit_id"
             label="Organizational Unit"
@@ -64,7 +64,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="floor_id" label="Floor">
             @php $selected = old('floor_id', ($editing ? $customer->floor_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Floor</option>
@@ -74,7 +74,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="user_id" label="User">
             @php $selected = old('user_id', ($editing ? $customer->user_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the User</option>
@@ -84,17 +84,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
-        <x-inputs.text
-            name="is_edited"
-            label="Is Edited"
-            :value="old('is_edited', ($editing ? $customer->is_edited : '0'))"
-            maxlength="255"
-            placeholder="Is Edited"
-        ></x-inputs.text>
-    </x-inputs.group>
-
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="office_num"
             label="Office Num"
@@ -103,4 +93,9 @@
             placeholder="Office Num"
         ></x-inputs.text>
     </x-inputs.group>
+
+    <x-inputs.hidden
+        name="is_edited"
+        :value="old('is_edited', ($editing ? $customer->is_edited : '0'))"
+    ></x-inputs.hidden>
 </div>

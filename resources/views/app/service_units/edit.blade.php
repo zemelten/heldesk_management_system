@@ -43,5 +43,17 @@
             </x-form>
         </div>
     </div>
+
+    @can('view-any', App\Models\UserSupport::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">User Supports</h4>
+
+            <livewire:service-unit-user-supports-detail
+                :serviceUnit="$serviceUnit"
+            />
+        </div>
+    </div>
+    @endcan
 </div>
 @endsection

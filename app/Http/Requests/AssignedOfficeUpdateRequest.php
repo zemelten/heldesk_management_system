@@ -24,7 +24,7 @@ class AssignedOfficeUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'office_number' => ['nullable', 'max:255', 'string'],
+            'office_no' => ['nullable', 'max:255', 'string'],
             'building_id' => ['nullable', 'exists:buildings,id'],
         ];
     }

@@ -6,9 +6,7 @@ use App\Models\User;
 use App\Models\Unit;
 
 use App\Models\Campus;
-use App\Models\Leader;
 use App\Models\Director;
-use App\Models\Building;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -115,8 +113,6 @@ class UnitControllerTest extends TestCase
 
         $campus = Campus::factory()->create();
         $director = Director::factory()->create();
-        $building = Building::factory()->create();
-        $leader = Leader::factory()->create();
 
         $data = [
             'telephone' => $this->faker->text(12),
@@ -124,8 +120,6 @@ class UnitControllerTest extends TestCase
             'email' => $this->faker->email,
             'campuse_id' => $campus->id,
             'director_id' => $director->id,
-            'building_id' => $building->id,
-            'leader_id' => $leader->id,
         ];
 
         $response = $this->put(route('units.update', $unit), $data);

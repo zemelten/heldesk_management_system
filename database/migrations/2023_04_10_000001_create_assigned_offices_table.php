@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('assigned_offices', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('office_number')->nullable();
+            $table->string('office_no')->nullable();
             $table->unsignedBigInteger('building_id')->nullable();
 
             $table->timestamps();

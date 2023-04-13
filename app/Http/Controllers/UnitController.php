@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Unit;
 use App\Models\Campus;
-use App\Models\Leader;
 use App\Models\Director;
-use App\Models\Building;
 use Illuminate\Http\Request;
 use App\Http\Requests\UnitStoreRequest;
 use App\Http\Requests\UnitUpdateRequest;
@@ -41,13 +39,8 @@ class UnitController extends Controller
 
         $campuses = Campus::pluck('name', 'id');
         $directors = Director::pluck('full_name', 'id');
-        $buildings = Building::pluck('name', 'id');
-        $leaders = Leader::pluck('full_name', 'id');
 
-        return view(
-            'app.units.create',
-            compact('campuses', 'directors', 'buildings', 'leaders')
-        );
+        return view('app.units.create', compact('campuses', 'directors'));
     }
 
     /**
@@ -90,13 +83,8 @@ class UnitController extends Controller
 
         $campuses = Campus::pluck('name', 'id');
         $directors = Director::pluck('full_name', 'id');
-        $buildings = Building::pluck('name', 'id');
-        $leaders = Leader::pluck('full_name', 'id');
 
-        return view(
-            'app.units.edit',
-            compact('unit', 'campuses', 'directors', 'buildings', 'leaders')
-        );
+        return view('app.units.edit', compact('unit', 'campuses', 'directors'));
     }
 
     /**

@@ -51,6 +51,12 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'update directors']);
         Permission::create(['name' => 'delete directors']);
 
+        Permission::create(['name' => 'list escalatedtickets']);
+        Permission::create(['name' => 'view escalatedtickets']);
+        Permission::create(['name' => 'create escalatedtickets']);
+        Permission::create(['name' => 'update escalatedtickets']);
+        Permission::create(['name' => 'delete escalatedtickets']);
+
         Permission::create(['name' => 'list floors']);
         Permission::create(['name' => 'view floors']);
         Permission::create(['name' => 'create floors']);
@@ -86,6 +92,18 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'create problemcatagories']);
         Permission::create(['name' => 'update problemcatagories']);
         Permission::create(['name' => 'delete problemcatagories']);
+
+        Permission::create(['name' => 'list queuetypes']);
+        Permission::create(['name' => 'view queuetypes']);
+        Permission::create(['name' => 'create queuetypes']);
+        Permission::create(['name' => 'update queuetypes']);
+        Permission::create(['name' => 'delete queuetypes']);
+
+        Permission::create(['name' => 'list allreports']);
+        Permission::create(['name' => 'view allreports']);
+        Permission::create(['name' => 'create allreports']);
+        Permission::create(['name' => 'update allreports']);
+        Permission::create(['name' => 'delete allreports']);
 
         Permission::create(['name' => 'list serviceunits']);
         Permission::create(['name' => 'view serviceunits']);

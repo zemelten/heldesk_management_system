@@ -52,6 +52,16 @@
             <livewire:user-support-tickets-detail :userSupport="$userSupport" />
         </div>
     </div>
+    @endcan @can('view-any', App\Models\EscalatedTicket::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">Escalated Tickets</h4>
+
+            <livewire:user-support-escalated-tickets-detail
+                :userSupport="$userSupport"
+            />
+        </div>
+    </div>
     @endcan
 </div>
 @endsection

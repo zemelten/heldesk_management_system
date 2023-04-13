@@ -17,12 +17,6 @@
                     <span>{{ $director->full_name ?? '-' }}</span>
                 </div>
                 <div class="mb-4">
-                    <h5>@lang('crud.directors.inputs.user_id')</h5>
-                    <span
-                        >{{ optional($director->user)->full_name ?? '-' }}</span
-                    >
-                </div>
-                <div class="mb-4">
                     <h5>@lang('crud.directors.inputs.sex')</h5>
                     <span>{{ $director->sex ?? '-' }}</span>
                 </div>
@@ -50,5 +44,15 @@
             </div>
         </div>
     </div>
+
+    @can('view-any', App\Models\Unit::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">Units</h4>
+
+            <livewire:director-units-detail :director="$director" />
+        </div>
+    </div>
+    @endcan
 </div>
 @endsection

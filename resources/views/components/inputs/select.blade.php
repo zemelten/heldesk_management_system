@@ -9,10 +9,11 @@
 @endif
 
 <select
+
     id="{{ $name }}"
     name="{{ $name }}"
     {{ ($required ?? false) ? 'required' : '' }}
-    {{ $attributes->merge(['class' => 'form-control']) }}
+    {{ $attributes->merge(['class' => 'form-control select2 select2-hidden-accessible2']) }}
     autocomplete="off"
 >{{ $slot }}</select>
 

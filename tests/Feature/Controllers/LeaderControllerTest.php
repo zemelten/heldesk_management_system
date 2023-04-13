@@ -5,8 +5,6 @@ namespace Tests\Feature\Controllers;
 use App\Models\User;
 use App\Models\Leader;
 
-use App\Models\Director;
-
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -66,6 +64,8 @@ class LeaderControllerTest extends TestCase
 
         $response = $this->post(route('leaders.store'), $data);
 
+        unset($data['user_id']);
+
         $this->assertDatabaseHas('leaders', $data);
 
         $leader = Leader::latest('id')->first();
@@ -111,7 +111,6 @@ class LeaderControllerTest extends TestCase
         $leader = Leader::factory()->create();
 
         $user = User::factory()->create();
-        $director = Director::factory()->create();
 
         $data = [
             'full_name' => $this->faker->firstName,
@@ -119,10 +118,11 @@ class LeaderControllerTest extends TestCase
             'phone' => $this->faker->phoneNumber,
             'email' => $this->faker->email,
             'user_id' => $user->id,
-            'director_id' => $director->id,
         ];
 
         $response = $this->put(route('leaders.update', $leader), $data);
+
+        unset($data['user_id']);
 
         $data['id'] = $leader->id;
 

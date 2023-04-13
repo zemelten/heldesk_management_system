@@ -24,7 +24,6 @@ class BuildingController extends Controller
             ->latest()
             ->paginate(5)
             ->withQueryString();
-
         return view('app.buildings.index', compact('buildings', 'search'));
     }
 

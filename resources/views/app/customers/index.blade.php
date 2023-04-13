@@ -44,7 +44,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-borderless table-hover">
+                <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th class="text-left">
@@ -54,7 +54,7 @@
                                 @lang('crud.customers.inputs.email')
                             </th>
                             <th class="text-left">
-                                @lang('crud.customers.inputs.phone_number')
+                                @lang('crud.customers.inputs.phone_no')
                             </th>
                             <th class="text-left">
                                 @lang('crud.customers.inputs.building_id')
@@ -71,9 +71,11 @@
                             <th class="text-left">
                                 @lang('crud.customers.inputs.user_id')
                             </th>
-                            
                             <th class="text-left">
                                 @lang('crud.customers.inputs.office_num')
+                            </th>
+                            <th class="text-left">
+                                @lang('crud.customers.inputs.is_edited')
                             </th>
                             <th class="text-center">
                                 @lang('crud.common.actions')
@@ -85,7 +87,7 @@
                         <tr>
                             <td>{{ $customer->full_name ?? '-' }}</td>
                             <td>{{ $customer->email ?? '-' }}</td>
-                            <td>{{ $customer->phone_number ?? '-' }}</td>
+                            <td>{{ $customer->phone_no ?? '-' }}</td>
                             <td>
                                 {{ optional($customer->building)->name ?? '-' }}
                             </td>
@@ -103,8 +105,8 @@
                                 {{ optional($customer->user)->full_name ?? '-'
                                 }}
                             </td>
-                           
                             <td>{{ $customer->office_num ?? '-' }}</td>
+                            <td>{{ $customer->is_edited ?? '-' }}</td>
                             <td class="text-center" style="width: 134px;">
                                 <div
                                     role="group"

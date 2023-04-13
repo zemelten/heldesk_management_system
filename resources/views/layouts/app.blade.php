@@ -34,11 +34,10 @@
         html {
             background-color: #f4f6f9;
         }
-        
+
         .nav-icon.icon:before {
             width: 25px;
         }
-        </style>
 
         
         @livewireStyles
@@ -60,48 +59,80 @@
             </main>
         </div>
 
-        @stack('modals')
-        
-        @livewireScripts
-        
-        @stack('scripts')
-        
-        <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
-        
-        @if (session()->has('success')) 
-        <script>
-            var notyf = new Notyf({dismissible: true})
-            notyf.success('{{ session('success') }}')
-        </script> 
-        @endif
+        @include('layouts.sidebar')
 
+        <main class="content-wrapper p-5">
+            @yield('content')
+        </main>
+    </div>
+
+    @stack('modals')
+
+    @livewireScripts
+
+    @stack('scripts')
+
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+
+    <!-- AdminLTE App -->
+    <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
+    {{-- datatable js --}}
+    <script src="{{ asset('js/datatable/jquery.dataTables.min.js') }}" defer></script>
+    <script src="{{ asset('js/datatable/bootstrap4.min.js') }}" defer></script>
+
+
+    <!-- Select2 -->
+    <script src="{{ asset('allinone/select2.full.min.js') }}" defer></script>
+    <script src="{{ asset('allinone/select2.min.js') }}"></script>
+    <!-- Select2 -->
+    @if (session()->has('success'))
         <script>
-            /* Simple Alpine Image Viewer */
-            document.addEventListener('alpine:init', () => {
-                Alpine.data('imageViewer', (src = '') => {
-                    return {
-                        imageUrl: src,
-        
-                        refreshUrl() {
-                            this.imageUrl = this.$el.getAttribute("image-url")
-                        },
-        
-                        fileChosen(event) {
-                            this.fileToDataUrl(event, src => this.imageUrl = src)
-                        },
-        
-                        fileToDataUrl(event, callback) {
-                            if (! event.target.files.length) return
-        
-                            let file = event.target.files[0],
-                                reader = new FileReader()
-        
-                            reader.readAsDataURL(file)
-                            reader.onload = e => callback(e.target.result)
-                        },
-                    }
-                })
+            var notyf = new Notyf({
+                dismissible: true
             })
+            notyf.success('{{ session('success') }}')
         </script>
-    </body>
+    @endif
+
+    <script>
+        /* Simple Alpine Image Viewer */
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('imageViewer', (src = '') => {
+                return {
+                    imageUrl: src,
+
+                    refreshUrl() {
+                        this.imageUrl = this.$el.getAttribute("image-url")
+                    },
+
+                    fileChosen(event) {
+                        this.fileToDataUrl(event, src => this.imageUrl = src)
+                    },
+
+                    fileToDataUrl(event, callback) {
+                        if (!event.target.files.length) return
+
+                        let file = event.target.files[0],
+                            reader = new FileReader()
+
+                        reader.readAsDataURL(file)
+                        reader.onload = e => callback(e.target.result)
+                    },
+                }
+            })
+        })
+    </script>
+</body>
+
+<script>
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2({
+            // dropdownAutoWidth: true
+            theme: "classic"
+
+        })
+    });
+</script>
+
 </html>

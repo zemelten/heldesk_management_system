@@ -28,12 +28,15 @@ class DatabaseSeeder extends Seeder
         $this->call(CampusSeeder::class);
         $this->call(CustomerSeeder::class);
         $this->call(DirectorSeeder::class);
+        $this->call(EscalatedTicketSeeder::class);
         $this->call(FloorSeeder::class);
         $this->call(LeaderSeeder::class);
         $this->call(OrganizationalUnitSeeder::class);
         $this->call(PrioritieSeeder::class);
         $this->call(ProblemSeeder::class);
         $this->call(ProblemCatagorySeeder::class);
+        $this->call(QueueTypeSeeder::class);
+        $this->call(ReportsSeeder::class);
         $this->call(ServiceUnitSeeder::class);
         $this->call(TicketSeeder::class);
         $this->call(UnitSeeder::class);

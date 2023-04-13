@@ -34,7 +34,7 @@ class OrganizationalUnitCustomersDetail extends Component
     protected $rules = [
         'customer.full_name' => ['nullable', 'max:255', 'string'],
         'customer.email' => ['nullable', 'email'],
-        'customer.phone_number' => ['nullable', 'max:255', 'string'],
+        'customer.phone_no' => ['nullable', 'max:255', 'string'],
         'customer.building_id' => ['nullable', 'exists:buildings,id'],
         'customer.campus_id' => ['nullable', 'exists:campuses,id'],
         'customer.floor_id' => ['nullable', 'exists:floors,id'],

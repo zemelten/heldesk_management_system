@@ -29,7 +29,6 @@ class ServiceUnitUpdateRequest extends FormRequest
             'fax' => ['nullable', 'max:255'],
             'email' => ['nullable', 'email'],
             'discription' => ['nullable', 'max:255', 'string'],
-            'unit_id' => ['nullable', 'exists:units,id'],
             'leader_id' => ['nullable', 'exists:leaders,id'],
         ];
     }

@@ -25,7 +25,7 @@ class CustomerFactory extends Factory
         return [
             'full_name' => $this->faker->name(),
             'email' => $this->faker->email,
-            'phone_number' => $this->faker->phoneNumber,
+            'phone_no' => $this->faker->phoneNumber,
             'is_edited' => $this->faker->numberBetween(0, 127),
             'office_num' => $this->faker->text(5),
             'building_id' => \App\Models\Building::factory(),

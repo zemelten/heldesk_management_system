@@ -40,7 +40,7 @@ class AssignedOrgUnitController extends Controller
     {
         $this->authorize('create', AssignedOrgUnit::class);
 
-        $assignedOffices = AssignedOffice::pluck('office_number', 'id');
+        $assignedOffices = AssignedOffice::pluck('office_no', 'id');
         $organizationalUnits = OrganizationalUnit::pluck('name', 'id');
 
         return view(
@@ -87,7 +87,7 @@ class AssignedOrgUnitController extends Controller
     {
         $this->authorize('update', $assignedOrgUnit);
 
-        $assignedOffices = AssignedOffice::pluck('office_number', 'id');
+        $assignedOffices = AssignedOffice::pluck('office_no', 'id');
         $organizationalUnits = OrganizationalUnit::pluck('name', 'id');
 
         return view(

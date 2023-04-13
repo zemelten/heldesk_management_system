@@ -34,14 +34,6 @@
                         >{{ optional($unit->director)->full_name ?? '-' }}</span
                     >
                 </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.units.inputs.building_id')</h5>
-                    <span>{{ optional($unit->building)->name ?? '-' }}</span>
-                </div>
-                <div class="mb-4">
-                    <h5>@lang('crud.units.inputs.leader_id')</h5>
-                    <span>{{ optional($unit->leader)->full_name ?? '-' }}</span>
-                </div>
             </div>
 
             <div class="mt-4">
@@ -58,5 +50,15 @@
             </div>
         </div>
     </div>
+
+    @can('view-any', App\Models\ServiceUnit::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">Service Units</h4>
+
+            <livewire:unit-service-units-detail :unit="$unit" />
+        </div>
+    </div>
+    @endcan
 </div>
 @endsection

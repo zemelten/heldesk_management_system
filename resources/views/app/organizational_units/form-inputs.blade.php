@@ -1,7 +1,7 @@
 @php $editing = isset($organizationalUnit) @endphp
 
 <div class="row">
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="name"
             label="Name"
@@ -11,7 +11,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.number
             name="offcie_no"
             label="Offcie No"
@@ -21,7 +21,7 @@
         ></x-inputs.number>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="campuse_id" label="Campuse">
             @php $selected = old('campuse_id', ($editing ? $organizationalUnit->campuse_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Campus</option>
@@ -31,7 +31,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="building_id" label="Building">
             @php $selected = old('building_id', ($editing ? $organizationalUnit->building_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Building</option>
@@ -41,7 +41,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="col-md-12">
         <x-inputs.select name="prioritie_id" label="Prioritie">
             @php $selected = old('prioritie_id', ($editing ? $organizationalUnit->prioritie_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Prioritie</option>

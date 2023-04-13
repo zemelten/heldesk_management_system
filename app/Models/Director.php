@@ -11,18 +11,13 @@ class Director extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['full_name', 'user_id', 'sex', 'email', 'phone'];
+    protected $fillable = ['full_name', 'sex', 'email', 'phone', 'user_id'];
 
     protected $searchableFields = ['*'];
 
     public function units()
     {
         return $this->hasMany(Unit::class);
-    }
-
-    public function leaders()
-    {
-        return $this->hasMany(Leader::class);
     }
 
     public function user()

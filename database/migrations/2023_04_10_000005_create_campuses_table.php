@@ -14,7 +14,10 @@ return new class extends Migration {
     {
         Schema::create('campuses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();
+            $table
+                ->string('name')
+                ->nullable()
+                ->unique();
 
             $table->timestamps();
         });

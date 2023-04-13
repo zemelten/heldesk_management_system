@@ -46,7 +46,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-borderless table-hover">
+                <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th class="text-left">
@@ -65,9 +65,6 @@
                                 @lang('crud.service_units.inputs.discription')
                             </th>
                             <th class="text-left">
-                                @lang('crud.service_units.inputs.unit_id')
-                            </th>
-                            <th class="text-left">
                                 @lang('crud.service_units.inputs.leader_id')
                             </th>
                             <th class="text-center">
@@ -83,10 +80,6 @@
                             <td>{{ $serviceUnit->fax ?? '-' }}</td>
                             <td>{{ $serviceUnit->email ?? '-' }}</td>
                             <td>{{ $serviceUnit->discription ?? '-' }}</td>
-                            <td>
-                                {{ optional($serviceUnit->unit)->telephone ??
-                                '-' }}
-                            </td>
                             <td>
                                 {{ optional($serviceUnit->leader)->full_name ??
                                 '-' }}
@@ -139,7 +132,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="8">
+                            <td colspan="7">
                                 @lang('crud.common.no_items_found')
                             </td>
                         </tr>
@@ -147,7 +140,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="8">{!! $serviceUnits->render() !!}</td>
+                            <td colspan="7">{!! $serviceUnits->render() !!}</td>
                         </tr>
                     </tfoot>
                 </table>

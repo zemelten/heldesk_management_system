@@ -28,8 +28,6 @@ class LeaderUpdateRequest extends FormRequest
             'sex' => ['nullable', 'in:male,female,other'],
             'phone' => ['nullable', 'max:255', 'string'],
             'email' => ['nullable', 'email'],
-            'user_id' => ['nullable', 'exists:users,id'],
-            'director_id' => ['nullable', 'exists:directors,id'],
         ];
     }
 }

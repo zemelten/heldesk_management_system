@@ -44,7 +44,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-borderless table-hover">
+                <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th class="text-left">
@@ -53,8 +53,6 @@
                             <th class="text-left">
                                 @lang('crud.buildings.inputs.campuse_id')
                             </th>
-                           
-                           
                             <th class="text-center">
                                 @lang('crud.common.actions')
                             </th>
@@ -67,7 +65,6 @@
                             <td>
                                 {{ optional($building->campuse)->name ?? '-' }}
                             </td>
-                           
                             <td class="text-center" style="width: 134px;">
                                 <div
                                     role="group"
@@ -116,7 +113,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="5">
+                            <td colspan="3">
                                 @lang('crud.common.no_items_found')
                             </td>
                         </tr>
@@ -124,7 +121,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="5">{!! $buildings->render() !!}</td>
+                            <td colspan="3">{!! $buildings->render() !!}</td>
                         </tr>
                     </tfoot>
                 </table>

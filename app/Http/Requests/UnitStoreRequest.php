@@ -29,8 +29,6 @@ class UnitStoreRequest extends FormRequest
             'email' => ['required', 'email'],
             'campuse_id' => ['required', 'exists:campuses,id'],
             'director_id' => ['required', 'exists:directors,id'],
-            'building_id' => ['required', 'exists:buildings,id'],
-            'leader_id' => ['required', 'exists:leaders,id'],
         ];
     }
 }

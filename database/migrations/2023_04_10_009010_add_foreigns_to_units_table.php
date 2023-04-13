@@ -26,20 +26,6 @@ return new class extends Migration {
                 ->on('directors')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
-
-            $table
-                ->foreign('building_id')
-                ->references('id')
-                ->on('buildings')
-                ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
-
-            $table
-                ->foreign('leader_id')
-                ->references('id')
-                ->on('leaders')
-                ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
         });
     }
 
@@ -53,8 +39,6 @@ return new class extends Migration {
         Schema::table('units', function (Blueprint $table) {
             $table->dropForeign(['campuse_id']);
             $table->dropForeign(['director_id']);
-            $table->dropForeign(['building_id']);
-            $table->dropForeign(['leader_id']);
         });
     }
 };

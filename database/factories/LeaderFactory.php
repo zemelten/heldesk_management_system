@@ -24,11 +24,10 @@ class LeaderFactory extends Factory
     {
         return [
             'full_name' => $this->faker->firstName,
-            'sex' => \Arr::random(['male', 'female']),
+            'sex' => \Arr::random(['male', 'female', 'other']),
             'phone' => $this->faker->phoneNumber,
             'email' => $this->faker->email,
             'user_id' => \App\Models\User::factory(),
-            'director_id' => \App\Models\Director::factory(),
         ];
     }
 }

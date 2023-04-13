@@ -2,12 +2,10 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\User;
 use App\Models\Ticket;
 use App\Models\Campus;
 use Livewire\Component;
 use App\Models\Problem;
-use App\Models\Building;
 use App\Models\Prioritie;
 use App\Models\UserSupport;
 use Livewire\WithPagination;
@@ -21,9 +19,7 @@ class UserSupportTicketsDetail extends Component
 
     public UserSupport $userSupport;
     public Ticket $ticket;
-    public $usersForSelect = [];
     public $campusesForSelect = [];
-    public $buildingsForSelect = [];
     public $problemsForSelect = [];
     public $organizationalUnitsForSelect = [];
     public $prioritiesForSelect = [];
@@ -38,9 +34,7 @@ class UserSupportTicketsDetail extends Component
     protected $rules = [
         'ticket.status' => ['nullable', 'max:255'],
         'ticket.description' => ['nullable', 'max:255', 'string'],
-        'ticket.customer_id' => ['nullable', 'exists:users,id'],
         'ticket.campuse_id' => ['nullable', 'exists:campuses,id'],
-        'ticket.building_id' => ['nullable', 'exists:buildings,id'],
         'ticket.problem_id' => ['nullable', 'exists:problems,id'],
         'ticket.organizational_unit_id' => [
             'nullable',
@@ -52,9 +46,7 @@ class UserSupportTicketsDetail extends Component
     public function mount(UserSupport $userSupport)
     {
         $this->userSupport = $userSupport;
-        $this->usersForSelect = User::pluck('full_name', 'id');
         $this->campusesForSelect = Campus::pluck('name', 'id');
-        $this->buildingsForSelect = Building::pluck('name', 'id');
         $this->problemsForSelect = Problem::pluck('name', 'id');
         $this->organizationalUnitsForSelect = OrganizationalUnit::pluck(
             'name',
@@ -68,9 +60,7 @@ class UserSupportTicketsDetail extends Component
     {
         $this->ticket = new Ticket();
 
-        $this->ticket->customer_id= null;
         $this->ticket->campuse_id = null;
-        $this->ticket->building_id = null;
         $this->ticket->problem_id = null;
         $this->ticket->organizational_unit_id = null;
         $this->ticket->prioritie_id = null;
