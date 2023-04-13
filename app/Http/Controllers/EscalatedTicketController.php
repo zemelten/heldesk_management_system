@@ -24,7 +24,7 @@ class EscalatedTicketController extends Controller
 
         $escalatedTickets = EscalatedTicket::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view(

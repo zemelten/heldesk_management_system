@@ -22,7 +22,7 @@ class ServiceUnitController extends Controller
 
         $serviceUnits = ServiceUnit::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view(

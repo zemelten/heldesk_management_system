@@ -24,7 +24,7 @@ class OrganizationalUnitController extends Controller
 
         $organizationalUnits = OrganizationalUnit::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view(

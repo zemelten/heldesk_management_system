@@ -22,7 +22,7 @@ class ReportsController extends Controller
 
         $allReports = Reports::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view('app.all_reports.index', compact('allReports', 'search'));

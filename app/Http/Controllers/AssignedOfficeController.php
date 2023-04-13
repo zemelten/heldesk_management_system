@@ -22,7 +22,7 @@ class AssignedOfficeController extends Controller
 
         $assignedOffices = AssignedOffice::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view(

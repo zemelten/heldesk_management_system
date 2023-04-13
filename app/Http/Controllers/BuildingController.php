@@ -22,7 +22,7 @@ class BuildingController extends Controller
 
         $buildings = Building::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
         return view('app.buildings.index', compact('buildings', 'search'));
     }
