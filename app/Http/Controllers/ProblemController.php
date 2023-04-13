@@ -16,9 +16,11 @@ class ProblemController extends Controller
      */
     public function index(Request $request)
     {
+        $search = $request->get('search', '');
+       
         $this->authorize('view-any', Problem::class);
 
-        $search = $request->get('search', '');
+
 
         $problems = Problem::search($search)
             ->latest()

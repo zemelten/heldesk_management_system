@@ -36,12 +36,12 @@ use App\Http\Controllers\OrganizationalUnitController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('/')
     ->middleware('auth')

@@ -26,9 +26,11 @@ class TicketController extends Controller
         $search = $request->get('search', '');
 
         $tickets = Ticket::search($search)
+        
             ->latest()
             ->paginate(5)
             ->withQueryString();
+           
 
         return view('app.tickets.index', compact('tickets', 'search'));
     }

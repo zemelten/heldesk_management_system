@@ -14,7 +14,7 @@ return [
         'delete' => 'Delete',
         'delete_selected' => 'Delete selected',
         'search' => 'Search...',
-        'back' => 'Back to Index',
+        'back' => 'Back to Home',
         'are_you_sure' => 'Are you sure?',
         'no_items_found' => 'No items found',
         'created' => 'Successfully created',
@@ -102,7 +102,7 @@ return [
         'inputs' => [
             'name' => 'Name',
             'description' => 'Description',
-            'problem_catagory_id' => 'Problem Catagory',
+            'problem_catagory_id' => 'Problem Category',
         ],
     ],
 
@@ -117,7 +117,7 @@ return [
             'telephone' => 'Telephone',
             'fax' => 'Fax',
             'email' => 'Email',
-            'campuse_id' => 'Campuse',
+            'campuse_id' => 'Campus',
             'director_id' => 'Director',
         ],
     ],
@@ -149,7 +149,7 @@ return [
         'inputs' => [
             'user_id' => 'User',
             'user_type' => 'User Type',
-            'problem_catagory_id' => 'Problem Catagory',
+            'problem_catagory_id' => 'Problem Category',
             'building_id' => 'Building',
             'service_unit_id' => 'Service Unit',
             'unit_id' => 'Unit',
@@ -172,10 +172,10 @@ return [
     'priorities' => [
         'name' => 'Priorities',
         'index_title' => 'Priorities List',
-        'new_title' => 'New Prioritie',
-        'create_title' => 'Create Prioritie',
-        'edit_title' => 'Edit Prioritie',
-        'show_title' => 'Show Prioritie',
+        'new_title' => 'New Priority',
+        'create_title' => 'Create Priority',
+        'edit_title' => 'Edit Priority',
+        'show_title' => 'Show Priority',
         'inputs' => [
             'name' => 'Name',
             'response' => 'Response',
@@ -184,18 +184,18 @@ return [
     ],
 
     'organizational_units' => [
-        'name' => 'Organizational Units',
+        'name' => 'Org Units',
         'index_title' => 'OrganizationalUnits List',
-        'new_title' => 'New Organizational unit',
+        'new_title' => 'New Org unit',
         'create_title' => 'Create OrganizationalUnit',
         'edit_title' => 'Edit OrganizationalUnit',
         'show_title' => 'Show OrganizationalUnit',
         'inputs' => [
             'name' => 'Name',
-            'offcie_no' => 'Offcie No',
-            'campuse_id' => 'Campuse',
+            'offcie_no' => 'Office No',
+            'campuse_id' => 'Campus',
             'building_id' => 'Building',
-            'prioritie_id' => 'Prioritie',
+            'prioritie_id' => 'Priority',
         ],
     ],
 
@@ -208,7 +208,7 @@ return [
         'show_title' => 'Show AssignedOrgUnit',
         'inputs' => [
             'assigned_office_id' => 'Assigned Office',
-            'organizational_unit_id' => 'Organizational Unit',
+            'organizational_unit_id' => 'Org Unit',
         ],
     ],
 
@@ -238,22 +238,21 @@ return [
             'phone_no' => 'Phone No',
             'building_id' => 'Building',
             'campus_id' => 'Campus',
-            'organizational_unit_id' => 'Organizational Unit',
+            'organizational_unit_id' => 'Org Unit',
             'floor_id' => 'Floor',
             'user_id' => 'User',
-            'office_num' => 'Office Num',
             'is_edited' => 'Is Edited',
+            'office_num' => 'Office No',
         ],
     ],
 
-    'organizational_unit_customers' => [
-        'name' => 'OrganizationalUnit Customers',
-        'index_title' => 'Customers List',
-        'new_title' => 'New Customer',
-        'create_title' => 'Create Customer',
+    'tickets' => [
+        'name' => 'Tickets',
+        'index_title' => 'Tickets List',
+        'new_title' => 'New Ticket',
+        'create_title' => 'Create Ticket',
         'edit_title' => 'Edit Customer',
         'show_title' => 'Show Customer',
-        'inputs' => [
             'full_name' => 'Full Name',
             'email' => 'Email',
             'phone_no' => 'Phone No',
@@ -262,7 +261,7 @@ return [
             'floor_id' => 'Floor',
             'user_id' => 'User',
             'is_edited' => 'Is Edited',
-            'office_num' => 'Office Num',
+            'office_num' => 'Office No',
         ],
     ],
 
@@ -293,8 +292,8 @@ return [
             'description' => 'Description',
             'campuse_id' => 'Campuse',
             'problem_id' => 'Problem',
-            'organizational_unit_id' => 'Organizational Unit',
-            'prioritie_id' => 'Prioritie',
+            'organizational_unit_id' => 'Org Unit',
+            'prioritie_id' => 'Priority',
         ],
     ],
 
