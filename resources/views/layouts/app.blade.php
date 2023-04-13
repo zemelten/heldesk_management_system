@@ -11,8 +11,7 @@
     <title>HelpDesk [Imported] [Imported]</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="{{ asset('main/fonts.googleapis.css') }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('css/all.min.css') }}"> --}}
@@ -31,12 +30,15 @@
     <link rel="stylesheet" href="{{ asset('allinone/select2-bootstrap4.min.css') }}">
 
     {{-- date picker  --}}
-    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('main/gijgo.min.css') }}">
 
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> --}}
+
+    <script src="{{ asset('main/jquery-3.6.0.min.js') }}" defer></script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>
@@ -46,12 +48,12 @@
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
     <script src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
 
-    
+
     <!-- Select2 -->
     <script src="{{ asset('allinone/select2.full.min.js') }}" defer></script>
     <script src="{{ asset('allinone/select2.min.js') }}"></script>
 
-    
+
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('allinone/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('allinone/select2-bootstrap4.min.css') }}">
@@ -70,10 +72,9 @@
     <!-- Icons -->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
 
-    
+
     <!-- Small Ionicons Fixes for AdminLTE -->
     <style>
-
         html {
             background-color: #f4f6f9;
         }
@@ -81,6 +82,7 @@
         .nav-icon.icon:before {
             width: 25px;
         }
+
         .select2 {
             width: 100% !important;
         }
@@ -171,4 +173,5 @@
         })
     });
 </script>
+
 </html>
