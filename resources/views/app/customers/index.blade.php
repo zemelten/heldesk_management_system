@@ -71,9 +71,7 @@
                             <th class="text-left">
                                 @lang('crud.customers.inputs.user_id')
                             </th>
-                            <th class="text-left">
-                                @lang('crud.customers.inputs.is_edited')
-                            </th>
+                            
                             <th class="text-left">
                                 @lang('crud.customers.inputs.office_num')
                             </th>
@@ -105,7 +103,7 @@
                                 {{ optional($customer->user)->full_name ?? '-'
                                 }}
                             </td>
-                            <td>{{ $customer->is_edited ?? '-' }}</td>
+                           
                             <td>{{ $customer->office_num ?? '-' }}</td>
                             <td class="text-center" style="width: 134px;">
                                 <div

@@ -7,7 +7,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         
-        <title>HelpDesk [Imported] [Imported]</title>
+        <title>HMS</title>
         
         <!-- Scripts -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -45,13 +45,16 @@
     </head>
     
     <body class="sidebar-mini layout-fixed layout-navbar-fixed sidebar-collapse">
+        
         <div id="app" class="wrapper">
+            @auth
             <div class="main-header">
                 @include('layouts.nav')
             </div>
+            @endauth 
         
             @include('layouts.sidebar')
-        
+       
             <main class="content-wrapper p-5">
                 @yield('content')
             </main>
