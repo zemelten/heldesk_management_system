@@ -83,6 +83,7 @@
 
 
     <!-- Select2 -->
+    {{--  --}}
     <script src="{{ asset('allinone/select2.full.min.js') }}" defer></script>
     <script src="{{ asset('allinone/select2.min.js') }}"></script>
     <!-- Select2 -->
@@ -123,17 +124,18 @@
             })
         })
     </script>
-</body>
-
-<script>
+</body><script>
     $(function() {
         //Initialize Select2 Elements
         $('.select2').select2({
             // dropdownAutoWidth: true
-            theme: "classic"
+            theme: "bootstrap4",
+          //  width:'resolve'
 
         })
     });
-</script>
+ 
+    
+</script> 
 
 </html>
