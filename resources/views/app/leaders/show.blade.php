@@ -17,6 +17,10 @@
                     <span>{{ $leader->full_name ?? '-' }}</span>
                 </div>
                 <div class="mb-4">
+                    <h5>Belongs to Director</h5>
+                    <span>{{ $leader->director->full_name ?? '-' }}</span>
+                </div>
+                <div class="mb-4">
                     <h5>@lang('crud.leaders.inputs.sex')</h5>
                     <span>{{ $leader->sex ?? '-' }}</span>
                 </div>
