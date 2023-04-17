@@ -17,6 +17,9 @@
     {{-- <link rel="stylesheet" href="{{ asset('css/all.min.css') }}"> --}}
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+    <!-- Theme Login -->
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
     @yield('styles')
 
     {{-- custom css --}}
@@ -160,6 +163,7 @@
                 }
             })
         })
+        <script src="{{ asset('js/login.js') }}"></script>
     </script>
 </body>
 
