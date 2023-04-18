@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>HelpDesk [Imported] [Imported]</title>
+    <title>HelpDesk</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="{{ asset('main/fonts.googleapis.css') }}">
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('main/css/fontawesome.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('css/all.min.css') }}"> --}}
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('allinone/adminlte.min.css') }}">
     <!-- Theme Login -->
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
