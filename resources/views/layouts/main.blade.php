@@ -141,7 +141,7 @@
                                     <p>All Users</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-bag"></i>
+                                    <i class="fas fa-user"></i>
                                 </div>
                                 <a href="#" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
@@ -157,7 +157,7 @@
                                     <p>Total Tickets</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
+                                    <i class="fas fa-ticket-alt"></i>
                                 </div>
                                 <a href="#" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
@@ -173,7 +173,7 @@
                                     <p>Pending Tickets</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-person-add"></i>
+                                    <i class="fas fa-clock"></i>
                                 </div>
                                 <a href="#" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
@@ -189,7 +189,7 @@
                                     <p>Unclosed Tickets</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-pie-graph"></i>
+                                    <i class="fas fa-folder-open"></i>
                                 </div>
                                 <a href="#" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
