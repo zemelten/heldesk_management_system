@@ -36,7 +36,8 @@ use App\Http\Controllers\OrganizationalUnitController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
+    
 });
 
 Auth::routes();

@@ -35,11 +35,12 @@ class LeaderController extends Controller
      */
     public function create(Request $request)
     {
+        
         $this->authorize('create', Leader::class);
         $users = User::pluck('full_name', 'id');
         $director = Director::pluck('full_name', 'id');
 
-        return view('app.leaders.create',  compact('users', 'directors'));
+        return view('app.leaders.create',  compact('users', 'director'));
     }
 
     /**

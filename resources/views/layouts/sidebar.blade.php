@@ -1,13 +1,15 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar  elevation-4 " style="background-color: #0067ba;">
     <!-- Brand Logo -->
-    <a href="{{ url('/') }}" class="brand-link">
-        <img src="https://vemto.app/favicon.png" alt="Vemto Logo" class="brand-image bg-white img-circle">
-        <span class="brand-text font-weight-light">HelpDesk</span>
+  <div class="bg-primary ">
+    <a href="{{ url('/home') }}" class="brand-link">
+        <img src="images/JU.jpg" alt="JU Logo" class="brand-image ">
+        <span class="brand-text font-weight-strong">  HelpDesk</span>
     </a>
+  </div>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar sidebar-light-primary ">
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
