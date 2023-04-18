@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        
+        $customer = new Customer();
+        $exists = Customer::where('full_name',Auth::user()->full_name)->exists();
+        $c = Customer::where('full_name',Auth::user()->full_name)->first();
+        
+        if(!$exists){
+
+        $customer->create([
+            'full_name'=>Auth::user()->full_name,
+            'email'=>Auth::user()->email
+        ]);
+        } 
+        return view('home',[
+            'isEdited'=>$c->is_edited
+        ]);
     }
 }

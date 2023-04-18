@@ -58,6 +58,9 @@ class Ticket extends Model
     {
         return $this->belongsTo(Reports::class);
     }
+    public function building(){
+        return $this->belongsTo(Building::class);
+    }
 
     public function escalatedTickets()
     {

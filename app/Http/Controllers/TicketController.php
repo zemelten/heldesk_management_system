@@ -26,17 +26,13 @@ class TicketController extends Controller
     {
         $this->authorize('view-any', Ticket::class);
 
-        $search = $request->get('search', '');
+       
 
         $tickets = Ticket::all();
       
-        $search = "";
+      
         
        
-        foreach($tickets as $t){
-        //     dd( $duration = Carbon::parse($t->created_at)->diffInHours()
-        // );
-        }
            
 
         return view('app.tickets.index',compact('tickets'));
@@ -82,7 +78,7 @@ class TicketController extends Controller
      */
     public function store(TicketStoreRequest $request)
     {
-        dd($request->building_id);
+       
         
         
         $this->authorize('create', Ticket::class);
@@ -103,8 +99,8 @@ class TicketController extends Controller
         $ticket = new Ticket();
         $ticket->status = 37;
         $ticket->description = $request->description;
-        $ticket->customer_id = Auth::user()->id;
-        $ticket->user_support_id = Auth::user()->id;
+        $ticket->customer_id = 11;
+        $ticket->user_support_id = 11;
         $ticket->reports_id = 1;
         $ticket->campuse_id = $request->campuse_id;
         $ticket->organizational_unit_id = $request->organizational_unit_id;
