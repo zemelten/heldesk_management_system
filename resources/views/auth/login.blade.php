@@ -5,7 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header bg- p-3 bg-primary rounded-10"> 
+                    <div class="text-center">
+                        <img src="https://hrm.ju.edu.et/logo.jpg" alt="" style="width: 100px; ">
+                    </div>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
