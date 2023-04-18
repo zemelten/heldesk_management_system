@@ -12,23 +12,23 @@
     <div class="sidebar sidebar-light-primary ">
 
         <!-- Sidebar Menu -->
-        <nav class="mt-2">
+        <nav class="mt-2 " >
             <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu">
 
                 @auth
                 <li class="nav-item">
                     <a href="{{ route('home') }}" class="nav-link">
                         <i class="nav-icon icon ion-md-pulse"></i>
-                        <p>
+                        <p style="color: #000000;">
                             Dashboard
                         </p>
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item" >
                     <a href="#" class="nav-link">
                         <i class="nav-icon icon ion-md-apps"></i>
-                        <p>
+                        <p style="color: #000000;">
                             Apps
                             <i class="nav-icon right icon ion-md-arrow-round-back"></i>
                         </p>
@@ -38,7 +38,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('users.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Users</p>
+                                    <p style="color: #000000;">Users</p>
                                 </a>
                             </li>
                             @endcan
@@ -46,7 +46,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('campuses.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Campuses</p>
+                                    <p style="color: #000000;">Campuses</p>
                                 </a>
                             </li>
                             @endcan
@@ -54,7 +54,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('buildings.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Buildings</p>
+                                    <p style="color: #000000;">Buildings</p>
                                 </a>
                             </li>
                             @endcan
@@ -62,7 +62,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('directors.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Directors</p>
+                                    <p style="color: #000000;">Directors</p>
                                 </a>
                             </li>
                             @endcan
@@ -70,7 +70,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('leaders.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Leaders</p>
+                                    <p style="color: #000000;">Leaders</p>
                                 </a>
                             </li>
                             @endcan
@@ -78,7 +78,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('problems.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Problems</p>
+                                    <p style="color: #000000;">Problems</p>
                                 </a>
                             </li>
                             @endcan
@@ -86,7 +86,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('units.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Units</p>
+                                    <p style="color: #000000;">Units</p>
                                 </a>
                             </li>
                             @endcan
@@ -94,7 +94,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('service-units.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Service Units</p>
+                                    <p style="color: #000000;">Service Units</p>
                                 </a>
                             </li>
                             @endcan
@@ -102,7 +102,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('user-supports.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>User Supports</p>
+                                    <p style="color: #000000;">User Supports</p>
                                 </a>
                             </li>
                             @endcan
@@ -110,7 +110,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('assigned-offices.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Assigned Offices</p>
+                                    <p style="color: #000000;">Assigned Offices</p>
                                 </a>
                             </li>
                             @endcan
@@ -118,7 +118,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('priorities.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Priorities</p>
+                                    <p style="color: #000000;">Priorities</p>
                                 </a>
                             </li>
                             @endcan
@@ -126,7 +126,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('organizational-units.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Organizational Units</p>
+                                    <p style="color: #000000;">Organizational Units</p>
                                 </a>
                             </li>
                             @endcan
@@ -134,7 +134,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('assigned-org-units.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Assigned Org Units</p>
+                                    <p style="color: #000000;">Assigned Org Units</p>
                                 </a>
                             </li>
                             @endcan
@@ -142,7 +142,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('floors.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Floors</p>
+                                    <p style="color: #000000;">Floors</p>
                                 </a>
                             </li>
                             @endcan
@@ -150,7 +150,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('customers.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Customers</p>
+                                    <p style="color: #000000;">Customers</p>
                                 </a>
                             </li>
                             @endcan
@@ -158,7 +158,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('problem-catagories.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Problem Catagories</p>
+                                    <p style="color: #000000;">Problem Catagories</p>
                                 </a>
                             </li>
                             @endcan
@@ -166,7 +166,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('tickets.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Tickets</p>
+                                    <p style="color: #000000;">Tickets</p>
                                 </a>
                             </li>
                             @endcan
@@ -174,7 +174,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('escalated-tickets.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>Escalated Tickets</p>
+                                    <p style="color: #000000;">Escalated Tickets</p>
                                 </a>
                             </li>
                             @endcan
@@ -182,7 +182,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('all-reports.index') }}" class="nav-link">
                                     <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                    <p>All Reports</p>
+                                    <p style="color: #000000;">All Reports</p>
                                 </a>
                             </li>
                             @endcan
@@ -194,7 +194,7 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon icon ion-md-key"></i>
-                        <p>
+                        <p style="color: #000000;">
                             Access Management
                             <i class="nav-icon right icon ion-md-arrow-round-back"></i>
                         </p>
@@ -204,7 +204,7 @@
                         <li class="nav-item">
                             <a href="{{ route('roles.index') }}" class="nav-link">
                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                <p>Roles</p>
+                                <p style="color: #000000;">Roles</p>
                             </a>
                         </li>
                         @endcan
@@ -213,7 +213,7 @@
                         <li class="nav-item">
                             <a href="{{ route('permissions.index') }}" class="nav-link">
                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                <p>Permissions</p>
+                                <p style="color: #000000;">Permissions</p>
                             </a>
                         </li>
                         @endcan
@@ -225,7 +225,7 @@
                 <li class="nav-item">
                     <a href="https://adminlte.io/docs/3.1//index.html" target="_blank" class="nav-link">
                         <i class="nav-icon icon ion-md-help-circle-outline"></i>
-                        <p>Docs</p>
+                        <p style="color: #000000;">Docs</p>
                     </a>
                 </li>
 
@@ -233,7 +233,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="nav-icon icon ion-md-exit"></i>
-                        <p>{{ __('Logout') }}</p>
+                        <p style="color: #000000;">{{ __('Logout') }}</p>
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
