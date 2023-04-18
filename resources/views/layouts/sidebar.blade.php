@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
   <div class="bg-primary ">
     <a href="{{ url('/home') }}" class="brand-link">
-        <img src="images/JU.jpg" alt="JU Logo" class="brand-image ">
+        <img src="/images/JU.jpg" alt="JU Logo" class="brand-image ">
         <span class="brand-text font-weight-strong">  HelpDesk</span>
     </a>
   </div>

@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header bg- p-3 bg-primary rounded-10"> 
                     <div class="text-center">
-                        <img src="https://hrm.ju.edu.et/logo.jpg" alt="" style="width: 100px; ">
+                        <img src="/images/JU.jpg" alt="" style="width: 100px; ">
                     </div>
                 </div>
 
