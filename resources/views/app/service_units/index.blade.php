@@ -132,7 +132,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="7">
+                            <td colspan="8">
                                 @lang('crud.common.no_items_found')
                             </td>
                         </tr>
@@ -140,7 +140,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="7">{!! $serviceUnits->render() !!}</td>
+                            <td colspan="8">{!! $serviceUnits->render() !!}</td>
                         </tr>
                     </tfoot>
                 </table>
