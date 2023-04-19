@@ -30,6 +30,7 @@ class UserSupportStoreRequest extends FormRequest
                 'nullable',
                 'exists:problem_catagories,id',
             ],
+            'leader_id' => ['nullable', 'exists:leaders,id'],
             'building_id' => ['nullable', 'exists:buildings,id'],
             'service_unit_id' => ['required', 'exists:service_units,id'],
             'unit_id' => ['required', 'exists:units,id'],
