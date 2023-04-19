@@ -11,44 +11,94 @@
                 @lang('crud.all_reports.show_title')
             </h4>
 
-            <div class="mt-4">
-                <div class="mb-4">
-                    <h5>@lang('crud.all_reports.inputs.user_support_id')</h5>
-                    <span
-                        >{{ optional($reports->userSupport)->id ?? '-' }}</span
-                    >
-                </div>
-            </div>
-
-            <div class="mt-4">
-                <a
-                    href="{{ route('all-reports.index') }}"
-                    class="btn btn-light"
-                >
-                    <i class="icon ion-md-return-left"></i>
-                    @lang('crud.common.back')
-                </a>
-
-                @can('create', App\Models\Reports::class)
-                <a
-                    href="{{ route('all-reports.create') }}"
-                    class="btn btn-light"
-                >
-                    <i class="icon ion-md-add"></i> @lang('crud.common.create')
-                </a>
-                @endcan
-            </div>
         </div>
     </div>
 
     @can('view-any', App\Models\Ticket::class)
     <div class="card mt-4">
         <div class="card-body">
-            <h4 class="card-title w-100 mb-2">Tickets</h4>
+            <h4 class="card-title w-100 mb-2">Report</h4>
 
-            <livewire:reports-tickets-detail :reports="$reports" />
+            
+
         </div>
     </div>
     @endcan
+    <div class="container-fluid">
+        <h5 class="mb-2">Info Box</h5>
+        <div class="row">
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Messages</span>
+                <span class="info-box-number">1,410</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Bookmarks</span>
+                <span class="info-box-number">410</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Uploads</span>
+                <span class="info-box-number">13,648</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-danger"><i class="far fa-star"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Likes</span>
+                <span class="info-box-number">93,139</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+
+
+
+
+
+
+
+
+
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+       
+
+
+
+      </div>
 </div>
 @endsection

@@ -66,7 +66,7 @@ class ReportsController extends Controller
      * @param \App\Models\Reports $reports
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Reports $reports)
+    public function show(Request $request, UserSupport $reports)
     {
         $this->authorize('view', $reports);
 
