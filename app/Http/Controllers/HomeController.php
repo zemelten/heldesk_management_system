@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -20,9 +22,21 @@ class HomeController extends Controller
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
-     */
+     */ 
     public function index()
     {
-        return view('home');
+        //conut all users 
+        $countUsers = User::count();
+        $totalTicket = Ticket::count();
+        $totalactiveTicket = Ticket::where('status', '=', 1)->count();
+        $totalpendingTicket = Ticket::where('status', '=', 2)->count();
+        $totalClosedTicket = Ticket::where('status', '=', 3)->count();
+        $todaysClosedTicket = Ticket::whereDate('updated_at', today())->count();
+        $todaysTicket = Ticket::whereDate('created_at', today())->count();
+
+
+        //dd($countusers);
+
+        return view('home', compact('countUsers', 'totalTicket', 'totalactiveTicket', 'totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket'));
     }
 }

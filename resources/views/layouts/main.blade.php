@@ -13,9 +13,8 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="{{ asset('main/fonts.googleapis.css') }}">
     <!-- Font Awesome -->
-    {{-- <link rel="stylesheet" href="{{ asset('main/css/fontawesome.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('main/css/fontawesome.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('css/all.min.css') }}"> --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('allinone/adminlte.min.css') }}">
     <!-- Theme Login -->

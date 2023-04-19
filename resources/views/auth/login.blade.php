@@ -1,18 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header bg- p-3 rounded-10" style="background-color: #0067ba;"> 
                     <div class="text-center">
                         <img src="/images/JU.jpg" alt="" style="width: 100px; ">
+                        <div>
+                          <a href="" class="h1"><b>HELP</b>DESK</a>
+                          </div>
                     </div>
                 </div>
 
 
-                <i class="fa fa-circle nav-icon"></i>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -77,6 +79,14 @@
                 </div>
                 
             </div>
+<<<<<<< HEAD
            
+=======
+            <div class="login-box">
+
+              </div>
+        </div>
+    </div>
+>>>>>>> da1cb08bcb00bfd0b6aa10a8ecaf62a991e16c70
 </div>
 @endsection
