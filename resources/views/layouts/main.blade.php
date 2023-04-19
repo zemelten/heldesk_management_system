@@ -13,8 +13,8 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="{{ asset('main/fonts.googleapis.css') }}">
     <!-- Font Awesome -->
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /> --}}
-    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('main/css/fontawesome.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/all.min.css') }}"> --}}
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('allinone/adminlte.min.css') }}">
     <!-- Theme Login -->
@@ -51,6 +51,7 @@
     <!-- JQVMap -->
     <link rel="stylesheet" href="allinone/jqvmap.min.css">
     <!-- Theme style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="allinone/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
@@ -136,13 +137,13 @@
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>{{ $totalUsers }}</h3>
+                                    <h3>{{ $countUsers }}</h3>
                                     <p>All Users</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-bag"></i>
+                                    <i class="fas fa-user"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">More info <i
+                                <a href="/users" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -151,14 +152,14 @@
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>53</h3>
+                                    <h3> {{ $totalTicket }}</h3>
 
                                     <p>Total Tickets</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
+                                    <i class="fas fa-ticket-alt"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">More info <i
+                                <a href="/tickets" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -167,12 +168,12 @@
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3>44</h3>
+                                    <h3>{{ $totalpendingTicket }}</h3>
 
                                     <p>Pending Tickets</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-person-add"></i>
+                                    <i class="fas fa-clock"></i>
                                 </div>
                                 <a href="#" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
@@ -183,12 +184,12 @@
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3>65</h3>
+                                    <h3>{{ $totalUnclosedTicket  }}</h3>
 
                                     <p>Unclosed Tickets</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-pie-graph"></i>
+                                    <i class="fas fa-folder-open"></i>
                                 </div>
                                 <a href="#" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>

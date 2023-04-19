@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg- p-3 bg-primary rounded-10"> 
+                <div class="card-header bg- p-3 rounded-10" style="background-color: #0067ba;"> 
                     <div class="text-center">
                         <img src="/images/JU.jpg" alt="" style="width: 100px; ">
                         <div>
@@ -79,10 +79,14 @@
                 </div>
                 
             </div>
+<<<<<<< HEAD
+           
+=======
             <div class="login-box">
 
               </div>
         </div>
     </div>
+>>>>>>> da1cb08bcb00bfd0b6aa10a8ecaf62a991e16c70
 </div>
 @endsection
