@@ -13,8 +13,8 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="{{ asset('main/fonts.googleapis.css') }}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('main/css/fontawesome.min.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('css/all.min.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /> --}}
+    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('allinone/adminlte.min.css') }}">
     <!-- Theme Login -->
@@ -571,31 +571,32 @@
     <script>
         /* Simple Alpine Image Viewer */
         document.addEventListener('alpine:init', () => {
-            Alpine.data('imageViewer', (src = '') => {
-                return {
-                    imageUrl: src,
+                Alpine.data('imageViewer', (src = '') => {
+                    return {
+                        imageUrl: src,
 
-                    refreshUrl() {
-                        this.imageUrl = this.$el.getAttribute("image-url")
-                    },
+                        refreshUrl() {
+                            this.imageUrl = this.$el.getAttribute("image-url")
+                        },
 
-                    fileChosen(event) {
-                        this.fileToDataUrl(event, src => this.imageUrl = src)
-                    },
+                        fileChosen(event) {
+                            this.fileToDataUrl(event, src => this.imageUrl = src)
+                        },
 
-                    fileToDataUrl(event, callback) {
-                        if (!event.target.files.length) return
+                        fileToDataUrl(event, callback) {
+                            if (!event.target.files.length) return
 
-                        let file = event.target.files[0],
-                            reader = new FileReader()
+                            let file = event.target.files[0],
+                                reader = new FileReader()
 
-                        reader.readAsDataURL(file)
-                        reader.onload = e => callback(e.target.result)
-                    },
-                }
-            })
-        })
-        <script src="{{ asset('js/login.js') }}"></script>
+                            reader.readAsDataURL(file)
+                            reader.onload = e => callback(e.target.result)
+                        },
+                    }
+                })
+            }) <
+            script src = "{{ asset('js/login.js') }}" >
+    </script>
     </script>
 </body>
 
