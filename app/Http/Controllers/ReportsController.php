@@ -26,7 +26,7 @@ class ReportsController extends Controller
             ->withQueryString();
 
         return view(
-            'app.user_supports.index',
+            'app.all_reports.user_support_list.index',
             compact('userSupports', 'search')
         );
     }
