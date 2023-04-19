@@ -20,12 +20,15 @@ class ReportsController extends Controller
 
         $search = $request->get('search', '');
 
-        $allReports = Reports::search($search)
+        $userSupports = UserSupport::search($search)
             ->latest()
             ->paginate(10)
             ->withQueryString();
 
-        return view('app.all_reports.index', compact('allReports', 'search'));
+        return view(
+            'app.all_reports.user_support_list.index',
+            compact('userSupports', 'search')
+        );
     }
 
     /**

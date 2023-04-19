@@ -24,16 +24,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-6 text-right">
-                @can('create', App\Models\UserSupport::class)
-                <a
-                    href="{{ route('user-supports.create') }}"
-                    class="btn btn-primary"
-                >
-                    <i class="icon ion-md-add"></i> @lang('crud.common.create')
-                </a>
-                @endcan
-            </div>
+           
         </div>
     </div>
 
@@ -49,6 +40,9 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th class="text-left">
+                                No.
+                            </th>
                             <th class="text-left">
                                 @lang('crud.user_supports.inputs.user_id')
                             </th>
@@ -73,8 +67,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($userSupports as $userSupport)
-                        <tr>
+                        @forelse($userSupports as $key => $userSupport)
+                        <tr class="clickable" onclick="window.location='http://127.0.0.1:8000/all-reports/1';">
+                            <td>{{ $key + 1 }}</td>
                             <td>
                                 {{ optional($userSupport->user)->full_name ??
                                 '-' }}
@@ -102,18 +97,7 @@
                                     aria-label="Row Actions"
                                     class="btn-group"
                                 >
-                                    @can('update', $userSupport)
-                                    <a
-                                        href="{{ route('user-supports.edit', $userSupport) }}"
-                                    >
-                                        <button
-                                            type="button"
-                                            class="btn btn-light"
-                                        >
-                                            <i class="icon ion-md-create"></i>
-                                        </button>
-                                    </a>
-                                    @endcan @can('view', $userSupport)
+                                    @can('view', $userSupport)
                                     <a
                                         href="{{ route('user-supports.show', $userSupport) }}"
                                     >
@@ -124,21 +108,7 @@
                                             <i class="icon ion-md-eye"></i>
                                         </button>
                                     </a>
-                                    @endcan @can('delete', $userSupport)
-                                    <form
-                                        action="{{ route('user-supports.destroy', $userSupport) }}"
-                                        method="POST"
-                                        onsubmit="return confirm('{{ __('crud.common.are_you_sure') }}')"
-                                    >
-                                        @csrf @method('DELETE')
-                                        <button
-                                            type="submit"
-                                            class="btn btn-light text-danger"
-                                        >
-                                            <i class="icon ion-md-trash"></i>
-                                        </button>
-                                    </form>
-                                    @endcan
+                                   @endif
                                 </div>
                             </td>
                         </tr>

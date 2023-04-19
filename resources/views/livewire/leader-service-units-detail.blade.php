@@ -195,7 +195,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="7">{{ $serviceUnits->render() }}</td>
+                    <td colspan="8">{{ $serviceUnits->render() }}</td>
                 </tr>
             </tfoot>
         </table>
