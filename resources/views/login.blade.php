@@ -4,12 +4,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card ">
                 <div class="card-header bg- p-3 bg-primary rounded-10"> 
                     <div class="text-center">
                         <img src="/images/JU.jpg" alt="" style="width: 100px; ">
                         <div>
-                          <a href="" class="h1"><b>HELP</b>DESK</a>
+                          <p class="h1"><b>HELP</b>DESK</p>
                           </div>
                     </div>
                 </div>
