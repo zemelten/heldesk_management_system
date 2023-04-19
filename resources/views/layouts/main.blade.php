@@ -51,6 +51,7 @@
     <!-- JQVMap -->
     <link rel="stylesheet" href="allinone/jqvmap.min.css">
     <!-- Theme style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="allinone/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
@@ -142,7 +143,7 @@
                                 <div class="icon">
                                     <i class="fas fa-user"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">More info <i
+                                <a href="/users" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -151,14 +152,14 @@
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>53</h3>
+                                    <h3> {{ $totalTicket }}</h3>
 
                                     <p>Total Tickets</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-ticket-alt"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">More info <i
+                                <a href="/tickets" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -167,7 +168,7 @@
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3>44</h3>
+                                    <h3>{{ $totalpendingTicket }}</h3>
 
                                     <p>Pending Tickets</p>
                                 </div>
@@ -183,7 +184,7 @@
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3>65</h3>
+                                    <h3>{{ $totalUnclosedTicket  }}</h3>
 
                                     <p>Unclosed Tickets</p>
                                 </div>
