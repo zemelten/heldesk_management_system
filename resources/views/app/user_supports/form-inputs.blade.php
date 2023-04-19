@@ -12,6 +12,17 @@
     </x-inputs.group>
 
     <x-inputs.group class="col-md-12">
+        <x-inputs.select name="leader_id" label="Leader">
+            @php $selected = old('user_id', ($editing ? $userSupport->leader->id : ''))  @endphp
+            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Leader</option>
+            @foreach ($leaders as $value => $label)
+                <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }}>{{ $label }}
+                </option>
+            @endforeach
+        </x-inputs.select>
+    </x-inputs.group>
+
+    <x-inputs.group class="col-md-12">
         <x-inputs.text
             name="user_type"
             label="User Type"
