@@ -28,12 +28,15 @@ class HomeController extends Controller
         //conut all users 
         $countUsers = User::count();
         $totalTicket = Ticket::count();
-        $activeTicket = Ticket::where('status', '=', 1)->count();
-        $pendingTicket = Ticket::where('status', '=', 2)->count();
+        $totalactiveTicket = Ticket::where('status', '=', 1)->count();
+        $totalpendingTicket = Ticket::where('status', '=', 2)->count();
+        $totalClosedTicket = Ticket::where('status', '=', 3)->count();
+        $todaysClosedTicket = Ticket::whereDate('updated_at', today())->count();
+        $todaysTicket = Ticket::whereDate('created_at', today())->count();
 
 
         //dd($countusers);
 
-        return view('home', compact('countUsers', 'totalTicket', 'activeTicket', 'pendingTicket'));
+        return view('home', compact('countUsers', 'totalTicket', 'totalactiveTicket', 'totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket'));
     }
 }
