@@ -36,6 +36,7 @@
     {{-- date picker  --}}
     <link rel="stylesheet" href="{{ asset('main/gijgo.min.css') }}">
 
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -116,6 +117,7 @@
     @stack('scripts')
 
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 
     <!-- AdminLTE App -->
     <script src="{{ asset('js/adminlte.min.js') }}" defer></script>

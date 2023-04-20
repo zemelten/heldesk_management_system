@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
 use App\Models\Reports;
 use App\Models\UserSupport;
 use Illuminate\Http\Request;
@@ -70,7 +71,18 @@ class ReportsController extends Controller
     {
         $this->authorize('view', $reports);
 
-        return view('app.all_reports.show', compact('reports'));
+        //conut all users 
+        $totalTicket = Ticket::where('user_support_id', $reports->user_support_id)->count();
+        $totalactiveTicket = Ticket::where('user_support_id', $reports->user_support_id)->where('status', 1)->count();
+        $totalpendingTicket = Ticket::where('user_support_id', $reports->user_support_id)->where('status', 2)->count();
+        $totalClosedTicket = Ticket::where('user_support_id', $reports->user_support_id)->where('status', 3)->count();
+        $todaysClosedTicket = Ticket::whereDate('updated_at', today())->count();
+        $todaysTicket = Ticket::whereDate('created_at', today())->count();
+
+        
+        
+
+        return view('app.all_reports.show', compact('reports', 'totalTicket', 'totalactiveTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket'));
     }
 
     /**
