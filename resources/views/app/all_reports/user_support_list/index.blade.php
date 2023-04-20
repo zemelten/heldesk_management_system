@@ -66,9 +66,16 @@
                             </th>
                         </tr>
                     </thead>
+                    
                     <tbody>
                         @forelse($userSupports as $key => $userSupport)
-                        <tr class="clickable" onclick="window.location='http://127.0.0.1:8000/all-reports/1';">
+                        
+                        <tr class="clickable" onclick="window.location='http://127.0.0.1:8000/all-reports/{{$userSupport->id}}';" >
+                            <style>
+                                .clickable {
+                                  cursor: pointer;
+                                }
+                              </style>
                             <td>{{ $key + 1 }}</td>
                             <td>
                                 {{ optional($userSupport->user)->full_name ??
@@ -101,6 +108,7 @@
                                     <a
                                         href="{{ route('user-supports.show', $userSupport) }}"
                                     >
+                                    
                                         <button
                                             type="button"
                                             class="btn btn-light"
