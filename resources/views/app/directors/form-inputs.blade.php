@@ -2,8 +2,8 @@
 
 <div class="row">
     <x-inputs.group class="col-md-12">
-        <x-inputs.text name="full_name" label="Full Name" :value="old('full_name', $editing ? $director->full_name : '')" maxlength="255" placeholder="Full Name">
-        </x-inputs.text>
+        <x-inputs.hidden name="full_name" >
+        </x-inputs.hidden>
     </x-inputs.group>
 
     <x-inputs.group class="col-md-12">
