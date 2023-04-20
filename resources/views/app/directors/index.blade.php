@@ -67,7 +67,7 @@
                     <tbody>
                         @forelse($directors as $director)
                         <tr>
-                            <td>{{ $director->full_name ?? '-' }}</td>
+                            <td>{{ $director->user->full_name ?? '-' }}</td>
                             <td>{{ $director->sex ?? '-' }}</td>
                             <td>{{ $director->email ?? '-' }}</td>
                             <td>{{ $director->phone ?? '-' }}</td>
