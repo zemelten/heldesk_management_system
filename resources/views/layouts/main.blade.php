@@ -119,7 +119,7 @@
     @livewireStyles
 </head>
 
-<body class="sidebar-mini layout-fixed layout-navbar-fixed sidebar-collapse">
+<body class="sidebar-mini layout-fixed layout-navbar-fixed sidebar-expanded">
     <div id="app" class="wrapper">
         <div class="main-header">
             @include('layouts.nav')
