@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Customer;
+use App\Models\User;
+use App\Models\Ticket;
+use App\Models\UserSupport;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Database\Seeders\UserSupportSeeder;
 
 class HomeController extends Controller
 {
@@ -22,23 +24,23 @@ class HomeController extends Controller
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
-     */
+     */ 
     public function index()
     {
-        
-        $customer = new Customer();
-        $exists = Customer::where('full_name',Auth::user()->full_name)->exists();
-        $c = Customer::where('full_name',Auth::user()->full_name)->first();
-        
-        if(!$exists){
+        //conut all users 
+        $countUsers = User::count();
+        $totalTicket = Ticket::count();
+        $countUsersupports = UserSupport::count();
+        $totalactiveTicket = Ticket::where('status', '=', 1)->count();
+        $totalpendingTicket = Ticket::where('status', '=', 2)->count();
+        $totalClosedTicket = Ticket::where('status', '=', 3)->count();
+        $todaysClosedTicket = Ticket::whereDate('updated_at', today())->count();
+        $todaysTicket = Ticket::whereDate('created_at', today())->count();
+        $totalUnclosedTicket = Ticket::where('status', '<', 3)->count();
 
-        $customer->create([
-            'full_name'=>Auth::user()->full_name,
-            'email'=>Auth::user()->email
-        ]);
-        } 
-        return view('home',[
-            'isEdited'=>$c->is_edited
-        ]);
+
+        //dd($countusers);
+
+        return view('home', compact('countUsers', 'totalTicket', 'totalactiveTicket', 'countUsersupports','totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket', 'totalUnclosedTicket'));
     }
 }

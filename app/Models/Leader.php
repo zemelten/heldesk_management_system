@@ -11,7 +11,7 @@ class Leader extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['full_name', 'sex', 'phone', 'user_id', 'email'];
+    protected $fillable = ['full_name', 'sex', 'phone', 'user_id', 'director_id', 'email'];
 
     protected $searchableFields = ['*'];
 
@@ -28,5 +28,9 @@ class Leader extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function director()
+    {
+        return $this->belongsTo(Director::class);
     }
 }

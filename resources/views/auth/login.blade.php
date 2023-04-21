@@ -5,7 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header bg- p-3 bg-primary rounded-10"> 
+                    <div class="text-center">
+                        <img src="/images/JU.jpg" alt="" style="width: 100px; ">
+                        <div>
+                          <a href="" class="h1"><b>HELP</b>DESK</a>
+                          </div>
+                    </div>
+                </div>
+
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -65,8 +73,15 @@
                             </div>
                         </div>
                     </form>
+                    
+
+                    
                 </div>
+                
             </div>
+            <div class="login-box">
+
+              </div>
         </div>
     </div>
 </div>
