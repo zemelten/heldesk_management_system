@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 use App\Models\OrganizationalUnit;
 use App\Http\Requests\TicketStoreRequest;
 use App\Http\Requests\TicketUpdateRequest;
+use App\Models\Building;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -23,14 +26,16 @@ class TicketController extends Controller
     {
         $this->authorize('view-any', Ticket::class);
 
-        $search = $request->get('search', '');
+       
 
-        $tickets = Ticket::search($search)
-            ->latest()
-            ->paginate(10)
-            ->withQueryString();
+        $tickets = Ticket::all();
+      
+      
+        
+       
+           
 
-        return view('app.tickets.index', compact('tickets', 'search'));
+        return view('app.tickets.index',compact('tickets'));
     }
 
     /**
@@ -40,14 +45,18 @@ class TicketController extends Controller
     public function create(Request $request)
     {
         $this->authorize('create', Ticket::class);
-
+        
         $campuses = Campus::pluck('name', 'id');
         $customers = Customer::pluck('full_name', 'id');
         $problems = Problem::pluck('name', 'id');
+        $buildings = Building::pluck('name', 'id');
         $organizationalUnits = OrganizationalUnit::pluck('name', 'id');
         $userSupports = UserSupport::pluck('id', 'id');
         $priorities = Prioritie::pluck('name', 'id');
-
+        
+    
+       
+       
         return view(
             'app.tickets.create',
             compact(
@@ -56,7 +65,9 @@ class TicketController extends Controller
                 'problems',
                 'organizationalUnits',
                 'userSupports',
-                'priorities'
+                'priorities',
+                'buildings',
+
             )
         );
     }
@@ -67,11 +78,35 @@ class TicketController extends Controller
      */
     public function store(TicketStoreRequest $request)
     {
+       
+        
+        
         $this->authorize('create', Ticket::class);
-
         $validated = $request->validated();
+        [
+            'status' => ['nullable', 'max:255'],
+            'description' => ['nullable', 'max:255', 'string'],
+            'campuse_id' => ['nullable', 'exists:campuses,id'],
+            'customer_id' => ['nullable', 'exists:customers,id'],
+            'problem_id' => ['nullable', 'exists:problems,id'],
+            'organizational_unit_id' => [
+                'nullable',
+                'exists:organizational_units,id',
+            ],
+            'user_support_id' => ['nullable', 'exists:user_supports,id'],
+            'prioritie_id' => ['nullable', 'exists:priorities,id'],
+        ];
+        $ticket = new Ticket();
+        $ticket->status = 37;
+        $ticket->description = $request->description;
+        $ticket->customer_id = 11;
+        $ticket->user_support_id = 11;
+        $ticket->reports_id = 1;
+        $ticket->campuse_id = $request->campuse_id;
+        $ticket->organizational_unit_id = $request->organizational_unit_id;
+        $ticket->problem_id = $request->problem_id;   
+        $ticket->save();
 
-        $ticket = Ticket::create($validated);
 
         return redirect()
             ->route('tickets.edit', $ticket)
@@ -102,6 +137,7 @@ class TicketController extends Controller
         $campuses = Campus::pluck('name', 'id');
         $customers = Customer::pluck('full_name', 'id');
         $problems = Problem::pluck('name', 'id');
+        $buildings = Building::pluck('name', 'id');
         $organizationalUnits = OrganizationalUnit::pluck('name', 'id');
         $userSupports = UserSupport::pluck('id', 'id');
         $priorities = Prioritie::pluck('name', 'id');
@@ -112,6 +148,7 @@ class TicketController extends Controller
                 'ticket',
                 'campuses',
                 'customers',
+                'buildings',
                 'problems',
                 'organizationalUnits',
                 'userSupports',

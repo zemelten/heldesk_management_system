@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Ticket;
+use App\Models\UserSupport;
 use Illuminate\Http\Request;
+use Database\Seeders\UserSupportSeeder;
 
 class HomeController extends Controller
 {
@@ -28,6 +30,7 @@ class HomeController extends Controller
         //conut all users 
         $countUsers = User::count();
         $totalTicket = Ticket::count();
+        $countUsersupports = UserSupport::count();
         $totalactiveTicket = Ticket::where('status', '=', 1)->count();
         $totalpendingTicket = Ticket::where('status', '=', 2)->count();
         $totalClosedTicket = Ticket::where('status', '=', 3)->count();
@@ -38,6 +41,10 @@ class HomeController extends Controller
 
         //dd($countusers);
 
+<<<<<<< HEAD
         return view('home', compact('countUsers', 'totalTicket', 'totalactiveTicket', 'totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket', 'totalUnclosedTicket'));
+=======
+        return view('home', compact('countUsers', 'totalTicket', 'totalactiveTicket', 'countUsersupports','totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket', 'totalUnclosedTicket'));
+>>>>>>> ccbd7415dec900773b60b624741b16dc91681707
     }
 }

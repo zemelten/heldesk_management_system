@@ -27,7 +27,7 @@ class TicketStoreRequest extends FormRequest
             'status' => ['nullable', 'max:255'],
             'description' => ['nullable', 'max:255', 'string'],
             'campuse_id' => ['nullable', 'exists:campuses,id'],
-            'customer_id' => ['required', 'exists:customers,id'],
+            'customer_id' => ['nullable', 'exists:customers,id'],
             'problem_id' => ['nullable', 'exists:problems,id'],
             'organizational_unit_id' => [
                 'nullable',
