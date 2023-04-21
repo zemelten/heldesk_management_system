@@ -17,7 +17,7 @@
                   <div class="col-md-6 text-right">
                       @can('create', App\Models\Ticket::class)
                           <a href="{{ route('tickets.create') }}" class="btn btn-primary">
-                              <i class="icon ion-md-add"></i> @lang('crud.common.create')
+                              <i class="fas fa-plus fa-lg"></i> @lang('crud.common.create')
                           </a>
                       @endcan
                   </div>
@@ -29,7 +29,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered ">
                   <thead>
                     <tr>
                         <th class="text-left">
@@ -132,7 +132,7 @@
                   @endforelse
               </tbody>
                   <tfoot>
-                    <tr>
+                    {{-- <tr>
                       <th class="text-left">
                           @lang('crud.tickets.inputs.customer_id')
                       </th>
@@ -157,7 +157,7 @@
                       <th class="text-center">
                           @lang('crud.common.actions')
                       </th>
-                  </tr>
+                  </tr> --}}
                   </tfoot>
                 </table>
               </div>
@@ -193,18 +193,11 @@
 <script>
   $(function () {
     $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
       "responsive": true,
-    });
+       "lengthChange": false, "autoWidth": false,
+      "buttons": ["excel", "pdf", "print"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    
   });
 </script>
 
