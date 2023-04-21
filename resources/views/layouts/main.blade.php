@@ -221,7 +221,7 @@
                                 <!-- small box -->
                                 <div class="small-box bg-teal">
                                     <div class="inner">
-                                        <h3> {{ $totalTicket }}</h3>
+                                        <h3> {{ $countUsersupports }}</h3>
 
                                         <p>User Supports</p>
                                     </div>
