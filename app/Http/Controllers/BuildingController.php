@@ -35,7 +35,10 @@ class BuildingController extends Controller
     {
         $this->authorize('create', Building::class);
 
-        $campuses = Campus::pluck('name', 'id');
+        // $campuses = Campus::pluck('name', 'id');
+
+        $campuses = Campus::find(1);
+        dd($campuses->buildings);
 
         return view('app.buildings.create', compact('campuses'));
     }
