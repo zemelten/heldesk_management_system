@@ -215,7 +215,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="7">{{ $userSupports->render() }}</td>
+                    <td colspan="8">{{ $userSupports->render() }}</td>
                 </tr>
             </tfoot>
         </table>

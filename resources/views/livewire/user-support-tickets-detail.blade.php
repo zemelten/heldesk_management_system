@@ -206,7 +206,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="7">{{ $tickets->render() }}</td>
+                    <td colspan="8">{{ $tickets->render() }}</td>
                 </tr>
             </tfoot>
         </table>

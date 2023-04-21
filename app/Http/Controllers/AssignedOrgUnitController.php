@@ -23,7 +23,7 @@ class AssignedOrgUnitController extends Controller
 
         $assignedOrgUnits = AssignedOrgUnit::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view(

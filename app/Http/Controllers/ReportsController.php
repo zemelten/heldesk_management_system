@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
 use App\Models\Reports;
 use App\Models\UserSupport;
 use Illuminate\Http\Request;
@@ -20,12 +21,15 @@ class ReportsController extends Controller
 
         $search = $request->get('search', '');
 
-        $allReports = Reports::search($search)
+        $userSupports = UserSupport::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
-        return view('app.all_reports.index', compact('allReports', 'search'));
+        return view(
+            'app.all_reports.user_support_list.index',
+            compact('userSupports', 'search')
+        );
     }
 
     /**
@@ -63,11 +67,22 @@ class ReportsController extends Controller
      * @param \App\Models\Reports $reports
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Reports $reports)
+    public function show(Request $request, UserSupport $reports)
     {
         $this->authorize('view', $reports);
 
-        return view('app.all_reports.show', compact('reports'));
+        //conut all users 
+        $totalTicket = Ticket::where('user_support_id', $reports->user_support_id)->count();
+        $totalactiveTicket = Ticket::where('user_support_id', $reports->user_support_id)->where('status', 1)->count();
+        $totalpendingTicket = Ticket::where('user_support_id', $reports->user_support_id)->where('status', 2)->count();
+        $totalClosedTicket = Ticket::where('user_support_id', $reports->user_support_id)->where('status', 3)->count();
+        $todaysClosedTicket = Ticket::whereDate('updated_at', today())->count();
+        $todaysTicket = Ticket::whereDate('created_at', today())->count();
+
+        
+        
+
+        return view('app.all_reports.show', compact('reports', 'totalTicket', 'totalactiveTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket'));
     }
 
     /**

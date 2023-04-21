@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
     <div class="searchbar mt-0 mb-4">
         <div class="row">
             <div class="col-md-6">
@@ -132,7 +132,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="7">
+                            <td colspan="8">
                                 @lang('crud.common.no_items_found')
                             </td>
                         </tr>
@@ -140,7 +140,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="7">{!! $serviceUnits->render() !!}</td>
+                            <td colspan="8">{!! $serviceUnits->render() !!}</td>
                         </tr>
                     </tfoot>
                 </table>
