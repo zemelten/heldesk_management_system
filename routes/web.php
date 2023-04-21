@@ -23,6 +23,7 @@ use App\Http\Controllers\AssignedOrgUnitController;
 use App\Http\Controllers\ProblemCatagoryController;
 use App\Http\Controllers\EscalatedTicketController;
 use App\Http\Controllers\OrganizationalUnitController;
+use App\Models\Building;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,7 @@ use App\Http\Controllers\OrganizationalUnitController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect("/dashboard");
 });
 
 Auth::routes();
@@ -52,6 +53,8 @@ Route::prefix('/')
         Route::resource('users', UserController::class);
         Route::resource('campuses', CampusController::class);
         Route::resource('buildings', BuildingController::class);
+        Route::post('/get-org-units',[BuildingController::class, 'getOrgUnits']);
+        Route::post('/get-buildings',[BuildingController::class,'getBuildings']);
         Route::resource('directors', DirectorController::class);
         Route::resource('leaders', LeaderController::class);
         Route::resource('problems', ProblemController::class);

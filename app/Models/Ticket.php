@@ -12,15 +12,14 @@ class Ticket extends Model
     use Searchable;
 
     protected $fillable = [
-        'status',
+      
         'description',
         'campuse_id',
-        'customer_id',
         'problem_id',
         'organizational_unit_id',
-        'reports_id',
-        'user_support_id',
-        'prioritie_id',
+      
+     
+       
     ];
 
     protected $searchableFields = ['*'];
@@ -58,6 +57,9 @@ class Ticket extends Model
     public function reports()
     {
         return $this->belongsTo(Reports::class);
+    }
+    public function building(){
+        return $this->belongsTo(Building::class);
     }
 
     public function escalatedTickets()

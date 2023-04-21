@@ -58,7 +58,7 @@ return [
         'show_title' => 'Show Building',
         'inputs' => [
             'name' => 'Name',
-            'campuse_id' => 'Campuse',
+            'campuse_id' => 'Campus',
         ],
     ],
 
@@ -185,11 +185,11 @@ return [
 
     'organizational_units' => [
         'name' => 'Org Units',
-        'index_title' => 'OrganizationalUnits List',
+        'index_title' => 'Org Units List',
         'new_title' => 'New Org unit',
-        'create_title' => 'Create OrganizationalUnit',
-        'edit_title' => 'Edit OrganizationalUnit',
-        'show_title' => 'Show OrganizationalUnit',
+        'create_title' => 'Create Org Unit',
+        'edit_title' => 'Edit Org Unit',
+        'show_title' => 'Show Org Unit',
         'inputs' => [
             'name' => 'Name',
             'offcie_no' => 'Office No',
@@ -276,7 +276,7 @@ return [
             'telephone' => 'Telephone',
             'fax' => 'Fax',
             'email' => 'Email',
-            'campuse_id' => 'Campuse',
+            'campuse_id' => 'Campus',
         ],
     ],  
 
@@ -290,7 +290,7 @@ return [
         'inputs' => [
             'status' => 'Status',
             'description' => 'Description',
-            'campuse_id' => 'Campuse',
+            'campuse_id' => 'Campus',
             'problem_id' => 'Problem',
             'organizational_unit_id' => 'Org Unit',
             'prioritie_id' => 'Priority',
@@ -325,7 +325,7 @@ return [
             'email' => 'Email',
             'phone_no' => 'Phone No',
             'campus_id' => 'Campus',
-            'organizational_unit_id' => 'Organizational Unit',
+            'organizational_unit_id' => 'Org Unit',
             'floor_id' => 'Floor',
             'user_id' => 'User',
             'is_edited' => 'Is Edited',
@@ -359,9 +359,9 @@ return [
         'inputs' => [
             'status' => 'Status',
             'description' => 'Description',
-            'campuse_id' => 'Campuse',
+            'campuse_id' => 'Campus',
             'problem_id' => 'Problem',
-            'organizational_unit_id' => 'Organizational Unit',
+            'organizational_unit_id' => 'Org Unit',
             'user_support_id' => 'User Support',
         ],
     ],
@@ -376,7 +376,7 @@ return [
         'inputs' => [
             'status' => 'Status',
             'description' => 'Description',
-            'campuse_id' => 'Campuse',
+            'campuse_id' => 'Campus',
             'problem_id' => 'Problem',
             'user_support_id' => 'User Support',
             'prioritie_id' => 'Prioritie',
@@ -397,16 +397,16 @@ return [
     ],
 
     'building_organizational_units' => [
-        'name' => 'Building Organizational Units',
+        'name' => 'Building Org Units',
         'index_title' => 'OrganizationalUnits List',
-        'new_title' => 'New Organizational unit',
+        'new_title' => 'New Org Unit',
         'create_title' => 'Create OrganizationalUnit',
         'edit_title' => 'Edit OrganizationalUnit',
         'show_title' => 'Show OrganizationalUnit',
         'inputs' => [
             'name' => 'Name',
             'offcie_no' => 'Offcie No',
-            'campuse_id' => 'Campuse',
+            'campuse_id' => 'Campus',
             'prioritie_id' => 'Prioritie',
         ],
     ],
@@ -455,10 +455,10 @@ return [
         'inputs' => [
             'status' => 'Status',
             'description' => 'Description',
-            'campuse_id' => 'Campuse',
+            'campuse_id' => 'Campus',
             'customer_id' => 'Customer',
             'problem_id' => 'Problem',
-            'organizational_unit_id' => 'Organizational Unit',
+            'organizational_unit_id' => 'Org Unit',
             'user_support_id' => 'User Support',
             'prioritie_id' => 'Prioritie',
         ],
@@ -474,9 +474,9 @@ return [
         'inputs' => [
             'status' => 'Status',
             'description' => 'Description',
-            'campuse_id' => 'Campuse',
+            'campuse_id' => 'Campus',
             'problem_id' => 'Problem',
-            'organizational_unit_id' => 'Organizational Unit',
+            'organizational_unit_id' => 'Org Unit',
             'user_support_id' => 'User Support',
             'prioritie_id' => 'Prioritie',
         ],
@@ -531,10 +531,10 @@ return [
         'inputs' => [
             'status' => 'Status',
             'description' => 'Description',
-            'campuse_id' => 'Campuse',
+            'campuse_id' => 'Campus',
             'customer_id' => 'Customer',
             'problem_id' => 'Problem',
-            'organizational_unit_id' => 'Organizational Unit',
+            'organizational_unit_id' => 'Org Unit',
             'user_support_id' => 'User Support',
             'prioritie_id' => 'Prioritie',
         ],

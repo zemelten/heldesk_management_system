@@ -4,9 +4,10 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ url('/') }}" class="brand-link">
-            <img src="https://vemto.app/favicon.png" alt="Vemto Logo" class="brand-image bg-white img-circle">
+            <img src="{{ asset('images/logo.jpg') }}" alt="JU Logo" class="brand-image">
             <span class="brand-text font-weight-light">JU HelpDesk</span>
         </a>
+        
 
         <!-- Sidebar -->
         <div class="sidebar">
@@ -24,7 +25,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('home') }}" class="nav-link">
+                            <a href="{{ route('tickets.index') }}" class="nav-link">
                                 <i class="nav-icon fa-solid fa-ticket fa-lg""></i>
                                 <p>
                                     Tickets
@@ -32,7 +33,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('tickets.index') }}" class="nav-link">
                                 <i class="nav-icon fa-solid fa-key fa-lg"></i>
                                 <p>
                                     My Tickets
@@ -42,7 +43,7 @@
                             <ul class="nav nav-treeview">
 
                                 <li class="nav-item">
-                                    <a href="{{ route('roles.index') }}" class="nav-link">
+                                    <a href="{{ route('tickets.index') }}" class="nav-link">
                                         <i class="nav-icon icon ion-md-radio-button-off"></i>
                                         <p>Active Tickets</p>
                                     </a>
@@ -51,7 +52,7 @@
 
 
                                 <li class="nav-item">
-                                    <a href="{{ route('permissions.index') }}" class="nav-link">
+                                    <a href="{{ route('tickets.index') }}" class="nav-link">
                                         <i class="nav-icon icon ion-md-radio-button-off"></i>
                                         <p>Closed Tickets</p>
                                     </a>
@@ -78,7 +79,7 @@
                             <ul class="nav nav-treeview">
 
                                 <li class="nav-item">
-                                    <a href="{{ route('roles.index') }}" class="nav-link">
+                                    <a href="{{ route('users.index') }}" class="nav-link">
                                         <i class="nav-icon icon ion-md-radio-button-off"></i>
                                         <p>List of users</p>
                                     </a>
@@ -87,7 +88,7 @@
 
 
                                 <li class="nav-item">
-                                    <a href="{{ route('permissions.index') }}" class="nav-link">
+                                    <a href="{{ route('roles.index') }}" class="nav-link">
                                         <i class="nav-icon icon ion-md-radio-button-off"></i>
                                         <p>Roles</p>
                                     </a>
@@ -118,7 +119,7 @@
                                 <ul class="nav nav-treeview">
                                     @can('view-any', Spatie\Permission\Models\Role::class)
                                         <li class="nav-item">
-                                            <a href="{{ route('roles.index') }}" class="nav-link">
+                                            <a href="{{ route('directors.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
                                                 <p>Directors</p>
                                             </a>
@@ -127,19 +128,19 @@
 
                                     @can('view-any', Spatie\Permission\Models\Permission::class)
                                         <li class="nav-item">
-                                            <a href="{{ route('permissions.index') }}" class="nav-link">
+                                            <a href="{{ route('leaders.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
                                                 <p>Team Leaders</p>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ route('permissions.index') }}" class="nav-link">
+                                            <a href="{{ route('user-supports.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
                                                 <p>User Supports</p>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ route('permissions.index') }}" class="nav-link">
+                                            <a href="{{ route('customers.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
                                                 <p>Customers</p>
                                             </a>
@@ -149,7 +150,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="av-icon fa-solid fa-gear fa-lg"></i>
+                                    <i class="nav-icon fa-solid fa-gear fa-lg"></i>
                                     <p>
                                         Settings
                                         <i class="nav-icon right icon ion-md-arrow-round-back"></i>

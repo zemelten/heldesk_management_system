@@ -18,6 +18,16 @@
         <script src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
         
 
+
+
+        <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+
         
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -63,9 +73,11 @@
             <main class="content-wrapper p-5">
                 @yield('content')
             </main>
+            @include('layouts.footer')
         </div>
        
     </div>
+    
 
     @stack('modals')
 
@@ -83,6 +95,7 @@
 
 
     <!-- Select2 -->
+    {{--  --}}
     <script src="{{ asset('allinone/select2.full.min.js') }}" defer></script>
     <script src="{{ asset('allinone/select2.min.js') }}"></script>
     <!-- Select2 -->
@@ -124,16 +137,18 @@
         })
     </script>
 </body>
-
 <script>
     $(function() {
         //Initialize Select2 Elements
         $('.select2').select2({
             // dropdownAutoWidth: true
-            theme: "classic"
+            theme: "bootstrap4",
+          //  width:'resolve'
 
         })
     });
-</script>
+ 
+    
+</script> 
 
 </html>
