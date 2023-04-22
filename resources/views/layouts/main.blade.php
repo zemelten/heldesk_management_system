@@ -145,11 +145,7 @@
     @livewireStyles
 </head>
 
-<<<<<<< HEAD
-<body class="sidebar-mini layout-fixed layout-navbar-fixed sidebar-expanded">
-=======
 <body class="hold-transition sidebar-mini layout-fixed">
->>>>>>> ccbd7415dec900773b60b624741b16dc91681707
     <div id="app" class="wrapper">
         <div class="main-header">
             @include('layouts.nav')
@@ -199,11 +195,7 @@
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-<<<<<<< HEAD
-                                    <h3>{{  $todaysTicket }}</h3>
-=======
                                     <h3>{{ $todaysTicket }}</h3>
->>>>>>> ccbd7415dec900773b60b624741b16dc91681707
 
                                     <p>Todays Tickets</p>
                                 </div>
@@ -219,24 +211,14 @@
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-<<<<<<< HEAD
-                                    <h3>{{ $totalClosedTicket  }}</h3>
-=======
                                     <h3>{{ $totalClosedTicket }}</h3>
->>>>>>> ccbd7415dec900773b60b624741b16dc91681707
 
                                     <p>Closed Tickets</p>
                                 </div>
                                 <div class="icon">
-<<<<<<< HEAD
-                                    <i class="fas fa-exclamation-triangle"></i>
-
-                               </div>
-=======
                                     <i class="fa-solid fa-check"></i>
 
                                 </div>
->>>>>>> ccbd7415dec900773b60b624741b16dc91681707
                                 <a href="#" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
@@ -265,11 +247,7 @@
                                 <!-- small box -->
                                 <div class="small-box bg-teal">
                                     <div class="inner">
-<<<<<<< HEAD
-                                        <h3> {{ $totalTicket }}</h3>
-=======
                                         <h3> {{ $countUsersupports }}</h3>
->>>>>>> ccbd7415dec900773b60b624741b16dc91681707
 
                                         <p>User Supports</p>
                                     </div>
