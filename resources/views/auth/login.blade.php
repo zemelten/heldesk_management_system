@@ -79,14 +79,10 @@
                 </div>
                 
             </div>
-<<<<<<< HEAD
-           
-=======
             <div class="login-box">
 
               </div>
         </div>
     </div>
->>>>>>> da1cb08bcb00bfd0b6aa10a8ecaf62a991e16c70
 </div>
 @endsection
