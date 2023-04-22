@@ -65,7 +65,7 @@
                     <tbody>
                         @forelse($leaders as $key => $leader)
                         <tr>
-                            <td>{{$key+1}}</td>
+                            <td style="width: 2.5cm"> {{$key+1}}</td>
                             <td>{{ $leader->full_name ?? '-' }}</td>
                             <td>{{ $leader->sex ?? '-' }}</td>
                             <td>{{ $leader->phone ?? '-' }}</td>

@@ -47,6 +47,7 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th class="text-left">
                                 @lang('crud.customers.inputs.full_name')
                             </th>
@@ -83,8 +84,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($customers as $customer)
+                        @forelse($customers as $key => $customer)
                         <tr>
+                            <td style="width: 2.5cm"> {{$key+1}}</td>
                             <td>{{ $customer->full_name ?? '-' }}</td>
                             <td>{{ $customer->email ?? '-' }}</td>
                             <td>{{ $customer->phone_no ?? '-' }}</td>

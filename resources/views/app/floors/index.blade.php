@@ -44,6 +44,7 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th class="text-left">
                                 @lang('crud.floors.inputs.name')
                             </th>
@@ -56,8 +57,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($floors as $floor)
+                        @forelse($floors as $key => $floor)
                         <tr>
+                            <td style="width: 2.5cm"> {{$key+1}}</td>
                             <td>{{ $floor->name ?? '-' }}</td>
                             <td>{{ $floor->description ?? '-' }}</td>
                             <td class="text-center" style="width: 134px;">
