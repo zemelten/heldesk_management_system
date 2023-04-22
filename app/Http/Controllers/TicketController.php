@@ -107,9 +107,6 @@ class TicketController extends Controller
         $ticket->problem_id = $request->problem_id;   
         $ticket->save();
 
-    if($ticket){
-        dd("yes");
-    }
 
         return redirect()
             ->route('tickets.edit', $ticket)

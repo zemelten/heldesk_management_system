@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">
@@ -81,7 +81,19 @@ $('#campuse_id').on('change', function() {
     });
 });
 </script>
+<script>
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2({
+            // dropdownAutoWidth: true
+             theme: "bootstrap4",
+            //  width:'resolve'
 
+        })
+    });
+    
+
+</script>
 
 
 @endpush

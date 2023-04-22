@@ -21,7 +21,7 @@ class PrioritieController extends Controller
 
         $priorities = Prioritie::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view('app.priorities.index', compact('priorities', 'search'));

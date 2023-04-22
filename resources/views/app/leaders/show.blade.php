@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">
@@ -15,6 +15,10 @@
                 <div class="mb-4">
                     <h5>@lang('crud.leaders.inputs.full_name')</h5>
                     <span>{{ $leader->full_name ?? '-' }}</span>
+                </div>
+                <div class="mb-4">
+                    <h5>Belongs to Director</h5>
+                    <span>{{ $leader->director->full_name ?? '-' }}</span>
                 </div>
                 <div class="mb-4">
                     <h5>@lang('crud.leaders.inputs.sex')</h5>

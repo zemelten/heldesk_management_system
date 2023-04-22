@@ -3,7 +3,7 @@
 @section('content')
 
             <!-- /.card -->
-            <div class="searchbar mt-0 mb-4">
+             <div class="searchbar mt-0 mb-4">
               <div class="row">
                   <div class="col-md-6">
                       <form>
@@ -13,7 +13,7 @@
                               </div>
                           </div>
                       </form>
-                  </div>
+                  </div> 
                   <div class="col-md-6 text-right">
                       @can('create', App\Models\Ticket::class)
                           <a href="{{ route('tickets.create') }}" class="btn btn-primary">
@@ -22,7 +22,7 @@
                       @endcan
                   </div>
               </div>
-          </div>
+          </div> 
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">@lang('crud.tickets.index_title')</h3>
@@ -32,6 +32,9 @@
                 <table id="example1" class="table table-bordered ">
                   <thead>
                     <tr>
+                        <th class="text-left">
+                            #
+                        </th>
                         <th class="text-left">
                             @lang('crud.tickets.inputs.customer_id')
                         </th>
@@ -62,6 +65,9 @@
                 <tbody>
                   @forelse($tickets as $ticket)
                       <tr>
+                        <td>
+                      {{  $ticket->id }}     
+                        </td>
                           <td>
                               {{ optional($ticket->customer)->full_name ?? '-' }}
                           </td>
@@ -193,9 +199,8 @@
 <script>
   $(function () {
     $("#example1").DataTable({
-      "responsive": true,
-       "lengthChange": false, "autoWidth": false,
-      "buttons": ["excel", "pdf", "print"]
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": [ "excel", "pdf", "print"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     
   });

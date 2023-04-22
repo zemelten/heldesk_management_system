@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\ProblemCatagory;
 use App\Http\Requests\UserSupportStoreRequest;
 use App\Http\Requests\UserSupportUpdateRequest;
+use App\Models\Leader;
 
 class UserSupportController extends Controller
 {
@@ -26,7 +27,7 @@ class UserSupportController extends Controller
 
         $userSupports = UserSupport::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view(
@@ -46,6 +47,7 @@ class UserSupportController extends Controller
         $users = User::pluck('full_name', 'id');
         $problemCatagories = ProblemCatagory::pluck('name', 'id');
         $buildings = Building::pluck('name', 'id');
+        $leaders = Leader::pluck('full_name', 'id');
         $serviceUnits = ServiceUnit::pluck('name', 'id');
         $units = Unit::pluck('telephone', 'id');
 
@@ -55,6 +57,7 @@ class UserSupportController extends Controller
                 'users',
                 'problemCatagories',
                 'buildings',
+                'leaders',
                 'serviceUnits',
                 'units'
             )
@@ -67,6 +70,7 @@ class UserSupportController extends Controller
      */
     public function store(UserSupportStoreRequest $request)
     {
+        
         $this->authorize('create', UserSupport::class);
 
         $validated = $request->validated();
@@ -102,6 +106,7 @@ class UserSupportController extends Controller
         $users = User::pluck('full_name', 'id');
         $problemCatagories = ProblemCatagory::pluck('name', 'id');
         $buildings = Building::pluck('name', 'id');
+        $leaders = Leader::pluck('full_name', 'id');
         $serviceUnits = ServiceUnit::pluck('name', 'id');
         $units = Unit::pluck('telephone', 'id');
 
@@ -112,6 +117,7 @@ class UserSupportController extends Controller
                 'users',
                 'problemCatagories',
                 'buildings',
+                'leaders',
                 'serviceUnits',
                 'units'
             )

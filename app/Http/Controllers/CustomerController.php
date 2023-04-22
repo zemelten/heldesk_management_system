@@ -26,7 +26,7 @@ class CustomerController extends Controller
 
         $customers = Customer::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view('app.customers.index', compact('customers', 'search'));
