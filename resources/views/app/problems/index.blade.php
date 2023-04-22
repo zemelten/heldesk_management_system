@@ -44,6 +44,9 @@
                         <thead>
                             <tr>
                                 <th class="text-left">
+                                    No.
+                                </th>
+                                <th class="text-left">
                                     @lang('crud.problems.inputs.name')
                                 </th>
                                 <th class="text-left">
@@ -59,8 +62,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($problems as $problem)
+                            @forelse($problems as $key => $problem)
                                 <tr>
+                                    <td style="width: 2.5cm"> {{$key+1}}</td>
                                     <td>{{ $problem->name ?? '-' }}</td>
 
                                     <td>

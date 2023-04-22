@@ -49,6 +49,7 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th class="text-left">
                                 @lang('crud.all_reports.inputs.user_support_id')
                             </th>
@@ -58,8 +59,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($allReports as $reports)
+                        @forelse($allReports as $key => $reports)
                         <tr>
+                            <td style="width: 2.5cm"> {{$key+1}}</td>
                             <td>
                                 {{ optional($reports->userSupport)->id ?? '-' }}
                             </td>
