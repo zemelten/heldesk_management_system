@@ -129,12 +129,8 @@
     @livewireStyles
 </head>
 
-<<<<<<< HEAD
-<body class="sidebar-mini layout-fixed layout-navbar-fixed sidebar-expanded">
-=======
 <body class="hold-transition sidebar-mini layout-fixed ">
 
->>>>>>> ccbd7415dec900773b60b624741b16dc91681707
     <div id="app" class="wrapper">
         @auth
             <div class="main-header">
