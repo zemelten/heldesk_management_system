@@ -41,6 +41,6 @@ class HomeController extends Controller
 
         //dd($countusers);
 
-        return view('home', compact('countUsers', 'totalTicket', 'totalactiveTicket', 'totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket', 'totalUnclosedTicket'));
+        return view('home', compact('countUsers','countUsersupports', 'totalTicket', 'totalactiveTicket', 'totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket', 'totalUnclosedTicket'));
     }
 }
