@@ -47,6 +47,7 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th class="text-left">
                                 @lang('crud.buildings.inputs.name')
                             </th>
@@ -59,8 +60,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($buildings as $building)
+                        @forelse($buildings as $key => $building)
                         <tr>
+                            <td style="width: 2.5cm"> {{$key+1}}</td>
                             <td>{{ $building->name ?? '-' }}</td>
                             <td>
                                 {{ optional($building->campuse)->name ?? '-' }}
