@@ -44,6 +44,7 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th class="text-left">
                                 @lang('crud.leaders.inputs.full_name')
                             </th>
@@ -62,8 +63,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($leaders as $leader)
+                        @forelse($leaders as $key => $leader)
                         <tr>
+                            <td>{{$key+1}}</td>
                             <td>{{ $leader->full_name ?? '-' }}</td>
                             <td>{{ $leader->sex ?? '-' }}</td>
                             <td>{{ $leader->phone ?? '-' }}</td>
