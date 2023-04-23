@@ -70,7 +70,7 @@
     {{-- date picker  --}}
     <link rel="stylesheet" href="{{ asset('main/gijgo.min.css') }}">
 
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />\
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
 
     <!-- Include Date Range Picker -->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
@@ -129,21 +129,22 @@
     @livewireStyles
 </head>
 
-<body class="sidebar-mini layout-fixed layout-navbar-fixed sidebar-collapse">
+<body class="hold-transition sidebar-mini layout-fixed ">
 
     <div id="app" class="wrapper">
         @auth
             <div class="main-header">
                 @include('layouts.nav')
             </div>
-            @include('layouts.sidebar')
+      
+           @include('layouts.sidebar')
         @endauth
         <main class="content-wrapper p-5">
             @yield('content')
         </main>
-        @include('layouts.footer')
+      
     </div>
-
+  @include('layouts.footer')
     </div>
 
 
@@ -223,6 +224,23 @@
 
         })
     });
+    <script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </script>
 
 </html>

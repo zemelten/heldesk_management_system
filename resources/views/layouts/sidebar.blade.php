@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 @auth
 
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-light elevation-4">
         <!-- Brand Logo -->
         <a href="{{ url('/') }}" class="brand-link">
             <img src="{{ asset('images/logo.jpg') }}" alt="JU Logo" class="brand-image">
@@ -14,7 +14,7 @@
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu">
+                <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" >
 
                     @auth
                         <li class="nav-item">
@@ -37,7 +37,7 @@
                                 <i class="nav-icon fa-solid fa-key fa-lg"></i>
                                 <p>
                                     My Tickets
-                                    <i class="nav-icon fa-solid fa-arrow-left fa-lg"></i>
+                                    <i class="  nav-icon fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -73,7 +73,7 @@
                                 <i class=" nav-icon fa-solid fa-users fa-lg"></i>
                                 <p>
                                     User Management
-                                    <i class="nav-icon right icon ion-md-arrow-round-back"></i>
+                                    <i class="  nav-icon fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -113,7 +113,7 @@
                                     <i class="nav-icon fa-solid fa-network-wired fa-lg"></i>
                                     <p>
                                         Personnels
-                                        <i class="nav-icon right icon ion-md-arrow-round-back"></i>
+                                       <i class="  nav-icon fas fa-angle-left right"></i>
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
@@ -153,7 +153,7 @@
                                     <i class="nav-icon fa-solid fa-gear fa-lg"></i>
                                     <p>
                                         Settings
-                                        <i class="nav-icon right icon ion-md-arrow-round-back"></i>
+                                       <i class="  nav-icon fas fa-angle-left right"></i>
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
@@ -206,7 +206,7 @@
                                     <i class="nav-icon fa-solid fa-cubes-stacked fa-lg"></i>
                                     <p>
                                         Queue Type
-                                        <i class="nav-icon right icon ion-md-arrow-round-back"></i>
+                                       <i class="  nav-icon fas fa-angle-left right"></i>
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
@@ -240,7 +240,7 @@
                                     <i class="nav-icon fa-solid fa-house fa-lg"></i>
                                     <p>
                                       Org. Structure
-                                        <i class="nav-icon right icon ion-md-arrow-round-back"></i>
+                                       <i class="  nav-icon fas fa-angle-left right"></i>
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
@@ -259,7 +259,7 @@
                                     <i class=" nav-iconfa-solid fa-wave-pulse fa-lg"></i>
                                     <p>
                                         Reporting
-                                        <i class="nav-icon right icon ion-md-arrow-round-back"></i>
+                                       <i class="  nav-icon fas fa-angle-left right"></i>
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">

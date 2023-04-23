@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-light " style="background-color: #0067ba;">
+<nav class="navbar navbar-expand navbar-light " style="background-color: hsl(210, 37%, 97%);">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
         <span class="navbar-toggler-icon"></span>
     </button>

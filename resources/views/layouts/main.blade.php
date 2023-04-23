@@ -99,7 +99,33 @@
     <!-- Icons -->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
 
+    <!-- CHARTS -->
 
+
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+
+
+    <link rel="stylesheet"
+        href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+
+
+    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/pace-progress/themes/black/pace-theme-minimal.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('') }}css/tooltipster.bundle.min.css" />
+
+
+
+
+
+    <!-- CHARTS -->
     <!-- Small Ionicons Fixes for AdminLTE -->
     <style>
         html {
@@ -119,7 +145,7 @@
     @livewireStyles
 </head>
 
-<body class="sidebar-mini layout-fixed layout-navbar-fixed sidebar-collapse">
+<body class="hold-transition sidebar-mini layout-fixed">
     <div id="app" class="wrapper">
         <div class="main-header">
             @include('layouts.nav')
@@ -169,7 +195,7 @@
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3>{{  $todaysTicket }}</h3>
+                                    <h3>{{ $todaysTicket }}</h3>
 
                                     <p>Todays Tickets</p>
                                 </div>
@@ -185,14 +211,14 @@
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3>{{ $totalClosedTicket  }}</h3>
+                                    <h3>{{ $totalClosedTicket }}</h3>
 
                                     <p>Closed Tickets</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <i class="fa-solid fa-check"></i>
 
-                               </div>
+                                </div>
                                 <a href="#" class="small-box-footer">More info <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
@@ -274,7 +300,94 @@
                 </div><!-- /.container-fluid -->
             </section>
             <!-- /.content -->
+            <div class="col-md-12">
+                <div class="card " id="mycard">
+                    <div class="card-header">
+                        <h5 class="card-title">Tickets and Customers Diagram</h5>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fas fa-wrench"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" id="save">
+                                    <i class="fas  fa-save"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right" role="menu" style="">
+                                    <button class="dropdown-item changeDiagram" data-value="pie"
+                                        data-cut="0">Pie</button>
+                                    <button class="dropdown-item changeDiagram" data-value="doughnut"
+                                        data-cut="50">Doughnut</button>
+                                    <button class="dropdown-item changeDiagram" data-value="bar"
+                                        data-cut="0">Bar</button>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body" style="display: block;">
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <p class="text-center">
+                                    <strong>2023-Apr-21</strong>
+                                </p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="chartjs-size-monitor">
+                                    <div class="chartjs-size-monitor-expand">
+                                        <div class=""></div>
+                                    </div>
+                                    <div class="chartjs-size-monitor-shrink">
+                                        <div class=""></div>
+                                    </div>
+                                </div>
+                                <canvas id="AllCafe" style="display: block; width: 305px; height: 152px;"
+                                    width="610" height="304" class="chartjs-render-monitor"></canvas>
+                                <a data-id="AllCafe" download="ChartImage.jpg" href=""
+                                    class=" download float-right bg-flat-color-1">
+                                    <i class="fa fa-download"></i>
+                                </a>
+                            </div>
+
+
+                            <!-- /.col -->
+                            <div class="col-md-6">
+                                <div class="chartjs-size-monitor">
+                                    <div class="chartjs-size-monitor-expand">
+                                        <div class=""></div>
+                                    </div>
+                                    <div class="chartjs-size-monitor-shrink">
+                                        <div class=""></div>
+                                    </div>
+                                </div>
+                                <canvas id="AllMealType" width="610" height="304"
+                                    style="display: block; width: 305px; height: 152px;"
+                                    class="chartjs-render-monitor"></canvas>
+                                <a data-id="AllMealType" download="ChartImage.jpg" href=""
+                                    class=" download float-right bg-flat-color-1">
+                                    <i class="fa fa-download"></i>
+                                </a>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- ./card-body -->
+                    <!-- /.card-footer -->
+                </div>
+                <!-- /.card -->
+            </div>
         </main>
+        @include('layouts.footer')
     </div>
 
     @stack('modals')
@@ -344,6 +457,243 @@
             // theme: "classic"
 
         })
+    });
+</script>
+
+<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+
+<script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
+<script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+
+
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('plugins/pace-progress/pace.min.js') }}"></script>
+<script src="{{ asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
+
+
+<script>
+    function toastAll() {
+
+    }
+
+    setTimeout(function() {
+
+    }, 1000);
+</script>
+<script>
+    $(document).ready(function() {
+
+
+        $(".nav-sidebar").find(".active").removeClass("active");
+
+        var path = document.location.protocol + "//" + document.location.hostname + document.location.pathname;
+        $('.nav-item a').each(function() {
+            if (this.href === path) {
+                $(this).addClass('active');
+                $(this).closest('.has-treeview').addClass('menu-open');
+            }
+        });
+
+    })
+
+    $('#language').submit(function(e) {
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action');
+
+
+        $.ajax({
+            type: "POST",
+            url: form.attr('action'),
+            data: form.serialize(),
+            success: function(response) {
+
+                location.reload();
+            }
+        })
+
+    });
+    $('#lang').change(function() {
+        $('#language').submit();
+    })
+</script>
+<script>
+    function toastIt(context, msg, pos) {
+        toastr.options.timeOut = "3000";
+        toastr.options.progressBar = true;
+        toastr.options.closeButton = true;
+        toastr.options.positionClass = 'toast-bottom-right';
+        toastr['info']('Success');
+
+        // $('.btn-toastr').on('click', function() {
+        if (context == "danger")
+            context = "error"
+
+
+
+
+
+        $context = context;
+        $message = msg;
+        $position = pos;
+
+        if ($context === '') {
+            $context = 'info';
+        }
+
+        if ($position === '') {
+            $positionClass = 'toast-top-right';
+        } else {
+            $positionClass = 'toast-' + $position;
+        }
+
+        toastr.remove();
+        toastr[$context]($message, '', {
+            positionClass: $positionClass
+        });
+        // });
+    }
+
+    $(".change-room").click(function() {
+
+        $.ajax({
+            url: "/student-clinic/opd/async",
+            method: "POST",
+            data: {
+                changeroom: true
+            },
+            success: function(data) {
+                $("#temp-modal").html(data);
+                $("#change-room-modal").modal().toggle();
+            }
+        });
+
+
+    });
+</script>
+<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+<script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
+<script>
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }   
+        return color;
+    }
+    var diagramType = 'pie'
+    var active = {{ Js::from($totalactiveTicket) }}
+    var closed = {{ Js::from($totalClosedTicket) }}
+    var active = {{ Js::from($totalactiveTicket) }}
+    var AllTicketConfig = {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [active+10, closed+7, closed, active],
+
+                backgroundColor: [getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), ],
+                label: 'Tickets '
+            }],
+            labels: ["Active", "Closed", "Responded", "Escalated"]
+        },
+        options: {
+            responsive: true,
+            legend: {
+                position: 'top'
+            },
+            title: {
+                display: true,
+                text: 'All Ticket Types'
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        }
+    };
+    var AllUserSuppConfig = {
+        type: diagramType,
+        data: {
+            datasets: [{
+                data: [6516, 3533, 1097],
+
+                backgroundColor: [getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), ],
+                label: 'User Supports '
+            }],
+            labels: ["Technian", "Sys Admin", "Network"]
+        },
+        options: {
+            responsive: true,
+            legend: {
+                position: 'top'
+            },
+            title: {
+                display: true,
+                text: 'All User Supports'
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        }
+    };
+
+
+    var AllMealType;
+    var AllMealTypectx = document.getElementById('AllMealType').getContext('2d');
+    var AllCafe;
+    var AllCafectx = document.getElementById('AllCafe').getContext('2d');;
+
+    window.onload = function() {
+
+        AllCafe = new Chart(AllCafectx, AllTicketConfig);
+
+        AllMealType = new Chart(AllMealTypectx, AllUserSuppConfig);
+    };
+    $(document).ready(function() {
+        $('.changeDiagram').click(function() {
+            var diagram = $(this).attr('data-value');
+            var cutoutPercentage = $(this).attr('data-cut');
+
+            if (AllMealType) {
+                AllMealType.destroy();
+            }
+            var temp = jQuery.extend(true, {}, AllUserSuppConfig);
+            temp.type = diagram;
+            temp.options.cutoutPercentage = cutoutPercentage;
+            AllMealType = new Chart(AllMealTypectx, temp);
+            if (AllCafe) {
+                AllCafe.destroy();
+            }
+            console.log(temp);
+            var temp = jQuery.extend(true, {}, AllTicketConfig);
+            temp.type = diagram;
+            temp.options.cutoutPercentage = cutoutPercentage;
+
+            AllCafe = new Chart(AllCafectx, temp);
+
+
+        })
+    })
+</script>
+<script>
+    $(function() { // Initialize Select2 Elements
+        $('.select2').select2({
+            theme: 'bootstrap4'
+        });
+
+        $('.dateRange').daterangepicker();
+
+    });
+
+    $('.download').click(function(e) {
+        var url_base64jp = document.getElementById($(this).attr('data-id')).toDataURL("image/jpg");
+        $(this).attr('href', url_base64jp);
     });
 </script>
 

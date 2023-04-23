@@ -451,7 +451,7 @@
     <link href="https://demo.dashboardpack.com/kero-html-sidebar-pro/main.07a59de7b920cd76b874.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="hold-transition sidebar-mini layout-fixed">
     <div class="app-container app-theme-gray">
         <div class="app-main">
             <div class="app-sidebar-wrapper">
