@@ -1,20 +1,16 @@
 <div>
     <div class="mb-4">
         @can('create', App\Models\Ticket::class)
-        <button class="btn btn-primary" wire:click="newTicket">
-            <i class="icon ion-md-add"></i>
-            @lang('crud.common.new')
-        </button>
-        @endcan @can('delete-any', App\Models\Ticket::class)
-        <button
-            class="btn btn-danger"
-             {{ empty($selected) ? 'disabled' : '' }} 
-            onclick="confirm('Are you sure?') || event.stopImmediatePropagation()"
-            wire:click="destroySelected"
-        >
-            <i class="icon ion-md-trash"></i>
-            @lang('crud.common.delete_selected')
-        </button>
+            <button class="btn btn-primary" wire:click="newTicket">
+                <i class="icon ion-md-add"></i>
+                @lang('crud.common.new')
+            </button>
+            @endcan @can('delete-any', App\Models\Ticket::class)
+            <button class="btn btn-danger" {{ empty($selected) ? 'disabled' : '' }}
+                onclick="confirm('Are you sure?') || event.stopImmediatePropagation()" wire:click="destroySelected">
+                <i class="icon ion-md-trash"></i>
+                @lang('crud.common.delete_selected')
+            </button>
         @endcan
     </div>
 
@@ -22,12 +18,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">{{ $modalTitle }}</h5>
-                <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                >
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -35,86 +26,59 @@
             <div class="modal-body">
                 <div>
                     <x-inputs.group class="col-md-12">
-                        <x-inputs.text
-                            name="ticket.status"
-                            label="Status"
-                            wire:model="ticket.status"
-                            maxlength="255"
-                            placeholder="Status"
-                        ></x-inputs.text>
+                        <x-inputs.text name="ticket.status" label="Status" wire:model="ticket.status" maxlength="255"
+                            placeholder="Status"></x-inputs.text>
                     </x-inputs.group>
 
                     <x-inputs.group class="col-md-12">
-                        <x-inputs.textarea
-                            name="ticket.description"
-                            label="Description"
-                            wire:model="ticket.description"
-                            maxlength="255"
-                        ></x-inputs.textarea>
+                        <x-inputs.textarea name="ticket.description" label="Description" wire:model="ticket.description"
+                            maxlength="255"></x-inputs.textarea>
                     </x-inputs.group>
 
                     <x-inputs.group class="col-md-12">
-                        <x-inputs.select
-                            name="ticket.campuse_id"
-                            label="Campuse"
-                            wire:model="ticket.campuse_id"
-                        >
+                        <x-inputs.select name="ticket.campuse_id" label="Campuse" wire:model="ticket.campuse_id">
                             <option value="null" disabled>Please select the Campus</option>
-                            @foreach($campusesForSelect as $value => $label)
-                            <option value="{{ $value }}"  >{{ $label }}</option>
+                            @foreach ($campusesForSelect as $value => $label)
+                                <option value="{{ $value }}">{{ $label }}</option>
                             @endforeach
                         </x-inputs.select>
                     </x-inputs.group>
 
                     <x-inputs.group class="col-md-12">
-                        <x-inputs.select
-                            name="ticket.problem_id"
-                            label="Problem"
-                            wire:model="ticket.problem_id"
-                        >
+                        <x-inputs.select name="ticket.problem_id" label="Problem" wire:model="ticket.problem_id">
                             <option value="null" disabled>Please select the Problem</option>
-                            @foreach($problemsForSelect as $value => $label)
-                            <option value="{{ $value }}"  >{{ $label }}</option>
+                            @foreach ($problemsForSelect as $value => $label)
+                                <option value="{{ $value }}">{{ $label }}</option>
                             @endforeach
                         </x-inputs.select>
                     </x-inputs.group>
 
                     <x-inputs.group class="col-md-12">
-                        <x-inputs.select
-                            name="ticket.organizational_unit_id"
-                            label="Organizational Unit"
-                            wire:model="ticket.organizational_unit_id"
-                        >
+                        <x-inputs.select name="ticket.organizational_unit_id" label="Organizational Unit"
+                            wire:model="ticket.organizational_unit_id">
                             <option value="null" disabled>Please select the Organizational Unit</option>
-                            @foreach($organizationalUnitsForSelect as $value => $label)
-                            <option value="{{ $value }}"  >{{ $label }}</option>
+                            @foreach ($organizationalUnitsForSelect as $value => $label)
+                                <option value="{{ $value }}">{{ $label }}</option>
                             @endforeach
                         </x-inputs.select>
                     </x-inputs.group>
 
                     <x-inputs.group class="col-md-12">
-                        <x-inputs.select
-                            name="ticket.prioritie_id"
-                            label="Prioritie"
-                            wire:model="ticket.prioritie_id"
-                        >
+                        <x-inputs.select name="ticket.prioritie_id" label="Prioritie" wire:model="ticket.prioritie_id">
                             <option value="null" disabled>Please select the Prioritie</option>
-                            @foreach($prioritiesForSelect as $value => $label)
-                            <option value="{{ $value }}"  >{{ $label }}</option>
+                            @foreach ($prioritiesForSelect as $value => $label)
+                                <option value="{{ $value }}">{{ $label }}</option>
                             @endforeach
                         </x-inputs.select>
                     </x-inputs.group>
                 </div>
             </div>
 
-            @if($editing) @endif
+            @if ($editing)
+            @endif
 
             <div class="modal-footer">
-                <button
-                    type="button"
-                    class="btn btn-light float-left"
-                    wire:click="$toggle('showingModal')"
-                >
+                <button type="button" class="btn btn-light float-left" wire:click="$toggle('showingModal')">
                     <i class="icon ion-md-close"></i>
                     @lang('crud.common.cancel')
                 </button>
@@ -127,7 +91,6 @@
         </div>
     </x-modal>
 
-    
 
 
 
@@ -138,49 +101,89 @@
 
 
 
-    <section class="">
-        <h1>Active Tickets</h1>
-        <div class="row1 d-flex">
-            @foreach ($tickets as $ticket)
-            @endforeach
-            <article class="card1 fl-left1 bg-danger flex-wrap flex-fill col-4">
-                <section class="date1"> <time datetime="23th feb"> <span>23</span><span>feb</span> </time> </section>
-                <section class="card1-cont"> <small>dj khaled</small>
-                    <h3>live in sydney</h3>
-                    <div class="even-date1"> <i class="fa fa-calendar"></i> <time> <span>wednesday 28 december
-                                2014</span> <span>08:55pm to 12:00 am</span> </time></div>
-                    <div class="even-info1"> <i class="fa fa-map-marker"></i>
-                        <p> nexen square for people australia, sydney</p>
-                    </div> <a href="#">tickets</a>
+
+
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                {{-- <h3 >Title</h3> --}}
+
+                <h1 class="card-title">Active Tickets</h1>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+
+                </div>
+            </div>
+            <div class="card-body" style="display: block;">
+
+                <section class="">
+                    
+                    <div class="row1 d-flex">
+                        @foreach ($tickets as $ticket)
+                        <article class="card1 fl-left1 bg-danger flex-wrap flex-fill col-4">
+                            <section class="date1"> <time datetime="23th feb">  <img src="/images/ju_logo_vector.png" alt="" style="width: 80px; "><span>23</span><span>feb</span> </time>
+                            </section>
+                            <section class="card1-cont"> <small> {{ optional($ticket->organizationalUnit)->name ?? '-' }}</small>
+                                <h3> {{ optional($ticket->customer)->full_name ?? '-' }}</h3>
+                                @inject('carbon', 'Carbon\Carbon')
+
+                                <div class="even-date1"> <i class="fa fa-calendar"></i> <time> <span>  ..{{ $carbon::parse($ticket->created_at)->format('l j F Y \, h:iA ') }}
+                                     </span>  </time></div>
+                                <div class="even-info1"> <i class="fa fa-map-marker"></i>
+                                    <p> {{ optional($ticket->campuse)->name ?? '-' }}</p>
+                                </div> <a href="#">tickets</a>
+                            </section>
+                        </article>
+                        @endforeach
+                        {{-- <article class="card1 fl-left1 bg-danger flex-wrap flex-fill col-4">
+                            <section class="date1"> <time datetime="23th feb"> <span>23</span><span>feb</span> </time>
+                            </section>
+                            <section class="card1-cont"> <small>dj khaled</small>
+                                <h3>live in sydney</h3>
+                                <div class="even-date1"> <i class="fa fa-calendar"></i> <time> <span>wednesday 28
+                                            december
+                                            2014</span> <span>08:55pm to 12:00 am</span> </time></div>
+                                <div class="even-info1"> <i class="fa fa-map-marker"></i>
+                                    <p> nexen square for people australia, sydney</p>
+                                </div> <a href="#">tickets</a>
+                            </section>
+                        </article>
+                        <article class="card1 fl-left1 bg-danger flex-wrap flex-fill col-4">
+                            <section class="date1"> <time datetime="23th feb"> <span>23</span><span>feb</span>
+                                </time> </section>
+                            <section class="card1-cont"> <small>dj khaled</small>
+                                <h3>live in sydney</h3>
+                                <div class="even-date1"> <i class="fa fa-calendar"></i> <time> <span>wednesday 28
+                                            december
+                                            2014</span> <span>08:55pm to 12:00 am</span> </time></div>
+                                <div class="even-info1"> <i class="fa fa-map-marker"></i>
+                                    <p> nexen square for people australia, sydney</p>
+                                </div> <a href="#">tickets</a>
+                            </section>
+                        </article> --}}
+
+
+                    </div>
+
                 </section>
-            </article>
-            <article class="card1 fl-left1 bg-danger flex-wrap flex-fill col-4">
-                <section class="date1"> <time datetime="23th feb"> <span>23</span><span>feb</span> </time> </section>
-                <section class="card1-cont"> <small>dj khaled</small>
-                    <h3>live in sydney</h3>
-                    <div class="even-date1"> <i class="fa fa-calendar"></i> <time> <span>wednesday 28 december
-                                2014</span> <span>08:55pm to 12:00 am</span> </time></div>
-                    <div class="even-info1"> <i class="fa fa-map-marker"></i>
-                        <p> nexen square for people australia, sydney</p>
-                    </div> <a href="#">tickets</a>
-                </section>
-            </article>
-            <article class="card1 fl-left1 bg-danger flex-wrap flex-fill col-4">
-                <section class="date1"> <time datetime="23th feb"> <span>23</span><span>feb</span> </time> </section>
-                <section class="card1-cont"> <small>dj khaled</small>
-                    <h3>live in sydney</h3>
-                    <div class="even-date1"> <i class="fa fa-calendar"></i> <time> <span>wednesday 28 december
-                                2014</span> <span>08:55pm to 12:00 am</span> </time></div>
-                    <div class="even-info1"> <i class="fa fa-map-marker"></i>
-                        <p> nexen square for people australia, sydney</p>
-                    </div> <a href="#">tickets</a>
-                </section>
-            </article>
-           
-            
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer" style="display: block;">
+                Footer
+            </div>
+            <!-- /.card-footer-->
         </div>
+        <!-- /.card -->
 
     </section>
+
+
+
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css?family=Oswald');
 
@@ -392,12 +395,8 @@
             <thead>
                 <tr>
                     <th>
-                        <input
-                            type="checkbox"
-                            wire:model="allSelected"
-                            wire:click="toggleFullSelection"
-                            title="{{ trans('crud.common.select_all') }}"
-                        />
+                        <input type="checkbox" wire:model="allSelected" wire:click="toggleFullSelection"
+                            title="{{ trans('crud.common.select_all') }}" />
                     </th>
                     <th class="text-left">
                         @lang('crud.user_support_tickets.inputs.status')
@@ -422,46 +421,35 @@
             </thead>
             <tbody class="text-gray-600">
                 @foreach ($tickets as $ticket)
-                <tr class="hover:bg-gray-100">
-                    <td class="text-left">
-                        <input
-                            type="checkbox"
-                            value="{{ $ticket->id }}"
-                            wire:model="selected"
-                        />
-                    </td>
-                    <td class="text-left">{{ $ticket->status ?? '-' }}</td>
-                    <td class="text-left">{{ $ticket->description ?? '-' }}</td>
-                    <td class="text-left">
-                        {{ optional($ticket->campuse)->name ?? '-' }}
-                    </td>
-                    <td class="text-left">
-                        {{ optional($ticket->problem)->name ?? '-' }}
-                    </td>
-                    <td class="text-left">
-                        {{ optional($ticket->organizationalUnit)->name ?? '-' }}
-                    </td>
-                    <td class="text-left">
-                        {{ optional($ticket->prioritie)->name ?? '-' }}
-                    </td>
-                    <td class="text-right" style="width: 134px;">
-                        <div
-                            role="group"
-                            aria-label="Row Actions"
-                            class="relative inline-flex align-middle"
-                        >
-                            @can('update', $ticket)
-                            <button
-                                type="button"
-                                class="btn btn-light"
-                                wire:click="editTicket({{ $ticket->id }})"
-                            >
-                                <i class="icon ion-md-create"></i>
-                            </button>
-                            @endcan
-                        </div>
-                    </td>
-                </tr>
+                    <tr class="hover:bg-gray-100">
+                        <td class="text-left">
+                            <input type="checkbox" value="{{ $ticket->id }}" wire:model="selected" />
+                        </td>
+                        <td class="text-left">{{ $ticket->status ?? '-' }}</td>
+                        <td class="text-left">{{ $ticket->description ?? '-' }}</td>
+                        <td class="text-left">
+                            {{ optional($ticket->campuse)->name ?? '-' }}
+                        </td>
+                        <td class="text-left">
+                            {{ optional($ticket->problem)->name ?? '-' }}
+                        </td>
+                        <td class="text-left">
+                            {{ optional($ticket->organizationalUnit)->name ?? '-' }}
+                        </td>
+                        <td class="text-left">
+                            {{ optional($ticket->prioritie)->name ?? '-' }}
+                        </td>
+                        <td class="text-right" style="width: 134px;">
+                            <div role="group" aria-label="Row Actions" class="relative inline-flex align-middle">
+                                @can('update', $ticket)
+                                    <button type="button" class="btn btn-light"
+                                        wire:click="editTicket({{ $ticket->id }})">
+                                        <i class="icon ion-md-create"></i>
+                                    </button>
+                                @endcan
+                            </div>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
             <tfoot>
