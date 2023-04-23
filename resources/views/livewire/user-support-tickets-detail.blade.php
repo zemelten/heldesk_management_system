@@ -134,12 +134,15 @@
                                 <div class="even-date1"> <i class="fa fa-calendar"></i> <time> <span>  ..{{ $carbon::parse($ticket->created_at)->format('l j F Y \, h:iA ') }}
                                      </span>  </time></div>
                                 <div class="even-info1"> <i class="fa fa-map-marker"></i>
-                                    <p> {{ optional($ticket->campuse)->name ?? '-' }}</p>
-                                </div> <a href="#">tickets</a>
+                                    <p> {{ optional($ticket->campuse)->name ?? '-' }} <br>
+                                        {{ optional($ticket->problem)->name ?? '-' }}
+                                    </p>
+                                    
+                                </div> <a href="#">Pending</a>
                             </section>
                         </article>
                         @endforeach
-                        {{-- <article class="card1 fl-left1 bg-danger flex-wrap flex-fill col-4">
+                        <article class="card1 fl-left1 bg-danger flex-wrap flex-fill col-4">
                             <section class="date1"> <time datetime="23th feb"> <span>23</span><span>feb</span> </time>
                             </section>
                             <section class="card1-cont"> <small>dj khaled</small>
@@ -164,7 +167,7 @@
                                     <p> nexen square for people australia, sydney</p>
                                 </div> <a href="#">tickets</a>
                             </section>
-                        </article> --}}
+                        </article>
 
 
                     </div>
@@ -356,7 +359,7 @@
                 display: block;
                 float: none;
                 width: 100%;
-                margin-bottom: 10px
+                margin-bottom: 10px;
             }
 
             .card1+.card1 {
