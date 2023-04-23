@@ -142,7 +142,7 @@
                             </section>
                         </article>
                         @endforeach
-                        <article class="card1 fl-left1 bg-danger flex-wrap flex-fill col-4">
+                        {{-- <article class="card1 fl-left1 bg-danger flex-wrap flex-fill col-4">
                             <section class="date1"> <time datetime="23th feb"> <span>23</span><span>feb</span> </time>
                             </section>
                             <section class="card1-cont"> <small>dj khaled</small>
@@ -167,7 +167,7 @@
                                     <p> nexen square for people australia, sydney</p>
                                 </div> <a href="#">tickets</a>
                             </section>
-                        </article>
+                        </article> --}}
 
 
                     </div>
