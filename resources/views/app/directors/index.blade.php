@@ -47,6 +47,7 @@
                 <table class="table table-bordered table-hover" id="director">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th class="text-left">
                                 @lang('crud.directors.inputs.full_name')
                             </th>
@@ -65,9 +66,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($directors as $director)
+                        @forelse($directors as $key => $director)
                         <tr>
-                            <td>{{ $director->user->full_name ?? '-' }}</td>
+                            <td style="width: 2.5cm"> {{$key+1}}</td>
+                            <td>{{ $director->full_name ?? '-' }}</td>
                             <td>{{ $director->sex ?? '-' }}</td>
                             <td>{{ $director->email ?? '-' }}</td>
                             <td>{{ $director->phone ?? '-' }}</td>

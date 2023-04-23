@@ -44,6 +44,7 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <td>No.</td>
                             <th class="text-left">
                                 @lang('crud.roles.inputs.name')
                             </th>
@@ -53,8 +54,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($roles as $role)
+                        @forelse($roles as $key => $role)
                         <tr>
+                            <td style="width: 2.5cm"> {{$key+1}}</td>
                             <td>{{ $role->name ?? '-' }}</td>
                             <td class="text-center" style="width: 134px;">
                                 <div

@@ -47,6 +47,7 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th class="text-left">
                                 @lang('crud.priorities.inputs.name')
                             </th>
@@ -62,8 +63,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($priorities as $prioritie)
+                        @forelse($priorities as $key => $prioritie)
                         <tr>
+                            <td style="width: 2.5cm"> {{$key+1}}</td>
                             <td>{{ $prioritie->name ?? '-' }}</td>
                             <td>{{ $prioritie->response ?? '-' }}</td>
                             <td>{{ $prioritie->description ?? '-' }}</td>
