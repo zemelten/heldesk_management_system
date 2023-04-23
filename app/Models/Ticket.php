@@ -16,6 +16,7 @@ class Ticket extends Model
         'description',
         'campuse_id',
         'problem_id',
+        'status',
         'organizational_unit_id',
       
      

@@ -61,7 +61,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ route('permissions.index') }}" class="nav-link">
+                                    <a href="{{ route('escalated-tickets.index') }}" class="nav-link">
                                         <i class="nav-icon icon ion-md-radio-button-off"></i>
                                         <p>Escalated Tickets</p>
                                     </a>

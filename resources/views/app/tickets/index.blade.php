@@ -76,15 +76,20 @@
                             $duration = $duration = Carbon\Carbon::parse($ticket->created_at)->diffInHours();
                             
                             @endphp
-                            
+                           
                          @if($duration<=24 )
                             <span class="badge badge-success">{{  $age}} </span>
+                            
                             @elseif($duration > 24 && $duration<= 48 )
                             <span class="badge badge-warning">{{  $age}} </span>
                             @else
                             <span class="badge badge-danger">{{  $age}} </span>
                           @endif 
-                          
+                          @if($ticket->status == 0)
+                          <span class="mb-2 badge badge-warning">Active</span>
+                          @else 
+                          <span class="mb-2 badge badge-danger">Closed</span>
+                          @endif
                         </td>
                          
 
@@ -93,7 +98,12 @@
                               {{ optional($ticket->campuse)->name ?? '-' }}
                           </td>
                           <td>
+                          @if($ticket->organizationalUnit != null)
                               {{ optional($ticket->organizationalUnit->building)->name ?? '-' }}
+                              @else 
+                              -
+                             
+                              @endif
                           </td>
                           <td>
                               {{ optional($ticket->problem)->name ?? '-' }}
@@ -118,13 +128,13 @@
                                           </button>
                                       </a>
                                       @endcan @can('delete', $ticket)
-                                      <form action="{{ route('tickets.destroy', $ticket) }}" method="POST"
+                                      {{-- <form action="{{ route('tickets.destroy', $ticket) }}" method="POST"
                                           onsubmit="return confirm('{{ __('crud.common.are_you_sure') }}')">
                                           @csrf @method('DELETE')
                                           <button type="submit" class="btn btn-light text-danger">
                                             <i class="fa-solid fa-trash fa-lg" style="color: #f00f0f;"></i>
                                           </button>
-                                      </form>
+                                      </form> --}}
                                   @endcan
                               </div>
                           </td>

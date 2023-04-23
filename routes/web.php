@@ -55,6 +55,7 @@ Route::prefix('/')
         Route::resource('buildings', BuildingController::class);
         Route::post('/get-org-units',[BuildingController::class, 'getOrgUnits']);
         Route::post('/get-buildings',[BuildingController::class,'getBuildings']);
+        Route::post('/get-problems',[ProblemCatagoryController::class,'getProblems']);
         Route::resource('directors', DirectorController::class);
         Route::resource('leaders', LeaderController::class);
         Route::resource('problems', ProblemController::class);

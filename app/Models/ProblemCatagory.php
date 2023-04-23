@@ -26,4 +26,7 @@ class ProblemCatagory extends Model
     {
         return $this->hasMany(UserSupport::class);
     }
+    public function queueType(){
+        return $this->belongsTo(QueueType::class);
+    }
 }
