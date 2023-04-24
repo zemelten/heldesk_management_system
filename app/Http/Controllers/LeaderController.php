@@ -56,7 +56,7 @@ class LeaderController extends Controller
         $leader = Leader::create($validated);
 
         return redirect()
-            ->route('leaders.edit', $leader)
+            ->route('leaders.show', $leader)
             ->withSuccess(__('crud.common.created'));
     }
 
