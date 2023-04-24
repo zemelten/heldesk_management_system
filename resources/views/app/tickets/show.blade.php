@@ -64,7 +64,7 @@
                 </a>
                 @endcan
             </div>
-        </div>{{h}}
+        </div>
         <x-tickets.-active-ticket $tickets=$tickets/>
 
     </div>

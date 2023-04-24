@@ -118,29 +118,13 @@
 
                 </div>
             </div>
-            <div class="card-body" style="display: block;">
+            <div class="card-body" style="display: block;background-color: #e7e7e7;">
 
                 <section class="">
                     
                     <div class="row1 d-flex">
                         @foreach ($tickets as $ticket)
-                        <article class="card1 fl-left1 bg-danger flex-wrap flex-fill col-4">
-                            <section class="date1"> <time datetime="23th feb">  <img src="/images/ju_logo_vector.png" alt="" style="width: 80px; "><span>23</span><span>feb</span> </time>
-                            </section>
-                            <section class="card1-cont"> <small> {{ optional($ticket->organizationalUnit)->name ?? '-' }}</small>
-                                <h3> {{ optional($ticket->customer)->full_name ?? '-' }}</h3>
-                                @inject('carbon', 'Carbon\Carbon')
-
-                                <div class="even-date1"> <i class="fa fa-calendar"></i> <time> <span>  ..{{ $carbon::parse($ticket->created_at)->format('l j F Y \, h:iA ') }}
-                                     </span>  </time></div>
-                                <div class="even-info1"> <i class="fa fa-map-marker"></i>
-                                    <p> {{ optional($ticket->campuse)->name ?? '-' }} <br>
-                                        {{ optional($ticket->problem)->name ?? '-' }}
-                                    </p>
-                                    
-                                </div> <a href="#">Pending</a>
-                            </section>
-                        </article>
+                            <x-ticket :ticket="$ticket"/>
                         @endforeach
                         {{-- <article class="card1 fl-left1 bg-danger flex-wrap flex-fill col-4">
                             <section class="date1"> <time datetime="23th feb"> <span>23</span><span>feb</span> </time>
