@@ -9,7 +9,7 @@
                     <div class="text-center">
                         <img src="/images/JU.jpg" alt="" style="width: 100px; ">
                         <div>
-                          <a href="" class="h1"><b>HELP</b>DESK</a>
+                          <a href="#" class="h1"style="color: white" ><b>HELP</b>DESK</a>
                           </div>
                     </div>
                 </div>

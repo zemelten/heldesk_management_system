@@ -3,9 +3,9 @@
 
     <aside class="main-sidebar sidebar-light elevation-4">
         <!-- Brand Logo -->
-        <a href="{{ url('/') }}" class="brand-link text-dark">
-            <img src="{{ asset('images/logo.jpg') }}" alt="JU Logo" class="brand-image">
-            <span class="brand-text font-weight-light"><strong style="font-size:25px;"> JU HelpDesk </strong></span>
+        <a href="{{ url('/') }}" class="brand-link text-dark"  style="background-color: #0067ba;">
+          <img src="{{ asset('images/logo.jpg') }}" alt="JU Logo" class="brand-image">
+            <span class="brand-text font-weight-light" style="color: white"><strong style="font-size:25px;" > JU HelpDesk </strong></span>  
         </a>
 
 
