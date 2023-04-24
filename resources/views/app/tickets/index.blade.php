@@ -13,11 +13,11 @@
                               </div>
                           </div>
                       </form>
-                  </div>
+                  </div> 
                   <div class="col-md-6 text-right">
                       @can('create', App\Models\Ticket::class)
                           <a href="{{ route('tickets.create') }}" class="btn btn-primary">
-                              <i class="icon ion-md-add"></i> @lang('crud.common.create')
+                              <i class="fas fa-plus fa-lg"></i> @lang('crud.common.create')
                           </a>
                       @endcan
                   </div>
@@ -29,7 +29,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered ">
                   <thead>
                     <tr>
                         <th class="text-left">
@@ -76,15 +76,20 @@
                             $duration = $duration = Carbon\Carbon::parse($ticket->created_at)->diffInHours();
                             
                             @endphp
-                            
+                           
                          @if($duration<=24 )
                             <span class="badge badge-success">{{  $age}} </span>
+                            
                             @elseif($duration > 24 && $duration<= 48 )
                             <span class="badge badge-warning">{{  $age}} </span>
                             @else
                             <span class="badge badge-danger">{{  $age}} </span>
                           @endif 
-                          
+                          @if($ticket->status == 0)
+                          <span class="mb-2 badge badge-warning">Active</span>
+                          @else 
+                          <span class="mb-2 badge badge-danger">Closed</span>
+                          @endif
                         </td>
                          
 
@@ -93,7 +98,12 @@
                               {{ optional($ticket->campuse)->name ?? '-' }}
                           </td>
                           <td>
+                          @if($ticket->organizationalUnit != null)
                               {{ optional($ticket->organizationalUnit->building)->name ?? '-' }}
+                              @else 
+                              -
+                             
+                              @endif
                           </td>
                           <td>
                               {{ optional($ticket->problem)->name ?? '-' }}
@@ -118,13 +128,13 @@
                                           </button>
                                       </a>
                                       @endcan @can('delete', $ticket)
-                                      <form action="{{ route('tickets.destroy', $ticket) }}" method="POST"
+                                      {{-- <form action="{{ route('tickets.destroy', $ticket) }}" method="POST"
                                           onsubmit="return confirm('{{ __('crud.common.are_you_sure') }}')">
                                           @csrf @method('DELETE')
                                           <button type="submit" class="btn btn-light text-danger">
                                             <i class="fa-solid fa-trash fa-lg" style="color: #f00f0f;"></i>
                                           </button>
-                                      </form>
+                                      </form> --}}
                                   @endcan
                               </div>
                           </td>
@@ -138,7 +148,7 @@
                   @endforelse
               </tbody>
                   <tfoot>
-                    <tr>
+                    {{-- <tr>
                       <th class="text-left">
                           @lang('crud.tickets.inputs.customer_id')
                       </th>
@@ -163,7 +173,7 @@
                       <th class="text-center">
                           @lang('crud.common.actions')
                       </th>
-                  </tr>
+                  </tr> --}}
                   </tfoot>
                 </table>
               </div>

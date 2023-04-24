@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ProblemCatagory;
 use App\Http\Requests\ProblemCatagoryStoreRequest;
 use App\Http\Requests\ProblemCatagoryUpdateRequest;
+use App\Models\Problem;
 
 class ProblemCatagoryController extends Controller
 {
@@ -116,5 +117,12 @@ class ProblemCatagoryController extends Controller
         return redirect()
             ->route('problem-catagories.index')
             ->withSuccess(__('crud.common.removed'));
+    }
+    public function getProblems(Request $request){
+        $data['blds'] = Problem::where("problem_catagory_id", $request->problem_category_id)
+        ->get(["name", "id"]);
+
+        
+      return response()->json($data);
     }
 }

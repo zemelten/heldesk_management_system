@@ -65,14 +65,15 @@
                     </thead>
                     <tbody>
                         @forelse($escalatedTickets as $escalatedTicket)
+                       
                         <tr>
-                            <td>
+                            <td>Customer_ticket
                                 {{
-                                optional($escalatedTicket->ticket)->description
+                                optional($escalatedTicket->ticket)->id
                                 ?? '-' }}
                             </td>
                             <td>
-                                {{ optional($escalatedTicket->userSupport)->id
+                                {{ optional($escalatedTicket->userSupport->user)->full_name
                                 ?? '-' }}
                             </td>
                             <td>
@@ -126,6 +127,9 @@
                                 </div>
                             </td>
                         </tr>
+                        
+                    
+                    
                         @empty
                         <tr>
                             <td colspan="4">
