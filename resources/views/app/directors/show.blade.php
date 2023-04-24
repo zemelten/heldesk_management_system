@@ -14,7 +14,7 @@
             <div class="mt-4">
                 <div class="mb-4">
                     <h5>@lang('crud.directors.inputs.full_name')</h5>
-                    <span>{{ $director->full_name ?? '-' }}</span>
+                    <span>{{ $director->user->full_name ?? '-' }}</span>
                 </div>
                 <div class="mb-4">
                     <h5>@lang('crud.directors.inputs.sex')</h5>
