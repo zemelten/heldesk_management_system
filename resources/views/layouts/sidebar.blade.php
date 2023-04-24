@@ -5,7 +5,7 @@
         <!-- Brand Logo -->
         <a href="{{ url('/') }}" class="brand-link text-dark">
             <img src="{{ asset('images/logo.jpg') }}" alt="JU Logo" class="brand-image">
-            <span class="brand-text font-weight-light"><strong> JU HelpDesk </strong></span>
+            <span class="brand-text font-weight-light"><strong style="font-size:25px;"> JU HelpDesk </strong></span>
         </a>
 
 
@@ -21,8 +21,8 @@
                         <li class="nav-item">
                             <a href="{{ route('home') }}" class="nav-link">
                                 <i class="nav-icon fa-solid fa-gauge fa-lg"></i>
-                                <p style=" color:black;">
-                                    <strong>
+                                <p style=" color:black;" >
+                                    <strong style="font-size: 18px;">
                                         Dashboard
                                     </strong>
                                 </p>
@@ -31,22 +31,22 @@
                         <li class="nav-item ">
                             <a href="{{ route('tickets.index') }}" class="nav-link ">
                                 <i class="nav-icon fa-solid fa-ticket fa-lg"></i>
-                                <p style=" color:black;" class="text-dark">
-                                   
+                                <p class="text-dark">
+                                    <strong  style=" color:black;" >
                                         Tickets
-                                
+                                    </strong>
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('tickets.index') }}" class="nav-link">
-                                <i class="nav-icon fa-solid fa-key fa-lg"></i>
-                                <p style=" color:black;">    
-                                    <i class="  nav-icon fas fa-angle-left right"></i>
-                                        <strong>
-                                            My Tickets
-                                        </strong>
-                                    
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p style=" color:black;">
+                                    <i class="nav-icon fas fa-angle-left right"></i>
+                                    <strong>
+                                        My Tickets
+                                    </strong>
+
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -55,10 +55,10 @@
                                     <a href="{{ route('tickets.index') }}" class="nav-link">
                                         <i class="nav-icon icon ion-md-radio-button-off"></i>
                                         <p style=" color:black;">
-                                           <strong> 
-                                            Active Tickets
-                                        </strong>
-                                           </p>
+                                            <strong>
+                                                Active Tickets
+                                            </strong>
+                                        </p>
                                     </a>
                                 </li>
 
@@ -98,7 +98,7 @@
                                         User Management
                                     </strong>
 
-                                    
+
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -132,7 +132,8 @@
                                     <a href="{{ route('permissions.index') }}" class="nav-link">
                                         <i class="nav-icon icon ion-md-radio-button-off"></i>
                                         <strong>
-                                            <p style=" color:black;">Permissions</p>
+                                            <p style=" color:black;">
+                                                Permissions</p>
                                         </strong>
 
                                     </a>
@@ -151,8 +152,8 @@
                                     <p style=" color:black;">
                                         <i class="  nav-icon fas fa-angle-left right"></i>
                                         <strong>
-                                        Personnels
-                                    </strong>
+                                            Personnels
+                                        </strong>
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
@@ -160,7 +161,9 @@
                                         <li class="nav-item">
                                             <a href="{{ route('directors.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>Directors</p>
+                                                <strong>
+                                                    <p  style=" color:black;">Directors</p>
+                                                </strong>
                                             </a>
                                         </li>
                                     @endcan
@@ -169,19 +172,25 @@
                                         <li class="nav-item">
                                             <a href="{{ route('leaders.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>Team Leaders</p>
+                                                <strong>
+                                                    <p style=" color:black;">Team Leaders</p>
+                                                </strong>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="{{ route('user-supports.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>User Supports</p>
+                                                <strong>
+                                                    <p style=" color:black;">User Supports</p>
+                                                </strong>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="{{ route('customers.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>Customers</p>
+                                                <strong>
+                                                    <p style=" color:black;">Customers</p>
+                                                </strong>
                                             </a>
                                         </li>
                                     @endcan
@@ -190,17 +199,23 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fa-solid fa-gear fa-lg"></i>
-                                    <p>
-                                        Settings
-                                        <i class="  nav-icon fas fa-angle-left right"></i>
-                                    </p>
+                                    
+                                    <strong>
+                                        <p style=" color:black;">
+                                            Settings
+                                        </p>
+                                    </strong>
+                                    
+                                    <i class="  nav-icon fas fa-angle-left right " style=" color:black;"></i>
                                 </a>
                                 <ul class="nav nav-treeview">
                                     @can('view-any', App\Models\Campus::class)
                                         <li class="nav-item">
                                             <a href="{{ route('campuses.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>Campuses</p>
+                                                <strong>
+                                                    <p style=" color:black;">Campuses</p>
+                                                </strong>
                                             </a>
                                         </li>
                                     @endcan
@@ -208,7 +223,9 @@
                                         <li class="nav-item">
                                             <a href="{{ route('buildings.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>Buildings</p>
+                                                <strong>
+                                                    <p style=" color:black;">Buildings</p>
+                                                </strong>
                                             </a>
                                         </li>
                                     @endcan
@@ -218,7 +235,9 @@
                                         <li class="nav-item">
                                             <a href="{{ route('problems.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>Problems</p>
+                                                <strong>
+                                                    <p style=" color:black;">Problems</p>
+                                                </strong>
                                             </a>
                                         </li>
                                     @endcan
@@ -226,7 +245,9 @@
                                         <li class="nav-item">
                                             <a href="{{ route('priorities.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>Priorities</p>
+                                                <strong>
+                                                    <p style=" color:black;">Priorities</p>
+                                                </strong>
                                             </a>
                                         </li>
                                     @endcan
@@ -234,7 +255,9 @@
                                         <li class="nav-item">
                                             <a href="{{ route('floors.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>Floors</p>
+                                                <strong>
+                                                    <p style=" color:black;">Floors</p>
+                                                </strong>
                                             </a>
                                         </li>
                                     @endcan
@@ -243,24 +266,32 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fa-solid fa-cubes-stacked fa-lg"></i>
-                                    <p>
+                                    
+                                    <strong>
+                                    <p style=" color:black;">
                                         Queue Type
-                                        <i class="  nav-icon fas fa-angle-left right"></i>
                                     </p>
+                                    </strong>
+                                    <i class="  nav-icon fas fa-angle-left right"  style=" color:black;"></i>
                                 </a>
                                 <ul class="nav nav-treeview">
 
                                     @can('view-any', Spatie\Permission\Models\Permission::class)
                                         <li class="nav-item">
                                             <a href="{{ route('permissions.index') }}" class="nav-link">
+
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>Sys & Network Admin</p>
+                                                <strong>
+                                                    <p style=" color:black;">Sys & Network Admin</p>
+                                                </strong>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="{{ route('permissions.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>Technician</p>
+                                                <strong>
+                                                    <p style=" color:black;">Technician</p>
+                                                </strong>
                                             </a>
                                         </li>
                                     @endcan
@@ -269,17 +300,22 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fa-solid fa-house fa-lg"></i>
-                                    <p>
-                                        Org. Structure
-                                        <i class="  nav-icon fas fa-angle-left right"></i>
-                                    </p>
+                                    <strong>
+                                        <p style=" color:black;">
+                                            Org. Structure
+                                            
+                                        </p>
+                                    </strong>
+                                    <i class="  nav-icon fas fa-angle-left right"  style=" color:black;"></i>
                                 </a>
                                 <ul class="nav nav-treeview">
                                     @can('view-any', Spatie\Permission\Models\Role::class)
                                         <li class="nav-item">
                                             <a href="{{ route('roles.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>Organization Units</p>
+                                                <strong>
+                                                    <p style=" color:black;">Organization Units</p>
+                                                </strong>
                                             </a>
                                         </li>
                                     @endcan
@@ -287,18 +323,23 @@
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class=" nav-iconfa-solid fa-wave-pulse fa-lg"></i>
-                                    <p>
-                                        Reporting
-                                        <i class="  nav-icon fas fa-angle-left right"></i>
+                                    <i class="nav-icon fas fa-chart-bar"></i>
+                                    <p style=" color:black;">
+                                        <strong>
+                                            Reporting
+                                        </strong>
                                     </p>
+                                    <i class="  nav-icon fas fa-angle-left right "  style=" color:black;"></i>
+
                                 </a>
                                 <ul class="nav nav-treeview">
                                     @can('view-any', Spatie\Permission\Models\Role::class)
                                         <li class="nav-item">
                                             <a href="{{ route('roles.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>Over all Performance</p>
+                                                <strong>
+                                                    <p style=" color:black;">Over all Performance</p>
+                                                </strong>
                                             </a>
                                         </li>
                                     @endcan
@@ -307,13 +348,17 @@
                                         <li class="nav-item">
                                             <a href="{{ route('permissions.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>User supports Efficiency</p>
+                                                <strong>
+                                                    <p  style=" color:black;">User Support Efficiency</p>
+                                                </strong>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="{{ route('permissions.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>Help Desk Workers</p>
+                                                <strong>
+                                                    <p style=" color:black;">Help Desk Workers</p>
+                                                </strong>
                                             </a>
                                         </li>
                                     @endcan
@@ -326,7 +371,9 @@
                             <a class="nav-link" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="nav-icon icon ion-md-exit"></i>
-                                <p>{{ __('Logout') }}</p>
+                                <strong>
+                                    <p style=" color:black;">{{ __('Logout') }}</p>
+                                </strong>
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
