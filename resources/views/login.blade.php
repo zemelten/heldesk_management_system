@@ -5,11 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card ">
-                <div class="card-header bg- p-3 bg-primary rounded-10"> 
+                <div class="card-header bg- p-3  rounded-10"  style="background-color: #0067ba;"> 
                     <div class="text-center">
                         <img src="/images/JU.jpg" alt="" style="width: 100px; ">
                         <div>
-                          <p class="h1"><b>HELP</b>DESK</p>
+                          <p class="h1" style="color: white"><b>HELP</b>DESK</p>
                           </div>
                     </div>
                 </div>
