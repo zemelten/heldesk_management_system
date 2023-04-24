@@ -14,19 +14,14 @@
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-<<<<<<< HEAD
                 <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent " style=" color:black;"
                     data-widget="treeview" role="menu">
-=======
-                <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu">
->>>>>>> 555b1ec711472f090f8daca256c871231221c44f
 
                     @auth
 
                         <li class="nav-item">
                             <a href="{{ route('home') }}" class="nav-link">
                                 <i class="nav-icon fa-solid fa-gauge fa-lg"></i>
-<<<<<<< HEAD
                                 <p style=" color:black;" >
                                     <strong style="font-size: 18px;">
                                         Dashboard
@@ -41,10 +36,6 @@
                                     <strong  style=" color:black;" >
                                         Tickets
                                     </strong>
-=======
-                                <p>
-                                    Dashboard
->>>>>>> 555b1ec711472f090f8daca256c871231221c44f
                                 </p>
                             </a>
                         </li>
@@ -98,73 +89,17 @@
 
                             </ul>
                         </li>
-<<<<<<< HEAD
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class=" nav-icon fa-solid fa-users fa-lg"></i>
-                                <p style=" color:black;">
-                                    <i class="  nav-icon fas fa-angle-left right"></i>
-                                    <strong>
-                                        User Management
-                                    </strong>
-
-
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-
-                                <li class="nav-item">
-                                    <a href="{{ route('users.index') }}" class="nav-link">
-                                        <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                        <p style=" color:black;">
-                                            <strong>
-                                                List of users
-                                            </strong>
-                                        </p>
-                                    </a>
-                                </li>
-
-
-
-                                <li class="nav-item">
-                                    <a href="{{ route('roles.index') }}" class="nav-link">
-                                        <i class="nav-icon icon ion-md-radio-button-off"></i>
-
-                                        <p style=" color:black;">
-                                            <strong>
-                                                Roles
-                                            </strong>
-                                        </p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="{{ route('permissions.index') }}" class="nav-link">
-                                        <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                        <strong>
-                                            <p style=" color:black;">
-                                                Permissions</p>
-                                        </strong>
-
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-
-
-=======
->>>>>>> 555b1ec711472f090f8daca256c871231221c44f
                         @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) ||
                                 Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class=" nav-icon fa-solid fa-users fa-lg"></i>
-                                    <p>
-                                        User Management
+                                    <p style=" color:black;">
                                         <i class="  nav-icon fas fa-angle-left right"></i>
+                                        <strong>
+                                        User Management
+                                        </strong>
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
@@ -172,7 +107,9 @@
                                     <li class="nav-item">
                                         <a href="{{ route('users.index') }}" class="nav-link">
                                             <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                            <p>List of users</p>
+                                       
+                                            <p style=" color:black;">
+                                                <strong>List of users </strong></p>
                                         </a>
                                     </li>
 
@@ -181,14 +118,14 @@
                                     <li class="nav-item">
                                         <a href="{{ route('roles.index') }}" class="nav-link">
                                             <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                            <p>Roles</p>
+                                            <p style=" color:black;"><strong>Roles</strong></p>
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a href="{{ route('permissions.index') }}" class="nav-link">
                                             <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                            <p>Permissions</p>
+                                            <p style=" color:black;"><strong>Permissions</strong></p>
                                         </a>
                                     </li>
 
@@ -200,17 +137,11 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fa-solid fa-network-wired fa-lg"></i>
-<<<<<<< HEAD
                                     <p style=" color:black;">
                                         <i class="  nav-icon fas fa-angle-left right"></i>
                                         <strong>
                                             Personnels
                                         </strong>
-=======
-                                    <p>
-                                        Personnels
-                                        <i class="  nav-icon fas fa-angle-left right"></i>
->>>>>>> 555b1ec711472f090f8daca256c871231221c44f
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
@@ -256,7 +187,6 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fa-solid fa-gear fa-lg"></i>
-<<<<<<< HEAD
                                     
                                     <strong>
                                         <p style=" color:black;">
@@ -265,12 +195,6 @@
                                     </strong>
                                     
                                     <i class="  nav-icon fas fa-angle-left right " style=" color:black;"></i>
-=======
-                                    <p>
-                                        Settings
-                                        <i class="  nav-icon fas fa-angle-left right"></i>
-                                    </p>
->>>>>>> 555b1ec711472f090f8daca256c871231221c44f
                                 </a>
                                 <ul class="nav nav-treeview">
                                     @can('view-any', App\Models\Campus::class)
@@ -309,13 +233,9 @@
                                         <li class="nav-item">
                                             <a href="{{ route('priorities.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
-<<<<<<< HEAD
                                                 <strong>
                                                     <p style=" color:black;">Priorities</p>
                                                 </strong>
-=======
-                                                <p>Priorities</p>
->>>>>>> 555b1ec711472f090f8daca256c871231221c44f
                                             </a>
                                         </li>
                                     @endcan
@@ -338,35 +258,16 @@
                                     <strong>
                                     <p style=" color:black;">
                                         Queue Type
-<<<<<<< HEAD
-=======
-                                        <i class="  nav-icon fas fa-angle-left right"></i>
->>>>>>> 555b1ec711472f090f8daca256c871231221c44f
                                     </p>
                                     </strong>
                                     <i class="  nav-icon fas fa-angle-left right"  style=" color:black;"></i>
                                 </a>
                                 <ul class="nav nav-treeview">
-<<<<<<< HEAD
 
                                     @can('view-any', Spatie\Permission\Models\Permission::class)
                                         <li class="nav-item">
                                             <a href="{{ route('permissions.index') }}" class="nav-link">
 
-=======
-                                    @can('view-any', Spatie\Permission\Models\Role::class)
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
-                                                <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <p>System admin</p>
-                                            </a>
-                                        </li>
-                                    @endcan
-
-                                    @can('view-any', Spatie\Permission\Models\Permission::class)
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link">
->>>>>>> 555b1ec711472f090f8daca256c871231221c44f
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
                                                 <strong>
                                                     <p style=" color:black;">Sys & Network Admin</p>
@@ -387,7 +288,6 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fa-solid fa-house fa-lg"></i>
-<<<<<<< HEAD
                                     <strong>
                                         <p style=" color:black;">
                                             Org. Structure
@@ -395,12 +295,6 @@
                                         </p>
                                     </strong>
                                     <i class="  nav-icon fas fa-angle-left right"  style=" color:black;"></i>
-=======
-                                    <p>
-                                        Org. Structure
-                                        <i class="  nav-icon fas fa-angle-left right"></i>
-                                    </p>
->>>>>>> 555b1ec711472f090f8daca256c871231221c44f
                                 </a>
                                 <ul class="nav nav-treeview">
                                     @can('view-any', Spatie\Permission\Models\Role::class)
@@ -417,18 +311,11 @@
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-<<<<<<< HEAD
                                     <i class="nav-icon fas fa-chart-bar"></i>
                                     <p style=" color:black;">
                                         <strong>
                                             Reporting
                                         </strong>
-=======
-                                    <i class=" nav-iconfa-solid fa-wave-pulse fa-lg"></i>
-                                    <p>
-                                        Reporting
-                                        <i class="  nav-icon fas fa-angle-left right"></i>
->>>>>>> 555b1ec711472f090f8daca256c871231221c44f
                                     </p>
                                     <i class="  nav-icon fas fa-angle-left right "  style=" color:black;"></i>
 

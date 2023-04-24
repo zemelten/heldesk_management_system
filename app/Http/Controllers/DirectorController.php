@@ -25,6 +25,7 @@ class DirectorController extends Controller
             ->paginate(5)
             ->withQueryString();
         // dd(Director::all());
+        //dd($directors);
         return view('app.directors.index', compact('directors', 'search'));
     }
 
