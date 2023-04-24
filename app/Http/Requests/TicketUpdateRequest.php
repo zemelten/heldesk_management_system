@@ -24,17 +24,8 @@ class TicketUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => ['nullable', 'max:255'],
-            'description' => ['nullable', 'max:255', 'string'],
-            'campuse_id' => ['nullable', 'exists:campuses,id'],
-            'customer_id' => ['required', 'exists:customers,id'],
-            'problem_id' => ['nullable', 'exists:problems,id'],
-            'organizational_unit_id' => [
-                'nullable',
-                'exists:organizational_units,id',
-            ],
-            'user_support_id' => ['nullable', 'exists:user_supports,id'],
-            'prioritie_id' => ['nullable', 'exists:priorities,id'],
+            'status' => ['required', 'max:255'],
+           
         ];
     }
 }

@@ -22,7 +22,7 @@ class DirectorController extends Controller
 
         $directors = Director::search($search)
             ->latest()
-            ->paginate(10)
+            ->paginate(5)
             ->withQueryString();
         // dd(Director::all());
         return view('app.directors.index', compact('directors', 'search'));

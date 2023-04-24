@@ -154,238 +154,255 @@
         @include('layouts.sidebar')
 
         <main class="content-wrapper p-5">
-            <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <!-- Small boxes (Stat box) -->
-                    <div class="row">
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3>{{ $totalTicket }}</h3>
-                                    <p>Total Tickets</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-ticket-alt"></i>
 
-                                </div>
-                                <a href="/tickets" class="small-box-footer">More info <i
-                                        class="fas fa-arrow-circle-right"></i></a>
+            @if( (Auth::user()->roles()->first() !=null) && Auth::user()->roles()->first()->name === "User Support")
+            @can('view-any', App\Models\Ticket::class)
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title w-100 mb-2">Tickets</h4>
+        
+                    <livewire:user-support-tickets-detail :userSupport="$userSupport" />
+                </div>
+            </div>
+            @endcan @can('view-any', App\Models\EscalatedTicket::class)
+         
+            @endcan
+          @else
+          <section class="content">
+              
+              <div class="container-fluid">
+                  <!-- Small boxes (Stat box) -->
+                  <div class="row">
+                      <div class="col-lg-3 col-6">
+                          <!-- small box -->
+                          <div class="small-box bg-info">
+                              <div class="inner">
+                                  <h3>{{ $totalTicket }}</h3>
+                                  <p>Total Tickets</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fas fa-ticket-alt"></i>
+
+                              </div>
+                              <a href="/tickets" class="small-box-footer">More info <i
+                                      class="fas fa-arrow-circle-right"></i></a>
+                          </div>
+                      </div>
+                      <!-- ./col -->
+                      <div class="col-lg-3 col-6">
+                          <!-- small box -->
+                          <div class="small-box bg-success">
+                              <div class="inner">
+                                  <h3> {{ $totalactiveTicket }}</h3>
+
+                                  <p>Active Tickets</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="far fa-check-circle"></i>
+                              </div>
+                              <a href="/tickets" class="small-box-footer">More info <i
+                                      class="fas fa-arrow-circle-right"></i></a>
+                          </div>
+                      </div>
+                      <!-- ./col -->
+                      <div class="col-lg-3 col-6">
+                          <!-- small box -->
+                          <div class="small-box bg-warning">
+                              <div class="inner">
+                                  <h3>{{ $todaysTicket }}</h3>
+
+                                  <p>Todays Tickets</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fas fa-folder-open"></i>
+                              </div>
+                              <a href="/todaysTicket" class="small-box-footer">More info <i
+                                      class="fas fa-arrow-circle-right"></i></a>
+                          </div>
+                      </div>
+                      <!-- ./col -->
+                      <div class="col-lg-3 col-6">
+                          <!-- small box -->
+                          <div class="small-box bg-danger">
+                              <div class="inner">
+                                  <h3>{{ $totalClosedTicket }}</h3>
+
+                                  <p>Closed Tickets</p>
+                              </div>
+                              <div class="icon">
+                                  <i class="fa-solid fa-check"></i>
+
+                              </div>
+                              <a href="#" class="small-box-footer">More info <i
+                                      class="fas fa-arrow-circle-right"></i></a>
+                          </div>
+                      </div>
+                      <!-- ./col -->
+                  </div>
+
+                  <div class="" style="margin-top: 20px;">
+                      <div class="row">
+                          <div class="col-lg-3 col-6">
+                              <!-- small box -->
+                              <div class="small-box bg-purple">
+                                  <div class="inner">
+                                      <h3>{{ $countUsers }}</h3>
+                                      <p>Total Users</p>
+                                  </div>
+                                  <div class="icon">
+                                      <i class="fas fa-user"></i>
+                                  </div>
+                                  <a href="/users" class="small-box-footer">More info <i
+                                          class="fas fa-arrow-circle-right"></i></a>
+                              </div>
+                          </div>
+                          <!-- ./col -->
+                          <div class="col-lg-3 col-6">
+                              <!-- small box -->
+                              <div class="small-box bg-teal">
+                                  <div class="inner">
+                                      <h3> {{ $countUsersupports }}</h3>
+
+                                      <p>User Supports</p>
+                                  </div>
+                                  <div class="icon">
+                                      <i class="fas fa-headset"></i>
+                                  </div>
+                                  <a href="/tickets" class="small-box-footer">More info <i
+                                          class="fas fa-arrow-circle-right"></i></a>
+                              </div>
+                          </div>
+                          <!-- ./col -->
+                          <div class="col-lg-3 col-6">
+                              <!-- small box -->
+                              <div class="small-box bg-secondary">
+                                  <div class="inner">
+                                      <h3>{{ $totalpendingTicket }}</h3>
+
+                                      <p>All Report</p>
+                                  </div>
+                                  <div class="icon">
+                                      <i class="fas fa-chart-bar"></i>
+                                  </div>
+                                  <a href="#" class="small-box-footer">More info <i
+                                          class="fas fa-arrow-circle-right"></i></a>
+                              </div>
+                          </div>
+                          <!-- ./col -->
+                          <div class="col-lg-3 col-6">
+                              <!-- small box -->
+                              <div class="small-box bg-dark">
+                                  <div class="inner">
+                                      <h3>{{ $totalUnclosedTicket }}</h3>
+
+                                      <p>Unclosed Ticket Reports</p>
+                                  </div>
+                                  <div class="icon">
+                                      <i class="fas fa-exclamation-triangle"></i>
+                                  </div>
+                                  <a href="#" class="small-box-footer">More info <i
+                                          class="fas fa-arrow-circle-right"></i></a>
+                              </div>
+                          </div>
+                          <!-- ./col -->
+                      </div>
+                  </div>
+                  <!-- /.row -->
+                  <!-- Main row -->
+
+                  <!-- /.row (main row) -->
+              </div><!-- /.container-fluid -->
+          </section>
+          
+          <div class="col-md-12">
+            <div class="card " id="mycard">
+                <div class="card-header">
+                    <h5 class="card-title">Tickets and Customers Diagram</h5>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="fas fa-wrench"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" id="save">
+                                <i class="fas  fa-save"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" role="menu" style="">
+                                <button class="dropdown-item changeDiagram" data-value="pie"
+                                    data-cut="0">Pie</button>
+                                <button class="dropdown-item changeDiagram" data-value="doughnut"
+                                    data-cut="50">Doughnut</button>
+                                <button class="dropdown-item changeDiagram" data-value="bar"
+                                    data-cut="0">Bar</button>
+
+
                             </div>
                         </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-success">
-                                <div class="inner">
-                                    <h3> {{ $totalactiveTicket }}</h3>
 
-                                    <p>Active Tickets</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="far fa-check-circle"></i>
-                                </div>
-                                <a href="/tickets" class="small-box-footer">More info <i
-                                        class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-warning">
-                                <div class="inner">
-                                    <h3>{{ $todaysTicket }}</h3>
-
-                                    <p>Todays Tickets</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-folder-open"></i>
-                                </div>
-                                <a href="/todaysTicket" class="small-box-footer">More info <i
-                                        class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-danger">
-                                <div class="inner">
-                                    <h3>{{ $totalClosedTicket }}</h3>
-
-                                    <p>Closed Tickets</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa-solid fa-check"></i>
-
-                                </div>
-                                <a href="#" class="small-box-footer">More info <i
-                                        class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
                     </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body" style="display: block;">
+                    <div class="row">
 
-                    <div class="" style="margin-top: 20px;">
-                        <div class="row">
-                            <div class="col-lg-3 col-6">
-                                <!-- small box -->
-                                <div class="small-box bg-purple">
-                                    <div class="inner">
-                                        <h3>{{ $countUsers }}</h3>
-                                        <p>Total Users</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <a href="/users" class="small-box-footer">More info <i
-                                            class="fas fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                            <!-- ./col -->
-                            <div class="col-lg-3 col-6">
-                                <!-- small box -->
-                                <div class="small-box bg-teal">
-                                    <div class="inner">
-                                        <h3> {{ $countUsersupports }}</h3>
-
-                                        <p>User Supports</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fas fa-headset"></i>
-                                    </div>
-                                    <a href="/tickets" class="small-box-footer">More info <i
-                                            class="fas fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                            <!-- ./col -->
-                            <div class="col-lg-3 col-6">
-                                <!-- small box -->
-                                <div class="small-box bg-secondary">
-                                    <div class="inner">
-                                        <h3>{{ $totalpendingTicket }}</h3>
-
-                                        <p>All Report</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fas fa-chart-bar"></i>
-                                    </div>
-                                    <a href="#" class="small-box-footer">More info <i
-                                            class="fas fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                            <!-- ./col -->
-                            <div class="col-lg-3 col-6">
-                                <!-- small box -->
-                                <div class="small-box bg-dark">
-                                    <div class="inner">
-                                        <h3>{{ $totalUnclosedTicket }}</h3>
-
-                                        <p>Unclosed Ticket Reports</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fas fa-exclamation-triangle"></i>
-                                    </div>
-                                    <a href="#" class="small-box-footer">More info <i
-                                            class="fas fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                            <!-- ./col -->
+                        <div class="col-md-12">
+                            <p class="text-center">
+                                <strong>2023-Apr-21</strong>
+                            </p>
                         </div>
+
+                        <div class="col-md-6">
+                            <div class="chartjs-size-monitor">
+                                <div class="chartjs-size-monitor-expand">
+                                    <div class=""></div>
+                                </div>
+                                <div class="chartjs-size-monitor-shrink">
+                                    <div class=""></div>
+                                </div>
+                            </div>
+                            <canvas id="AllCafe" style="display: block; width: 305px; height: 152px;"
+                                width="610" height="304" class="chartjs-render-monitor"></canvas>
+                            <a data-id="AllCafe" download="ChartImage.jpg" href=""
+                                class=" download float-right bg-flat-color-1">
+                                <i class="fa fa-download"></i>
+                            </a>
+                        </div>
+
+
+                        <!-- /.col -->
+                        <div class="col-md-6">
+                            <div class="chartjs-size-monitor">
+                                <div class="chartjs-size-monitor-expand">
+                                    <div class=""></div>
+                                </div>
+                                <div class="chartjs-size-monitor-shrink">
+                                    <div class=""></div>
+                                </div>
+                            </div>
+                            <canvas id="AllMealType" width="610" height="304"
+                                style="display: block; width: 305px; height: 152px;"
+                                class="chartjs-render-monitor"></canvas>
+                            <a data-id="AllMealType" download="ChartImage.jpg" href=""
+                                class=" download float-right bg-flat-color-1">
+                                <i class="fa fa-download"></i>
+                            </a>
+                        </div>
+                        <!-- /.col -->
                     </div>
                     <!-- /.row -->
-                    <!-- Main row -->
-
-                    <!-- /.row (main row) -->
-                </div><!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
-            <div class="col-md-12">
-                <div class="card " id="mycard">
-                    <div class="card-header">
-                        <h5 class="card-title">Tickets and Customers Diagram</h5>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <i class="fas fa-wrench"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" id="save">
-                                    <i class="fas  fa-save"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" role="menu" style="">
-                                    <button class="dropdown-item changeDiagram" data-value="pie"
-                                        data-cut="0">Pie</button>
-                                    <button class="dropdown-item changeDiagram" data-value="doughnut"
-                                        data-cut="50">Doughnut</button>
-                                    <button class="dropdown-item changeDiagram" data-value="bar"
-                                        data-cut="0">Bar</button>
-
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body" style="display: block;">
-                        <div class="row">
-
-                            <div class="col-md-12">
-                                <p class="text-center">
-                                    <strong>2023-Apr-21</strong>
-                                </p>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="chartjs-size-monitor">
-                                    <div class="chartjs-size-monitor-expand">
-                                        <div class=""></div>
-                                    </div>
-                                    <div class="chartjs-size-monitor-shrink">
-                                        <div class=""></div>
-                                    </div>
-                                </div>
-                                <canvas id="AllCafe" style="display: block; width: 305px; height: 152px;"
-                                    width="610" height="304" class="chartjs-render-monitor"></canvas>
-                                <a data-id="AllCafe" download="ChartImage.jpg" href=""
-                                    class=" download float-right bg-flat-color-1">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                            </div>
-
-
-                            <!-- /.col -->
-                            <div class="col-md-6">
-                                <div class="chartjs-size-monitor">
-                                    <div class="chartjs-size-monitor-expand">
-                                        <div class=""></div>
-                                    </div>
-                                    <div class="chartjs-size-monitor-shrink">
-                                        <div class=""></div>
-                                    </div>
-                                </div>
-                                <canvas id="AllMealType" width="610" height="304"
-                                    style="display: block; width: 305px; height: 152px;"
-                                    class="chartjs-render-monitor"></canvas>
-                                <a data-id="AllMealType" download="ChartImage.jpg" href=""
-                                    class=" download float-right bg-flat-color-1">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                        <!-- /.row -->
-                    </div>
-                    <!-- ./card-body -->
-                    <!-- /.card-footer -->
                 </div>
-                <!-- /.card -->
+                <!-- ./card-body -->
+                <!-- /.card-footer -->
             </div>
+            <!-- /.card -->
+        </div>
+            @endif
+            <!-- Main content -->
+            <!-- /.content -->
         </main>
         @include('layouts.footer')
     </div>

@@ -44,6 +44,7 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th class="text-left">
                                 @lang('crud.users.inputs.username')
                             </th>
@@ -59,8 +60,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($users as $user)
+                        @forelse($users as $key => $user)
                         <tr>
+                            <td style="width: 2.5cm"> {{$key+1}}</td>
                             <td>{{ $user->username ?? '-' }}</td>
                             <td>{{ $user->full_name ?? '-' }}</td>
                             <td>{{ $user->email ?? '-' }}</td>

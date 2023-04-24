@@ -49,6 +49,7 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th class="text-left">
                                 @lang('crud.service_units.inputs.name')
                             </th>
@@ -73,8 +74,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($serviceUnits as $serviceUnit)
+                        @forelse($serviceUnits as $key => $serviceUnit)
                         <tr>
+                            <td style="width: 2.5cm"> {{$key+1}}</td>
                             <td>{{ $serviceUnit->name ?? '-' }}</td>
                             <td>{{ $serviceUnit->telephone ?? '-' }}</td>
                             <td>{{ $serviceUnit->fax ?? '-' }}</td>

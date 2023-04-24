@@ -82,6 +82,26 @@ $('#campuse_id').on('change', function() {
         }
     });
 });
+$('#problem_category_id').on('change', function() {
+    var idState = this.value;
+    $("#problem_id").html('');
+    $.ajax({
+        url: "{{ url('/get-problems') }}",
+        type: "POST",
+        data: {
+            problem_category_id: idState,
+            _token: '{{ csrf_token() }}'
+        },
+        dataType: 'json',
+        success: function(res) {
+            $('#problem_id').html('<option value="">-- Select Building --</option>');
+            $.each(res.blds  , function(key, value) {
+                $("#problem_id").append('<option value="' + value
+                    .id + '">' + value.name + '</option>');
+            });
+        }
+    });
+});
 </script>
 <script>
     $(function() {
@@ -93,7 +113,9 @@ $('#campuse_id').on('change', function() {
 
         })
     });
-    <script>
+    
+
+</script>
 
 
 @endpush

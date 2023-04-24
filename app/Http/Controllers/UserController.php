@@ -58,7 +58,7 @@ class UserController extends Controller
 
         $user = User::create($validated);
 
-        $user->syncRoles($request->roles);
+       $user->syncRoles($request->roles);
 
         return redirect()
             ->route('users.edit', $user)

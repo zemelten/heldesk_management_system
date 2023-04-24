@@ -12,12 +12,11 @@
         </x-inputs.select>
     </x-inputs.group>
 
-
     <x-inputs.group class="col-md-6">
-        <x-inputs.select name="problem_id" label="Problem">
-            @php $selected = old('problem_id', ($editing ? $ticket->problem_id : '')) @endphp
-            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Problem</option>
-            @foreach($problems as $value => $label)
+        <x-inputs.select name="problem_category_id" label="Problem Category">
+            @php $selected = old('problem_category_id', ($editing ? $ticket->userSupport->problemCatagory: '')) @endphp
+            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Problem  Category</option>
+            @foreach($problemCategory as $value => $label)
             <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
             @endforeach
         </x-inputs.select>
@@ -26,6 +25,16 @@
         <x-inputs.select name="building_id" label="Building" id="building_id">
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select Building</option>
             @foreach($buildings as $value => $label)
+            <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
+            @endforeach
+        </x-inputs.select>
+    </x-inputs.group>
+    
+    <x-inputs.group class="col-md-6">
+        <x-inputs.select name="problem_id" label="Problem">
+            @php $selected = old('problem_id', ($editing ? $ticket->problem_id : '')) @endphp
+            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Problem</option>
+            @foreach($problems as $value => $label)
             <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
             @endforeach
         </x-inputs.select>
@@ -57,7 +66,7 @@
     </x-inputs.group>
 
 
-    <x-inputs.group class="col-md-6">
+    <x-inputs.group class="col-md-12">
         <x-inputs.number name="office_id" label="Office No.">
            
         </x-inputs.number>

@@ -44,6 +44,7 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th class="text-left">
                                 @lang('crud.units.inputs.telephone')
                             </th>
@@ -65,8 +66,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($units as $unit)
+                        @forelse($units as $key => $unit)
                         <tr>
+                            <td style="width: 2.5cm"> {{$key+1}}</td>
                             <td>{{ $unit->telephone ?? '-' }}</td>
                             <td>{{ $unit->fax ?? '-' }}</td>
                             <td>{{ $unit->email ?? '-' }}</td>

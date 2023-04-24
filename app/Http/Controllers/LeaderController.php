@@ -23,7 +23,7 @@ class LeaderController extends Controller
 
         $leaders = Leader::search($search)
             ->latest()
-            ->paginate(10)
+            ->paginate(5)
             ->withQueryString();
 
         return view('app.leaders.index', compact('leaders', 'search'));
