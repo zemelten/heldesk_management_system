@@ -5,7 +5,7 @@
                         style="width: 80px; "><span>23</span><span>feb</span> </time>
             </section>
             <section class="card1-cont"> <small> {{ optional($ticket->organizationalUnit)->name ?? '-' }}</small>
-                <h4> {{ optional($ticket->customer)->full_name ?? '-' }}</h4>
+                <h3> {{ optional($ticket->customer)->full_name ?? '-' }}</h3>
                 @inject('carbon', 'Carbon\Carbon')
 
                 <div class="even-date1"> <i class="px-2 fa fa-calendar"></i> <time> <span>
@@ -19,47 +19,11 @@
                 </div> <a href="#">Pending</a>
             </section>
         </article>
-        <article class="card1 fl-left1 flex-wrap flex-fill col-4">
-            <section class="date1"> <time datetime="23th feb"> <img class="w-100" src="/images/JU_logo.png" alt=""
-                        style="width: 80px; "><span>23</span><span>feb</span> </time>
-            </section>
-            <section class="card1-cont"> <small> {{ optional($ticket->organizationalUnit)->name ?? '-' }}</small>
-                <h4> {{ optional($ticket->customer)->full_name ?? '-' }}</h4>
-                @inject('carbon', 'Carbon\Carbon')
 
-                <div class="even-date1"> <i class="px-2 fa fa-calendar"></i> <time> <span>
-                            {{ $carbon::parse($ticket->created_at)->format('l j F Y \, h:iA ') }}
-                        </span> </time></div>
-                <div class="even-info1"> <i class="px-2 fa fa-map-marker"></i>
-                    <p> {{ optional($ticket->campuse)->name ?? '-' }} <br>
-                        {{ optional($ticket->problem)->name ?? '-' }}
-                    </p>
-
-                </div> <a href="#">Pending</a>
-            </section>
-        </article>
-        <article class="card1 fl-left1 flex-wrap flex-fill col-4">
-            <section class="date1"> <time datetime="23th feb"> <img class="w-100" src="/images/JU_logo.png" alt=""
-                        style="width: 80px; "><span>23</span><span>feb</span> </time>
-            </section>
-            <section class="card1-cont"> <small> {{ optional($ticket->organizationalUnit)->name ?? '-' }}</small>
-                <h4> {{ optional($ticket->customer)->full_name ?? '-' }}</h4>
-                @inject('carbon', 'Carbon\Carbon')
-
-                <div class="even-date1"> <i class="px-2 fa fa-calendar"></i> <time> <span>
-                            {{ $carbon::parse($ticket->created_at)->format('l j F Y \, h:iA ') }}
-                        </span> </time></div>
-                <div class="even-info1"> <i class="px-2 fa fa-map-marker"></i>
-                    <p> {{ optional($ticket->campuse)->name ?? '-' }} <br>
-                        {{ optional($ticket->problem)->name ?? '-' }}
-                    </p>
-
-                </div> <a href="#">Pending</a>
-            </section>
-        </article>
+       
         
 
-        {{-- <style type="text/css">
+        <style type="text/css">
             @import url('https://fonts.googleapis.com/css?family=Oswald');
 
             * {
@@ -243,5 +207,5 @@
                     font-size: 75%
                 }
             }
-        </style> --}}
+        </style>
         <script type="text/javascript"></script>
