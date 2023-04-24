@@ -3,7 +3,7 @@
 @section('content')
 
             <!-- /.card -->
-            {{-- <div class="searchbar mt-0 mb-4">
+            <div class="searchbar mt-0 mb-4">
               <div class="row">
                   <div class="col-md-6">
                       <form>
@@ -22,7 +22,7 @@
                       @endcan
                   </div>
               </div>
-          </div> --}}
+          </div>
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">@lang('crud.tickets.index_title')</h3>
@@ -137,7 +137,7 @@
                       </tr>
                   @endforelse
               </tbody>
-                  <tfoot>
+                  {{-- <tfoot>
                     <tr>
                       <th class="text-left">
                           @lang('crud.tickets.inputs.customer_id')
@@ -164,7 +164,7 @@
                           @lang('crud.common.actions')
                       </th>
                   </tr>
-                  </tfoot>
+                  </tfoot> --}}
                 </table>
               </div>
               <!-- /.card-body -->

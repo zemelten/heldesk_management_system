@@ -125,11 +125,7 @@
                         </tr>
                         @endforelse
                     </tbody>
-                    <tfoot>
-                            {{-- <tr>
-                                <td colspan="5">{!! $directors->render() !!}</td>
-                            </tr> --}}
-                    </tfoot>
+                   
                 </table>
             </div>
         </div>

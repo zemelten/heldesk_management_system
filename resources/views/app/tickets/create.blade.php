@@ -38,6 +38,8 @@
 </div>
 @endsection
 @push('scripts')
+
+
 <script>
     $('#building_id').on('change', function() {
     var idState = this.value;
@@ -81,7 +83,17 @@ $('#campuse_id').on('change', function() {
     });
 });
 </script>
+<script>
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2({
+            // dropdownAutoWidth: true
+             theme: "bootstrap4",
+            //  width:'resolve'
 
+        })
+    });
+    <script>
 
 
 @endpush
