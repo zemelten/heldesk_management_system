@@ -361,4 +361,3 @@
         </div>
         <!-- /.sidebar -->
     </aside>
-@endauth
