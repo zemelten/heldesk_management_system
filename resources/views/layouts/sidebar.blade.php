@@ -5,7 +5,7 @@
         <!-- Brand Logo -->
         <a href="{{ url('/') }}" class="brand-link text-dark"  style="background-color: #0067ba;">
           <img src="{{ asset('images/logo.jpg') }}" alt="JU Logo" class="brand-image">
-            <span class="brand-text font-weight-light" style="color: white"><strong style="font-size:25px;" > JU HelpDesk </strong></span>  
+            <span class="brand-text font-weight-light" style="color: white"><strong style="font-size:20px;" > JU HelpDesk </strong></span>  
         </a>
 
 
