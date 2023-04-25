@@ -26,6 +26,11 @@
 
 
 
+<link rel="stylesheet" href="{{ asset('allinone/bootstrap-4.min.css') }}" /> 
+
+    <!-- Below is custom css for login form -->
+    <link rel="stylesheet" href="{{ asset('desk_css/custom-login.css') }}" />
+
 
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <!-- DataTables -->
@@ -144,7 +149,10 @@
         </main>
       
     </div>
-  @include('layouts.footer')
+    @auth
+     @include('layouts.footer')
+    @endauth
+ 
     </div>
 
 
@@ -183,35 +191,7 @@
         </script>
     @endif
 
-    <script>
-        /* Simple Alpine Image Viewer */
-        document.addEventListener('alpine:init', () => {
-                Alpine.data('imageViewer', (src = '') => {
-                    return {
-                        imageUrl: src,
-
-                        refreshUrl() {
-                            this.imageUrl = this.$el.getAttribute("image-url")
-                        },
-
-                        fileChosen(event) {
-                            this.fileToDataUrl(event, src => this.imageUrl = src)
-                        },
-
-                        fileToDataUrl(event, callback) {
-                            if (!event.target.files.length) return
-
-                            let file = event.target.files[0],
-                                reader = new FileReader()
-
-                            reader.readAsDataURL(file)
-                            reader.onload = e => callback(e.target.result)
-                        },
-                    }
-                })
-            }) <
-            script src = "{{ asset('js/login.js') }}" >
-    </script>
+    
     </script>
 </body>
 <script>
@@ -219,7 +199,7 @@
         //Initialize Select2 Elements
         $('.select2').select2({
             // dropdownAutoWidth: true
-             theme: "bootstrap4",
+             //theme: "bootstrap4",
             //  width:'resolve'
 
         })

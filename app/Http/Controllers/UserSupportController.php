@@ -70,15 +70,32 @@ class UserSupportController extends Controller
      */
     public function store(UserSupportStoreRequest $request)
     {
-        
+       // $data['building_id'] = $request->building_id;
+     
+
         $this->authorize('create', UserSupport::class);
 
         $validated = $request->validated();
+      //  dd($validated);
+        foreach ($request->building_id as $bld) {
+            if(!empty($bld))
+        {
+          UserSupport::create([
+            'user_id'=>$request->user_id,
+            'user_type'=>$request->user_type,
+            'problem_catagory_id'=>$request->problem_catagory_id,
+            'leader_id'=>$request->leader_id,
+            'building_id'=>$bld,
+            'service_unit_id'=>$request->service_unit_id,
+            'unit_id'=>$request->unit_id
+          ]);      
+        }
+        } 
 
-        $userSupport = UserSupport::create($validated);
+     //   $userSupport = UserSupport::create($validated);
 
         return redirect()
-            ->route('user-supports.edit', $userSupport)
+            ->route('user-supports.index')
             ->withSuccess(__('crud.common.created'));
     }
 

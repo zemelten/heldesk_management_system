@@ -63,10 +63,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                  @forelse($tickets as $ticket)
+                  @forelse($tickets as $key => $ticket)
                       <tr>
                         <td>
-                      {{  $ticket->id }}     
+                      {{  $key + 1 }}     
                         </td>
                           <td>
                               {{ optional($ticket->customer)->full_name ?? '-' }}
