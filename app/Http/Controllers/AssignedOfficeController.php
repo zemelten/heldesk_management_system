@@ -57,7 +57,7 @@ class AssignedOfficeController extends Controller
         $assignedOffice = AssignedOffice::create($validated);
 
         return redirect()
-            ->route('assigned-offices.edit', $assignedOffice)
+            ->route('assigned-offices.index', $assignedOffice)
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -85,7 +85,7 @@ class AssignedOfficeController extends Controller
         $buildings = Building::pluck('name', 'id');
 
         return view(
-            'app.assigned_offices.edit',
+            'app.assigned_offices.index',
             compact('assignedOffice', 'buildings')
         );
     }

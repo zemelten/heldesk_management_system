@@ -24,7 +24,7 @@ class DirectorFactory extends Factory
     {
         return [
             'full_name' => $this->faker->name(),
-            'sex' => \Arr::random(['male', 'female', 'other']),
+            'sex' => \Arr::random(['male', 'female']),
             'email' => $this->faker->email,
             'phone' => $this->faker->phoneNumber,
             'user_id' => \App\Models\User::factory(),
