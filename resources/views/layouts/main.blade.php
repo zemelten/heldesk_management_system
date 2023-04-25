@@ -620,7 +620,7 @@
         type: 'doughnut',
         data: {
             datasets: [{
-                data: [active + 10, closed + 7, closed, active],
+                data: [active, closed, closed, active],
 
                 backgroundColor: [getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), ],
                 label: 'Tickets '
