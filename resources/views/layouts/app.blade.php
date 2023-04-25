@@ -26,6 +26,11 @@
 
 
 
+<link rel="stylesheet" href="{{ asset('allinone/bootstrap-4.min.css') }}" /> 
+
+    <!-- Below is custom css for login form -->
+    <link rel="stylesheet" href="{{ asset('desk_css/custom-login.css') }}" />
+
 
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <!-- DataTables -->
@@ -144,7 +149,10 @@
         </main>
       
     </div>
-  @include('layouts.footer')
+    @auth
+     @include('layouts.footer')
+    @endauth
+ 
     </div>
 
 
@@ -184,8 +192,6 @@
     @endif
 
     
-           < script src = "{{ asset('js/login.js') }}" >
-    </script>
     </script>
 </body>
 <script>
