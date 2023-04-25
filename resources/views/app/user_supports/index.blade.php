@@ -49,8 +49,12 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th class="text-left">
                                 @lang('crud.user_supports.inputs.user_id')
+                            </th>
+                            <th class="text-left">
+                                Tickets
                             </th>
                             <th class="text-left">
                                 @lang('crud.user_supports.inputs.user_type')
@@ -73,12 +77,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($userSupports as $userSupport)
+                        @forelse($userSupports as $key => $userSupport)
                         <tr>
+                            <td>{{$key + 1 }}</td>
                             <td>
                                 {{ optional($userSupport->user)->full_name ??
                                 '-' }}
                             </td>
+                            <td>{{$userSupport->tickets()->count() }}</td>
                             <td>{{ $userSupport->user_type ?? '-' }}</td>
                             <td>
                                 {{ optional($userSupport->problemCatagory)->name

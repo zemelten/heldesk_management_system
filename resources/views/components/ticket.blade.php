@@ -1,6 +1,6 @@
         @props(['ticket'])
         
-        <article class="card1 fl-left1 flex-wrap flex-fill col-4">
+        <article class="card1 fl-left1 flex-wrap flex-fill col-4 mx-3">
             <section class="date1"> <time datetime="23th feb"> <img class="w-100" src="/images/JU_logo.png" alt=""
                         style="width: 80px; "><span>23</span><span>feb</span> </time>
             </section>
