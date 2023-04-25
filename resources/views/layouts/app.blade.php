@@ -183,34 +183,8 @@
         </script>
     @endif
 
-    <script>
-        /* Simple Alpine Image Viewer */
-        document.addEventListener('alpine:init', () => {
-                Alpine.data('imageViewer', (src = '') => {
-                    return {
-                        imageUrl: src,
-
-                        refreshUrl() {
-                            this.imageUrl = this.$el.getAttribute("image-url")
-                        },
-
-                        fileChosen(event) {
-                            this.fileToDataUrl(event, src => this.imageUrl = src)
-                        },
-
-                        fileToDataUrl(event, callback) {
-                            if (!event.target.files.length) return
-
-                            let file = event.target.files[0],
-                                reader = new FileReader()
-
-                            reader.readAsDataURL(file)
-                            reader.onload = e => callback(e.target.result)
-                        },
-                    }
-                })
-            }) <
-            script src = "{{ asset('js/login.js') }}" >
+    
+           < script src = "{{ asset('js/login.js') }}" >
     </script>
     </script>
 </body>
@@ -219,7 +193,7 @@
         //Initialize Select2 Elements
         $('.select2').select2({
             // dropdownAutoWidth: true
-             theme: "bootstrap4",
+             //theme: "bootstrap4",
             //  width:'resolve'
 
         })
