@@ -174,13 +174,7 @@
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css?family=Oswald');
 
-        * {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            box-sizing: border-box
-        }
-
+       
         body {
             background-color: #dadde6;
             font-family: arial
