@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class tickets.ActiveTicket extends Component
+class Ticket extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class tickets.ActiveTicket extends Component
      */
     public function render()
     {
-        return view('components.tickets.-active-ticket');
+        return view('components.ticket');
     }
 }

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Building;
+use App\Models\Campus;
 use App\Models\Customer;
+use App\Models\OrganizationalUnit;
 use App\Models\User;
 use App\Models\Ticket;
 use App\Models\UserSupport;
@@ -63,6 +66,6 @@ class HomeController extends Controller
 
         //dd($countusers);
 
-        return view('home', compact('countUsers','countUsersupports', 'totalTicket', 'totalactiveTicket', 'totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket', 'totalUnclosedTicket'));
+        return view('home', compact('countUsers', 'totalTicket', 'totalactiveTicket', 'countUsersupports','totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket', 'totalUnclosedTicket'));
     }
 }

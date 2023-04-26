@@ -20,6 +20,18 @@
                 All rights reserved.
                 <div class="float-right d-none d-sm-inline-block">
                     <b>Version</b> 3.2.0
+      
+        {{-- <div class="container-xxl flex-grow-1 container-p-y"> --}}
+    </div>
+    @php $editing = isset($ticket) @endphp
+    
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title ">Update Your Information</h3>
+                    
                 </div>
             </footer>
 

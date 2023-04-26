@@ -65,7 +65,7 @@
                 @endcan
             </div>
         </div>
-        {{-- <x-tickets.-active-ticket :tickets="$tickets"/> --}}
+        <x-tickets.-active-ticket $tickets=$tickets/>
 
     </div>
 </div>

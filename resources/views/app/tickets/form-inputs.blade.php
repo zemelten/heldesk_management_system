@@ -40,16 +40,6 @@
         </x-inputs.select>
     </x-inputs.group>
     
-    <x-inputs.group class="col-md-6">
-        <x-inputs.select name="floor_id" label="Floor">
-            <option disabled {{ empty($selected) ? 'selected' : '' }}>Select Floor</option>
-            <option value="ground">Ground</option>
-            <option>1st Floor</option>
-            <option>2nd Floor</option>
-            <option>3rd Floor</option>
-            <option>4th Floor</option>
-        </x-inputs.select>
-    </x-inputs.group>
 
     <x-inputs.group class="col-md-6">
         <x-inputs.select
@@ -65,6 +55,16 @@
         </x-inputs.select>
     </x-inputs.group>
 
+    <x-inputs.group class="col-md-6">
+        <x-inputs.select name="floor_id" label="Floor">
+            <option disabled {{ empty($selected) ? 'selected' : '' }}>Select Floor</option>
+            <option value="ground">Ground</option>
+            <option>1st Floor</option>
+            <option>2nd Floor</option>
+            <option>3rd Floor</option>
+            <option>4th Floor</option>
+        </x-inputs.select>
+    </x-inputs.group>
 
     <x-inputs.group class="col-md-12">
         <x-inputs.number name="office_id" label="Office No.">
