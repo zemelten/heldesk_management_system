@@ -66,7 +66,8 @@
                   @forelse($tickets as $key => $ticket)
                       <tr>
                         <td>
-                      {{  $key + 1 }}     
+                      {{  $key + 1 }}    
+                       
                         </td>
                           <td>
                               {{ optional($ticket->customer)->full_name ?? '-' }}
