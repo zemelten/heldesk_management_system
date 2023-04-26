@@ -55,7 +55,7 @@ class CustomerTicketsDetail extends Component
             'name',
             'id'
         );
-        $this->userSupportsForSelect = UserSupport::pluck('id', 'id');
+        $this->userSupportsForSelect = UserSupport::pluck('user_id', 'id');
         $this->prioritiesForSelect = Prioritie::pluck('name', 'id');
         $this->resetTicketData();
     }
