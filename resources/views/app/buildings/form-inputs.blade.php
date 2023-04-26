@@ -5,6 +5,7 @@
         <x-inputs.text
             name="name"
             label="Name"
+            autofocus="true"
             :value="old('name', ($editing ? $building->name : ''))"
             maxlength="255"
             placeholder="Name"

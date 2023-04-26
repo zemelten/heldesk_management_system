@@ -5,6 +5,7 @@
         <x-inputs.text
             name="name"
             label="Name"
+            autofocus="true"
             :value="old('name', ($editing ? $campus->name : ''))"
             maxlength="255"
             placeholder="Name"

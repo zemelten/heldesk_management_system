@@ -15,9 +15,9 @@
         @can('view-any', App\Models\Ticket::class)
             <div class="card mt-4">
                 <div class="card-body">
-                    <h4 class="card-title w-100 mb-2">Report</h4>
+                    <h3 class="card-title w-100 mb-2">Report</h3>
                     <div class="mb-4">
-                        <h5>@lang('crud.user_supports.inputs.user_id')</h5>
+                        <h4>Full Name</h4>
                         <span>{{ optional($reports->user)->full_name ?? '-' }}</span>
                     </div>
                 </div>

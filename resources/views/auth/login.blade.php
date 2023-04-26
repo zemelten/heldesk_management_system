@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>JU HELPDESK | Login</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <!-- Change below bootstrap import link to use local bootstrap or official cdn -->
-    <link rel="stylesheet" href="{{ asset('desk_css/bootstrap.css') }}" />
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg- p-3 rounded-10" style="background-color: #0067ba;"> 
+                    <div class="text-center">
+                        <img src="/images/JU.jpg" alt="" style="width: 100px; ">
+                        <div>
+                          <a href="#" class="h1"style="color: white" ><b>HELP</b>DESK</a>
+                          </div>
+                    </div>
+                </div>
 
     <!-- Below is custom css for login form -->
     <link rel="stylesheet" href="{{ asset('desk_css/custom-login.css') }}" />
