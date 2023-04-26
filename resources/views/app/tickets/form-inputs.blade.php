@@ -17,6 +17,8 @@
 
     @endif
 
+
+    @if(Auth::user()->roles()->first()->name === "Customer")
     <x-inputs.group class="col-md-6">
         <x-inputs.select name="campuse_id" label="Campus" id="campuse_id">
             @php $selected = old('campuse_id', ($editing ? $ticket->campuse_id : '')) @endphp
@@ -26,6 +28,7 @@
             @endforeach
         </x-inputs.select>
     </x-inputs.group>
+    @endif
 
     <x-inputs.group class="col-md-6">
         <x-inputs.select name="problem_category_id" label="Problem Category">
@@ -36,6 +39,8 @@
             @endforeach
         </x-inputs.select>
     </x-inputs.group>
+
+    @if(Auth::user()->roles()->first()->name === "Customer")
     <x-inputs.group class="col-md-6">
         <x-inputs.select name="building_id" label="Building" id="building_id">
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select Building</option>
@@ -44,6 +49,7 @@
             @endforeach
         </x-inputs.select>
     </x-inputs.group>
+    @endif
     
     <x-inputs.group class="col-md-6">
         <x-inputs.select name="problem_id" label="Problem">
