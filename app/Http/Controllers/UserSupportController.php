@@ -26,7 +26,7 @@ class UserSupportController extends Controller
         $search = $request->get('search', '');
 
         $userSupports = UserSupport::search($search)
-            ->latest()
+            ->oldest()
             ->paginate(10)
             ->withQueryString();
 
