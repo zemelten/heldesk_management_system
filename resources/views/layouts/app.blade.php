@@ -19,12 +19,17 @@
         integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/js/adminlte.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" </script>
-        < script src = "https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+        <script src = "https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"
         defer >
-    </script>
+    </script> --}}
 
 
+
+    <link rel="stylesheet" href="{{ asset('allinone/bootstrap-4.min.css') }}" />
+
+    <!-- Below is custom css for login form -->
+    <link rel="stylesheet" href="{{ asset('desk_css/custom-login.css') }}" />
 
 
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
@@ -136,15 +141,18 @@
             <div class="main-header">
                 @include('layouts.nav')
             </div>
-      
-           @include('layouts.sidebar')
+
+            @include('layouts.sidebar')
         @endauth
         <main class="content-wrapper p-5">
             @yield('content')
         </main>
-      
+
     </div>
-  @include('layouts.footer')
+    @auth
+        @include('layouts.footer')
+    @endauth
+
     </div>
 
 
@@ -183,35 +191,7 @@
         </script>
     @endif
 
-    <script>
-        /* Simple Alpine Image Viewer */
-        document.addEventListener('alpine:init', () => {
-                Alpine.data('imageViewer', (src = '') => {
-                    return {
-                        imageUrl: src,
 
-                        refreshUrl() {
-                            this.imageUrl = this.$el.getAttribute("image-url")
-                        },
-
-                        fileChosen(event) {
-                            this.fileToDataUrl(event, src => this.imageUrl = src)
-                        },
-
-                        fileToDataUrl(event, callback) {
-                            if (!event.target.files.length) return
-
-                            let file = event.target.files[0],
-                                reader = new FileReader()
-
-                            reader.readAsDataURL(file)
-                            reader.onload = e => callback(e.target.result)
-                        },
-                    }
-                })
-            }) <
-            script src = "{{ asset('js/login.js') }}" >
-    </script>
     </script>
 </body>
 <script>
@@ -219,13 +199,11 @@
         //Initialize Select2 Elements
         $('.select2').select2({
             // dropdownAutoWidth: true
-             theme: "bootstrap4",
+            //theme: "bootstrap4",
             //  width:'resolve'
 
         })
     });
-    
-
 </script>
 
 </html>

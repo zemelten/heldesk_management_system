@@ -38,6 +38,8 @@
 </div>
 @endsection
 @push('scripts')
+
+
 <script>
     $('#building_id').on('change', function() {
     var idState = this.value;

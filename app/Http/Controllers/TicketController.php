@@ -113,47 +113,25 @@ class TicketController extends Controller
      */
     public function store(TicketStoreRequest $request)
     {
-
-
-
         $this->authorize('create', Ticket::class);
         $validated = $request->validated();
-        [
-            'status' => ['nullable', 'max:255'],
-            'description' => ['nullable', 'max:255', 'string'],
-            'campuse_id' => ['nullable', 'exists:campuses,id'],
-            'customer_id' => ['nullable', 'exists:customers,id'],
-            'problem_id' => ['nullable', 'exists:problems,id'],
-            'organizational_unit_id' => [
-                'nullable',
-                'exists:organizational_units,id',
-            ],
-            'user_support_id' => ['nullable', 'exists:user_supports,id'],
-            'prioritie_id' => ['nullable', 'exists:priorities,id'],
-        ];
         $prob_cat = ProblemCatagory::find($request->problem_category_id);
         $ticket = new Ticket();
-        //dd($prob_cat->userSupports);
-        $min = array();
-        foreach ($prob_cat->userSupports as $sup) {
-            $count_ticket_user_support = Ticket::where('user_support_id', $sup->id)->count();
-            array_push($min, $count_ticket_user_support);
+        $ss = $prob_cat->userSupports->sortBy('tickets');
+        foreach($ss as $s){
+          if($s->building_id === intval($request->building_id)){
+            $usersup = UserSupport::where('building_id',$s->building_id)->first()->id;
+            
+          } 
         }
-        $tickets = Ticket::all();
-
-        $ss = $prob_cat->userSupports->sortBy('tickets')->first()->id;
+        
         $customer_id = Customer::where('full_name', Auth::user()->full_name)->first()->id;
-        // dd($customer_id);
-
-
-        //  $count_ticket_user_support = Ticket::where('user_support_id',$prob_cat->userSupports->first()->id)->count();
-        //  dd($count_ticket_user_support);
-        //find user support with minu=inum number of tickets
+     
 
         $ticket->status = 0;
         $ticket->description = $request->description;
         $ticket->customer_id = $customer_id;
-        $ticket->user_support_id = $ss;
+        $ticket->user_support_id = $usersup;
         $ticket->reports_id = 1;
         $ticket->campuse_id = $request->campuse_id;
         $ticket->organizational_unit_id = $request->organizational_unit_id;
