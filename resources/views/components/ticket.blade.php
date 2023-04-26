@@ -34,7 +34,7 @@
             }
 
             body {
-                background-color: #dadde6;
+                /* background-color: #dadde6; */
                 font-family: arial
             }
 
