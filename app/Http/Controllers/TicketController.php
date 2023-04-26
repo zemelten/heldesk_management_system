@@ -124,8 +124,12 @@ class TicketController extends Controller
             
           } 
         }
-        
-        $customer_id = Customer::where('full_name', Auth::user()->full_name)->first()->id;
+        if(Auth::user()->roles()->first()->name ==='super-admin'){
+            $customer_id = $request->customer_id;
+        }else{
+                $customer_id = Customer::where('full_name', Auth::user()->full_name)->first()->id;
+        }
+       
      
 
         $ticket->status = 0;

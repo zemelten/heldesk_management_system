@@ -2,6 +2,21 @@
 
 <div class="row">
 
+
+    @if(Auth::user()->roles()->first()->name === "super-admin")
+
+        <x-inputs.group class="col-md-6">
+        <x-inputs.select name="customer_id" label="Customer" id="customer_id">
+            @php $selected = old('customer_id', ($editing ? $ticket->customer_id : '')) @endphp
+            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Customers</option>
+            @foreach($customers as $value => $label)
+            <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
+            @endforeach
+        </x-inputs.select>
+    </x-inputs.group>
+
+    @endif
+
     <x-inputs.group class="col-md-6">
         <x-inputs.select name="campuse_id" label="Campus" id="campuse_id">
             @php $selected = old('campuse_id', ($editing ? $ticket->campuse_id : '')) @endphp
