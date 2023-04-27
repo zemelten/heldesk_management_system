@@ -239,6 +239,16 @@
                                             </a>
                                         </li>
                                     @endcan
+                                    @can('view-any', App\Models\Prioritie::class)
+                                    <li class="nav-item">
+                                        <a href="{{ url('/tickets-settings') }}" class="nav-link">
+                                            <i class="nav-icon icon ion-md-radio-button-off"></i>
+                                            <strong>
+                                                <p style=" color:black;">Ticket Settings</p>
+                                            </strong>
+                                        </a>
+                                    </li>
+                                @endcan
                                     @can('view-any', App\Models\Floor::class)
                                         <li class="nav-item">
                                             <a href="{{ route('floors.index') }}" class="nav-link">
