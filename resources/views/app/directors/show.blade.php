@@ -45,6 +45,17 @@
         </div>
     </div>
 
+    
+    @can('view-any', App\Models\Leader::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">Leaders</h4>
+
+            <livewire:director-leaders-detail :director="$director" />
+        </div>
+    </div>
+    @endcan
+    
     @can('view-any', App\Models\Unit::class)
     <div class="card mt-4">
         <div class="card-body">
@@ -55,14 +66,5 @@
     </div>
     @endcan
 
-    @can('view-any', App\Models\Leader::class)
-    <div class="card mt-4">
-        <div class="card-body">
-            <h4 class="card-title w-100 mb-2">Leaders</h4>
-
-            <livewire:director-leaders-detail :director="$director" />
-        </div>
-    </div>
-    @endcan
 </div>
 @endsection

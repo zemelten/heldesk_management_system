@@ -158,6 +158,23 @@
                     <td class="text-left">
                         {{ optional($leader->user)->full_name ?? '-' }}
                     </td>
+
+
+
+                    <td class="text-right" style="width: 134px;">
+                        <div role="group" aria-label="Row Actions" class="relative inline-flex align-middle">
+                            @can('view', $leader)
+                                <a href="{{ route('leaders.show', $leader) }}">
+                                    <button type="button" class="btn btn-light">
+                                        <i class="icon ion-md-eye"></i>
+                                    </button>
+                                </a>
+                            @endcan
+                        </div>
+                    </td>
+
+
+
                     <td class="text-right" style="width: 134px;">
                         <div
                             role="group"
