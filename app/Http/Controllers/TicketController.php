@@ -107,6 +107,16 @@ class TicketController extends Controller
         );
     }
 
+    //function to genrate ticket number 
+    function createTicketNumber($prefix) {
+        $lastTicket = DB::table('tickets')->orderBy('id', 'desc')->first();
+        // dd(substr($lastTicket->ticket_number, -5));
+        // dd(sprintf(intval('JU/00002/23')));
+        // dd(sprintf($lastTicket->ticket_number));
+        $ticketNumber = $prefix . '/' . sprintf('%05d', intval(substr($lastTicket->ticket_number, -5)) + 1). '/' . date('y') ;
+        //DB::table('tickets')->insert(['ticket_number' => $ticketNumber]);
+        return $ticketNumber;
+    }
     /**
      * @param \App\Http\Requests\TicketStoreRequest $request
      * @return \Illuminate\Http\Response
@@ -186,6 +196,7 @@ class TicketController extends Controller
      */
     public function show(Request $request, Ticket $ticket)
     {
+        dd($this->createTicketNumber('JU'));
         $this->authorize('view', $ticket);
 
         return view('app.tickets.show', compact('ticket'));
