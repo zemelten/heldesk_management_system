@@ -196,7 +196,7 @@ class TicketController extends Controller
      */
     public function show(Request $request, Ticket $ticket)
     {
-        dd($this->createTicketNumber('JU'));
+        //dd($this->createTicketNumber('JU'));
         $this->authorize('view', $ticket);
 
         return view('app.tickets.show', compact('ticket'));
