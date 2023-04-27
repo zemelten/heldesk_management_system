@@ -9,8 +9,8 @@
 
 
     <!-- Default box -->
-    <div class="card">
-        <div class="card-header">
+    <div class="card card-primary collapsed-card">
+        <div class="card-header collapsed-card">
             {{-- <h3 >Title</h3> --}}
 
             <h4 class="card-title">
@@ -21,7 +21,7 @@
             </h4>
 
             <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                 </button>
             </div>

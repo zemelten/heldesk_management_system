@@ -24,4 +24,9 @@ class Director extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function leaders()
+    {
+        return $this->hasMany(Leader::class);
+    }
 }

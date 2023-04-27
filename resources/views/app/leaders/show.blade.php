@@ -2,15 +2,32 @@
 
 @section('content')
 <div class="">
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">
-                <a href="{{ route('leaders.index') }}" class="mr-4"
-                    ><i class="icon ion-md-arrow-back"></i
-                ></a>
-                @lang('crud.leaders.show_title')
-            </h4>
 
+        <!-- Default box -->
+        <div class="card card-primary collapsed-card">
+            <div class="card-header collapsed-card">
+                {{-- <h3 >Title</h3> --}}
+    
+                <h4 class="card-title">
+                    <a href="{{ route('leaders.index') }}" class="mr-4"
+                        ><i class="icon ion-md-arrow-back"></i
+                    ></a>
+                    @lang('crud.leaders.show_title')
+                </h4>
+    
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+                
+            </div>
+    
+
+            
+            <div class="card-body" style="display: block">
+    
+                
             <div class="mt-4">
                 <div class="mb-4">
                     <h5>@lang('crud.leaders.inputs.full_name')</h5>
@@ -46,8 +63,16 @@
                 </a>
                 @endcan
             </div>
+                
+    
+            </div>
+            <!-- /.card-body -->
+            
+            <!-- /.card-footer-->
         </div>
-    </div>
+        <!-- /.card -->
+
+    
 
     @can('view-any', App\Models\UserSupport::class)
     <div class="card mt-4">
@@ -58,5 +83,7 @@
         </div>
     </div>
     @endcan
+
+    
 </div>
 @endsection
