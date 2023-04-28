@@ -18,7 +18,8 @@
                     data-widget="treeview" role="menu">
 
                     @auth
-
+                    @if(Auth::user()->roles()->first()->name !== "User Support" && Auth::user()->roles()->first()->name !== "Customer" )
+ 
                         <li class="nav-item">
                             <a href="{{ route('home') }}" class="nav-link">
                                 <i class="nav-icon fa-solid fa-gauge fa-lg"></i>
@@ -29,6 +30,7 @@
                                 </p>
                             </a>
                         </li>
+                            @endif
                         <li class="nav-item ">
                             <a href="{{ route('tickets.index') }}" class="nav-link ">
                                 <i class="nav-icon fa-solid fa-ticket fa-lg"></i>
@@ -39,6 +41,9 @@
                                 </p>
                             </a>
                         </li>
+
+                        @if(Auth::user()->roles()->first()->name !== "User Support" && Auth::user()->roles()->first()->name !== "Customer" )
+ 
                         <li class="nav-item">
                             <a href="{{ route('tickets.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-clipboard-list"></i>
@@ -89,6 +94,7 @@
 
                             </ul>
                         </li>
+                        @endif
 
                         @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) ||
                                 Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))
