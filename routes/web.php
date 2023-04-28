@@ -23,6 +23,7 @@ use App\Http\Controllers\AssignedOrgUnitController;
 use App\Http\Controllers\ProblemCatagoryController;
 use App\Http\Controllers\EscalatedTicketController;
 use App\Http\Controllers\OrganizationalUnitController;
+use App\Http\Controllers\TicketSettingsController;
 use App\Http\Controllers\UpdateProfileController;
 use App\Models\Building;
 
@@ -44,18 +45,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
-Route::prefix('/') ->middleware(['auth', 'isEdited'])
-->group(function () {
-    Route::resource('tickets', TicketController::class);
-});
+Route::prefix('/')->middleware(['auth', 'isEdited'])
+    ->group(function () {
+        Route::resource('tickets', TicketController::class);
+    });
+
 Route::prefix('/')
     ->middleware('auth')
     ->group(function () {
-
         Route::resource('roles', RoleController::class);
         Route::resource('permissions', PermissionController::class);
-
+        
         Route::resource('users', UserController::class);
+        Route::resource('tickets-settings', TicketSettingsController::class);
         Route::resource('campuses', CampusController::class);
         Route::resource('buildings', BuildingController::class);
         Route::post('/get-org-units', [BuildingController::class, 'getOrgUnits']);
@@ -78,7 +80,7 @@ Route::prefix('/')
         Route::resource('floors', FloorController::class);
         Route::resource('customers', CustomerController::class);
         Route::resource('problem-catagories', ProblemCatagoryController::class);
-       
+
         Route::resource('escalated-tickets', EscalatedTicketController::class);
         Route::get('all-reports', [ReportsController::class, 'index'])->name(
             'all-reports.index'
