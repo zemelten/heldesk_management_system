@@ -23,7 +23,7 @@ use App\Http\Controllers\AssignedOrgUnitController;
 use App\Http\Controllers\ProblemCatagoryController;
 use App\Http\Controllers\EscalatedTicketController;
 use App\Http\Controllers\OrganizationalUnitController;
-use App\Http\Controllers\TicketSettingsController;
+use App\Http\Controllers\TimeSettingController;
 use App\Http\Controllers\UpdateProfileController;
 use App\Models\Building;
 
@@ -55,9 +55,8 @@ Route::prefix('/')
     ->group(function () {
         Route::resource('roles', RoleController::class);
         Route::resource('permissions', PermissionController::class);
-        
+        Route::resource('time-settings', TimeSettingController::class);
         Route::resource('users', UserController::class);
-        Route::resource('tickets-settings', TicketSettingsController::class);
         Route::resource('campuses', CampusController::class);
         Route::resource('buildings', BuildingController::class);
         Route::post('/get-org-units', [BuildingController::class, 'getOrgUnits']);

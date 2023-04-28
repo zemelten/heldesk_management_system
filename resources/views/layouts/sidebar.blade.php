@@ -247,7 +247,7 @@
                                     @endcan
                                     @can('view-any', App\Models\Prioritie::class)
                                     <li class="nav-item">
-                                        <a href="{{ url('/tickets-settings') }}" class="nav-link">
+                                        <a href="{{ route('time-settings.index') }}" class="nav-link">
                                             <i class="nav-icon icon ion-md-radio-button-off"></i>
                                             <strong>
                                                 <p style=" color:black;">Ticket Settings</p>
