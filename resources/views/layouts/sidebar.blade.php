@@ -1,6 +1,5 @@
 <!-- Main Sidebar Container -->
 @auth
-
     <aside class="main-sidebar sidebar-light elevation-4">
         <!-- Brand Logo -->
         <a href="{{ url('/') }}" class="brand-link text-dark"  style="background-color: #0067ba;">

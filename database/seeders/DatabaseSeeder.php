@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
         $user = \App\Models\User::factory()
             ->count(1)
             ->create([
-                'email' => 'admin@admin.com',
+                'email' => 'director@ju.edu.et',
                 'password' => \Hash::make('admin'),
             ]);
-        $this->call(PermissionsSeeder::class);
+         $this->call(PermissionsSeeder::class);
 
         $this->call(AssignedOfficeSeeder::class);
         $this->call(AssignedOrgUnitSeeder::class);
