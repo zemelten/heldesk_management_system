@@ -104,60 +104,46 @@ class TicketController extends Controller
         $this->authorize('create', Ticket::class);
         $validated = $request->validated();
      
-        //$prob_cat = ProblemCatagory::where('id',$request->problem_category_id)->first(); //ticket is created by others
+        $prob_cat = ProblemCatagory::where('id',$request->problem_category_id)->first(); //ticket is created by others
 
-        $prob_cat = ProblemCatagory::where('queue_type_id',3)->first();
+      //  $prob_cat = ProblemCatagory::where('queue_type_id',3)->first();
        // dd($prob_cat);
         $ticket = new Ticket();
-        $ss = $prob_cat->userSupports->sortBy('tickets');
-    //    dd($ss);
+        $ss = $prob_cat->userSupports->sortBy('tickets')->first()->id;
        
         //ticket is created by others
-       // $customer = Customer::where('id', $request->customer_id)->first(); //ticket is created by others
-       $customer = Customer::where('full_name', Auth::user()->full_name)->first();
+        $customer = Customer::where('id', $request->customer_id)->first(); //ticket is created by others
+     //  $customer = Customer::where('full_name', Auth::user()->full_name)->first();
 
-     //  $building_id = Customer::where('id',$request->customer_id)->first()->building->id; //ticket is created by others
-         $building_id = $customer->building->id; 
+       $building_id = Customer::where('id',$request->customer_id)->first()->building->id; //ticket is created by others
+        // $building_id = $customer->building->id; 
        //  dd($building_id);
+      
        
-     foreach($ss as $s){
-        if($s->building_id === intval( $building_id)){
-            $usersup = UserSupport::where('building_id',$s->building_id) 
-            ->where('problem_catagory_id',$s->problem_catagory_id)->first()->id;
-            
-          } 
-
-        //   $userSup = UserSupport::where('building_id',$customer->building_id)
-        //    ->where('problem_catagory_id',$s->problem_catagory_id)->first()->id;
-        
-         
-        } 
-     dd($usersup);
-       
-        //     $ticket->status = 0;
-        //     $ticket->description = $request->description;
-        //     $ticket->customer_id = $request->customer_id;
-        //     $ticket->user_support_id = $userSup;
-        //     $ticket->reports_id = 1;
-        //     $ticket->campuse_id = $customer->campus_id;
-        //     $ticket->organizational_unit_id = $customer->organizational_unit_id;
-        //     $ticket->problem_id = $request->problem_id;
-        //    $ticket->save();
+            $ticket->status = 0;
+            $ticket->description = $request->description;
+            $ticket->customer_id = $request->customer_id;
+            $ticket->user_support_id = $ss;
+            $ticket->reports_id = 1;
+            $ticket->campuse_id = $customer->campus_id;
+            $ticket->organizational_unit_id = $customer->organizational_unit_id;
+            $ticket->problem_id = $request->problem_id;
+           $ticket->save();
 
            //end created by other
 
        //created by customers
        
-           $ticket->status = 0;
-            $ticket->description = $request->description;
-            $ticket->customer_id = $customer->id;
-            $ticket->user_support_id = $userSup;
-            $ticket->reports_id = 1;
-            $ticket->campuse_id = $customer->campus_id;
-            $ticket->organizational_unit_id = $customer->organizational_unit_id;
-            $ticket->problem_id = $request->problem_id;
+        //    $ticket->status = 0;
+        //     $ticket->description = $request->description;
+        //     $ticket->customer_id = $customer->id;
+        //     $ticket->user_support_id = $ss;
+        //     $ticket->reports_id = 1;
+        //     $ticket->campuse_id = $customer->campus_id;
+        //     $ticket->organizational_unit_id = $customer->organizational_unit_id;
+        //     $ticket->problem_id = $request->problem_id;
            
-           $ticket->save();
+        //    $ticket->save();
             
         
 
