@@ -103,11 +103,14 @@ class TicketController extends Controller
     {
         $this->authorize('create', Ticket::class);
         $validated = $request->validated();
-       
+     
+        //$prob_cat = ProblemCatagory::where('id',$request->problem_category_id)->first(); //ticket is created by others
 
-        $prob_cat = ProblemCatagory::find($request->problem_category_id);
+        $prob_cat = ProblemCatagory::where('queue_type_id',3)->first();
+       // dd($prob_cat);
         $ticket = new Ticket();
         $ss = $prob_cat->userSupports->sortBy('tickets');
+    //    dd($ss);
        
         //ticket is created by others
        // $customer = Customer::where('id', $request->customer_id)->first(); //ticket is created by others
@@ -115,11 +118,21 @@ class TicketController extends Controller
 
      //  $building_id = Customer::where('id',$request->customer_id)->first()->building->id; //ticket is created by others
          $building_id = $customer->building->id; 
+       //  dd($building_id);
        
      foreach($ss as $s){
-          $userSup = UserSupport::where('building_id',$building_id)->first()->id;
+        if($s->building_id === intval( $building_id)){
+            $usersup = UserSupport::where('building_id',$s->building_id) 
+            ->where('problem_catagory_id',$s->problem_catagory_id)->first()->id;
+            
+          } 
+
+        //   $userSup = UserSupport::where('building_id',$customer->building_id)
+        //    ->where('problem_catagory_id',$s->problem_catagory_id)->first()->id;
+        
          
         } 
+     dd($usersup);
        
         //     $ticket->status = 0;
         //     $ticket->description = $request->description;
