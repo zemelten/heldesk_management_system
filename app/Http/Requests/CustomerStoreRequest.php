@@ -26,7 +26,7 @@ class CustomerStoreRequest extends FormRequest
         return [
             'full_name' => ['nullable',  'max:255', 'string'],
             'email' => ['nullable', 'email'],
-            'phone_no' => ['nullable', 'max:255', 'string'],
+            'phone_no' => 'regex:/(^(\07|09)\d{3})-?\d{6}$/',
             'building_id' => ['nullable', 'exists:buildings,id'],
             'campus_id' => ['nullable', 'exists:campuses,id'],
             'organizational_unit_id' => [

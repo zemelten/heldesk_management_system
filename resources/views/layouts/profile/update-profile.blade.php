@@ -17,6 +17,7 @@
                     @php $editing = isset($ticket) @endphp
 
                     <div class="row">
+                       
 
                       <x-inputs.group class="col-md-6">
                         <label>Phone number:</label>
@@ -28,6 +29,14 @@
                           <x-inputs.text name="phone" id="phone"/>
                         </div>
                         <!-- /.input group -->
+                        {{-- @if (count($errors) > 0)
+                       
+                        <ul>
+                           @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                           @endforeach
+                        </ul>
+                  @endif --}}
                       </x-inputs.group>
                         
                        

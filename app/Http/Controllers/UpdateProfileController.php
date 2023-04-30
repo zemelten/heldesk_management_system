@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CustomerStoreRequest;
 use App\Models\Building;
 use App\Models\Campus;
 use App\Models\Customer;
@@ -47,7 +48,22 @@ class UpdateProfileController extends Controller
     {
         //
         $customer = Customer::where('full_name', Auth::user()->full_name)->first();
-        // dd($customer);
+        // $messages = [
+        //     'phone_no.regex' => 'The phone number format is invalid.'
+        // ];
+        // $validated = $this->validate($request,[
+        //     'phone_no'=>'regex:/(^(\07|09)\d{3})-?\d{6}$/',
+            
+        //  ],$messages);
+        // $messages = [
+        //     'phone.regex' => 'The phone number format is invalid.'
+        // ];
+        
+     $validated = $request->validate([
+            'phone' => ['required']
+        ]);
+       
+
          $customer->email = $request->email;
          $customer->phone_no = $request->phone;
          $customer->is_edited = 1;

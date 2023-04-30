@@ -10,6 +10,7 @@
             @php $selected = old('customer_id', ($editing ? $ticket->customer_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Customers</option>
             @foreach($customers as $value => $label)
+
             <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
             @endforeach
         </x-inputs.select>

@@ -65,7 +65,7 @@ class TicketController extends Controller
         $this->authorize('create', Ticket::class);
         $ticket = new Ticket();
         $campuses = Campus::pluck('name', 'id');
-        $customers = Customer::pluck('full_name', 'id');
+        $customers = Customer::pluck('phone_no', 'id');
         $problems = Problem::pluck('name', 'id');
         $buildings = Building::pluck('name', 'id');
         $organizationalUnits = OrganizationalUnit::pluck('name', 'id');
