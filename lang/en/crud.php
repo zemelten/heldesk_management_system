@@ -539,6 +539,21 @@ return [
             'prioritie_id' => 'Prioritie',
         ],
     ],
+    'director_leaders' => [
+        'name' => 'Director Leaders',
+        'index_title' => 'Leaders List',
+        'new_title' => 'New Leader',
+        'create_title' => 'Create Leader',
+        'edit_title' => 'Edit Leader',
+        'show_title' => 'Show Leader',
+        'inputs' => [
+            'full_name' => 'Full Name',
+            'sex' => 'Sex',
+            'phone' => 'Phone',
+            'user_id' => 'User',
+            'email' => 'Email',
+        ],
+    ],
 
     'roles' => [
         'name' => 'Roles',

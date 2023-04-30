@@ -107,6 +107,16 @@ class TicketController extends Controller
         );
     }
 
+    //function to genrate ticket number 
+    function createTicketNumber($prefix) {
+        $lastTicket = DB::table('tickets')->orderBy('id', 'desc')->first();
+        // dd(substr($lastTicket->ticket_number, -5));
+        // dd(sprintf(intval('JU/00002/23')));
+        // dd(sprintf($lastTicket->ticket_number));
+        $ticketNumber = $prefix . '/' . sprintf('%05d', intval(substr($lastTicket->ticket_number, -5)) + 1). '/' . date('y') ;
+        //DB::table('tickets')->insert(['ticket_number' => $ticketNumber]);
+        return $ticketNumber;
+    }
     /**
      * @param \App\Http\Requests\TicketStoreRequest $request
      * @return \Illuminate\Http\Response
@@ -115,28 +125,63 @@ class TicketController extends Controller
     {
         $this->authorize('create', Ticket::class);
         $validated = $request->validated();
-        $prob_cat = ProblemCatagory::find($request->problem_category_id);
-        $ticket = new Ticket();
-        $ss = $prob_cat->userSupports->sortBy('tickets');
-        foreach($ss as $s){
-          if($s->building_id === intval($request->building_id)){
-            $usersup = UserSupport::where('building_id',$s->building_id)->first()->id;
-            
-          } 
-        }
-        
-        $customer_id = Customer::where('full_name', Auth::user()->full_name)->first()->id;
-     
 
-        $ticket->status = 0;
-        $ticket->description = $request->description;
-        $ticket->customer_id = $customer_id;
-        $ticket->user_support_id = $usersup;
-        $ticket->reports_id = 1;
-        $ticket->campuse_id = $request->campuse_id;
-        $ticket->organizational_unit_id = $request->organizational_unit_id;
-        $ticket->problem_id = $request->problem_id;
-        $ticket->save();
+        $prob_cat = ProblemCatagory::find($request->problem_category_id);
+
+        $ticket = new Ticket();
+        
+        $ss = $prob_cat->userSupports->sortBy('tickets');
+
+        if (Auth::user()->roles()->first()->name === 'customer') {
+          $customer = Customer::where('user_id', Auth::user()->id)->first();
+
+            foreach ($ss as $s) {
+                if ($s->building_id === intval($customer->building_id)) {
+                    $usersup = UserSupport::where('building_id', $s->building_id)->first()->id;
+                }
+            }
+        } else {
+            foreach ($ss as $s) {
+                if ($s->building_id === intval($request->building_id)) {
+                    $usersup = UserSupport::where('building_id', $s->building_id)->first()->id;
+                }
+            }
+        }
+
+        if (Auth::user()->roles()->first()->name === 'super-admin') {
+            $customer_id = $request->customer_id;
+        } else {
+            $customer_id = Customer::where('full_name', Auth::user()->full_name)->first()->id;
+        }
+        // dd(Auth::user()->roles()->first()->name);
+        if (Auth::user()->roles()->first()->name === 'customer') {
+
+          
+            // dd($customer);
+            $ticket->status = 0;
+            $ticket->description = $request->description;
+            $ticket->customer_id = $customer->id;
+            $ticket->user_support_id = $usersup;
+            $ticket->reports_id = 1;
+            $ticket->campuse_id = $customer->campus_id;
+            $ticket->organizational_unit_id = $customer->organizational_unit_id;
+            $ticket->problem_id = $request->problem_id;
+         
+            $ticket->save();
+        } else {
+            $ticket->status = 0;
+            $ticket->description = $request->description;
+            $ticket->customer_id = $customer_id;
+            $ticket->user_support_id = $usersup;
+            $ticket->reports_id = 1;
+            $ticket->campuse_id = $request->campuse_id;
+            $ticket->organizational_unit_id = $request->organizational_unit_id;
+            $ticket->problem_id = $request->problem_id;
+            $ticket->save();
+        }
+
+
+
 
 
         return redirect()
@@ -151,6 +196,7 @@ class TicketController extends Controller
      */
     public function show(Request $request, Ticket $ticket)
     {
+        //dd($this->createTicketNumber('JU'));
         $this->authorize('view', $ticket);
 
         return view('app.tickets.show', compact('ticket'));

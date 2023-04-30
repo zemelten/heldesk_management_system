@@ -2,14 +2,32 @@
 
 @section('content')
 <div class="">
-    <div class="card">
-        <div class="card-body">
+
+
+
+
+
+
+    <!-- Default box -->
+    <div class="card card-primary collapsed-card">
+        <div class="card-header collapsed-card">
+            {{-- <h3 >Title</h3> --}}
+
             <h4 class="card-title">
                 <a href="{{ route('user-supports.index') }}" class="mr-4"
                     ><i class="icon ion-md-arrow-back"></i
                 ></a>
                 @lang('crud.user_supports.show_title')
             </h4>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="card-body" style="display: block">
 
             <div class="mt-4">
                 <div class="mb-4">
@@ -73,8 +91,14 @@
                 </a>
                 @endcan
             </div>
+
         </div>
+        <!-- /.card-body -->
+        
+        <!-- /.card-footer-->
     </div>
+    <!-- /.card -->
+
 
     @can('view-any', App\Models\Ticket::class)
     <div class="card mt-4">

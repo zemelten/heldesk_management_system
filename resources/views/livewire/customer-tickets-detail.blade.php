@@ -92,6 +92,10 @@
                         </x-inputs.select>
                     </x-inputs.group>
 
+
+
+                    
+
                     <x-inputs.group class="col-md-12">
                         <x-inputs.select
                             name="ticket.user_support_id"
@@ -99,8 +103,13 @@
                             wire:model="ticket.user_support_id"
                         >
                             <option value="null" disabled>Please select the User Support</option>
-                            @foreach($userSupportsForSelect as $value => $label)
-                            <option value="{{ $value }}"  >{{ $label }}</option>
+                           
+                            @foreach($userSupportsForSelect as $users)
+                            @php
+                            $full_name = App\Models\User::where('id', $users)->first()->full_name;
+                            $support_id = App\Models\UserSupport::where('user_id', $users)->first()->id;
+                            @endphp
+                            <option value="{{  $support_id }}"  >{{  $full_name }}</option>
                             @endforeach
                         </x-inputs.select>
                     </x-inputs.group>
@@ -139,6 +148,18 @@
             </div>
         </div>
     </x-modal>
+
+
+    @php
+    // @dd($tickets[1])
+    $ticketsArray = array();
+    foreach ($tickets as $key => $ticket) {
+        # code...
+        array_push($ticketsArray, $ticket);
+    }
+    //dd($ticketsArray);
+    @endphp
+    <x-ticket :tickets="$ticketsArray" />
 
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
@@ -198,7 +219,7 @@
                         {{ optional($ticket->organizationalUnit)->name ?? '-' }}
                     </td>
                     <td class="text-left">
-                        {{ optional($ticket->userSupport)->id ?? '-' }}
+                        {{ optional($ticket->userSupport->user)->full_name ?? '-' }}
                     </td>
                     <td class="text-left">
                         {{ optional($ticket->prioritie)->name ?? '-' }}
