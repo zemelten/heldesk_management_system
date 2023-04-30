@@ -30,8 +30,8 @@
                             @csrf
                             <div class="form-group">
                                 <input type="text" class="form-control rounded-left" placeholder="Email"
-                                    name="email" required="" />
-                                   @error('email')
+                                    name="username" required="" />
+                                   @error('username')
                                     <span class="" role="">
                                         <p class="text-danger">{{ $message }}</p>
                                        

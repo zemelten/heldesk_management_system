@@ -20,6 +20,7 @@ use App\Http\Controllers\ServiceUnitController;
 use App\Http\Controllers\UserSupportController;
 use App\Http\Controllers\AssignedOfficeController;
 use App\Http\Controllers\AssignedOrgUnitController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProblemCatagoryController;
 use App\Http\Controllers\EscalatedTicketController;
 use App\Http\Controllers\OrganizationalUnitController;
@@ -42,7 +43,10 @@ Route::get('/', function () {
     return redirect("/dashboard");
 });
 
-Auth::routes();
+Route::post('/login',[LoginController::class, 'login'])->name('login');
+Route::get('/login',[LoginController::class, 'showLoginForm']);
+Route::post('/logout',[LoginController::class, 'logout'])->middleware('auth')->name('logout');
+
 
 Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
 Route::prefix('/')->middleware(['auth', 'isEdited'])

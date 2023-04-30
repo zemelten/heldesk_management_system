@@ -32,6 +32,11 @@ class HomeController extends Controller
      */ 
     public function index()
     {
+      
+       if(Auth::user()->roles()->first()->name == null){
+        Auth::user()->assignRole('user');
+       }
+       dd(Auth::user()->email);
         $countUsers = User::count();
         $totalTicket = Ticket::count();
         $countUsersupports = UserSupport::count();
