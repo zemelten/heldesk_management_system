@@ -32,24 +32,10 @@ class TicketController extends Controller
         $this->authorize('view-any', Ticket::class);
 
         $customer_id = Customer::where('full_name', Auth::user()->full_name)->first()->id;
-
-
-
-        // if (Auth::user()->can) {
-        //     $tickets = DB::table('tickets')->get();
-        // } else {
-        //     $tickets = DB::table('tickets')
-        //                 ->join('users', 'users.id', '=', 'tickets.user_id')
-        //                 ->where('tickets.status', '=', 'active')
-        //                 ->where('users.id', '=', Auth::user()->id)
-        //                 ->get();
-        // }
         $role = Auth::user()->roles()->first()->name;
-        // dd($role);
         if ($role === "super-admin") {
             $tickets = Ticket::all();
         } else {
-            // $tickets = Ticket::where('customer_id',$customer_id)->get();
             $tickets = Ticket::where('customer_id', $customer_id)
                 ->where('status', 0)
                 ->get();
@@ -78,7 +64,6 @@ class TicketController extends Controller
     {
         $this->authorize('create', Ticket::class);
         $ticket = new Ticket();
-        // dd($ticket->first()->userSupport->problemCatagory);
         $campuses = Campus::pluck('name', 'id');
         $customers = Customer::pluck('full_name', 'id');
         $problems = Problem::pluck('name', 'id');
@@ -87,9 +72,6 @@ class TicketController extends Controller
         $userSupports = UserSupport::pluck('id', 'id');
         $priorities = Prioritie::pluck('name', 'id');
         $problemCategory = ProblemCatagory::pluck('name', 'id');
-
-
-
 
         return view(
             'app.tickets.create',
@@ -110,12 +92,8 @@ class TicketController extends Controller
     //function to genrate ticket number 
     function createTicketNumber($prefix) {
         $lastTicket = DB::table('tickets')->orderBy('id', 'desc')->first();
-        // dd(substr($lastTicket->ticket_number, -5));
-        // dd(sprintf(intval('JU/00002/23')));
-        // dd(sprintf($lastTicket->ticket_number));
         $ticketNumber = $prefix . '/' . sprintf('%05d', intval(substr($lastTicket->ticket_number, -5)) + 1). '/' . date('y') ;
-        //DB::table('tickets')->insert(['ticket_number' => $ticketNumber]);
-        return $ticketNumber;
+         return $ticketNumber;
     }
     /**
      * @param \App\Http\Requests\TicketStoreRequest $request
@@ -125,60 +103,50 @@ class TicketController extends Controller
     {
         $this->authorize('create', Ticket::class);
         $validated = $request->validated();
+       
 
         $prob_cat = ProblemCatagory::find($request->problem_category_id);
-
         $ticket = new Ticket();
-        
         $ss = $prob_cat->userSupports->sortBy('tickets');
+       
+        //ticket is created by others
+       // $customer = Customer::where('id', $request->customer_id)->first(); //ticket is created by others
+       $customer = Customer::where('full_name', Auth::user()->full_name)->first();
 
-        if (Auth::user()->roles()->first()->name === 'customer') {
-          $customer = Customer::where('user_id', Auth::user()->id)->first();
+     //  $building_id = Customer::where('id',$request->customer_id)->first()->building->id; //ticket is created by others
+         $building_id = $customer->building->id; 
+       
+     foreach($ss as $s){
+          $userSup = UserSupport::where('building_id',$building_id)->first()->id;
+         
+        } 
+       
+        //     $ticket->status = 0;
+        //     $ticket->description = $request->description;
+        //     $ticket->customer_id = $request->customer_id;
+        //     $ticket->user_support_id = $userSup;
+        //     $ticket->reports_id = 1;
+        //     $ticket->campuse_id = $customer->campus_id;
+        //     $ticket->organizational_unit_id = $customer->organizational_unit_id;
+        //     $ticket->problem_id = $request->problem_id;
+        //    $ticket->save();
 
-            foreach ($ss as $s) {
-                if ($s->building_id === intval($customer->building_id)) {
-                    $usersup = UserSupport::where('building_id', $s->building_id)->first()->id;
-                }
-            }
-        } else {
-            foreach ($ss as $s) {
-                if ($s->building_id === intval($request->building_id)) {
-                    $usersup = UserSupport::where('building_id', $s->building_id)->first()->id;
-                }
-            }
-        }
+           //end created by other
 
-        if (Auth::user()->roles()->first()->name === 'super-admin') {
-            $customer_id = $request->customer_id;
-        } else {
-            $customer_id = Customer::where('full_name', Auth::user()->full_name)->first()->id;
-        }
-        // dd(Auth::user()->roles()->first()->name);
-        if (Auth::user()->roles()->first()->name === 'customer') {
-
-          
-            // dd($customer);
-            $ticket->status = 0;
+       //created by customers
+       
+           $ticket->status = 0;
             $ticket->description = $request->description;
             $ticket->customer_id = $customer->id;
-            $ticket->user_support_id = $usersup;
+            $ticket->user_support_id = $userSup;
             $ticket->reports_id = 1;
             $ticket->campuse_id = $customer->campus_id;
             $ticket->organizational_unit_id = $customer->organizational_unit_id;
             $ticket->problem_id = $request->problem_id;
-         
-            $ticket->save();
-        } else {
-            $ticket->status = 0;
-            $ticket->description = $request->description;
-            $ticket->customer_id = $customer_id;
-            $ticket->user_support_id = $usersup;
-            $ticket->reports_id = 1;
-            $ticket->campuse_id = $request->campuse_id;
-            $ticket->organizational_unit_id = $request->organizational_unit_id;
-            $ticket->problem_id = $request->problem_id;
-            $ticket->save();
-        }
+           
+           $ticket->save();
+            
+        
 
 
 
