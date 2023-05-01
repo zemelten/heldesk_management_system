@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomerStoreRequest;
+use App\Http\Requests\UpdateProfileStoreRequest;
 use App\Models\Building;
 use App\Models\Campus;
 use App\Models\Customer;
 use App\Models\OrganizationalUnit;
+use App\Models\UpdateProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,6 +48,7 @@ class UpdateProfileController extends Controller
      */
     public function store(Request $request)
     {
+        
         //
         $customer = Customer::where('full_name', Auth::user()->full_name)->first();
         // $messages = [
@@ -59,13 +62,13 @@ class UpdateProfileController extends Controller
         //     'phone.regex' => 'The phone number format is invalid.'
         // ];
         
-     $validated = $request->validate([
-            'phone' => ['required']
+        $phone_no = $request->validate([
+            'phone' =>  ['required', 'regex:/^(\0)9|7[0-9]{8}/']
         ]);
+      
        
-
          $customer->email = $request->email;
-         $customer->phone_no = $request->phone;
+         $customer->phone_no =    $phone_no['phone'];
          $customer->is_edited = 1;
          $customer->building_id = $request->building_id;
          $customer->campus_id = $request->campuse_id;
