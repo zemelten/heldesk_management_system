@@ -109,21 +109,39 @@ class TicketController extends Controller
       //  $prob_cat = ProblemCatagory::where('queue_type_id',3)->first();
        // dd($prob_cat);
         $ticket = new Ticket();
-        $ss = $prob_cat->userSupports->sortBy('tickets')->first()->id;
+        $ss = $prob_cat->userSupports->sortBy('tickets');
+        // dd($ss);
        
         //ticket is created by others
         $customer = Customer::where('id', $request->customer_id)->first(); //ticket is created by others
      //  $customer = Customer::where('full_name', Auth::user()->full_name)->first();
 
        $building_id = Customer::where('id',$request->customer_id)->first()->building->id; //ticket is created by others
-        // $building_id = $customer->building->id; 
-       //  dd($building_id);
+       
+        //  dd($building_id);
       
+      
+        
+        // $userSupport_id = UserSupport::where('building_id', '=', $building_id)
+        // ->get();
+        // $userSupport_id = UserSupport::leftJoin('tickets', 'user_supports.id', '=', 'tickets.user_support_id')
+        // ->where('user_supports.building_id', '=',  $building_id)
+        // ->select('user_supports.*', DB::raw('count(tickets.id) as ticket_count'))
+        // ->groupBy('user_supports.id')
+        // ->orderByAsc('ticket_count')
+        // ->get();
+        $userSupportid = UserSupport::where('building_id', $building_id)
+    ->withCount('tickets')
+    ->orderBy('tickets_count', 'asc')
+    ->first()->id;
+    
+     
+    //  dd($userSupportid);
        
             $ticket->status = 0;
             $ticket->description = $request->description;
             $ticket->customer_id = $request->customer_id;
-            $ticket->user_support_id = $ss;
+            $ticket->user_support_id = $userSupportid;
             $ticket->reports_id = 1;
             $ticket->campuse_id = $customer->campus_id;
             $ticket->organizational_unit_id = $customer->organizational_unit_id;
