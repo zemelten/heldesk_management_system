@@ -23,6 +23,7 @@ use App\Http\Controllers\AssignedOrgUnitController;
 use App\Http\Controllers\ProblemCatagoryController;
 use App\Http\Controllers\EscalatedTicketController;
 use App\Http\Controllers\OrganizationalUnitController;
+use App\Http\Controllers\TimeSettingController;
 use App\Http\Controllers\UpdateProfileController;
 use App\Models\Building;
 
@@ -58,6 +59,7 @@ Route::prefix('/')
         Route::resource('users', UserController::class);
         Route::resource('campuses', CampusController::class);
         Route::resource('buildings', BuildingController::class);
+        Route::resource('time-settings', TimeSettingController::class);
         Route::post('/get-org-units', [BuildingController::class, 'getOrgUnits']);
         Route::post('/get-buildings', [BuildingController::class, 'getBuildings']);
         Route::post('/get-problems', [ProblemCatagoryController::class, 'getProblems']);
