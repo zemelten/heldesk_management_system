@@ -1,7 +1,13 @@
-        @props(['ticket'])
-        {{-- @dd($tickets); --}}
+        {{-- @props(['ticketId']) --}}
+        {{-- @dd($ticket->user_support_id->); --}}
         {{-- @dd($ticket->user_support_id); --}}
 
+        @php
+        foreach ($ticket as $key => $t) {
+            # code...
+            print_r($t);
+        }
+        @endphp
 
         <div class="card-body" style="display: block;background-color: #e7e7e7;">
 
@@ -13,26 +19,24 @@
                                     alt="" style="width: 80px; "><span>HD</span><span>{{ $ticket->ticket_number ?? '-' }}</span> </time>
                         </section>
                         <section class="card1-cont"> <small>
-                                Org->{{ optional($ticket->organizationalUnit)->name ?? '-' }}</small>
+                            Org->{{ optional($ticket->organizationalUnit)->name ?? '-' }}</small>
                             <h3> Customer ->{{ optional($ticket->customer)->full_name ?? '-' }}</h3>
-                            <h3> User Support ->{{ optional($ticket->user_support_id) ?? '-' }}</h3>
+                            <h3> User Support ->{{ $ticket->userSupport->user->full_name }}</h3>
                             @inject('carbon', 'Carbon\Carbon')
-
+                            
                             <div class="even-date1"> <i class="px-2 fa fa-calendar"></i> <time> <span>
-                                        {{ $carbon::parse($ticket->created_at)->format('l j F Y \, h:iA ') }}
-                                    </span> </time></div>
+                                {{ $carbon::parse($ticket->created_at)->format('l j F Y \, h:iA ') }}
+                            </span> </time></div>
                             <div class="even-info1"> <i class="px-2 fa fa-map-marker"></i>
                                 <p> {{ optional($ticket->campuse)->name ?? '-' }} <br>
                                     {{ optional($ticket->problem)->name ?? '-' }}
                                 </p>
-
+                                
                             </div> <a href="#">Pending</a>
                         </section>
                     </article>
-
-
-
                     
+
                 </div>
 
             </section>
@@ -150,7 +154,7 @@
             }
 
             .row1:last-child .card1:last-of-type .card1-cont h3 {
-                text-decoration: line-through
+                /* text-decoration: line-through */
             }
 
             .card1-cont>div {

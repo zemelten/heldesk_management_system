@@ -170,7 +170,7 @@
             }
     
             .row1:last-child .card1:last-of-type .card1-cont h3 {
-                text-decoration: line-through
+                /* text-decoration: line-through */
             }
     
             .card1-cont>div {

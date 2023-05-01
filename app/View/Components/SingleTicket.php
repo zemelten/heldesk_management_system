@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Ticket;
 use Illuminate\View\Component;
 
 class SingleTicket extends Component
@@ -21,8 +22,12 @@ class SingleTicket extends Component
      *
      * @return \Illuminate\Contracts\View\View|\Closure|string
      */
+    public $ticketId = 10;
     public function render()
     {
-        return view('components.single-ticket');
+
+        $ticket = Ticket::where('id', 10)->first();
+        //dd($ticket);
+        return view('components.single-ticket', ['ticket' => $ticket]);
     }
 }
