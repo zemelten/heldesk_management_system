@@ -3,7 +3,10 @@
 @section('content')
 <div class="">
     <div class="card d-flex">
-        <div class="card-body col-6">
+        {{-- <div class="">
+            <x-single-ticket :ticket="$ticket" />
+        </div> --}}
+        <div class="card-body col-6 ">
             <h4 class="card-title">
                 <a href="{{ route('tickets.index') }}" class="mr-4"
                     ><i class="icon ion-md-arrow-back"></i
@@ -66,9 +69,7 @@
             </div>
         </div>
 
-        <div>
-            <x-single-ticket :ticket="$ticket" />
-        </div>
+        
         <x-tickets.-active-ticket $tickets=$tickets/>
 
     </div>

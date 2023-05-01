@@ -1,5 +1,6 @@
         @props(['ticket'])
         {{-- @dd($tickets); --}}
+        {{-- @dd($ticket->user_support_id); --}}
 
 
         <div class="card-body" style="display: block;background-color: #e7e7e7;">
@@ -7,13 +8,14 @@
             <section class="">
 
                 <div class="row1 d-flex">
-                    <article class="card1 fl-left1 flex-wrap flex-fill col-4 mx-3">
+                    <article class="card1 fl-left1 flex-wrap flex-fill col-6 mx-3">
                         <section class="date1"> <time datetime="23th feb"> <img class="w-100" src="/images/JU_logo.png"
-                                    alt="" style="width: 80px; "><span>23</span><span>feb</span> </time>
+                                    alt="" style="width: 80px; "><span>HD</span><span>{{ $ticket->ticket_number ?? '-' }}</span> </time>
                         </section>
                         <section class="card1-cont"> <small>
-                                {{ optional($ticket->organizationalUnit)->name ?? '-' }}</small>
-                            <h3> {{ optional($ticket->customer)->full_name ?? '-' }}</h3>
+                                Org->{{ optional($ticket->organizationalUnit)->name ?? '-' }}</small>
+                            <h3> Customer ->{{ optional($ticket->customer)->full_name ?? '-' }}</h3>
+                            <h3> User Support ->{{ optional($ticket->user_support_id) ?? '-' }}</h3>
                             @inject('carbon', 'Carbon\Carbon')
 
                             <div class="even-date1"> <i class="px-2 fa fa-calendar"></i> <time> <span>
@@ -27,6 +29,10 @@
                             </div> <a href="#">Pending</a>
                         </section>
                     </article>
+
+
+
+                    
                 </div>
 
             </section>
@@ -191,7 +197,7 @@
             }
 
             .row1:last-child .card1:last-child .card1-cont a {
-                background-color: #F8504C
+                background-color: #037FDD
             }
 
             @media screen and (max-width: 860px) {
