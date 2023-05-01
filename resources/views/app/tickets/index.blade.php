@@ -29,7 +29,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered ">
+                <table id="example1" class="table table-hover table-condensed">
                   <thead>
                     <tr>
                         <th class="text-left">
@@ -117,26 +117,16 @@
                           <td class="text-center" style="width: 134px;">
                               <div role="group" aria-label="Row Actions" class="btn-group">
                                   @can('update', $ticket)
-                                      <a href="{{ route('tickets.edit', $ticket) }}">
-                                          <button type="button" class="btn btn-light">
-                                            <i class="fa-solid fa-pen-to-square fa-lg" style="color: #e3c116;"></i>
-                                          </button>
+                                      <a href="{{ route('tickets.edit', $ticket) }}" class="px-2">
+                                          <button type="button" class="btn btn-sm btn-outline-info">
+                                            <i class="fa fa-edit"></i>  </button>
                                       </a>
                                       @endcan @can('view', $ticket)
-                                      <a href="{{ route('tickets.show', $ticket) }}">
-                                          <button type="button" class="btn btn-light">
-                                            <i class=" fa-solid fa-eye fa-lg" style="color: #286ce2;"></i>
-                                          </button>
+                                      <a href="{{ route('tickets.show', $ticket) }}" class="px-2">
+                                          <button type="button" class="btn btn-sm btn-outline-primary">
+                                            <i class="fa fa-eye"></i></button>
                                       </a>
-                                      @endcan @can('delete', $ticket)
-                                      {{-- <form action="{{ route('tickets.destroy', $ticket) }}" method="POST"
-                                          onsubmit="return confirm('{{ __('crud.common.are_you_sure') }}')">
-                                          @csrf @method('DELETE')
-                                          <button type="submit" class="btn btn-light text-danger">
-                                            <i class="fa-solid fa-trash fa-lg" style="color: #f00f0f;"></i>
-                                          </button>
-                                      </form> --}}
-                                  @endcan
+                                      @endcan 
                               </div>
                           </td>
                       </tr>
