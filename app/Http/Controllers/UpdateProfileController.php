@@ -11,6 +11,7 @@ use App\Models\OrganizationalUnit;
 use App\Models\UpdateProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class UpdateProfileController extends Controller
 {
@@ -63,12 +64,15 @@ class UpdateProfileController extends Controller
         // ];
         
         $phone_no = $request->validate([
-            'phone' =>  ['required', 'regex:/^(\0)9|7[0-9]{8}/']
+            'phone_no' =>  ['required', 'regex:/^(\0)9|7[0-9]{8}/',
+             Rule::unique('customers')->where(function ($query) {
+                return $query->where('phone_no', request('phone_no'));
+            })]
         ]);
       
        
          $customer->email = $request->email;
-         $customer->phone_no =    $phone_no['phone'];
+         $customer->phone_no =    $phone_no['phone_no'];
          $customer->is_edited = 1;
          $customer->building_id = $request->building_id;
          $customer->campus_id = $request->campuse_id;

@@ -26,7 +26,7 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
                           </div>
-                          <x-inputs.text name="phone" id="phone"/>
+                          <x-inputs.text name="phone_no" id="phone"/>
                         </div>
                         <!-- /.input group -->
                         {{-- @if (count($errors) > 0)

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateProfileStoreRequest extends FormRequest
 {
@@ -23,10 +24,14 @@ class UpdateProfileStoreRequest extends FormRequest
      */
     public function rules()
     {
+        
         return [
           
             'email' => ['nullable', 'email'],
-            'phone_no' => ['required', 'regex:/^(\07|0)9[0-9]{8}/'],
+            'phone_no' => ['required', 'regex:/^(\0)9|7[0-9]{8}/', 
+            Rule::unique('customers')->where(function ($query) {
+                return $query->where('phone_no', request('phone'));
+            })],
             'building_id' => ['nullable', 'exists:buildings,id'],
             'campus_id' => ['nullable', 'exists:campuses,id'],
             'organizational_unit_id' => [
