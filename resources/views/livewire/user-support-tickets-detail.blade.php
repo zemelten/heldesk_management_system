@@ -106,7 +106,7 @@
     @php
     // @dd($tickets[1])
     $ticketsArray = array();
-    foreach ($tickets as $key => $ticket) {
+    foreach ($activeTickets as $key => $ticket) {
         # code...
         array_push($ticketsArray, $ticket);
     }
