@@ -4,13 +4,9 @@
     <div class="">
 
 
-
-
-
-
-        <!-- Default box -->
-        <div class="card card-primary collapsed-card" data-widget="collapse">
-            <div class="card-header" >
+        
+        <div class="card collapsed-card">
+            <div class="card-header">
 
 
                 <h4 class="card-title">
@@ -24,57 +20,55 @@
                     </button>
                 </div>
             </div>
-
-            <div class="card-body" style="display: block">
-
-                <div class="mt-4">
-                    <div class="mb-4">
-                        <h5>@lang('crud.user_supports.inputs.user_id')</h5>
-                        <span>{{ optional($userSupport->user)->full_name ?? '-' }}</span>
-                    </div>
-                    <div class="mb-4">
-                        <h5>@lang('crud.user_supports.inputs.user_type')</h5>
-                        <span>{{ $userSupport->user_type ?? '-' }}</span>
-                    </div>
-                    <div class="mb-4">
-                        <h5>
-                            @lang('crud.user_supports.inputs.problem_catagory_id')
-                        </h5>
-                        <span>{{ optional($userSupport->problemCatagory)->name ?? '-' }}</span>
-                    </div>
-                    <div class="mb-4">
-                        <h5>@lang('crud.user_supports.inputs.building_id')</h5>
-                        <span>{{ optional($userSupport->building)->name ?? '-' }}</span>
-                    </div>
-                    <div class="mb-4">
-                        <h5>@lang('crud.user_supports.inputs.service_unit_id')</h5>
-                        <span>{{ optional($userSupport->serviceUnit)->name ?? '-' }}</span>
-                    </div>
-                    <div class="mb-4">
-                        <h5>@lang('crud.user_supports.inputs.unit_id')</h5>
-                        <span>{{ optional($userSupport->unit)->telephone ?? '-' }}</span>
-                    </div>
-                </div>
-
-                <div class="mt-4">
-                    <a href="{{ route('user-supports.index') }}" class="btn btn-light">
-                        <i class="icon ion-md-return-left"></i>
-                        @lang('crud.common.back')
-                    </a>
-
-                    @can('create', App\Models\UserSupport::class)
-                        <a href="{{ route('user-supports.create') }}" class="btn btn-light">
-                            <i class="icon ion-md-add"></i> @lang('crud.common.create')
+            <div class="card-body p-0" style="display: none;">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-user"></i> @lang('crud.user_supports.inputs.user_id')
+                            <span
+                                class=" float-right">{{ optional($userSupport->user)->full_name ?? '-' }}</span>
                         </a>
-                    @endcan
-                </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="far fa-user"></i> @lang('crud.user_supports.inputs.user_type')
+                            <span class=" float-right">{{ $userSupport->user_type ?? '-' }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="far fa-building"></i> @lang('crud.user_supports.inputs.building_id')
+                            <span class="float-right">{{ optional($userSupport->building)->name ?? '-' }}</span>
 
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-filter"></i> @lang('crud.user_supports.inputs.problem_catagory_id')
+                            <span
+                                class=" float-right">{{ optional($userSupport->problemCatagory)->name ?? '-' }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="far fa-unit"></i> @lang('crud.user_supports.inputs.service_unit_id')
+                            <span class=" float-right">{{ optional($userSupport->serviceUnit)->name ?? '-' }}</span>
+
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="far fa-unit"></i> @lang('crud.user_supports.inputs.unit_id')
+                            <span class=" float-right">{{ optional($userSupport->unit)->telephone ?? '-' }}</span>
+
+                        </a>
+                    </li>
+                </ul>
             </div>
             <!-- /.card-body -->
-
-            <!-- /.card-footer-->
         </div>
-        <!-- /.card -->
+
+
 
 
         @can('view-any', App\Models\Ticket::class)
