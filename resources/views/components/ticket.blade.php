@@ -35,8 +35,10 @@
                                             </span> </time></div>
                                     <div class="even-info1"> <i class="px-2 fa fa-map-marker"></i>
                                         <p> {{ optional($ticket->campuse)->name ?? '-' }} <br>
-                                            {{ optional($ticket->problem)->name ?? '-' }}
+                                            {{ optional($ticket->problem)->name ?? '-' }} <br>
+                                            
                                         </p>
+                                        <p class="mr-2">{{ $ticket->created_at->diffForHumans(now()) }}</p>
                     
                                     </div> <a href="#">Pending</a>
                                 </section>
