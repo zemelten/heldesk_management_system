@@ -3,10 +3,10 @@
         {{-- @dd($ticket->user_support_id); --}}
 
         @php
-        foreach ($ticket as $key => $t) {
-            # code...
-            print_r($t);
-        }
+            foreach ($ticket as $key => $t) {
+                # code...
+                print_r($t);
+            }
         @endphp
 
         <div class="card-body" style="display: block;background-color: #e7e7e7;">
@@ -16,26 +16,33 @@
                 <div class="row1 d-flex">
                     <article class="card1 fl-left1 flex-wrap flex-fill col-6 mx-3">
                         <section class="date1"> <time datetime="23th feb"> <img class="w-100" src="/images/JU_logo.png"
-                                    alt="" style="width: 80px; "><span>HD</span><span>{{ $ticket->ticket_number ?? '-' }}</span> </time>
+                                    alt=""
+                                    style="width: 80px; "><span>HD</span><span>{{ $ticket->ticket_number ?? '-' }}</span>
+                            </time>
                         </section>
                         <section class="card1-cont"> <small>
-                            Org->{{ optional($ticket->organizationalUnit)->name ?? '-' }}</small>
+                                Org->{{ optional($ticket->organizationalUnit)->name ?? '-' }}</small>
                             <h3> Customer ->{{ optional($ticket->customer)->full_name ?? '-' }}</h3>
                             <h3> User Support ->{{ $ticket->userSupport->user->full_name }}</h3>
                             @inject('carbon', 'Carbon\Carbon')
-                            
+
                             <div class="even-date1"> <i class="px-2 fa fa-calendar"></i> <time> <span>
-                                {{ $carbon::parse($ticket->created_at)->format('l j F Y \, h:iA ') }}
-                            </span> </time></div>
+                                        {{ $carbon::parse($ticket->created_at)->format('l j F Y \, h:iA ') }}
+                                    </span> </time>
+                                    
+                                </div>
                             <div class="even-info1"> <i class="px-2 fa fa-map-marker"></i>
                                 <p> {{ optional($ticket->campuse)->name ?? '-' }} <br>
-                                    {{ optional($ticket->problem)->name ?? '-' }}
+                                    {{ optional($ticket->problem)->name ?? '-' }}<br>
+                                    <p class="mr-2">{{ $ticket->created_at->diffForHumans(now()) }}</p>
                                 </p>
-                                
-                            </div> <a href="#">Pending</a>
+                            </div>
+                            <div class="d-flex">
+                                <a href="#" class="ml-2">Pending</a>
+                            </div>
                         </section>
                     </article>
-                    
+
 
                 </div>
 

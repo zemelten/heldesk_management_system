@@ -202,7 +202,7 @@
                 text-decoration: none;
                 width: 80px;
                 height: 30px;
-                background-color: #D8DDE0;
+                background-color: #037FDD;
                 color: #fff;
                 text-align: center;
                 line-height: 30px;
@@ -212,13 +212,6 @@
                 bottom: 10px
             }
     
-            .row1:last-child .card1:first-child .card1-cont a {
-                background-color: #037FDD
-            }
-    
-            .row1:last-child .card1:last-child .card1-cont a {
-                background-color: #F8504C
-            }
     
             @media screen and (max-width: 860px) {
                 .card1 {
