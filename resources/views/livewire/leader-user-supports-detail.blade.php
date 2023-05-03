@@ -193,6 +193,21 @@
                     <td class="text-left">
                         {{ optional($userSupport->unit)->telephone ?? '-' }}
                     </td>
+
+
+                    <td class="text-right" style="width: 134px;">
+                        <div role="group" aria-label="Row Actions" class="relative inline-flex align-middle">
+                            @can('view', $userSupport)
+                                <a href="{{ route('user-supports.show', $userSupport) }}">
+                                    <button type="button" class="btn btn-light">
+                                        <i class="icon ion-md-eye"></i>
+                                    </button>
+                                </a>
+                            @endcan
+                        </div>
+                    </td>
+
+
                     <td class="text-right" style="width: 134px;">
                         <div
                             role="group"
@@ -215,7 +230,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="8">{{ $userSupports->render() }}</td>
+                    <td >{{ $userSupports->render() }}</td>
                 </tr>
             </tfoot>
         </table>
