@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Models\OrganizationalUnit;
 use App\Http\Requests\TicketStoreRequest;
 use App\Http\Requests\TicketUpdateRequest;
+use App\Mail\MailNotify;
 use App\Models\Building;
 use App\Models\EscalatedTicket;
 use App\Models\ProblemCatagory;
@@ -128,9 +129,10 @@ class TicketController extends Controller
         $ticket->user_support_id = $userSupportid;
         $ticket->reports_id = 1;
         $ticket->campuse_id = $customer->campus_id;
-        $ticket->organizational_unit_id = $customer->organizational_unit_id;
+        $ticket->organizational_unit_id = $request->organizational_unit_id;
         $ticket->problem_id = $request->problem_id;
         $ticket->save();
+        \Mail::to('yishakzewdineh@gmail.com')->send(new MailNotify($ticket));
         return redirect()
             ->route('tickets.index')
             ->withSuccess(__('crud.common.created'));
