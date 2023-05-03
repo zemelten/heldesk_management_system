@@ -22,11 +22,13 @@ class SingleTicket extends Component
      *
      * @return \Illuminate\Contracts\View\View|\Closure|string
      */
-    public $ticketId = 10;
     public function render()
     {
 
-        $ticket = Ticket::where('id', 10)->first();
+        $url = url()->current();
+        $ticketId = intval(substr($url, strrpos($url, '/') + 1));
+;
+        $ticket = Ticket::where('id', $ticketId)->first();
         //dd($ticket);
         return view('components.single-ticket', ['ticket' => $ticket]);
     }
