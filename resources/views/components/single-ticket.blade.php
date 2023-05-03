@@ -53,6 +53,9 @@
         <style type="text/css">
             @import url('https://fonts.googleapis.com/css?family=Oswald');
 
+            * {
+                outline: red dashed 1px;
+            }
 
             body {
                 /* background-color: #dadde6; */
