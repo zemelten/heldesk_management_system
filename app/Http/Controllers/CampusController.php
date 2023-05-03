@@ -51,7 +51,7 @@ class CampusController extends Controller
         $campus = Campus::create($validated);
 
         return redirect()
-            ->route('campuses.index', $campus)
+            ->route('campuses.index')
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -93,7 +93,7 @@ class CampusController extends Controller
         $campus->update($validated);
 
         return redirect()
-            ->route('campuses.edit', $campus)
+            ->route('campuses.index')
             ->withSuccess(__('crud.common.saved'));
     }
 
