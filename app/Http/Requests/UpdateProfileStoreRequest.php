@@ -28,9 +28,9 @@ class UpdateProfileStoreRequest extends FormRequest
         return [
           
             'email' => ['nullable', 'email'],
-            'phone_no' => ['required', 'regex:/^(\0)9|7[0-9]{8}/', 
+            'phone_no' => ['required', 'regex:/^(07|09|)([0-9]{8})$/', 
             Rule::unique('customers')->where(function ($query) {
-                return $query->where('phone_no', request('phone'));
+                return $query->where('phone_no', request('phone_no'));
             })],
             'building_id' => ['nullable', 'exists:buildings,id'],
             'campus_id' => ['nullable', 'exists:campuses,id'],

@@ -100,7 +100,7 @@ class DirectorController extends Controller
         $director->update($validated);
 
         return redirect()
-            ->route('directors.edit', $director)
+            ->route('directors.index')
             ->withSuccess(__('crud.common.saved'));
     }
 

@@ -27,9 +27,9 @@ class CustomerStoreRequest extends FormRequest
         return [
             'full_name' => ['nullable',  'max:255', 'string'],
             'email' => ['nullable', 'email'],
-            'phone_no' => ['required', 'regex:/^(\0)9|7[0-9]{8}/', 
+            'phone_no' => ['required', 'regex:/^(07|09|)([0-9]{8})$/', 
             Rule::unique('customers')->where(function ($query) {
-                return $query->where('phone_no', request('phone'));
+                return $query->where('phone_no', request('phone_no'));
             })],
             'building_id' => ['nullable'],
             'campus_id' => ['nullable'],
