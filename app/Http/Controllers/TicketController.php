@@ -132,7 +132,7 @@ class TicketController extends Controller
         $ticket->organizational_unit_id = $request->organizational_unit_id;
         $ticket->problem_id = $request->problem_id;
         $ticket->save();
-        \Mail::to('yishakzewdineh@gmail.com')->send(new MailNotify($ticket));
+        \Mail::to('zemelte7@gmail.com')->send(new MailNotify($ticket));
         return redirect()
             ->route('tickets.index')
             ->withSuccess(__('crud.common.created'));
