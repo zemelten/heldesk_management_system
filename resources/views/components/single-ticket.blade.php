@@ -1,13 +1,3 @@
-        {{-- @props(['ticketId']) --}}
-        {{-- @dd($ticket->user_support_id->); --}}
-        {{-- @dd($ticket->user_support_id); --}}
-
-        @php
-            foreach ($ticket as $key => $t) {
-                # code...
-                print_r($t);
-            }
-        @endphp
 
         <div class="card-body" style="display: block;background-color: #e7e7e7;">
 
