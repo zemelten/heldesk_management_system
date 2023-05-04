@@ -6,6 +6,8 @@ use App\Models\Campus;
 use Illuminate\Http\Request;
 use App\Http\Requests\CampusStoreRequest;
 use App\Http\Requests\CampusUpdateRequest;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class CampusController extends Controller
 {
@@ -49,6 +51,8 @@ class CampusController extends Controller
         $validated = $request->validated();
 
         $campus = Campus::create($validated);
+       
+       
 
         return redirect()
             ->route('campuses.index')
@@ -105,7 +109,7 @@ class CampusController extends Controller
     public function destroy(Request $request, Campus $campus)
     {
         $this->authorize('delete', $campus);
-
+        
         $campus->delete();
 
         return redirect()
