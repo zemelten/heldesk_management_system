@@ -112,8 +112,8 @@ class CampusController extends Controller
         
         $campus->delete();
 
-        return redirect()
-            ->route('campuses.index')
-            ->withSuccess(__('crud.common.removed'));
+        // return redirect()
+        //     ->route('campuses.index')
+        //     ->withSuccess(__('crud.common.removed'));
     }
 }

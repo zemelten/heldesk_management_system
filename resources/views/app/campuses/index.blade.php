@@ -130,12 +130,19 @@
                             success: function(response) {
                                 swal("Campus has been deleted!", {
                                     icon: "success",
-                                });
-                                window.location='/campuses'
+                                    button: true,
+                                   
+                                }).then((ok)=>{
+                                    window.location = '/campuses'
+                                })
+                               
                             }
                         });
+                        
 
-                    } else {
+                    }
+                   
+                    else {
                        
                     }
                 });
