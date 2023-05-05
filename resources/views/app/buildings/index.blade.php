@@ -44,7 +44,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="buildings">
+                <table class="table table-hover table-condensed" id="buildings">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -76,37 +76,28 @@
                                     @can('update', $building)
                                     <a
                                         href="{{ route('buildings.edit', $building) }}"
-                                    >
-                                        <button
-                                            type="button"
-                                            class="btn btn-light"
-                                        >
-                                            <i class="icon ion-md-create"></i>
+                                        class="px-1">
+                                        <button type="button" class="btn btn-sm btn-outline-info">
+                                            <i class="fa fa-edit"></i>
                                         </button>
                                     </a>
                                     @endcan @can('view', $building)
                                     <a
                                         href="{{ route('buildings.show', $building) }}"
-                                    >
-                                        <button
-                                            type="button"
-                                            class="btn btn-light"
-                                        >
-                                            <i class="icon ion-md-eye"></i>
+                                        class="px-1">
+                                        <button type="button" class="btn btn-sm btn-outline-info">
+                                            <i class="fa fa-eye"></i>
                                         </button>
                                     </a>
                                     @endcan @can('delete', $building)
                                     <form
-                                        action="{{ route('buildings.destroy', $building) }}"
+                                        data-route="{{ route('buildings.destroy', $building) }}"
                                         method="POST"
-                                        onsubmit="return confirm('{{ __('crud.common.are_you_sure') }}')"
-                                    >
+                                        id="deletebld"
+                                           >
                                         @csrf @method('DELETE')
-                                        <button
-                                            type="submit"
-                                            class="btn btn-light text-danger"
-                                        >
-                                            <i class="icon ion-md-trash"></i>
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
                                     @endcan
@@ -165,5 +156,51 @@
     
   });
 </script>
+    <script>
+        $(document).on('submit', '#deletebld', function(e) {
+            e.preventDefault();
+
+
+
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover it.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: 'post',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+
+                            url: $(this).data('route'),
+                            data: {
+                                '_method': 'delete'
+                            },
+                            success: function(response) {
+                                swal("Building has been deleted!", {
+                                    icon: "success",
+                                    button: true,
+                                   
+                                }).then((ok)=>{
+                                    window.location = '/buildings'
+                                })
+                               
+                            }
+                        });
+                        
+
+                    }
+                   
+                    else {
+                       
+                    }
+                });
+        });
+    </script>
 
 @endpush

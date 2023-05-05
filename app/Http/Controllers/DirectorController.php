@@ -57,7 +57,7 @@ class DirectorController extends Controller
         $director = Director::create($validated);
 
         return redirect()
-            ->route('directors.edit', $director)
+            ->route('directors.index')
             ->withSuccess(__('crud.common.created'));
     }
 

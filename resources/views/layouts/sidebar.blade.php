@@ -179,7 +179,7 @@
                                             </a>
                                         </li>
                                     @endcan
-                                    @can('view-any', App\Models\Prioritie::class)
+                                    {{-- @can('view-any', App\Models\Prioritie::class)
                                         <li class="nav-item">
                                             <a href="{{ route('priorities.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
@@ -188,7 +188,7 @@
                                                 </strong>
                                             </a>
                                         </li>
-                                    @endcan
+                                    @endcan --}}
                                     @can('view-any', App\Models\TimeSetting::class)
                                     <li class="nav-item">
                                         <a href="{{ route('time-settings.index') }}" class="nav-link">

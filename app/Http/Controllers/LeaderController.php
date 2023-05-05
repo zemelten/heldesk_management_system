@@ -49,10 +49,11 @@ class LeaderController extends Controller
      */
     public function store(LeaderStoreRequest $request)
     {
+        
         $this->authorize('create', Leader::class);
 
         $validated = $request->validated();
-
+        //dd($validated);
         $leader = Leader::create($validated);
 
         return redirect()

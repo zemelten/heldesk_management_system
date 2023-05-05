@@ -162,7 +162,7 @@
     <x-ticket :tickets="$ticketsArray" />
 
     <div class="table-responsive">
-        <table class="table table-bordered table-hover">
+        <table class="table table-hover table-condensed">
             <thead>
                 <tr>
                     <th>

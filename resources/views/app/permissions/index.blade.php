@@ -46,7 +46,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-hover">
+                <table class="table table-hover table-condensed">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -72,12 +72,9 @@
                                     @can('update', $permission)
                                     <a
                                         href="{{ route('permissions.edit', $permission) }}"
-                                    >
-                                        <button
-                                            type="button"
-                                            class="btn btn-light"
-                                        >
-                                            <i class="icon ion-md-create"></i>
+                                        class="px-1">
+                                        <button type="button" class="btn btn-sm btn-outline-primary">
+                                            <i class="fa fa-edit"></i>
                                         </button>
                                     </a>
                                     @endcan 
@@ -95,16 +92,13 @@
                                     @endcan  --}}
                                     @can('delete', $permission)
                                     <form
-                                        action="{{ route('permissions.destroy', $permission) }}"
+                                        data-route="{{ route('permissions.destroy', $permission) }}"
                                         method="POST"
-                                        onsubmit="return confirm('{{ __('crud.common.are_you_sure') }}')"
+                                        id="deletePermission"
                                     >
                                         @csrf @method('DELETE')
-                                        <button
-                                            type="submit"
-                                            class="btn btn-light text-danger"
-                                        >
-                                            <i class="icon ion-md-trash"></i>
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
                                     @endcan
@@ -130,3 +124,52 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).on('submit', '#deletePermission', function(e) {
+            e.preventDefault();
+
+
+
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover it. file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: 'post',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+
+                            url: $(this).data('route'),
+                            data: {
+                                '_method': 'delete'
+                            },
+                            success: function(response) {
+                                swal("Permission has been deleted!", {
+                                    icon: "success",
+                                    button: true,
+                                   
+                                }).then((ok)=>{
+                                    window.location = '/permissions'
+                                })
+                               
+                            }
+                        });
+                        
+
+                    }
+                   
+                    else {
+                       
+                    }
+                });
+        });
+    </script>
+@endpush

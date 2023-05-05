@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-hover table-condensed">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -64,24 +64,18 @@
                                     <td class="text-center" style="width: 134px;">
                                         <div role="group" aria-label="Row Actions" class="btn-group">
                                             @can('update', $timeSetting)
-                                                <a href="{{ route('time-settings.edit', $timeSetting) }}">
-                                                    <button type="button" class="btn btn-light">
-                                                        <i class="icon ion-md-create"></i>
-                                                    </button>
-                                                </a>
-                                                @endcan @can('view', $timeSetting)
-                                                <a href="{{ route('time-settings.show', $timeSetting) }}">
-                                                    <button type="button" class="btn btn-light">
-                                                        <i class="icon ion-md-eye"></i>
+                                                <a href="{{ route('time-settings.edit', $timeSetting) }}"class="px-1">
+                                                    <button type="button" class="btn btn-sm btn-outline-info">
+                                                        <i class="fa fa-edit"></i>
                                                     </button>
                                                 </a>
                                                 @endcan @can('delete', $timeSetting)
-                                                <form action="{{ route('time-settings.destroy', $timeSetting) }}" method="POST"
-                                                    onsubmit="return confirm('{{ __('crud.common.are_you_sure') }}')">
-                                                    @csrf @method('DELETE')
-                                                    <button type="submit" class="btn btn-light text-danger">
-                                                        <i class="icon ion-md-trash"></i>
-                                                    </button>
+                                                <form data-route="{{ route('time-settings.destroy', $timeSetting) }}" method="POST"
+                                                   id="deletesetting"
+                                                @csrf @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
                                                 </form>
                                             @endcan
                                         </div>
@@ -102,3 +96,52 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).on('submit', '#deletesetting', function(e) {
+            e.preventDefault();
+
+
+
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover it.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: 'post',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+
+                            url: $(this).data('route'),
+                            data: {
+                                '_method': 'delete'
+                            },
+                            success: function(response) {
+                                swal("Setting has been deleted!", {
+                                    icon: "success",
+                                    button: true,
+                                   
+                                }).then((ok)=>{
+                                    window.location = '/time-settings'
+                                })
+                               
+                            }
+                        });
+                        
+
+                    }
+                   
+                    else {
+                       
+                    }
+                });
+        });
+    </script>
+@endpush

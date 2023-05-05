@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-hover table-condensed">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -54,27 +54,18 @@
                                     <td class="text-center" style="width: 134px;">
                                         <div role="group" aria-label="Row Actions" class="btn-group">
                                             @can('update', $campus)
-                                                <a href="{{ route('campuses.edit', $campus) }}">
-                                                    <button type="button" class="btn btn-light">
-                                                        <i class="icon ion-md-create"></i>
+                                                <a href="{{ route('campuses.edit', $campus) }}" class="px-1">
+                                                    <button type="button" class="btn btn-sm btn-outline-primary">
+                                                        <i class="fa fa-edit"></i>
                                                     </button>
                                                 </a>
-                                                @endcan @can('view', $campus)
-                                                <a href="{{ route('campuses.show', $campus) }}">
-                                                    <button type="button" class="btn btn-light">
-                                                        <i class="icon ion-md-eye"></i>
-                                                    </button>
-                                                </a>
-                                                @endcan @can('delete', $campus)
-                                                {{-- <button type="submit" class="btn btn-light text-danger" id="delete"
-                                                    data-id="{{ $campus->id }}">
-                                                    <i class="icon ion-md-trash"></i>
-                                                </button> --}}
+                                                @endcan
+                                                @can('delete', $campus)
                                                 <form data-route="{{ route('campuses.destroy', $campus) }}" method="POST"
                                                     id="deleteCampuses">
                                                     @csrf @method('DELETE')
-                                                    <button type="submit" class="btn btn-light text-danger">
-                                                        <i class="icon ion-md-trash"></i>
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                        <i class="fa fa-trash"></i>
                                                     </button>
 
                                                 </form>
@@ -100,52 +91,52 @@
             </div>
         </div>
     </div>
-@endsection
-@push('scripts')
-    <script>
-        $(document).on('submit', '#deleteCampuses', function(e) {
-            e.preventDefault();
+    @endsection
+    @push('scripts')
+        <script>
+            $(document).on('submit', '#deleteCampuses', function(e) {
+                e.preventDefault();
 
 
 
-            swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this imaginary file!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        $.ajax({
-                            type: 'post',
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
+                swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover it. file!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $.ajax({
+                                type: 'post',
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
 
-                            url: $(this).data('route'),
-                            data: {
-                                '_method': 'delete'
-                            },
-                            success: function(response) {
-                                swal("Campus has been deleted!", {
-                                    icon: "success",
-                                    button: true,
-                                   
-                                }).then((ok)=>{
-                                    window.location = '/campuses'
-                                })
-                               
-                            }
-                        });
+                                url: $(this).data('route'),
+                                data: {
+                                    '_method': 'delete'
+                                },
+                                success: function(response) {
+                                    swal("Campus has been deleted!", {
+                                        icon: "success",
+                                        button: true,
+                                    
+                                    }).then((ok)=>{
+                                        window.location = '/campuses'
+                                    })
+                                
+                                }
+                            });
+                            
+
+                        }
+                    
+                        else {
                         
-
-                    }
-                   
-                    else {
-                       
-                    }
-                });
-        });
-    </script>
-@endpush
+                        }
+                    });
+            });
+        </script>
+    @endpush
