@@ -1,16 +1,17 @@
+@php $editing = isset($ticket) @endphp
 <div>
     <div class="mb-4">
         @can('create', App\Models\Ticket::class)
-            <button class="btn btn-primary" wire:click="newTicket">
-                <i class="icon ion-md-add"></i>
-                @lang('crud.common.new')
+            <button class="btn btn-prfimary">
+                <i class="icon ion-md-addd"></i>
+
             </button>
             @endcan @can('delete-any', App\Models\Ticket::class)
-            <button class="btn btn-danger" {{ empty($selected) ? 'disabled' : '' }}
+            {{-- <button class="btfdn bdftn-fddanger" {{ empty($selected) ? 'disabled' : '' }}
                 onclick="confirm('Are you sure?') || event.stopImmediatePropagation()" wire:click="destroySelected">
-                <i class="icon ion-md-trash"></i>
-                @lang('crud.common.delete_selected')
-            </button>
+                <i class="icon ion-md-tdsrash"></i>
+                
+            </button> --}}
         @endcan
     </div>
 
@@ -21,56 +22,53 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
+
             </div>
 
             <div class="modal-body">
                 <div>
-                    <x-inputs.group class="col-md-12">
-                        <x-inputs.text name="ticket.status" label="Status" wire:model="ticket.status" maxlength="255"
-                            placeholder="Status"></x-inputs.text>
-                    </x-inputs.group>
+                    <div id="first">
+                        <x-inputs.group class="col-md-12">
+                            <x-inputs.select name="status" label="Status" id="status"
+                                onchange="showDiv('status',['reason','comment'])">
+                                @php $selected = old('status', ($editing ? $ticket->status : '')) @endphp
+                                <option disabled {{ empty($selected) ? 'selected' : '' }}>Change Status</option>
+                                <option value="0">Active</option>
+                                <option value="2">Escalate</option>
+                                <option value="3">Close</option>
+                                <option value="4">Customer found Solution</option>
+                                <option value="5">Customer Unreachable</option>
+                                <option value="6">SPAM</option>
 
-                    <x-inputs.group class="col-md-12">
-                        <x-inputs.textarea name="ticket.description" label="Description" wire:model="ticket.description"
-                            maxlength="255"></x-inputs.textarea>
-                    </x-inputs.group>
+                            </x-inputs.select>
 
-                    <x-inputs.group class="col-md-12">
-                        <x-inputs.select name="ticket.campuse_id" label="Campuse" wire:model="ticket.campuse_id">
-                            <option value="null" disabled>Please select the Campus</option>
-                            @foreach ($campusesForSelect as $value => $label)
-                                <option value="{{ $value }}">{{ $label }}</option>
-                            @endforeach
-                        </x-inputs.select>
-                    </x-inputs.group>
+                        </x-inputs.group>
+                    </div>
 
-                    <x-inputs.group class="col-md-12">
-                        <x-inputs.select name="ticket.problem_id" label="Problem" wire:model="ticket.problem_id">
-                            <option value="null" disabled>Please select the Problem</option>
-                            @foreach ($problemsForSelect as $value => $label)
-                                <option value="{{ $value }}">{{ $label }}</option>
-                            @endforeach
-                        </x-inputs.select>
-                    </x-inputs.group>
+                    <div id="reason" style="display:none;">
 
-                    <x-inputs.group class="col-md-12">
-                        <x-inputs.select name="ticket.organizational_unit_id" label="Organizational Unit"
-                            wire:model="ticket.organizational_unit_id">
-                            <option value="null" disabled>Please select the Organizational Unit</option>
-                            @foreach ($organizationalUnitsForSelect as $value => $label)
-                                <option value="{{ $value }}">{{ $label }}</option>
-                            @endforeach
-                        </x-inputs.select>
-                    </x-inputs.group>
 
-                    <x-inputs.group class="col-md-12">
-                        <x-inputs.select name="ticket.prioritie_id" label="Prioritie" wire:model="ticket.prioritie_id">
-                            <option value="null" disabled>Please select the Prioritie</option>
-                            @foreach ($prioritiesForSelect as $value => $label)
-                                <option value="{{ $value }}">{{ $label }}</option>
-                            @endforeach
-                        </x-inputs.select>
-                    </x-inputs.group>
+                        <x-inputs.group class="col-md-12">
+                            <x-inputs.select name="queue_type_id" label="Queue Type" id="queue_type_id">
+                                @php $selected = old('queue_type_id', ($editing ? $ticket->queue_type_id : '')) @endphp
+                                <option disabled {{ empty($selected) ? 'selected' : '' }}>Queue Type</option>
+
+                                <option value="2">fgd
+                                </option>
+
+                            </x-inputs.select>
+                        </x-inputs.group>
+
+                        <x-inputs.group class="col-md-12">
+                            <x-inputs.textarea rows=2 type="text" id="reason" label="Reason" name="reason" />
+                        </x-inputs.group>
+                    </div>
+                    <div id="comment">
+                        <x-inputs.group class="col-md-12">
+                            <x-inputs.textarea rows=2 type="text" id="comment" label="Comment" name="comment" />
+                        </x-inputs.group>
+                    </div>
+
                 </div>
             </div>
 
@@ -90,116 +88,34 @@
             </div>
         </div>
     </x-modal>
-
-
-
-
-
-
-
-
-
-
-
-
-
     @php
-    // @dd($tickets[1])
-    $ticketsArray = array();
-    foreach ($activeTickets as $key => $ticket) {
-        # code...
-        array_push($ticketsArray, $ticket);
-    }
-    //dd($ticketsArray);
+        $ticketsArray = [];
+        foreach ($activeTickets as $key => $ticket) {
+            # code...
+            array_push($ticketsArray, $ticket);
+        }
     @endphp
     <x-ticket :tickets="$ticketsArray" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="table-responsive">
-        <table class="table table-hover table-condensed">
-            <thead>
-                <tr>
-                    <th>
-                        <input type="checkbox" wire:model="allSelected" wire:click="toggleFullSelection"
-                            title="{{ trans('crud.common.select_all') }}" />
-                    </th>
-                    <th class="text-left">
-                        @lang('crud.user_support_tickets.inputs.status')
-                    </th>
-                    <th class="text-left">
-                        @lang('crud.user_support_tickets.inputs.description')
-                    </th>
-                    <th class="text-left">
-                        @lang('crud.user_support_tickets.inputs.campuse_id')
-                    </th>
-                    <th class="text-left">
-                        @lang('crud.user_support_tickets.inputs.problem_id')
-                    </th>
-                    <th class="text-left">
-                        @lang('crud.user_support_tickets.inputs.organizational_unit_id')
-                    </th>
-                    <th class="text-left">
-                        @lang('crud.user_support_tickets.inputs.prioritie_id')
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody class="text-gray-600">
-                @foreach ($tickets as $ticket)
-                    <tr class="hover:bg-gray-100">
-                        <td class="text-left">
-                            <input type="checkbox" value="{{ $ticket->id }}" wire:model="selected" />
-                        </td>
-                        <td class="text-left">{{ $ticket->status ?? '-' }}</td>
-                        <td class="text-left">{{ $ticket->description ?? '-' }}</td>
-                        <td class="text-left">
-                            {{ optional($ticket->campuse)->name ?? '-' }}
-                        </td>
-                        <td class="text-left">
-                            {{ optional($ticket->problem)->name ?? '-' }}
-                        </td>
-                        <td class="text-left">
-                            {{ optional($ticket->organizationalUnit)->name ?? '-' }}
-                        </td>
-                        <td class="text-left">
-                            {{ optional($ticket->prioritie)->name ?? '-' }}
-                        </td>
-                        <td class="text-right" style="width: 134px;">
-                            <div role="group" aria-label="Row Actions" class="relative inline-flex align-middle">
-                                @can('update', $ticket)
-                                    <button type="button" class="btn btn-light"
-                                        wire:click="editTicket({{ $ticket->id }})">
-                                        <i class="icon ion-md-create"></i>
-                                    </button>
-                                @endcan
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td  >{{ $tickets->render() }}</td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Get the status select field and add an event listener
+
+    function showDiv(selectId, divId) {
+        const select = document.getElementById(selectId);
+        const div = document.getElementById(divId[0]);
+        const divcom = document.getElementById(divId[1]);
+console.log(select.value);
+        if (select.value == 2) {
+            div.style.display = 'block';
+            divcom.style.display = 'none';
+
+        } else {
+           
+            divcom.style.display = 'block';
+ 
+        }
+    }
+</script>

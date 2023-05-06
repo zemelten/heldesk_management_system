@@ -5,6 +5,7 @@
 
             <!-- Default box -->
             <div class="card">
+            
                 <div class="card-header">
                     {{-- <h3 >Title</h3> --}}
     
@@ -40,12 +41,20 @@
                                         </p>
                                         <p class="mr-2">{{ $ticket->created_at->diffForHumans(now()) }}</p>
                     
-                                    </div> <a href="#">Pending</a>
+                                    </div> 
+                                    @can('update', $ticket)
+                                  
+                                    <button class="btn btn-primary float-right px-1" wire:click="editTicket({{ $ticket->id }})">
+                                        <i class="fa fa-edit"></i>
+                                      Edit
+                                    </button>
+                                @endcan
+                                    
+                                    {{-- <a href="#">Pending</a> --}}
                                 </section>
                             </article>
                             @endforeach
                         </div>
-    
                     </section>
     
                 </div>

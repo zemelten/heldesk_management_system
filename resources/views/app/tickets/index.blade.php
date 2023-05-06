@@ -121,7 +121,8 @@
                                           <button type="button" class="btn btn-sm btn-outline-info">
                                             <i class="fa fa-edit"></i>  </button>
                                       </a>
-                                      @endcan @can('view', $ticket)
+                                      @endcan
+                                       @can('view', $ticket)
                                       <a href="{{ route('tickets.show', $ticket) }}" class="px-2">
                                           <button type="button" class="btn btn-sm btn-outline-primary">
                                             <i class="fa fa-eye"></i></button>

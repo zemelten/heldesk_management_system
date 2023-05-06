@@ -185,9 +185,11 @@
                 @can('view-any', App\Models\Ticket::class)
                     <div class="card mt-4">
                         <div class="card-body">
-                            <h4 class="card-title w-100 mb-2">Tickets</h4>
+                            <h4 class="card-title w-100 mb-2">Today's Tickets</h4>
+                            
 
                             <livewire:user-support-tickets-detail :userSupport="$userSupport" />
+                        
                         </div>
                     </div>
                 @endcan

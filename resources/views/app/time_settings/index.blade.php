@@ -31,7 +31,7 @@
             <div class="card-body">
                 <div style="display: flex; justify-content: space-between;">
                     <h4 class="card-title">
-                    Ticket Time Settings
+                        Ticket Time Settings
                 </div>
 
                 <div class="table-responsive">
@@ -43,7 +43,7 @@
                                     @lang('crud.floors.inputs.name')
                                 </th>
                                 <th class="text-left">
-                                   Time(in Days)
+                                    Time(in Days)
                                 </th>
                                 <th class="text-center">
                                     @lang('crud.common.actions')
@@ -51,31 +51,45 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($timeSettings as  $timeSetting)
+                            @forelse($timeSettings as  $key => $value)
                                 <tr>
-                                    <td style="width: 2.5cm"> {{ $timeSetting->id }}</td>
-                                    
-                                    <td >
-                                        {{ $timeSetting->name ?? '-' }}
-                                    </td>
                                     <td>
-                                        {{ $timeSetting->time.' '.'days' ?? '-' }}
+                                        {{  $key + 1 }}    
+                                         
+                                          </td>
+
+                                    <td>
+                                        {{ $value->name ?? '-' }}
                                     </td>
+                                    @if ($value->type == 0)
+                                    <td>
+                                        {{ $value->time . ' ' . 'days' ?? '-' }}
+                                    </td>
+                                    @elseif($value->type == 1)
+
+                                    <td>
+                                        {{ $value->time . ' ' . 'hours' ?? '-' }}
+                                    </td>
+                                    @else
+                                        <td>
+                                            {{ $value->time . ' ' . 'minutes' ?? '-' }}
+                                        </td>
+                                    @endif
+
                                     <td class="text-center" style="width: 134px;">
                                         <div role="group" aria-label="Row Actions" class="btn-group">
-                                            @can('update', $timeSetting)
-                                                <a href="{{ route('time-settings.edit', $timeSetting) }}"class="px-1">
+                                            @can('update', $value)
+                                                <a href="{{ route('time-settings.edit', $value) }}"class="px-1">
                                                     <button type="button" class="btn btn-sm btn-outline-info">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
                                                 </a>
-                                                @endcan @can('delete', $timeSetting)
-                                                <form data-route="{{ route('time-settings.destroy', $timeSetting) }}" method="POST"
-                                                   id="deletesetting"
-                                                @csrf @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                @endcan @can('delete', $value)
+                                                <form data-route="{{ route('time-settings.destroy', $value) }}"
+                                                    method="POST" id="deletesetting" @csrf @method('DELETE') <button
+                                                    type="submit" class="btn btn-sm btn-outline-danger">
                                                     <i class="fa fa-trash"></i>
-                                                </button>
+                                                    </button>
                                                 </form>
                                             @endcan
                                         </div>
@@ -89,7 +103,7 @@
                                 </tr>
                             @endforelse
                         </tbody>
-                       
+
                     </table>
                 </div>
             </div>
@@ -127,19 +141,17 @@
                                 swal("Setting has been deleted!", {
                                     icon: "success",
                                     button: true,
-                                   
-                                }).then((ok)=>{
+
+                                }).then((ok) => {
                                     window.location = '/time-settings'
                                 })
-                               
+
                             }
                         });
-                        
 
-                    }
-                   
-                    else {
-                       
+
+                    } else {
+
                     }
                 });
         });

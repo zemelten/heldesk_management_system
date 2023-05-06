@@ -11,7 +11,7 @@ class TimeSetting extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['name', 'time'];
+    protected $fillable = ['name', 'time','type'];
 
     protected $searchableFields = ['*'];
 

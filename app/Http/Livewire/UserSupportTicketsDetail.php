@@ -144,7 +144,7 @@ class UserSupportTicketsDetail extends Component
     {
         return view('livewire.user-support-tickets-detail', [
             'tickets' => $this->userSupport->tickets()->paginate(20),
-            'activeTickets' => $this->userSupport->tickets()->where('status', 1)->paginate(3),
+            'activeTickets' => $this->userSupport->tickets()->where('status', 0)->paginate(3),
         ]);
     }
 }

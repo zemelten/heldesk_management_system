@@ -48,11 +48,10 @@ class TimeSettingController extends Controller
     public function store(TimeSettingStoreRequest $request)
     {
         $this->authorize('create', TimeSetting::class);
-
         $validated = $request->validated();
 
         $timeSetting = TimeSetting::create($validated);
-
+       
         return redirect()
             ->route('time-settings.index')
             ->withSuccess(__('crud.common.created'));
