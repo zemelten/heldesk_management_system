@@ -3,7 +3,7 @@
     <section class="">
 
         <div class="row1 d-flex">
-            <article class="card1 fl-left1 flex-wrap flex-fill col-6 mx-3">
+            <article class="card1 fl-left1 flex-wrap flex-fill  mx-3">
                 <section class="date1"> <time datetime="23th feb"> <img class="w-100" src="/images/JU_logo.png"
                             alt=""
                             style="width: 80px; "><span>HD</span><span>{{ $ticket->ticket_number ?? '-' }}</span>
@@ -78,7 +78,8 @@
         font-family: 'Oswald', sans-serif;
         text-transform: uppercase;
         border-radius: 4px;
-        position: relative
+        position: relative;
+        max-width: 600px;
     }
 
     .card1+.card1 {
@@ -201,22 +202,22 @@
         background-color: #037FDD
     }
 
-    @media screen and (max-width: 860px) {
-        .card1 {
-            display: block;
-            float: none;
-            width: 100%;
-            margin-bottom: 10px;
-        }
+        @media screen and (max-width: 860px) {
+            .card1 {
+                display: block;
+                float: none;
+                width: 100%;
+                margin-bottom: 10px;
+            }
 
-        .card1+.card1 {
-            margin-left: 0
-        }
+            .card1+.card1 {
+                margin-left: 0
+            }
 
-        .card1-cont .even-date1,
-        .card1-cont .even-info1 {
-            font-size: 75%
+            .card1-cont .even-date1,
+            .card1-cont .even-info1 {
+                font-size: 75%
+            }
         }
-    }
 </style>
 <script type="text/javascript"></script>
