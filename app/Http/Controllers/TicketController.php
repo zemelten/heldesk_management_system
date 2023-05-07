@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
+    public $tickets;
+    protected $listeners = ['ticketsFiltered' => 'updateTickets'];
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -33,28 +35,22 @@ class TicketController extends Controller
         $this->authorize('view-any', Ticket::class);
 
         $customer_id = Customer::where('full_name', Auth::user()->full_name)->first()->id;
+        
         $role = Auth::user()->roles()->first()->name;
         if ($role === "super-admin") {
             $tickets = Ticket::all();
+            $this->tickets = $tickets;
         } else {
             $tickets = Ticket::where('customer_id', $customer_id)
                 ->where('status', 0)
                 ->get();
+                $this->tickets = $tickets;
         }
+        
 
-
-
-
-
-
-
-
-
-
-
-
-
-        return view('app.tickets.index', compact('tickets'));
+        $userSupports = UserSupport::withCount('tickets')->orderBy('tickets_count','asc')->get();
+        
+        return view('app.tickets.index', compact('tickets','userSupports'));
     }
 
     /**
@@ -237,4 +233,10 @@ class TicketController extends Controller
             ->route('tickets.index')
             ->withSuccess(__('crud.common.removed'));
     }
+   
+
+public function updateTickets($tickets)
+{
+    $this->tickets = $tickets;
+}
 }
