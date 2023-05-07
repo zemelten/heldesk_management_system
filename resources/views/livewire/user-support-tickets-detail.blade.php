@@ -1,5 +1,12 @@
 @php $editing = isset($ticket) @endphp
 <div>
+    <div>
+        @if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
+    </div>
     <div class="mb-4">
         @can('create', App\Models\Ticket::class)
             <button class="btn btn-prfimary">
@@ -29,8 +36,8 @@
                 <div>
                     <div id="first">
                         <x-inputs.group class="col-md-12">
-                            <x-inputs.select name="status" label="Status" id="status"
-                                onchange="showDiv('status',['reason','comment'])">
+                            <x-inputs.select name="status" label="Status"  id="status"
+                                onchange="showDiv('status',['reason','comment'])" wire:model="ticket.status">
                                 @php $selected = old('status', ($editing ? $ticket->status : '')) @endphp
                                 <option disabled {{ empty($selected) ? 'selected' : '' }}>Change Status</option>
                                 <option value="0">Active</option>
@@ -118,4 +125,5 @@ console.log(select.value);
  
         }
     }
+
 </script>

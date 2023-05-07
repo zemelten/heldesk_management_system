@@ -55,7 +55,7 @@ class HomeController extends Controller
         }
         if (Auth::user()->roles()->first() != null) {
 
-            if (Auth::user()->roles()->first()->name === "User Support") {
+            if (Auth::user()->roles()->first()->name === "user-support") {
                 $user_support = UserSupport::where('user_id', Auth::user()->id)->first()->id;
                 $userSupport = UserSupport::find($user_support);
                 return view('home', compact('countUsers', 'totalTicket', 'totalactiveTicket', 'userSupport', 'countUsersupports', 'totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket', 'totalUnclosedTicket'));

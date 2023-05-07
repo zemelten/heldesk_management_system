@@ -108,14 +108,18 @@ class TicketController extends Controller
         if (Auth::user()->roles()->first()->name == 'super-admin' || Auth::user()->roles()->first()->name == 'helpdesk') {
             $building_id = Customer::where('id', $request->customer_id)->first()->building->id;
             $customer = Customer::where('id', $request->customer_id)->first();
+            $org_id = $request->organizational_unit_id;
             $userSupportid = UserSupport::where('building_id', $building_id)
                 ->where('problem_catagory_id', $request->problem_category_id)
                 ->withCount('tickets')
                 ->orderBy('tickets_count', 'asc')
                 ->first()->id;
-        } else {
+        }
+
+         else {
             $customer = Customer::where('full_name', Auth::user()->full_name)->first();
             $building_id = $customer->building->id;
+            $org_id = $customer->organizational_unit_id;
             $userSupportid = UserSupport::where('building_id', $building_id)
                 ->where('problem_catagory_id', 2)
                 ->withCount('tickets')
@@ -129,9 +133,10 @@ class TicketController extends Controller
         $ticket->user_support_id = $userSupportid;
         $ticket->reports_id = 1;
         $ticket->campuse_id = $customer->campus_id;
-        $ticket->organizational_unit_id = $request->organizational_unit_id;
+        $ticket->organizational_unit_id = $org_id;
         $ticket->problem_id = $request->problem_id;
         $ticket->save();
+      
         \Mail::to('misafaric@gmail.com')->send(new MailNotify($ticket));
         return redirect()
             ->route('tickets.index')

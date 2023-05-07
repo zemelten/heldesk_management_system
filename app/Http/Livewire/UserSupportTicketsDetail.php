@@ -28,6 +28,7 @@ class UserSupportTicketsDetail extends Component
     public $editing = false;
     public $allSelected = false;
     public $showingModal = false;
+    
 
     public $modalTitle = 'New Ticket';
 
@@ -82,6 +83,7 @@ class UserSupportTicketsDetail extends Component
         $this->editing = true;
         $this->modalTitle = trans('crud.user_support_tickets.edit_title');
         $this->ticket = $ticket;
+      
 
         $this->dispatchBrowserEvent('refresh');
 
@@ -101,6 +103,7 @@ class UserSupportTicketsDetail extends Component
 
     public function save()
     {
+       
         $this->validate();
 
         if (!$this->ticket->user_support_id) {
@@ -110,10 +113,12 @@ class UserSupportTicketsDetail extends Component
         } else {
             $this->authorize('update', $this->ticket);
         }
-
+      
         $this->ticket->save();
 
         $this->hideModal();
+        
+        session()->flash('message', 'Ticket successfully updated.');
     }
 
     public function destroySelected()

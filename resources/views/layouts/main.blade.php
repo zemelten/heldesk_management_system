@@ -181,7 +181,7 @@
 
 
             @elseif (Auth::user()->roles()->first() != null &&
-                    Auth::user()->roles()->first()->name === 'User Support')
+                    Auth::user()->roles()->first()->name === 'user-support')
                 @can('view-any', App\Models\Ticket::class)
                     <div class="card mt-4">
                         <div class="card-body">
