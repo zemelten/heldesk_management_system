@@ -30,8 +30,29 @@ class TicketController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+    public function index1(Request $request)
+    {
+        dd(Ticket::all());
+        $this->authorize('view-any', Ticket::class);
+
+        $customer_id = Customer::where('full_name', Auth::user()->full_name)->first()->id;
+        $role = Auth::user()->roles()->first()->name;
+        if ($role === "super-admin") {
+            $tickets = Ticket::all();
+        } else {
+            $tickets = Ticket::where('customer_id', $customer_id)
+                ->where('status', 0)
+                ->get();
+        }
+
+        return view('app.tickets.index', compact('tickets'));
+    }
+
     public function index(Request $request)
     {
+
+        // $userSupports = UserSupport::withCount('tickets')->orderBy('tickets_count','asc')->get();
+
         $this->authorize('view-any', Ticket::class);
 
         $customer_id = Customer::where('full_name', Auth::user()->full_name)->first()->id;
@@ -48,9 +69,40 @@ class TicketController extends Controller
         }
         
 
-        $userSupports = UserSupport::withCount('tickets')->orderBy('tickets_count','asc')->get();
-        
-        return view('app.tickets.index', compact('tickets','userSupports'));
+
+
+
+        $tickets = Ticket::all();
+        $userSupports = UserSupport::all();
+        //dd($tickets->where('status', 0));
+
+        if ($request->has('date')) {
+            $tickets->whereDate('created_at', $request->date);
+        }
+
+        if ($request->has('date_range')) {
+
+            $tickets->whereBetween('created_at', [$request->date_range['start'], $request->date_range['end']]);
+        }
+
+        if ($request->has('user_support_id')) {
+            //dd($request);
+            //dd($tickets->where('user_support_id', $request->user_support_id));
+            if ($request->user_support_id == null) {
+                $tickets = Ticket::all();
+                // dd("null");
+            } else {
+                // dd("not null");
+                $tickets = $tickets->where('user_support_id', $request->user_support_id);
+            }
+        }
+
+        if ($request->has('status')) {
+            $tickets = $tickets->where('status', $request->status);
+        }
+
+        // dd($tickets);
+        return view('app.tickets.index', compact('tickets', 'userSupports'));
     }
 
     /**
@@ -100,7 +152,8 @@ class TicketController extends Controller
     public function store(TicketStoreRequest $request)
     {
 
-        $this->authorize('create', Ticket::class); $validated = $request->validated();
+        $this->authorize('create', Ticket::class);
+        $validated = $request->validated();
         if (Auth::user()->roles()->first()->name == 'super-admin' || Auth::user()->roles()->first()->name == 'helpdesk') {
             $building_id = Customer::where('id', $request->customer_id)->first()->building->id;
             $customer = Customer::where('id', $request->customer_id)->first();
