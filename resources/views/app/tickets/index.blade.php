@@ -3,10 +3,11 @@
 @section('content')
     <!-- /.card -->
     <div class="searchbar mt-0 mb-4">
-    
-            <livewire:ticket-filters/>
 
-            
+        <livewire:ticket-filters />
+
+
+
     </div>
     <div class="card">
         <div class="card-header">
@@ -47,7 +48,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbody">
                     @forelse($tickets as $key => $ticket)
                         <tr>
                             <td>
@@ -179,6 +180,44 @@
     <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
+    <script>
+        $('#user_support_id').on('change', function() {
+
+            var support = $(this).val();
+          
+            // $.ajax({
+            //     url: "{{ route('tickets.index') }}",
+            //     type: "GET",
+            //     data: {
+            //         'support',
+            //         support
+            //     },
+            //     success: function(data) {
+
+            //     }
+            // })
+            $.ajax({
+        url: "{{ route('tickets.index') }}",
+        type: "GET",
+        data: {
+            user_support_id: support,
+            _token: '{{ csrf_token() }}'
+        },
+        dataType: 'json',
+        success: function(data) {
+            var tickets = data.tickets;
+            $.each(tickets  , function(key, value) {
+               var html = '';
+               var customer = value.customer_id;
+               
+              html+='<tr> <td>'+key+1+'</td> <td>'+customer+'</td> </tr>'
+              $('tbody').html(html);
+            });
+          
+        }
+    });
+        });
+    </script>
     <script>
         $(function() {
             $("#example1").DataTable({
