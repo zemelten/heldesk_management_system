@@ -49,14 +49,15 @@ class LeaderController extends Controller
      */
     public function store(LeaderStoreRequest $request)
     {
+        
         $this->authorize('create', Leader::class);
 
         $validated = $request->validated();
-
+        //dd($validated);
         $leader = Leader::create($validated);
 
         return redirect()
-            ->route('leaders.show', $leader)
+            ->route('leaders.index')
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -100,7 +101,7 @@ class LeaderController extends Controller
         $leader->update($validated);
 
         return redirect()
-            ->route('leaders.edit', $leader)
+            ->route('leaders.index')
             ->withSuccess(__('crud.common.saved'));
     }
 

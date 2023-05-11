@@ -55,7 +55,7 @@ class ProblemCatagoryController extends Controller
         $problemCatagory = ProblemCatagory::create($validated);
 
         return redirect()
-            ->route('problem-catagories.edit', $problemCatagory)
+            ->route('problem-catagories.index')
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -99,7 +99,7 @@ class ProblemCatagoryController extends Controller
         $problemCatagory->update($validated);
 
         return redirect()
-            ->route('problem-catagories.edit', $problemCatagory)
+            ->route('problem-catagories.index')
             ->withSuccess(__('crud.common.saved'));
     }
 

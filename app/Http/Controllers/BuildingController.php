@@ -57,7 +57,7 @@ class BuildingController extends Controller
       
 
         return redirect()
-            ->route('buildings.edit', $building)
+            ->route('buildings.index')
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -101,7 +101,7 @@ class BuildingController extends Controller
         $building->update($validated);
 
         return redirect()
-            ->route('buildings.edit', $building)
+            ->route('buildings.index')
             ->withSuccess(__('crud.common.saved'));
     }
 

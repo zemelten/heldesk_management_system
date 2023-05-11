@@ -46,7 +46,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-hover">
+                <table class="table table-hover table-condensed">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -134,7 +134,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="8">
+                            <td  >
                                 @lang('crud.common.no_items_found')
                             </td>
                         </tr>
@@ -142,7 +142,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="8">{!! $serviceUnits->render() !!}</td>
+                            <td  >{!! $serviceUnits->render() !!}</td>
                         </tr>
                     </tfoot>
                 </table>

@@ -71,7 +71,7 @@ class CustomerController extends Controller
         $customer = Customer::create($validated);
 
         return redirect()
-            ->route('customers.edit', $customer)
+            ->route('customers.index')
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -129,7 +129,7 @@ class CustomerController extends Controller
         $customer->update($validated);
 
         return redirect()
-            ->route('customers.edit', $customer)
+            ->route('customers.index')
             ->withSuccess(__('crud.common.saved'));
     }
 

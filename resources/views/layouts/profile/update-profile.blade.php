@@ -10,13 +10,14 @@
             <div class="card-body">
                 <h4 class="card-title">
                     <a href="{{ route('tickets.index') }}" class="mr-4"><i class="icon ion-md-arrow-back"></i></a>
-                    @lang('crud.tickets.create_title')
+                    Update Your Details
                 </h4>
 
                 <x-form method="POST" action="{{ route('updateprofile.store') }}" class="mt-4">
                     @php $editing = isset($ticket) @endphp
 
                     <div class="row">
+                       
 
                       <x-inputs.group class="col-md-6">
                         <label>Phone number:</label>
@@ -25,9 +26,17 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
                           </div>
-                          <x-inputs.text name="phone" id="phone"/>
+                          <x-inputs.text name="phone_no" id="phone"/>
                         </div>
                         <!-- /.input group -->
+                        {{-- @if (count($errors) > 0)
+                       
+                        <ul>
+                           @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                           @endforeach
+                        </ul>
+                  @endif --}}
                       </x-inputs.group>
                         
                        

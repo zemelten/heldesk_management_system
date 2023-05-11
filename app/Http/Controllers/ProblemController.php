@@ -56,7 +56,7 @@ class ProblemController extends Controller
         $problem = Problem::create($validated);
 
         return redirect()
-            ->route('problems.edit', $problem)
+            ->route('problems.index')
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -103,7 +103,7 @@ class ProblemController extends Controller
         $problem->update($validated);
 
         return redirect()
-            ->route('problems.edit', $problem)
+            ->route('problems.index')
             ->withSuccess(__('crud.common.saved'));
     }
 

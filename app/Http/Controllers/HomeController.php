@@ -29,14 +29,14 @@ class HomeController extends Controller
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
-     */ 
+     */
     public function index()
     {
-      
-       if(Auth::user()->roles()->first()->name == null){
-        Auth::user()->assignRole('user');
-       }
-      // dd(Auth::user()->email);
+
+        if (Auth::user()->roles()->first() == null) {
+            Auth::user()->assignRole('user');
+        }
+        //  dd(Auth::user()->roles()->first()->name);
         $countUsers = User::count();
         $totalTicket = Ticket::count();
         $countUsersupports = UserSupport::count();
@@ -46,32 +46,30 @@ class HomeController extends Controller
         $todaysClosedTicket = Ticket::whereDate('updated_at', today())->count();
         $todaysTicket = Ticket::whereDate('created_at', today())->count();
         $totalUnclosedTicket = Ticket::where('status', '<', 3)->count();
-    //      $exists = Customer::where('full_name',Auth::user()->full_name)->exists();
-    //    if(!$exists){
-    //     Customer::create([
-    //         'full_name'=>Auth::user()->full_name,
-    //         'email'=>Auth::user()->email,
-          
-    //     ]);
-    //    }
-    if(Auth::user()->roles()->first() !=null){
-        
-        if(Auth::user()->roles()->first()->name === "User Support"){
-            $user_support = UserSupport::where('user_id',Auth::user()->id)->first()->id;
-            $userSupport = UserSupport::find($user_support);
-            return view('home', compact('countUsers', 'totalTicket', 'totalactiveTicket','userSupport', 'countUsersupports','totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket', 'totalUnclosedTicket'));
+        $exists = Customer::where('full_name', Auth::user()->full_name)->exists();
+        if (Auth::user()->roles()->first() != null) {
+
+            if (Auth::user()->roles()->first()->name === "user-support") {
+                $user_support = UserSupport::where('user_id', Auth::user()->id)->first()->id;
+                $userSupport = UserSupport::find($user_support);
+                return view('home', compact('countUsers', 'totalTicket', 'totalactiveTicket', 'userSupport', 'countUsersupports', 'totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket', 'totalUnclosedTicket'));
+            } else if (Auth::user()->roles()->first()->name === "customer") {
+                $customer_id = Customer::where('full_name', Auth::user()->full_name)->first()->id;
+
+                $customer = Customer::find($customer_id);
+                return view('home', compact('countUsers', 'totalTicket', 'totalactiveTicket', 'customer', 'countUsersupports', 'totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket', 'totalUnclosedTicket'));
+            }
         }
-    }
-        
 
 
-      
-        
+
+
+
 
 
 
         //dd($countusers);
 
-        return view('home', compact('countUsers', 'totalTicket', 'totalactiveTicket', 'countUsersupports','totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket', 'totalUnclosedTicket'));
+        return view('home', compact('countUsers', 'totalTicket', 'totalactiveTicket', 'countUsersupports', 'totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket', 'totalUnclosedTicket'));
     }
 }

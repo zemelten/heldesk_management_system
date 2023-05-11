@@ -44,7 +44,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-hover" id="director">
+                <table class="table table-hover table-condensed" id="director">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -82,37 +82,28 @@
                                     @can('update', $director)
                                     <a
                                         href="{{ route('directors.edit', $director) }}"
-                                    >
-                                        <button
-                                            type="button"
-                                            class="btn btn-light"
-                                        >
-                                            <i class="icon ion-md-create"></i>
+                                        class="px-1">
+                                        <button type="button" class="btn btn-sm btn-outline-info">
+                                            <i class="fa fa-edit"></i>
                                         </button>
                                     </a>
                                     @endcan @can('view', $director)
                                     <a
                                         href="{{ route('directors.show', $director) }}"
-                                    >
-                                        <button
-                                            type="button"
-                                            class="btn btn-light"
-                                        >
-                                            <i class="icon ion-md-eye"></i>
+                                        class="px-1">
+                                        <button type="button" class="btn btn-sm btn-outline-info">
+                                            <i class="fa fa-eye"></i>
                                         </button>
                                     </a>
                                     @endcan @can('delete', $director)
                                     <form
-                                        action="{{ route('directors.destroy', $director) }}"
+                                        data-route="{{ route('directors.destroy', $director) }}"
                                         method="POST"
-                                        onsubmit="return confirm('{{ __('crud.common.are_you_sure') }}')"
-                                    >
-                                        @csrf @method('DELETE')
-                                        <button
-                                            type="submit"
-                                            class="btn btn-light text-danger"
+                                        id="deleteDirector"
                                         >
-                                            <i class="icon ion-md-trash"></i>
+                                        @csrf @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
                                     @endcan
@@ -166,5 +157,52 @@
     
   });
 </script>
+    <script>
+        $(document).on('submit', '#deleteDirector', function(e) {
+            e.preventDefault();
+
+
+
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover it.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: 'post',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+
+                            url: $(this).data('route'),
+                            data: {
+                                '_method': 'delete'
+                            },
+                            success: function(response) {
+                                swal("Director has been deleted!", {
+                                    icon: "success",
+                                    button: true,
+                                   
+                                }).then((ok)=>{
+                                    window.location = '/directors'
+                                })
+                               
+                            }
+                        });
+                        
+
+                    }
+                   
+                    else {
+                       
+                    }
+                });
+        });
+    </script>
+
 
 @endpush

@@ -51,7 +51,7 @@ class FloorController extends Controller
         $floor = Floor::create($validated);
 
         return redirect()
-            ->route('floors.edit', $floor)
+            ->route('floors.index')
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -93,7 +93,7 @@ class FloorController extends Controller
         $floor->update($validated);
 
         return redirect()
-            ->route('floors.edit', $floor)
+            ->route('floors.index')
             ->withSuccess(__('crud.common.saved'));
     }
 

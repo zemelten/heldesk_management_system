@@ -40,58 +40,7 @@
                                 </p>
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a href="{{ route('tickets.index') }}" class="nav-link">
-                                    <i class="nav-icon fas fa-clipboard-list"></i>
-                                    <p style=" color:black;">
-                                        <i class="nav-icon fas fa-angle-left right"></i>
-                                        <strong>
-                                            My Tickets
-                                        </strong>
-
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-
-                                    <li class="nav-item">
-                                        <a href="{{ route('tickets.index') }}" class="nav-link">
-                                            <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                            <p style=" color:black;">
-                                                <strong>
-                                                    Active Tickets
-                                                </strong>
-                                            </p>
-                                        </a>
-                                    </li>
-
-
-
-                                    <li class="nav-item">
-                                        <a href="{{ route('tickets.index') }}" class="nav-link">
-                                            <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                            <p style=" color:black;">
-                                                <strong>
-                                                    Closed Tickets
-                                                </strong>
-                                            </p>
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a href="{{ route('escalated-tickets.index') }}" class="nav-link">
-                                            <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                            <p style=" color:black;">
-                                                <strong>
-                                                    Escalated Tickets
-                                                </strong>
-                                            </p>
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </li>
-                      
-
+                     
                         @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) ||
                                 Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))
                             <li class="nav-item">
@@ -232,7 +181,7 @@
                                             </a>
                                         </li>
                                     @endcan
-                                    @can('view-any', App\Models\Prioritie::class)
+                                    {{-- @can('view-any', App\Models\Prioritie::class)
                                         <li class="nav-item">
                                             <a href="{{ route('priorities.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
@@ -241,17 +190,17 @@
                                                 </strong>
                                             </a>
                                         </li>
-                                    @endcan
-                                    @can('view-any', App\Models\Prioritie::class)
-                                        <li class="nav-item">
-                                            <a href="{{ route('time-settings.index') }}" class="nav-link">
-                                                <i class="nav-icon icon ion-md-radio-button-off"></i>
-                                                <strong>
-                                                    <p style=" color:black;">Ticket Settings</p>
-                                                </strong>
-                                            </a>
-                                        </li>
-                                    @endcan
+                                    @endcan --}}
+                                    @can('view-any', App\Models\TimeSetting::class)
+                                    <li class="nav-item">
+                                        <a href="{{ route('time-settings.index') }}" class="nav-link">
+                                            <i class="nav-icon icon ion-md-radio-button-off"></i>
+                                            <strong>
+                                                <p style=" color:black;">Ticket Settings</p>
+                                            </strong>
+                                        </a>
+                                    </li>
+                                @endcan
                                     @can('view-any', App\Models\Floor::class)
                                         <li class="nav-item">
                                             <a href="{{ route('floors.index') }}" class="nav-link">
@@ -336,7 +285,7 @@
                                 <ul class="nav nav-treeview">
                                     @can('view-any', Spatie\Permission\Models\Role::class)
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <a href="{{ route('all-reports.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
                                                 <strong>
                                                     <p style=" color:black;">Over all Performance</p>
@@ -347,7 +296,7 @@
 
                                     @can('view-any', Spatie\Permission\Models\Permission::class)
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link">
+                                            <a href="{{ route('all-reports.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
                                                 <strong>
                                                     <p style=" color:black;">User Support Efficiency</p>

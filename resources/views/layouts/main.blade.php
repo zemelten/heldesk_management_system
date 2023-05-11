@@ -156,16 +156,42 @@
         <main class="content-wrapper p-5">
 
             @if (Auth::user()->roles()->first() != null &&
-                    Auth::user()->roles()->first()->name === 'User Support')
+                    Auth::user()->roles()->first()->name === 'customer')
                 @can('view-any', App\Models\Ticket::class)
                     <div class="card mt-4">
                         <div class="card-body">
-                            <h4 class="card-title w-100 mb-2">Tickets</h4>
+                            <h4 class="card-title w-100 mb-2">Your Tickets</h4>
 
-                            <livewire:user-support-tickets-detail :userSupport="$userSupport" />
+                            <livewire:customer-tickets-detail :customer="$customer" />
                         </div>
                     </div>
-                    @endcan @can('view-any', App\Models\EscalatedTicket::class)
+                @endcan
+            
+            @elseif (Auth::user()->roles()->first() != null &&
+            Auth::user()->roles()->first()->name === 'user')
+        @can('view-any', App\Models\Ticket::class)
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title w-100 mb-2">Contact Your Administrator</h4>
+
+                   
+                </div>
+            </div>
+        @endcan
+
+
+            @elseif (Auth::user()->roles()->first() != null &&
+                    Auth::user()->roles()->first()->name === 'user-support')
+                @can('view-any', App\Models\Ticket::class)
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h4 class="card-title w-100 mb-2">Today's Tickets</h4>
+                            
+
+                            <livewire:user-support-tickets-detail :userSupport="$userSupport" />
+                        
+                        </div>
+                    </div>
                 @endcan
             @else
                 <section class="content">
@@ -469,255 +495,256 @@
                         },
                     }
                 })
+            }) <
+            /body>
+
+            <
+            script >
+            $(function() {
+                //Initialize Select2 Elements
+                $('.select2').select2({
+                    // dropdownAutoWidth: true
+                    // theme: "classic"
+
+                })
+            });
+    </script>
+
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+
+    <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
+    <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+
+
+    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('plugins/pace-progress/pace.min.js') }}"></script>
+    <script src="{{ asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
+
+
+    <script>
+        function toastAll() {
+
+        }
+
+        setTimeout(function() {
+
+        }, 1000);
+    </script>
+    <script>
+        $(document).ready(function() {
+
+
+            $(".nav-sidebar").find(".active").removeClass("active");
+
+            var path = document.location.protocol + "//" + document.location.hostname + document.location.pathname;
+            $('.nav-item a').each(function() {
+                if (this.href === path) {
+                    $(this).addClass('active');
+                    $(this).closest('.has-treeview').addClass('menu-open');
+                }
+            });
+
+        })
+
+        $('#language').submit(function(e) {
+            e.preventDefault();
+            var form = $(this);
+            var url = form.attr('action');
+
+
+            $.ajax({
+                type: "POST",
+                url: form.attr('action'),
+                data: form.serialize(),
+                success: function(response) {
+
+                    location.reload();
+                }
             })
-</body>
 
-<script>
-    $(function() {
-        //Initialize Select2 Elements
-        $('.select2').select2({
-            // dropdownAutoWidth: true
-            // theme: "classic"
-
-        })
-    });
-</script>
-
-<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
-<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
-
-<script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-
-<script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
-
-
-<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('plugins/pace-progress/pace.min.js') }}"></script>
-<script src="{{ asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
-
-
-<script>
-    function toastAll() {
-
-    }
-
-    setTimeout(function() {
-
-    }, 1000);
-</script>
-<script>
-    $(document).ready(function() {
-
-
-        $(".nav-sidebar").find(".active").removeClass("active");
-
-        var path = document.location.protocol + "//" + document.location.hostname + document.location.pathname;
-        $('.nav-item a').each(function() {
-            if (this.href === path) {
-                $(this).addClass('active');
-                $(this).closest('.has-treeview').addClass('menu-open');
-            }
         });
-
-    })
-
-    $('#language').submit(function(e) {
-        e.preventDefault();
-        var form = $(this);
-        var url = form.attr('action');
-
-
-        $.ajax({
-            type: "POST",
-            url: form.attr('action'),
-            data: form.serialize(),
-            success: function(response) {
-
-                location.reload();
-            }
+        $('#lang').change(function() {
+            $('#language').submit();
         })
+    </script>
+    <script>
+        function toastIt(context, msg, pos) {
+            toastr.options.timeOut = "3000";
+            toastr.options.progressBar = true;
+            toastr.options.closeButton = true;
+            toastr.options.positionClass = 'toast-bottom-right';
+            toastr['info']('Success');
 
-    });
-    $('#lang').change(function() {
-        $('#language').submit();
-    })
-</script>
-<script>
-    function toastIt(context, msg, pos) {
-        toastr.options.timeOut = "3000";
-        toastr.options.progressBar = true;
-        toastr.options.closeButton = true;
-        toastr.options.positionClass = 'toast-bottom-right';
-        toastr['info']('Success');
-
-        // $('.btn-toastr').on('click', function() {
-        if (context == "danger")
-            context = "error"
+            // $('.btn-toastr').on('click', function() {
+            if (context == "danger")
+                context = "error"
 
 
 
 
 
-        $context = context;
-        $message = msg;
-        $position = pos;
+            $context = context;
+            $message = msg;
+            $position = pos;
 
-        if ($context === '') {
-            $context = 'info';
+            if ($context === '') {
+                $context = 'info';
+            }
+
+            if ($position === '') {
+                $positionClass = 'toast-top-right';
+            } else {
+                $positionClass = 'toast-' + $position;
+            }
+
+            toastr.remove();
+            toastr[$context]($message, '', {
+                positionClass: $positionClass
+            });
+            // });
         }
 
-        if ($position === '') {
-            $positionClass = 'toast-top-right';
-        } else {
-            $positionClass = 'toast-' + $position;
-        }
+        $(".change-room").click(function() {
 
-        toastr.remove();
-        toastr[$context]($message, '', {
-            positionClass: $positionClass
+            $.ajax({
+                url: "/student-clinic/opd/async",
+                method: "POST",
+                data: {
+                    changeroom: true
+                },
+                success: function(data) {
+                    $("#temp-modal").html(data);
+                    $("#change-room-modal").modal().toggle();
+                }
+            });
+
+
         });
-        // });
-    }
-
-    $(".change-room").click(function() {
-
-        $.ajax({
-            url: "/student-clinic/opd/async",
-            method: "POST",
+    </script>
+    <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
+    <script>
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        var diagramType = 'pie'
+        var active = {{ Js::from($totalactiveTicket) }}
+        var closed = {{ Js::from($totalClosedTicket) }}
+        var active = {{ Js::from($totalactiveTicket) }}
+        var AllTicketConfig = {
+            type: 'doughnut',
             data: {
-                changeroom: true
+                datasets: [{
+                    data: [active, closed, closed, active],
+
+                    backgroundColor: [getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), ],
+                    label: 'Tickets '
+                }],
+                labels: ["Active", "Closed", "Responded", "Escalated"]
             },
-            success: function(data) {
-                $("#temp-modal").html(data);
-                $("#change-room-modal").modal().toggle();
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: 'All Ticket Types'
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                }
             }
-        });
+        };
+        var AllUserSuppConfig = {
+            type: diagramType,
+            data: {
+                datasets: [{
+                    data: [6516, 3533, 1097],
 
-
-    });
-</script>
-<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
-<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
-<script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
-<script>
-    function getRandomColor() {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
-    var diagramType = 'pie'
-    var active = {{ Js::from($totalactiveTicket) }}
-    var closed = {{ Js::from($totalClosedTicket) }}
-    var active = {{ Js::from($totalactiveTicket) }}
-    var AllTicketConfig = {
-        type: 'doughnut',
-        data: {
-            datasets: [{
-                data: [active, closed, closed, active],
-
-                backgroundColor: [getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), ],
-                label: 'Tickets '
-            }],
-            labels: ["Active", "Closed", "Responded", "Escalated"]
-        },
-        options: {
-            responsive: true,
-            legend: {
-                position: 'top'
+                    backgroundColor: [getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), ],
+                    label: 'User Supports '
+                }],
+                labels: ["Technian", "Sys Admin", "Network"]
             },
-            title: {
-                display: true,
-                text: 'All Ticket Types'
-            },
-            animation: {
-                animateScale: true,
-                animateRotate: true
+            options: {
+                responsive: true,
+                legend: {
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: 'All User Supports'
+                },
+                animation: {
+                    animateScale: true,
+                    animateRotate: true
+                }
             }
-        }
-    };
-    var AllUserSuppConfig = {
-        type: diagramType,
-        data: {
-            datasets: [{
-                data: [6516, 3533, 1097],
-
-                backgroundColor: [getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), ],
-                label: 'User Supports '
-            }],
-            labels: ["Technian", "Sys Admin", "Network"]
-        },
-        options: {
-            responsive: true,
-            legend: {
-                position: 'top'
-            },
-            title: {
-                display: true,
-                text: 'All User Supports'
-            },
-            animation: {
-                animateScale: true,
-                animateRotate: true
-            }
-        }
-    };
+        };
 
 
-    var AllMealType;
-    var AllMealTypectx = document.getElementById('AllMealType').getContext('2d');
-    var AllCafe;
-    var AllCafectx = document.getElementById('AllCafe').getContext('2d');;
+        var AllMealType;
+        var AllMealTypectx = document.getElementById('AllMealType').getContext('2d');
+        var AllCafe;
+        var AllCafectx = document.getElementById('AllCafe').getContext('2d');;
 
-    window.onload = function() {
+        window.onload = function() {
 
-        AllCafe = new Chart(AllCafectx, AllTicketConfig);
+            AllCafe = new Chart(AllCafectx, AllTicketConfig);
 
-        AllMealType = new Chart(AllMealTypectx, AllUserSuppConfig);
-    };
-    $(document).ready(function() {
-        $('.changeDiagram').click(function() {
-            var diagram = $(this).attr('data-value');
-            var cutoutPercentage = $(this).attr('data-cut');
+            AllMealType = new Chart(AllMealTypectx, AllUserSuppConfig);
+        };
+        $(document).ready(function() {
+            $('.changeDiagram').click(function() {
+                var diagram = $(this).attr('data-value');
+                var cutoutPercentage = $(this).attr('data-cut');
 
-            if (AllMealType) {
-                AllMealType.destroy();
-            }
-            var temp = jQuery.extend(true, {}, AllUserSuppConfig);
-            temp.type = diagram;
-            temp.options.cutoutPercentage = cutoutPercentage;
-            AllMealType = new Chart(AllMealTypectx, temp);
-            if (AllCafe) {
-                AllCafe.destroy();
-            }
-            console.log(temp);
-            var temp = jQuery.extend(true, {}, AllTicketConfig);
-            temp.type = diagram;
-            temp.options.cutoutPercentage = cutoutPercentage;
+                if (AllMealType) {
+                    AllMealType.destroy();
+                }
+                var temp = jQuery.extend(true, {}, AllUserSuppConfig);
+                temp.type = diagram;
+                temp.options.cutoutPercentage = cutoutPercentage;
+                AllMealType = new Chart(AllMealTypectx, temp);
+                if (AllCafe) {
+                    AllCafe.destroy();
+                }
+                console.log(temp);
+                var temp = jQuery.extend(true, {}, AllTicketConfig);
+                temp.type = diagram;
+                temp.options.cutoutPercentage = cutoutPercentage;
 
-            AllCafe = new Chart(AllCafectx, temp);
+                AllCafe = new Chart(AllCafectx, temp);
 
 
+            })
         })
-    })
-</script>
-<script>
-    $(function() { // Initialize Select2 Elements
-        $('.select2').select2({
-            theme: 'bootstrap4'
+    </script>
+    <script>
+        $(function() { // Initialize Select2 Elements
+            $('.select2').select2({
+                theme: 'bootstrap4'
+            });
+
+            $('.dateRange').daterangepicker();
+
         });
 
-        $('.dateRange').daterangepicker();
-
-    });
-
-    $('.download').click(function(e) {
-        var url_base64jp = document.getElementById($(this).attr('data-id')).toDataURL("image/jpg");
-        $(this).attr('href', url_base64jp);
-    });
-</script>
+        $('.download').click(function(e) {
+            var url_base64jp = document.getElementById($(this).attr('data-id')).toDataURL("image/jpg");
+            $(this).attr('href', url_base64jp);
+        });
+    </script>
 
 </html>

@@ -128,7 +128,7 @@
     </x-modal>
 
     <div class="table-responsive">
-        <table class="table table-bordered table-hover">
+        <table class="table table-hover table-condensed">
             <thead>
                 <tr>
                     <th>
@@ -206,7 +206,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="8">{{ $tickets->render() }}</td>
+                    <td  >{{ $tickets->render() }}</td>
                 </tr>
             </tfoot>
         </table>

@@ -30,6 +30,15 @@
             placeholder="Phone No"
         ></x-inputs.text>
     </x-inputs.group>
+    <x-inputs.group class="col-md-12">
+        <x-inputs.select name="campuse_id" label="Campus">
+            @php $selected = old('campus_id', ($editing ? $customer->campus_id : '')) @endphp
+            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Campus</option>
+            @foreach($campuses as $value => $label)
+            <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
+            @endforeach
+        </x-inputs.select>
+    </x-inputs.group>
 
     <x-inputs.group class="col-md-12">
         <x-inputs.select name="building_id" label="Building">
@@ -41,15 +50,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-md-12">
-        <x-inputs.select name="campus_id" label="Campus">
-            @php $selected = old('campus_id', ($editing ? $customer->campus_id : '')) @endphp
-            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Campus</option>
-            @foreach($campuses as $value => $label)
-            <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
-            @endforeach
-        </x-inputs.select>
-    </x-inputs.group>
+
 
     <x-inputs.group class="col-md-12">
         <x-inputs.select
@@ -74,7 +75,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-md-12">
+    {{-- <x-inputs.group class="col-md-12">
         <x-inputs.select name="user_id" label="User">
             @php $selected = old('user_id', ($editing ? $customer->user_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the User</option>
@@ -82,7 +83,7 @@
             <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
             @endforeach
         </x-inputs.select>
-    </x-inputs.group>
+    </x-inputs.group> --}}
 
     <x-inputs.group class="col-md-12">
         <x-inputs.text

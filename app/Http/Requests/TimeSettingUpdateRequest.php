@@ -26,6 +26,10 @@ class TimeSettingUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'max:255', 'string'],
             'time' => ['required', 'max:255'],
+<<<<<<< HEAD
+=======
+            'type' => ['required'],
+>>>>>>> ed1045e654c2741bceb7317ca5650a2bfa8a0242
         ];
     }
 }

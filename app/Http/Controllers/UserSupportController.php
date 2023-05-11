@@ -157,7 +157,7 @@ class UserSupportController extends Controller
         $userSupport->update($validated);
 
         return redirect()
-            ->route('user-supports.edit', $userSupport)
+            ->route('user-supports.index')
             ->withSuccess(__('crud.common.saved'));
     }
 

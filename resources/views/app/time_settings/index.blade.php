@@ -31,11 +31,19 @@
             <div class="card-body">
                 <div style="display: flex; justify-content: space-between;">
                     <h4 class="card-title">
+<<<<<<< HEAD
                     Ticket Time Settings
                 </div>
 
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
+=======
+                        Ticket Time Settings
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-condensed">
+>>>>>>> ed1045e654c2741bceb7317ca5650a2bfa8a0242
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -43,7 +51,11 @@
                                     @lang('crud.floors.inputs.name')
                                 </th>
                                 <th class="text-left">
+<<<<<<< HEAD
                                    Time(in Days)
+=======
+                                    Time(in Days)
+>>>>>>> ed1045e654c2741bceb7317ca5650a2bfa8a0242
                                 </th>
                                 <th class="text-center">
                                     @lang('crud.common.actions')
@@ -51,6 +63,7 @@
                             </tr>
                         </thead>
                         <tbody>
+<<<<<<< HEAD
                             @forelse($timeSettings as  $timeSetting)
                                 <tr>
                                     <td style="width: 2.5cm"> {{ $timeSetting->id }}</td>
@@ -81,6 +94,46 @@
                                                     @csrf @method('DELETE')
                                                     <button type="submit" class="btn btn-light text-danger">
                                                         <i class="icon ion-md-trash"></i>
+=======
+                            @forelse($timeSettings as  $key => $value)
+                                <tr>
+                                    <td>
+                                        {{  $key + 1 }}    
+                                         
+                                          </td>
+
+                                    <td>
+                                        {{ $value->name ?? '-' }}
+                                    </td>
+                                    @if ($value->type == 0)
+                                    <td>
+                                        {{ $value->time . ' ' . 'days' ?? '-' }}
+                                    </td>
+                                    @elseif($value->type == 1)
+
+                                    <td>
+                                        {{ $value->time . ' ' . 'hours' ?? '-' }}
+                                    </td>
+                                    @else
+                                        <td>
+                                            {{ $value->time . ' ' . 'minutes' ?? '-' }}
+                                        </td>
+                                    @endif
+
+                                    <td class="text-center" style="width: 134px;">
+                                        <div role="group" aria-label="Row Actions" class="btn-group">
+                                            @can('update', $value)
+                                                <a href="{{ route('time-settings.edit', $value) }}"class="px-1">
+                                                    <button type="button" class="btn btn-sm btn-outline-info">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </a>
+                                                @endcan @can('delete', $value)
+                                                <form data-route="{{ route('time-settings.destroy', $value) }}"
+                                                    method="POST" id="deletesetting" @csrf @method('DELETE') <button
+                                                    type="submit" class="btn btn-sm btn-outline-danger">
+                                                    <i class="fa fa-trash"></i>
+>>>>>>> ed1045e654c2741bceb7317ca5650a2bfa8a0242
                                                     </button>
                                                 </form>
                                             @endcan
@@ -95,10 +148,64 @@
                                 </tr>
                             @endforelse
                         </tbody>
+<<<<<<< HEAD
                        
+=======
+
+>>>>>>> ed1045e654c2741bceb7317ca5650a2bfa8a0242
                     </table>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+<<<<<<< HEAD
+=======
+
+@push('scripts')
+    <script>
+        $(document).on('submit', '#deletesetting', function(e) {
+            e.preventDefault();
+
+
+
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover it.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: 'post',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+
+                            url: $(this).data('route'),
+                            data: {
+                                '_method': 'delete'
+                            },
+                            success: function(response) {
+                                swal("Setting has been deleted!", {
+                                    icon: "success",
+                                    button: true,
+
+                                }).then((ok) => {
+                                    window.location = '/time-settings'
+                                })
+
+                            }
+                        });
+
+
+                    } else {
+
+                    }
+                });
+        });
+    </script>
+@endpush
+>>>>>>> ed1045e654c2741bceb7317ca5650a2bfa8a0242

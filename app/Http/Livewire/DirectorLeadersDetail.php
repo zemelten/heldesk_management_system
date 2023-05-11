@@ -72,7 +72,9 @@ class DirectorLeadersDetail extends Component
 
     public function showModal()
     {
+
         $this->resetErrorBag();
+        //dd($this->leader->id);
         $this->showingModal = true;
     }
 
