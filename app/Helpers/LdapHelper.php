@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\Customer;
 use Exception;
 use App\Models\User;
 use Illuminate\Support\Arr;
@@ -54,18 +55,18 @@ class LDAPHelper
                 }
 
                 $user = User::where('username', $uid);
-            
+             
+              
                 if ($user->count() < 1)
                 { 
                  
                     $user = User::create([
                         'username' => $uid,
                         'password' => Hash::make($password),
-                        'name' => $first_name . ' ' . $middle_name . ' ' . $last_name,
+                        'full_name' => $first_name . ' ' . $middle_name . ' ' . $last_name,
                         'email' => $email,
 
                     ]);
-                  
                   
                 }
               

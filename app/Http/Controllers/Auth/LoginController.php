@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Helpers\LDAPHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Spatie\Permission\Models\Role;
 
 class LoginController extends Controller
 {
@@ -61,7 +63,28 @@ class LoginController extends Controller
         }
     }
     public function authenticated($user){
-       dd($user);
+        $defaultRole = Role::where('name', 'customer')->first();
+    //   dd($user);
+        if($user->roles()->first() == null){
+           $user->assignRole('customer');
+        }
+
+        $exists = Customer::where('full_name',$user->full_name)->exists();
+        $customer = new Customer();
+        if(!$exists){
+         Customer::create([
+             'full_name'=> $user->full_name,
+             'email' => $user->email,
+           
+         ]);
+        }
+        else{
+            $customer->full_name =  $user->full_name;
+            $customer->email = $user->email;
+            $customer->update();
+        }
+      
+
     }
    
 

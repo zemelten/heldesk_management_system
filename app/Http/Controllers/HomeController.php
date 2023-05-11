@@ -36,7 +36,7 @@ class HomeController extends Controller
        if(Auth::user()->roles()->first()->name == null){
         Auth::user()->assignRole('user');
        }
-       dd(Auth::user()->email);
+      // dd(Auth::user()->email);
         $countUsers = User::count();
         $totalTicket = Ticket::count();
         $countUsersupports = UserSupport::count();
@@ -46,13 +46,14 @@ class HomeController extends Controller
         $todaysClosedTicket = Ticket::whereDate('updated_at', today())->count();
         $todaysTicket = Ticket::whereDate('created_at', today())->count();
         $totalUnclosedTicket = Ticket::where('status', '<', 3)->count();
-         $exists = Customer::where('full_name',Auth::user()->full_name)->exists();
-       if(!$exists){
-        Customer::create([
-            'full_name'=>Auth::user()->full_name,
-            'email'=>Auth::user()->email
-        ]);
-       }
+    //      $exists = Customer::where('full_name',Auth::user()->full_name)->exists();
+    //    if(!$exists){
+    //     Customer::create([
+    //         'full_name'=>Auth::user()->full_name,
+    //         'email'=>Auth::user()->email,
+          
+    //     ]);
+    //    }
     if(Auth::user()->roles()->first() !=null){
         
         if(Auth::user()->roles()->first()->name === "User Support"){
