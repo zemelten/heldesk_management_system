@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
-    public $tickets;
+    
     protected $listeners = ['ticketsFiltered' => 'updateTickets'];
     /**
      * @param \Illuminate\Http\Request $request
@@ -54,55 +54,31 @@ class TicketController extends Controller
         // $userSupports = UserSupport::withCount('tickets')->orderBy('tickets_count','asc')->get();
 
         $this->authorize('view-any', Ticket::class);
-
+        
         $customer_id = Customer::where('full_name', Auth::user()->full_name)->first()->id;
+        $query = Ticket::query();
+        
         
         $role = Auth::user()->roles()->first()->name;
         if ($role === "super-admin") {
-            $tickets = Ticket::all();
-            $this->tickets = $tickets;
+            if($request->ajax()){
+             $tickets = $query->where('user_support_id',$request->user_support_id)->get();
+             return response()->json(['tickets'=>$tickets]);
+            }
+            $tickets = $query->get();
+           
+           
         } else {
             $tickets = Ticket::where('customer_id', $customer_id)
                 ->where('status', 0)
                 ->get();
-                $this->tickets = $tickets;
+                
         }
         
 
-
-
-
-        $tickets = Ticket::all();
-        $userSupports = UserSupport::all();
-        //dd($tickets->where('status', 0));
-
-        if ($request->has('date')) {
-            $tickets->whereDate('created_at', $request->date);
-        }
-
-        if ($request->has('date_range')) {
-
-            $tickets->whereBetween('created_at', [$request->date_range['start'], $request->date_range['end']]);
-        }
-
-        if ($request->has('user_support_id')) {
-            //dd($request);
-            //dd($tickets->where('user_support_id', $request->user_support_id));
-            if ($request->user_support_id == null) {
-                $tickets = Ticket::all();
-                // dd("null");
-            } else {
-                // dd("not null");
-                $tickets = $tickets->where('user_support_id', $request->user_support_id);
-            }
-        }
-
-        if ($request->has('status')) {
-            $tickets = $tickets->where('status', $request->status);
-        }
-
-        // dd($tickets);
-        return view('app.tickets.index', compact('tickets', 'userSupports'));
+        $userSupports = UserSupport::withCount('tickets')->orderBy('tickets_count','desc')->get();
+        
+        return view('app.tickets.index', compact('tickets','userSupports'));
     }
 
     /**

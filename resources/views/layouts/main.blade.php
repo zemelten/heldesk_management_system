@@ -606,23 +606,6 @@
             });
             // });
         }
-
-        $(".change-room").click(function() {
-
-            $.ajax({
-                url: "/student-clinic/opd/async",
-                method: "POST",
-                data: {
-                    changeroom: true
-                },
-                success: function(data) {
-                    $("#temp-modal").html(data);
-                    $("#change-room-modal").modal().toggle();
-                }
-            });
-
-
-        });
     </script>
     <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>

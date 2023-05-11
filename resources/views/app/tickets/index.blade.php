@@ -3,113 +3,20 @@
 @section('content')
     <!-- /.card -->
     <div class="searchbar mt-0 mb-4">
-    
-            {{-- <livewire:ticket-filters/> --}}
 
-            <!-- /.card -->
-             <div class="searchbar mt-0 mb-4">
-              <div class="row">
-                  <div class="col-md-8">
-                      <form>
-                          <div class="input-group">
-                              <div class="input-group-append">
-                                 
-                              </div>
-                          </div>
-                      </form>
-                      <form method="get" action="/tickets" class="form-inline mt-3">
-                        @csrf
-                    
-                        <div class="form-group mr-2">
-                            <x-inputs.select name="user_support_id" id="user_support_id" class="form-control">
-                                <option value="">Filter By User Support</option>
-                                @foreach($userSupports as $userSupport)
-                                    {{-- <option value="{{$userSupport->id}}">{{$userSupport->user->full_name}}</option> --}}
-                                    <option value="{{$userSupport->id}}" {{ request()->input('user_support_id') == $userSupport->id ? 'selected' : '' }}>{{$userSupport->user->full_name}}</option>
-                                @endforeach
-                            </x-inputs.select>
-                            
-                        </div>
-                    
-                        <div class="form-group mr-2">
-                            <x-inputs.select name="status" id="status" class="form-control">
-                                <option value="">All tickets</option>
-                                <option value="0">Active tickets</option>
-                                <option value="2">Escalated tickets</option>
-                                <option value="1">Closed tickets</option>
-                            </x-inputs.select>
-                        </div>
-                        <div class="form-group col-5
-                        ">
-                            <script type="text/javascript">
-                                $(function() {
-                                    var start = moment().subtract(29, 'days');
-                                    var end = moment();
-                                    console.log
-                                    function cb(start, end) {
-                                        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-                                    }
-                                    $('#reportrange').daterangepicker({
-                                        startDate: start,
-                                        endDate: end,
-                                        ranges: {
-                                            'Today': [moment(), moment()],
-                                            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                                            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                                            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                                            'This Month': [moment().startOf('month'), moment().endOf('month')],
-                                            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1,
-                                                'month').endOf('month')],
-                                            'This Year': [moment().startOf('year'), moment().endOf('year')]
-                                        }
-                                    }, cb);
-                    
-                                    cb(start, end);
-                    
-                                });
-                            </script>
-                    
-                            <div id="reportrange" class="pull-left col-12"
-                                style="background: #fff; cursor: pointer; padding: 10px 20px; border: 1px solid #ccc; width: 100%">
-                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
-                                <span id="dateRange"></span> <b class="caret"></b>
-                    
-                                <script>
-                                    var dateRange = document.getElementById('dateRange');
-                                    
-                    
-                                </script>
-                                <input type="hidden" id="" 
-                                
-                                
-                                />
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Filter</button>
-                        <a href="{{ route('tickets.index')}}" class="btn btn-primary mx-2">clear</a>
+        <livewire:ticket-filters />
 
 
-                        
-                    </form>     
-                  </div> 
-                  
-                  <div class="col-md-4 text-right">
-                      @can('create', App\Models\Ticket::class)
-                          <a href="{{ route('tickets.create') }}" class="btn btn-primary">
-                              <i class="fas fa-plus fa-lg"></i> @lang('crud.common.create')
-                          </a>
-                      @endcan
-                  </div>
-              </div>
-          </div> 
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">@lang('crud.tickets.index_title')</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-hover table-condensed">
-                  <thead>
+
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">@lang('crud.tickets.index_title')</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table id="example1" class="table table-hover table-condensed">
+                <thead>
                     <tr>
                         <th class="text-left">
                             #
@@ -141,7 +48,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbody">
                     @forelse($tickets as $key => $ticket)
                         <tr>
                             <td>
@@ -273,6 +180,44 @@
     <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- Page specific script -->
+    <script>
+        $('#user_support_id').on('change', function() {
+
+            var support = $(this).val();
+          
+            // $.ajax({
+            //     url: "{{ route('tickets.index') }}",
+            //     type: "GET",
+            //     data: {
+            //         'support',
+            //         support
+            //     },
+            //     success: function(data) {
+
+            //     }
+            // })
+            $.ajax({
+        url: "{{ route('tickets.index') }}",
+        type: "GET",
+        data: {
+            user_support_id: support,
+            _token: '{{ csrf_token() }}'
+        },
+        dataType: 'json',
+        success: function(data) {
+            var tickets = data.tickets;
+            $.each(tickets  , function(key, value) {
+               var html = '';
+               var customer = value.customer_id;
+               
+              html+='<tr> <td>'+key+1+'</td> <td>'+customer+'</td> </tr>'
+              $('tbody').html(html);
+            });
+          
+        }
+    });
+        });
+    </script>
     <script>
         $(function() {
             $("#example1").DataTable({
