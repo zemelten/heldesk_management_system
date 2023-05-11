@@ -193,8 +193,7 @@
     @endif
 
 
-    </script>
-    @include('sweetalert::alert')
+  
 </body>
 <script>
     $(function() {
