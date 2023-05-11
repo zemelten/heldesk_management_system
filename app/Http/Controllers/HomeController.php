@@ -33,10 +33,8 @@ class HomeController extends Controller
     public function index()
     {
 
-        if (Auth::user()->roles()->first() == null) {
-            Auth::user()->assignRole('user');
-        }
-        //  dd(Auth::user()->roles()->first()->name);
+       
+         // dd(Auth::user()->roles()->first()->name);
         $countUsers = User::count();
         $totalTicket = Ticket::count();
         $countUsersupports = UserSupport::count();
@@ -55,7 +53,6 @@ class HomeController extends Controller
                 return view('home', compact('countUsers', 'totalTicket', 'totalactiveTicket', 'userSupport', 'countUsersupports', 'totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket', 'totalUnclosedTicket'));
             } else if (Auth::user()->roles()->first()->name === "customer") {
                 $customer_id = Customer::where('full_name', Auth::user()->full_name)->first()->id;
-
                 $customer = Customer::find($customer_id);
                 return view('home', compact('countUsers', 'totalTicket', 'totalactiveTicket', 'customer', 'countUsersupports', 'totalpendingTicket', 'totalClosedTicket', 'todaysClosedTicket', 'todaysTicket', 'totalUnclosedTicket'));
             }

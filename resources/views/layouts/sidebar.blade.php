@@ -1,11 +1,11 @@
 <!-- Main Sidebar Container -->
 @auth
+
     <aside class="main-sidebar sidebar-light elevation-4">
         <!-- Brand Logo -->
-        <a href="{{ url('/') }}" class="brand-link text-dark" style="background-color: #0067ba;">
-            <img src="{{ asset('images/logo.jpg') }}" alt="JU Logo" class="brand-image">
-            <span class="brand-text font-weight-light" style="color: white"><strong style="font-size:20px;"> JU HelpDesk
-                </strong></span>
+        <a href="{{ url('/') }}" class="brand-link text-dark"  style="background-color: #0067ba;">
+          <img src="{{ asset('images/logo.jpg') }}" alt="JU Logo" class="brand-image">
+            <span class="brand-text font-weight-light" style="color: white"><strong style="font-size:20px;" > JU HelpDesk </strong></span>  
         </a>
 
 
@@ -18,23 +18,22 @@
                     data-widget="treeview" role="menu">
 
                     @auth
-                       
-                            <li class="nav-item">
-                                <a href="{{ route('home') }}" class="nav-link">
-                                    <i class="nav-icon fa-solid fa-gauge fa-lg"></i>
-                                    <p style=" color:black;">
-                                        <strong style="font-size: 18px;">
-                                            Dashboard
-                                        </strong>
-                                    </p>
-                                </a>
-                            </li>
-                      
+
+                        <li class="nav-item">
+                            <a href="{{ route('home') }}" class="nav-link">
+                                <i class="nav-icon fa-solid fa-gauge fa-lg"></i>
+                                <p style=" color:black;" >
+                                    <strong style="font-size: 18px;">
+                                        Dashboard
+                                    </strong>
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item ">
                             <a href="{{ route('tickets.index') }}" class="nav-link ">
                                 <i class="nav-icon fa-solid fa-ticket fa-lg"></i>
                                 <p class="text-dark">
-                                    <strong style=" color:black;">
+                                    <strong  style=" color:black;" >
                                         Tickets
                                     </strong>
                                 </p>
@@ -49,7 +48,7 @@
                                     <p style=" color:black;">
                                         <i class="  nav-icon fas fa-angle-left right"></i>
                                         <strong>
-                                            User Management
+                                        User Management
                                         </strong>
                                     </p>
                                 </a>
@@ -58,10 +57,9 @@
                                     <li class="nav-item">
                                         <a href="{{ route('users.index') }}" class="nav-link">
                                             <i class="nav-icon icon ion-md-radio-button-off"></i>
-
+                                       
                                             <p style=" color:black;">
-                                                <strong>List of users </strong>
-                                            </p>
+                                                <strong>List of users </strong></p>
                                         </a>
                                     </li>
 
@@ -102,7 +100,7 @@
                                             <a href="{{ route('directors.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
                                                 <strong>
-                                                    <p style=" color:black;">Directors</p>
+                                                    <p  style=" color:black;">Directors</p>
                                                 </strong>
                                             </a>
                                         </li>
@@ -139,13 +137,13 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fa-solid fa-gear fa-lg"></i>
-
+                                    
                                     <strong>
                                         <p style=" color:black;">
                                             Settings
                                         </p>
                                     </strong>
-
+                                    
                                     <i class="  nav-icon fas fa-angle-left right " style=" color:black;"></i>
                                 </a>
                                 <ul class="nav nav-treeview">
@@ -216,13 +214,13 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fa-solid fa-cubes-stacked fa-lg"></i>
-
+                                    
                                     <strong>
-                                        <p style=" color:black;">
-                                            Queue Type
-                                        </p>
+                                    <p style=" color:black;">
+                                        Queue Type
+                                    </p>
                                     </strong>
-                                    <i class="  nav-icon fas fa-angle-left right" style=" color:black;"></i>
+                                    <i class="  nav-icon fas fa-angle-left right"  style=" color:black;"></i>
                                 </a>
                                 <ul class="nav nav-treeview">
 
@@ -253,10 +251,10 @@
                                     <strong>
                                         <p style=" color:black;">
                                             Org. Structure
-
+                                            
                                         </p>
                                     </strong>
-                                    <i class="  nav-icon fas fa-angle-left right" style=" color:black;"></i>
+                                    <i class="  nav-icon fas fa-angle-left right"  style=" color:black;"></i>
                                 </a>
                                 <ul class="nav nav-treeview">
                                     @can('view-any', Spatie\Permission\Models\Role::class)
@@ -279,7 +277,7 @@
                                             Reporting
                                         </strong>
                                     </p>
-                                    <i class="  nav-icon fas fa-angle-left right " style=" color:black;"></i>
+                                    <i class="  nav-icon fas fa-angle-left right "  style=" color:black;"></i>
 
                                 </a>
                                 <ul class="nav nav-treeview">
@@ -299,7 +297,7 @@
                                             <a href="{{ route('all-reports.index') }}" class="nav-link">
                                                 <i class="nav-icon icon ion-md-radio-button-off"></i>
                                                 <strong>
-                                                    <p style=" color:black;">User Support Efficiency</p>
+                                                    <p  style=" color:black;">User Support Efficiency</p>
                                                 </strong>
                                             </a>
                                         </li>
