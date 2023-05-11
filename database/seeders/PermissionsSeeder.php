@@ -130,7 +130,7 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'delete usersupports']);
 
         // Create user role and assign existing permissions
-        $currentPermissions = Permission::all();
+        $currentPermissions = Permission::where('name',"create tickets")->get();
         $userRole = Role::create(['name' => 'user']);
         $userRole->givePermissionTo($currentPermissions);
 
