@@ -11,26 +11,26 @@
         <form class="form-inline mt-3">
             @csrf
 
-            <div class="form-group mr-2 ">
-                <x-inputs.select name="user_support_id" id="user_support_id" class="form-control" wire:model="support">
-                    <option value="">Filter By User Support</option>
-                    @foreach ($userSupports as $userSupport)
-                        {{-- <option value="{{$userSupport->id}}">{{$userSupport->user->full_name}}</option> --}}
-                        <option value="{{ $userSupport->id }}"
-                            {{ request()->input('user_support_id') == $userSupport->id ? 'selected' : '' }}>
-                            {{ $userSupport->user->full_name }}</option>
-                    @endforeach
-                </x-inputs.select>
-
-            </div>
+         
 
             <div class="form-group mr-2">
-                <x-inputs.select name="status" id="status" class="form-control" wire:model="status">
+                <x-inputs.select name="status" id="status" class="form-control">
                     <option value="">All tickets</option>
                     <option value="0">Active tickets</option>
                     <option value="2">Escalated tickets</option>
                     <option value="1">Closed tickets</option>
                 </x-inputs.select>
+            </div>
+            <div class="form-group mr-2 ">
+                <x-inputs.select name="user_support_id" id="user_support_id" class="form-control">
+                    <option value="">Filter By User Support</option>
+                    @foreach ($userSupports as $userSupport)
+                        <option value="{{ $userSupport->id }}">
+                            {{ $userSupport->user->full_name }}</option>
+                          
+                    @endforeach
+                </x-inputs.select>
+
             </div>
             <div class="form-group col-5
                 ">
@@ -88,3 +88,4 @@
         @endcan
     </div>
 </div>
+
