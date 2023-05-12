@@ -52,20 +52,18 @@ class LoginController extends Controller
     //     if ($auth) {
     //         $this->authenticated($auth);
            
-            Auth::login($auth);
-            session()->regenerate();
-            return redirect('/dashboard');
-        } else {
-            return Redirect::back()->withErrors(['msg' => 'Invalid Credentials']);
-        }
-    }
-    public function authenticated($user){
-        $defaultRole = Role::where('name', 'customer')->first();
-    //   dd($user);
-        if($user->roles()->first() == null){
-
-           $user->assignRole('customer');
-        }
+    //         Auth::login($auth);
+    //         session()->regenerate();
+    //         return redirect('/dashboard');
+    //     } else {
+    //         return Redirect::back()->withErrors(['msg' => 'Invalid Credentials']);
+    //     }
+    // }
+    // public function authenticated($user){
+    //     $defaultRole = Role::where('name', 'customer')->first();
+    //     if($user->roles()->first() == null){
+    //        $user->assignRole('customer');
+    //     }
 
     //     $exists = Customer::where('full_name',$user->full_name)->exists();
     //     $customer = new Customer();
