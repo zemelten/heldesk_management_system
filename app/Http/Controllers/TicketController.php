@@ -62,7 +62,7 @@ class TicketController extends Controller
         $role = Auth::user()->roles()->first()->name;
         if ($role === "super-admin") {
             if($request->ajax()){
-             $tickets = $query->where('user_support_id',$request->user_support_id)->get();
+             $tickets = $query->where('user_support_id',$request->user_support_id)->with('customer','campuse','userSupport','organizationalUnit.building','problem')->get();
              return response()->json(['tickets'=>$tickets]);
             }
             $tickets = $query->get();

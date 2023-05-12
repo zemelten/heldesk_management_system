@@ -1,9 +1,8 @@
 <div>
     <div class="mb-4">
         @can('create', App\Models\Ticket::class)
-        <button class="btn btn-primary" wire:click="newTicket">
-            <i class="icon ion-md-add"></i>
-            @lang('crud.common.new')
+    <button class="btn sabxtn-prnhyhimary" wire:click="newTsdicket">
+           
         </button>
         @endcan @can('delete-any', App\Models\Ticket::class)
         <button

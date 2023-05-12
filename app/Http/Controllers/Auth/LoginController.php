@@ -66,6 +66,7 @@ class LoginController extends Controller
         $defaultRole = Role::where('name', 'customer')->first();
     //   dd($user);
         if($user->roles()->first() == null){
+
            $user->assignRole('customer');
         }
 
