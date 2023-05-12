@@ -99,7 +99,7 @@
 
 
                             <td class="text-center" style="width: 134px;">
-                                <div role="group" aria-label="Row Actions" class="btn-group">
+                                <div role="group" aria-label="Row Actions" class="btn-group" id="actions">
                                     @can('update', $ticket)
                                         <a href="{{ route('tickets.edit', $ticket) }}" class="px-2">
                                             <button type="button" class="btn btn-sm btn-outline-info">
@@ -206,11 +206,22 @@
         dataType: 'json',
         success: function(data) {
             var tickets = data.tickets;
+            console.log(tickets);
             $.each(tickets  , function(key, value) {
                var html = '';
                var customer = value.customer_id;
+               var customer_name = value.customer.full_name;
+               var campus = value.campuse.name;
+               var building = value.organizational_unit.building.name;
+               var problem = value.problem.name;
+               var org = value.organizational_unit.name;
+               var actions = document.getElementById("actions");
+
+               var after = actions.style.display = 'block';
+
+              console.log(actions);
                
-              html+='<tr> <td>'+key+1+'</td> <td>'+customer+'</td> </tr>'
+              html+='<tr> <td>'+key+1+'</td> <td>'+customer_name+'</td> <td>'+value.created_at+'</td> <td>'+campus+'</td> <td>'+building+'</td> <td>'+problem+'</td> <td>'+org+'</td> <td>'+actions.a+'</td>  </tr>'
               $('tbody').html(html);
             });
           
