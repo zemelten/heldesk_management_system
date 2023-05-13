@@ -50,19 +50,25 @@ class TicketController extends Controller
 
     public function index(Request $request)
     {
+      //  dd($request);
 
         // $userSupports = UserSupport::withCount('tickets')->orderBy('tickets_count','asc')->get();
 
-        $this->authorize('view-any', Ticket::class);
-        
+        $this->authorize('view-any', Ticket::class); 
         $customer_id = Customer::where('full_name', Auth::user()->full_name)->first()->id;
         $query = Ticket::query();
-        
-        
         $role = Auth::user()->roles()->first()->name;
         if ($role === "super-admin") {
             if($request->ajax()){
-             $tickets = $query->where('user_support_id',$request->user_support_id)->with('customer','campuse','userSupport','organizationalUnit.building','problem')->get();
+            //  $tickets = $query->where('user_support_id',$request->user_support_id)->with('customer','campuse','userSupport','organizationalUnit.building','problem')
+            //  ->get();
+            
+             $tickets = $query->where('user_support_id', $request->user_support_id)
+                      ->orWhere('status', $request->status)
+            ->with('customer', 'campuse', 'userSupport', 'organizationalUnit.building', 'problem')
+            ->get();
+       
+
              return response()->json(['tickets'=>$tickets]);
             }
             $tickets = $query->get();
