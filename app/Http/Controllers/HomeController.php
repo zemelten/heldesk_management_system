@@ -34,7 +34,8 @@ class HomeController extends Controller
     {
 
        
-         // dd(Auth::user()->roles()->first()->name);
+       //dd(Auth::user()->roles()->first()->name);
+        // dd(Auth::user());
         $countUsers = User::count();
         $totalTicket = Ticket::count();
         $countUsersupports = UserSupport::count();

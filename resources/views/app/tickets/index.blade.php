@@ -200,6 +200,7 @@
                     var tickets = data.tickets;
                     var html = '';
                     if (tickets.length > 0) {
+                        console.log(tickets);
                         $.each(tickets, function(key, value) {
                             var customer = value.customer_id ? value.customer_id : '-';
                             var customer_name = value.customer.full_name;

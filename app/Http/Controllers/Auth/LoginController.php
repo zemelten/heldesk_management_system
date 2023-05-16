@@ -60,10 +60,10 @@ class LoginController extends Controller
         }
     }
     public function authenticated($user){
-        $defaultRole = Role::where('name', 'customer')->first();
-        if($user->roles()->first() == null){
-           $user->assignRole('customer');
-        }
+        // $defaultRole = Role::where('name', 'customer')->first();
+        // if($user->roles()->first() == null){
+        //    $user->assignRole('customer');
+        // }
 
         $exists = Customer::where('full_name',$user->full_name)->exists();
         $customer = new Customer();
