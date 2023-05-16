@@ -149,7 +149,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon icon ion-md-apps"></i>
+                                    <i class="av-icon fa-solid fa-gear fa-lg"></i>
                                     <p>
                                         Settings
                                         <i class="nav-icon right icon ion-md-arrow-round-back"></i>
@@ -202,7 +202,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon icon ion-md-key"></i>
+                                    <i class="nav-icon fa-solid fa-cubes-stacked fa-lg"></i>
                                     <p>
                                         Queue Type
                                         <i class="nav-icon right icon ion-md-arrow-round-back"></i>
@@ -236,7 +236,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon icon ion-md-key"></i>
+                                    <i class="nav-icon fa-solid fa-house fa-lg"></i>
                                     <p>
                                       Org. Structure
                                         <i class="nav-icon right icon ion-md-arrow-round-back"></i>
@@ -255,7 +255,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon icon ion-md-key"></i>
+                                    <i class=" nav-iconfa-solid fa-wave-pulse fa-lg"></i>
                                     <p>
                                         Reporting
                                         <i class="nav-icon right icon ion-md-arrow-round-back"></i>

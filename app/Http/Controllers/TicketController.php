@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Models\OrganizationalUnit;
 use App\Http\Requests\TicketStoreRequest;
 use App\Http\Requests\TicketUpdateRequest;
+use App\Models\Building;
 
 class TicketController extends Controller
 {
@@ -46,10 +47,11 @@ class TicketController extends Controller
         $campuses = Campus::pluck('name', 'id');
         $customers = Customer::pluck('full_name', 'id');
         $problems = Problem::pluck('name', 'id');
+        $buildings = Building::pluck('name', 'id');
         $organizationalUnits = OrganizationalUnit::pluck('name', 'id');
         $userSupports = UserSupport::pluck('id', 'id');
         $priorities = Prioritie::pluck('name', 'id');
-
+       
         return view(
             'app.tickets.create',
             compact(
@@ -58,7 +60,9 @@ class TicketController extends Controller
                 'problems',
                 'organizationalUnits',
                 'userSupports',
-                'priorities'
+                'priorities',
+                'buildings',
+
             )
         );
     }
