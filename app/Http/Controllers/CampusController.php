@@ -6,6 +6,8 @@ use App\Models\Campus;
 use Illuminate\Http\Request;
 use App\Http\Requests\CampusStoreRequest;
 use App\Http\Requests\CampusUpdateRequest;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class CampusController extends Controller
 {
@@ -21,7 +23,7 @@ class CampusController extends Controller
 
         $campuses = Campus::search($search)
             ->latest()
-            ->paginate(15)
+            ->paginate(5)
             ->withQueryString();
 
         return view('app.campuses.index', compact('campuses', 'search'));
@@ -49,9 +51,11 @@ class CampusController extends Controller
         $validated = $request->validated();
 
         $campus = Campus::create($validated);
+       
+       
 
         return redirect()
-            ->route('campuses.edit', $campus)
+            ->route('campuses.index')
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -93,7 +97,7 @@ class CampusController extends Controller
         $campus->update($validated);
 
         return redirect()
-            ->route('campuses.edit', $campus)
+            ->route('campuses.index')
             ->withSuccess(__('crud.common.saved'));
     }
 
@@ -105,11 +109,11 @@ class CampusController extends Controller
     public function destroy(Request $request, Campus $campus)
     {
         $this->authorize('delete', $campus);
-
+        
         $campus->delete();
 
-        return redirect()
-            ->route('campuses.index')
-            ->withSuccess(__('crud.common.removed'));
+        // return redirect()
+        //     ->route('campuses.index')
+        //     ->withSuccess(__('crud.common.removed'));
     }
 }

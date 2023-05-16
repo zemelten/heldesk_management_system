@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
     <div class="searchbar mt-0 mb-4">
         <div class="row">
             <div class="col-md-6">
@@ -44,9 +44,10 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-hover">
+                <table class="table table-hover table-condensed">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th class="text-left">
                                 @lang('crud.customers.inputs.full_name')
                             </th>
@@ -69,13 +70,7 @@
                                 @lang('crud.customers.inputs.floor_id')
                             </th>
                             <th class="text-left">
-                                @lang('crud.customers.inputs.user_id')
-                            </th>
-                            <th class="text-left">
                                 @lang('crud.customers.inputs.office_num')
-                            </th>
-                            <th class="text-left">
-                                @lang('crud.customers.inputs.is_edited')
                             </th>
                             <th class="text-center">
                                 @lang('crud.common.actions')
@@ -83,8 +78,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($customers as $customer)
+                        @forelse($customers as $key => $customer)
                         <tr>
+                            <td style="width: 2.5cm"> {{$key+1}}</td>
                             <td>{{ $customer->full_name ?? '-' }}</td>
                             <td>{{ $customer->email ?? '-' }}</td>
                             <td>{{ $customer->phone_no ?? '-' }}</td>
@@ -101,12 +97,9 @@
                             <td>
                                 {{ optional($customer->floor)->name ?? '-' }}
                             </td>
-                            <td>
-                                {{ optional($customer->user)->full_name ?? '-'
-                                }}
-                            </td>
+                            
                             <td>{{ $customer->office_num ?? '-' }}</td>
-                            <td>{{ $customer->is_edited ?? '-' }}</td>
+                           
                             <td class="text-center" style="width: 134px;">
                                 <div
                                     role="group"
@@ -116,37 +109,28 @@
                                     @can('update', $customer)
                                     <a
                                         href="{{ route('customers.edit', $customer) }}"
-                                    >
-                                        <button
-                                            type="button"
-                                            class="btn btn-light"
-                                        >
-                                            <i class="icon ion-md-create"></i>
+                                        class="px-1">
+                                        <button type="button" class="btn btn-sm btn-outline-info">
+                                            <i class="fa fa-edit"></i>
                                         </button>
                                     </a>
                                     @endcan @can('view', $customer)
                                     <a
                                         href="{{ route('customers.show', $customer) }}"
-                                    >
-                                        <button
-                                            type="button"
-                                            class="btn btn-light"
-                                        >
-                                            <i class="icon ion-md-eye"></i>
+                                        class="px-1">
+                                        <button type="button" class="btn btn-sm btn-outline-info">
+                                            <i class="fa fa-eye"></i>
                                         </button>
                                     </a>
                                     @endcan @can('delete', $customer)
                                     <form
-                                        action="{{ route('customers.destroy', $customer) }}"
+                                        data-route="{{ route('customers.destroy', $customer) }}"
                                         method="POST"
-                                        onsubmit="return confirm('{{ __('crud.common.are_you_sure') }}')"
-                                    >
+                                        id="deleteCustomer"
+                                           >
                                         @csrf @method('DELETE')
-                                        <button
-                                            type="submit"
-                                            class="btn btn-light text-danger"
-                                        >
-                                            <i class="icon ion-md-trash"></i>
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
                                     @endcan
@@ -172,3 +156,52 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).on('submit', '#deleteCustomer', function(e) {
+            e.preventDefault();
+
+
+
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover it.!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: 'post',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+
+                            url: $(this).data('route'),
+                            data: {
+                                '_method': 'delete'
+                            },
+                            success: function(response) {
+                                swal("Customer has been deleted!", {
+                                    icon: "success",
+                                    button: true,
+                                   
+                                }).then((ok)=>{
+                                    window.location = '/customers'
+                                })
+                               
+                            }
+                        });
+                        
+
+                    }
+                   
+                    else {
+                       
+                    }
+                });
+        });
+    </script>
+@endpush

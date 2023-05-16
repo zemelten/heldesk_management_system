@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">
@@ -16,7 +16,7 @@
                 action="{{ route('tickets.update', $ticket) }}"
                 class="mt-4"
             >
-                @include('app.tickets.form-inputs')
+                @include('app.tickets.form-input-edit')
 
                 <div class="mt-4">
                     <a
@@ -45,3 +45,19 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    function showDiv(selectId, divId) {
+        const select = document.getElementById(selectId);
+        const div = document.getElementById(divId);
+        if (select.value == 2) {
+            div.style.display = 'block';
+           
+        } else {
+            
+            div.style.display = 'none';
+        }
+    }
+    </script>
+@endpush

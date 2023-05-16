@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
     <div class="searchbar mt-0 mb-4">
         <div class="row">
             <div class="col-md-6">
@@ -46,9 +46,10 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-hover">
+                <table class="table table-hover table-condensed">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th class="text-left">
                                 @lang('crud.service_units.inputs.name')
                             </th>
@@ -73,8 +74,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($serviceUnits as $serviceUnit)
+                        @forelse($serviceUnits as $key => $serviceUnit)
                         <tr>
+                            <td style="width: 2.5cm"> {{$key+1}}</td>
                             <td>{{ $serviceUnit->name ?? '-' }}</td>
                             <td>{{ $serviceUnit->telephone ?? '-' }}</td>
                             <td>{{ $serviceUnit->fax ?? '-' }}</td>
@@ -132,7 +134,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="7">
+                            <td  >
                                 @lang('crud.common.no_items_found')
                             </td>
                         </tr>
@@ -140,7 +142,7 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="7">{!! $serviceUnits->render() !!}</td>
+                            <td  >{!! $serviceUnits->render() !!}</td>
                         </tr>
                     </tfoot>
                 </table>

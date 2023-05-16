@@ -25,9 +25,11 @@ class LeaderUpdateRequest extends FormRequest
     {
         return [
             'full_name' => ['nullable', 'max:255', 'string'],
-            'sex' => ['nullable', 'in:male,female,other'],
-            'phone' => ['nullable', 'max:255', 'string'],
-            'email' => ['nullable', 'email'],
+            'sex' => ['in:male,female'],
+            'phone' => ['max:12 ', 'integer'],
+            'email' => ['email'],
+            'director_id' => ['nullable'],
+
         ];
     }
 }

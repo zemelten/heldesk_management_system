@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">
@@ -37,3 +37,28 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+
+<script>
+    $('#campuse_id').on('change', function() {
+    var idState = this.value;
+    $("#building_id").html('');
+    $.ajax({
+        url: "{{ url('/get-buildings') }}",
+        type: "POST",
+        data: {
+            campuse_id: idState,
+            _token: '{{ csrf_token() }}'
+        },
+        dataType: 'json',
+        success: function(res) {
+            $('#building_id').html('<option value="">-- Select Building --</option>');
+            $.each(res.blds  , function(key, value) {
+                $("#building_id").append('<option value="' + value
+                    .id + '">' + value.name + '</option>');
+            });
+        }
+    });
+});
+</script>
+@endpush

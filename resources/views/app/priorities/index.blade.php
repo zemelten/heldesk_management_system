@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
     <div class="searchbar mt-0 mb-4">
         <div class="row">
             <div class="col-md-6">
@@ -44,9 +44,10 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-hover">
+                <table class="table table-hover table-condensed">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th class="text-left">
                                 @lang('crud.priorities.inputs.name')
                             </th>
@@ -62,8 +63,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($priorities as $prioritie)
+                        @forelse($priorities as $key => $prioritie)
                         <tr>
+                            <td style="width: 2.5cm"> {{$key+1}}</td>
                             <td>{{ $prioritie->name ?? '-' }}</td>
                             <td>{{ $prioritie->response ?? '-' }}</td>
                             <td>{{ $prioritie->description ?? '-' }}</td>

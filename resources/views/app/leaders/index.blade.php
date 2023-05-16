@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
     <div class="searchbar mt-0 mb-4">
         <div class="row">
             <div class="col-md-6">
@@ -41,9 +41,10 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-hover">
+                <table class="table table-hover table-condensed">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th class="text-left">
                                 @lang('crud.leaders.inputs.full_name')
                             </th>
@@ -62,8 +63,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($leaders as $leader)
+                        @forelse($leaders as $key => $leader)
                         <tr>
+                            <td style="width: 2.5cm"> {{$key+1}}</td>
                             <td>{{ $leader->full_name ?? '-' }}</td>
                             <td>{{ $leader->sex ?? '-' }}</td>
                             <td>{{ $leader->phone ?? '-' }}</td>
@@ -77,37 +79,28 @@
                                     @can('update', $leader)
                                     <a
                                         href="{{ route('leaders.edit', $leader) }}"
-                                    >
-                                        <button
-                                            type="button"
-                                            class="btn btn-light"
-                                        >
-                                            <i class="icon ion-md-create"></i>
+                                        class="px-1">
+                                        <button type="button" class="btn btn-sm btn-outline-info">
+                                            <i class="fa fa-edit"></i>
                                         </button>
                                     </a>
                                     @endcan @can('view', $leader)
                                     <a
                                         href="{{ route('leaders.show', $leader) }}"
-                                    >
-                                        <button
-                                            type="button"
-                                            class="btn btn-light"
-                                        >
-                                            <i class="icon ion-md-eye"></i>
+                                        class="px-1">
+                                        <button type="button" class="btn btn-sm btn-outline-info">
+                                            <i class="fa fa-eye"></i>
                                         </button>
                                     </a>
                                     @endcan @can('delete', $leader)
                                     <form
-                                        action="{{ route('leaders.destroy', $leader) }}"
+                                        data-route="{{ route('leaders.destroy', $leader) }}"
                                         method="POST"
-                                        onsubmit="return confirm('{{ __('crud.common.are_you_sure') }}')"
-                                    >
+                                        id="deleteLeader"
+                                          >
                                         @csrf @method('DELETE')
-                                        <button
-                                            type="submit"
-                                            class="btn btn-light text-danger"
-                                        >
-                                            <i class="icon ion-md-trash"></i>
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
                                     @endcan
@@ -133,3 +126,52 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).on('submit', '#deleteLeader', function(e) {
+            e.preventDefault();
+
+
+
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover it.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: 'post',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+
+                            url: $(this).data('route'),
+                            data: {
+                                '_method': 'delete'
+                            },
+                            success: function(response) {
+                                swal("Leader has been deleted!", {
+                                    icon: "success",
+                                    button: true,
+                                   
+                                }).then((ok)=>{
+                                    window.location = '/leaders'
+                                })
+                               
+                            }
+                        });
+                        
+
+                    }
+                   
+                    else {
+                       
+                    }
+                });
+        });
+    </script>
+@endpush

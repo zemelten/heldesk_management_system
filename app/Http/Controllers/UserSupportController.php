@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\ProblemCatagory;
 use App\Http\Requests\UserSupportStoreRequest;
 use App\Http\Requests\UserSupportUpdateRequest;
+use App\Models\Leader;
 
 class UserSupportController extends Controller
 {
@@ -25,8 +26,8 @@ class UserSupportController extends Controller
         $search = $request->get('search', '');
 
         $userSupports = UserSupport::search($search)
-            ->latest()
-            ->paginate(5)
+            ->oldest()
+            ->paginate(10)
             ->withQueryString();
 
         return view(
@@ -46,6 +47,7 @@ class UserSupportController extends Controller
         $users = User::pluck('full_name', 'id');
         $problemCatagories = ProblemCatagory::pluck('name', 'id');
         $buildings = Building::pluck('name', 'id');
+        $leaders = Leader::pluck('full_name', 'id');
         $serviceUnits = ServiceUnit::pluck('name', 'id');
         $units = Unit::pluck('telephone', 'id');
 
@@ -55,6 +57,7 @@ class UserSupportController extends Controller
                 'users',
                 'problemCatagories',
                 'buildings',
+                'leaders',
                 'serviceUnits',
                 'units'
             )
@@ -67,14 +70,32 @@ class UserSupportController extends Controller
      */
     public function store(UserSupportStoreRequest $request)
     {
+       // $data['building_id'] = $request->building_id;
+     
+
         $this->authorize('create', UserSupport::class);
 
         $validated = $request->validated();
+      //  dd($validated);
+        foreach ($request->building_id as $bld) {
+            if(!empty($bld))
+        {
+          UserSupport::create([
+            'user_id'=>$request->user_id,
+            'user_type'=>$request->user_type,
+            'problem_catagory_id'=>$request->problem_catagory_id,
+            'leader_id'=>$request->leader_id,
+            'building_id'=>$bld,
+            'service_unit_id'=>$request->service_unit_id,
+            'unit_id'=>$request->unit_id
+          ]);      
+        }
+        } 
 
-        $userSupport = UserSupport::create($validated);
+     //   $userSupport = UserSupport::create($validated);
 
         return redirect()
-            ->route('user-supports.edit', $userSupport)
+            ->route('user-supports.index')
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -102,6 +123,7 @@ class UserSupportController extends Controller
         $users = User::pluck('full_name', 'id');
         $problemCatagories = ProblemCatagory::pluck('name', 'id');
         $buildings = Building::pluck('name', 'id');
+        $leaders = Leader::pluck('full_name', 'id');
         $serviceUnits = ServiceUnit::pluck('name', 'id');
         $units = Unit::pluck('telephone', 'id');
 
@@ -112,6 +134,7 @@ class UserSupportController extends Controller
                 'users',
                 'problemCatagories',
                 'buildings',
+                'leaders',
                 'serviceUnits',
                 'units'
             )
@@ -134,7 +157,7 @@ class UserSupportController extends Controller
         $userSupport->update($validated);
 
         return redirect()
-            ->route('user-supports.edit', $userSupport)
+            ->route('user-supports.index')
             ->withSuccess(__('crud.common.saved'));
     }
 

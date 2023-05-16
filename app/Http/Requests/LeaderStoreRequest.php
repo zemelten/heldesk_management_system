@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class LeaderStoreRequest extends FormRequest
 {
@@ -25,9 +26,15 @@ class LeaderStoreRequest extends FormRequest
     {
         return [
             'full_name' => ['nullable', 'max:255', 'string'],
-            'sex' => ['nullable', 'in:male,female,other'],
-            'phone' => ['nullable', 'max:255', 'string'],
-            'email' => ['nullable', 'email'],
+            'sex' => ['in:male,female'],
+            'user_id'=>['required'],
+            'phone' => ['required', 'regex:/^(07|09|)([0-9]{8})$/', 
+            Rule::unique('leaders')->where(function ($query) {
+                return $query->where('phone', request('phone'));
+            })],
+            'email' => ['email'],
+            'director_id' => ['nullable'],
+
         ];
     }
 }

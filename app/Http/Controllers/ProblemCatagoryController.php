@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ProblemCatagory;
 use App\Http\Requests\ProblemCatagoryStoreRequest;
 use App\Http\Requests\ProblemCatagoryUpdateRequest;
+use App\Models\Problem;
 
 class ProblemCatagoryController extends Controller
 {
@@ -21,7 +22,7 @@ class ProblemCatagoryController extends Controller
 
         $problemCatagories = ProblemCatagory::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view(
@@ -54,7 +55,7 @@ class ProblemCatagoryController extends Controller
         $problemCatagory = ProblemCatagory::create($validated);
 
         return redirect()
-            ->route('problem-catagories.edit', $problemCatagory)
+            ->route('problem-catagories.index')
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -98,7 +99,7 @@ class ProblemCatagoryController extends Controller
         $problemCatagory->update($validated);
 
         return redirect()
-            ->route('problem-catagories.edit', $problemCatagory)
+            ->route('problem-catagories.index')
             ->withSuccess(__('crud.common.saved'));
     }
 
@@ -116,5 +117,12 @@ class ProblemCatagoryController extends Controller
         return redirect()
             ->route('problem-catagories.index')
             ->withSuccess(__('crud.common.removed'));
+    }
+    public function getProblems(Request $request){
+        $data['blds'] = Problem::where("problem_catagory_id", $request->problem_category_id)
+        ->get(["name", "id"]);
+
+        
+      return response()->json($data);
     }
 }

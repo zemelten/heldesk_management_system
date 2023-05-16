@@ -7,6 +7,7 @@ use App\Models\Building;
 use Illuminate\Http\Request;
 use App\Http\Requests\BuildingStoreRequest;
 use App\Http\Requests\BuildingUpdateRequest;
+use App\Models\OrganizationalUnit;
 
 class BuildingController extends Controller
 {
@@ -34,11 +35,10 @@ class BuildingController extends Controller
     public function create(Request $request)
     {
         $this->authorize('create', Building::class);
+        
+         $campuses = Campus::pluck('name', 'id');
+         
 
-        // $campuses = Campus::pluck('name', 'id');
-
-        $campuses = Campus::find(1);
-        dd($campuses->buildings);
 
         return view('app.buildings.create', compact('campuses'));
     }
@@ -54,9 +54,10 @@ class BuildingController extends Controller
         $validated = $request->validated();
 
         $building = Building::create($validated);
+      
 
         return redirect()
-            ->route('buildings.edit', $building)
+            ->route('buildings.index')
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -100,7 +101,7 @@ class BuildingController extends Controller
         $building->update($validated);
 
         return redirect()
-            ->route('buildings.edit', $building)
+            ->route('buildings.index')
             ->withSuccess(__('crud.common.saved'));
     }
 
@@ -118,5 +119,21 @@ class BuildingController extends Controller
         return redirect()
             ->route('buildings.index')
             ->withSuccess(__('crud.common.removed'));
+    }
+    public function getBuildings(Request $request){
+        $data['blds'] = Building::where("campuse_id", $request->campuse_id)
+        ->get(["name", "id"]);
+
+        
+      return response()->json($data);
+    }
+    public function getOrgUnits(Request $request){
+         $data['orgs'] = OrganizationalUnit::where("building_id", $request->building_id)
+           ->get(["name", "id"]);
+
+           
+         return response()->json($data);
+    
+       
     }
 }

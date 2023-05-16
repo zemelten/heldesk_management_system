@@ -15,7 +15,7 @@ class CampusSeeder extends Seeder
     public function run()
     {
         Campus::factory()
-            ->count(5)
+            ->count(4)
             ->create();
     }
 }

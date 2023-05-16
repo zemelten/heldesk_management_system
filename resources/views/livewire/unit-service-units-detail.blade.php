@@ -119,7 +119,7 @@
     </x-modal>
 
     <div class="table-responsive">
-        <table class="table table-bordered table-hover">
+        <table class="table table-hover table-condensed">
             <thead>
                 <tr>
                     <th>
@@ -195,7 +195,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="7">{{ $serviceUnits->render() }}</td>
+                    <td  >{{ $serviceUnits->render() }}</td>
                 </tr>
             </tfoot>
         </table>

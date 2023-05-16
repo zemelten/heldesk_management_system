@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">
@@ -37,3 +37,67 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+
+
+<script>
+    $('#building_id').on('change', function() {
+    var idState = this.value;
+    $("#organizational_unit_id").html('');
+    $.ajax({
+        url: "{{ url('/get-org-units') }}",
+        type: "POST",
+        data: {
+            building_id: idState,
+            _token: '{{ csrf_token() }}'
+        },
+        dataType: 'json',
+        success: function(res) {
+            $('#organizational_unit_id').html('<option value="">-- Select Org Unit --</option>');
+            $.each(res.orgs  , function(key, value) {
+                $("#organizational_unit_id").append('<option value="' + value
+                    .id + '">' + value.name + '</option>');
+            });
+        }
+    });
+});
+
+$('#campuse_id').on('change', function() {
+    var idState = this.value;
+    $("#building_id").html('');
+    $.ajax({
+        url: "{{ url('/get-buildings') }}",
+        type: "POST",
+        data: {
+            campuse_id: idState,
+            _token: '{{ csrf_token() }}'
+        },
+        dataType: 'json',
+        success: function(res) {
+            $('#building_id').html('<option value="">-- Select Building --</option>');
+            $.each(res.blds  , function(key, value) {
+                $("#building_id").append('<option value="' + value
+                    .id + '">' + value.name + '</option>');
+            });
+        }
+    });
+});
+</script>
+<script>
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2({
+            // dropdownAutoWidth: true
+             theme: "bootstrap4",
+            //  width:'resolve'
+
+        })
+    });
+    
+
+</script>
+
+
+@endpush
+

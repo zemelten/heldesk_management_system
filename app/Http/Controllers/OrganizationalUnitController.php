@@ -24,7 +24,7 @@ class OrganizationalUnitController extends Controller
 
         $organizationalUnits = OrganizationalUnit::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view(
@@ -64,7 +64,7 @@ class OrganizationalUnitController extends Controller
         $organizationalUnit = OrganizationalUnit::create($validated);
 
         return redirect()
-            ->route('organizational-units.edit', $organizationalUnit)
+            ->route('organizational-units.index')
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -122,7 +122,7 @@ class OrganizationalUnitController extends Controller
         $organizationalUnit->update($validated);
 
         return redirect()
-            ->route('organizational-units.edit', $organizationalUnit)
+            ->route('organizational-units.index')
             ->withSuccess(__('crud.common.saved'));
     }
 

@@ -25,7 +25,7 @@ class EscalatedTicketUpdateRequest extends FormRequest
     {
         return [
             'ticket_id' => ['nullable', 'exists:tickets,id'],
-            'user_support_id' => ['nullable', 'exists:user_supports,id'],
+            'user_support_id' => ['required'],
             'queue_type_id' => ['nullable', 'exists:queue_types,id'],
         ];
     }

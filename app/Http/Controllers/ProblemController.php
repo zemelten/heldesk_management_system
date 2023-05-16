@@ -24,7 +24,7 @@ class ProblemController extends Controller
 
         $problems = Problem::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view('app.problems.index', compact('problems', 'search'));
@@ -56,7 +56,7 @@ class ProblemController extends Controller
         $problem = Problem::create($validated);
 
         return redirect()
-            ->route('problems.edit', $problem)
+            ->route('problems.index')
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -103,7 +103,7 @@ class ProblemController extends Controller
         $problem->update($validated);
 
         return redirect()
-            ->route('problems.edit', $problem)
+            ->route('problems.index')
             ->withSuccess(__('crud.common.saved'));
     }
 

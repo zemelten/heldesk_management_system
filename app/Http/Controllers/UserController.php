@@ -8,6 +8,8 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
+use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
@@ -23,7 +25,7 @@ class UserController extends Controller
 
         $users = User::search($search)
             ->latest()
-            ->paginate(5)
+            ->paginate(10)
             ->withQueryString();
 
         return view('app.users.index', compact('users', 'search'));
@@ -56,10 +58,10 @@ class UserController extends Controller
 
         $user = User::create($validated);
 
-        $user->syncRoles($request->roles);
+       $user->syncRoles($request->roles);
 
         return redirect()
-            ->route('users.edit', $user)
+            ->route('users.index')
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -111,7 +113,7 @@ class UserController extends Controller
         $user->syncRoles($request->roles);
 
         return redirect()
-            ->route('users.edit', $user)
+            ->route('users.index')
             ->withSuccess(__('crud.common.saved'));
     }
 

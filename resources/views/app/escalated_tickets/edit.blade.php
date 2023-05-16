@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">
                 <a href="{{ route('escalated-tickets.index') }}" class="mr-4"
                     ><i class="icon ion-md-arrow-back"></i
                 ></a>
-                @lang('crud.escalated_tickets.edit_title')
+                Escalated By <strong> {{ $escalated_by_name }}</strong>
             </h4>
 
             <x-form

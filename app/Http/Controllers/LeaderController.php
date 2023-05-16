@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Leader;
+use App\Models\Director;
 use Illuminate\Http\Request;
 use App\Http\Requests\LeaderStoreRequest;
 use App\Http\Requests\LeaderUpdateRequest;
@@ -33,9 +35,12 @@ class LeaderController extends Controller
      */
     public function create(Request $request)
     {
+        
         $this->authorize('create', Leader::class);
+        $users = User::pluck('full_name', 'id');
+        $director = Director::pluck('full_name', 'id');
 
-        return view('app.leaders.create');
+        return view('app.leaders.create',  compact('users', 'director'));
     }
 
     /**
@@ -44,14 +49,15 @@ class LeaderController extends Controller
      */
     public function store(LeaderStoreRequest $request)
     {
+        
         $this->authorize('create', Leader::class);
 
         $validated = $request->validated();
-
+        //dd($validated);
         $leader = Leader::create($validated);
 
         return redirect()
-            ->route('leaders.edit', $leader)
+            ->route('leaders.index')
             ->withSuccess(__('crud.common.created'));
     }
 
@@ -75,8 +81,10 @@ class LeaderController extends Controller
     public function edit(Request $request, Leader $leader)
     {
         $this->authorize('update', $leader);
+        $users = User::pluck('full_name', 'id');
+        $director = Director::pluck('full_name', 'id');
 
-        return view('app.leaders.edit', compact('leader'));
+        return view('app.leaders.edit', compact('leader', 'director', 'users'));
     }
 
     /**
@@ -93,7 +101,7 @@ class LeaderController extends Controller
         $leader->update($validated);
 
         return redirect()
-            ->route('leaders.edit', $leader)
+            ->route('leaders.index')
             ->withSuccess(__('crud.common.saved'));
     }
 

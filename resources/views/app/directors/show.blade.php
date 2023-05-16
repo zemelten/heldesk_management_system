@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">
@@ -14,7 +14,7 @@
             <div class="mt-4">
                 <div class="mb-4">
                     <h5>@lang('crud.directors.inputs.full_name')</h5>
-                    <span>{{ $director->full_name ?? '-' }}</span>
+                    <span>{{ $director->user->full_name ?? '-' }}</span>
                 </div>
                 <div class="mb-4">
                     <h5>@lang('crud.directors.inputs.sex')</h5>
@@ -45,6 +45,17 @@
         </div>
     </div>
 
+    
+    @can('view-any', App\Models\Leader::class)
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title w-100 mb-2">Leaders</h4>
+
+            <livewire:director-leaders-detail :director="$director" />
+        </div>
+    </div>
+    @endcan
+    
     @can('view-any', App\Models\Unit::class)
     <div class="card mt-4">
         <div class="card-body">
@@ -54,5 +65,6 @@
         </div>
     </div>
     @endcan
+
 </div>
 @endsection

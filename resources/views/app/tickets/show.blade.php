@@ -1,9 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="card">
-        <div class="card-body">
+<div class="">
+    <div class="card d-flex">
+        <div class="">
+            @php
+            $ticket = $ticket->getAttributes();
+            $ticketId = $ticket['id'];
+            //dd($ticketId);
+            
+            @endphp
+            <x-single-ticket :ticketId=$ticketId/>
+        </div>
+        {{-- <div class="card-body col-6 ">
             <h4 class="card-title">
                 <a href="{{ route('tickets.index') }}" class="mr-4"
                     ><i class="icon ion-md-arrow-back"></i
@@ -64,7 +73,11 @@
                 </a>
                 @endcan
             </div>
-        </div>
+        </div> --}}
+
+        
+        <x-tickets.-active-ticket $tickets=$tickets/>
+
     </div>
 </div>
 @endsection
