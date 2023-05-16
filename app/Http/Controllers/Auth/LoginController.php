@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Helpers\LDAPHelper;
 use App\Http\Controllers\Controller;
+use App\LDAPHelper as AppLDAPHelper;
 use App\Models\Customer;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -40,7 +41,7 @@ class LoginController extends Controller
      * @return void
      */
 
-    public function login(Request $request, LDAPHelper $ldapHelper)
+    public function login(Request $request, AppLDAPHelper $ldapHelper)
     {
         $credentials = $request->validate([
             'username' => 'required|string',
